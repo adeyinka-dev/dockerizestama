@@ -3,18 +3,74 @@
 {% block title %} Home {% endblock title %}
 
 {% block content %}
-{% if user.is_authenticated %}
+
 <div class="container">
-<p>Hi {{user.username }}, Welcome to STAMA!</p>
-<hr>
-<p>{{ user.stama_id }}</p>
-<hr>
-<p>{{ user.faculty }}</p>
-<p><a href="{% url 'logout' %}">Log Out</a></p>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a> |
-<a href="{% url 'signup' %}">Sign Up</a>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <h1 style="color: #023047;">Welcome to your STAMA Dashboard!</h1>
+        </div>
+    </div>
 </div>
-{% endif %}
+            {% if user.is_authenticated %}
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                  <div class="col col-md-9 col-lg-7 col-xl-5">
+                    <div class="card" style="border-radius: 15px;">
+                      <div class="card-body p-4">
+                        <div class="d-flex text-black">
+                          <div class="flex-shrink-0">
+                            <img src="https://i.pinimg.com/564x/08/e1/07/08e1074b36d375d4feb3e01da81d9a96.jpg"
+                              alt="Generic placeholder image" class="img-fluid"
+                              style="width: 180px; border-radius: 10px;">
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <h5 class="mb-1" class="lead" style="color: #023047;">Hi {{user.username}},</h5>
+                            <p class="mb-2 pb-1" style="color: #126782;">{{ user.stama_id }}</p>
+                            <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                              style="background-color: #F1FAEE;">
+                              <div>
+                                <p class="small mb-1" style="color: #fb8600b9;">Sex</p>
+                                <p class="mb-0" style="color: #126782;">{{ user.sex }}</p>
+                              </div>
+                              <div class="px-3">
+                                <p class="small mb-1" style="color: #fb8600b9;">Age</p>
+                                <p class="mb-0" style="color: #126782;">{{ user.age }}</p>
+                              </div>
+                              <div>
+                                <p class="small mb-1" style="color: #fb8600b9;">Level</p>
+                                <p class="mb-0" style="color: #126782;">200</p>
+                              </div>
+                            </div>
+                            <div class="d-flex pt-1">
+                                <p style="color: #023047;">
+                                    {{user.faculty}} | {{ user.department }}
+                                </p>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="text-center">
+                        <p class="lead">You are not logged in</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'login' %}" class="btn m-1" style="background-color: #023047; color: aliceblue;">Log In</a>
+                    <a href="{% url 'signup' %}" class="btn m-1" style="background-color: #FB8500; color: aliceblue;">Sign Up</a>
+                </div>
+            </div>
+            {% endif %}
+            
+       
 {% endblock content %}
+
+                
+            
+               
