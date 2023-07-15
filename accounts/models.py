@@ -8,8 +8,9 @@ import random
 
 # The user model with additional information
 class Tenant(AbstractUser):
+    username = models.CharField(max_length=150, unique=True, help_text="")
     dob = models.DateField(null=True, blank=True)
-    matric_num = models.CharField(max_length=10)
+    matric_num = models.CharField(max_length=10, unique=True)
     sex = models.CharField(max_length=1)
     faculty = models.CharField(max_length=50)
     department = models.CharField(max_length=50)
