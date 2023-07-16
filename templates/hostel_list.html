@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %} Hostels {% endblock %}
+
+{% block content %}
+<style>
+    @media (min-width: 992px) { /* Apply these styles when the screen is at least 992px wide */
+      .card.mb-3 {
+        width: 80%; /* Set the width of the card */
+        height: 200px; /* Set the height of the card */
+        margin: auto;
+      }
+      .img-fluid.rounded-start {
+        object-fit: cover; /* Make sure the image covers the entire space */
+        height: 200px; /* Make the image take up the full height of the card */
+        width: 250px;
+      }
+    }
+</style>
+
+{% for hostel in hostel_list %}
+
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ hostel.image.url }}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="card-title">{{ hostel.name }}</h4>
+              <p class="card-title text-muted small">{{ hostel.stama_id }}</p>
+              <h7 class="card-title text-muted"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg> {{ hostel.address }}</h7>
+              <p class="card-text"><small>Le Chateau, located at {{ hostel.address }}, offers affordable, fully furnished rooms for students. Just a 10-minute walk from campus and close to local amenities, it's an ideal blend of convenience and comfort.</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+<hr>
+
+{% endfor %}
+{% endblock content %}
