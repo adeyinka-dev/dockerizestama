@@ -2,59 +2,165 @@
 {% block title %}Sign Up{% endblock title %}
 {% block content %}
 
+<style>
+    input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+        height: 32px;
+        width: 100%;  
+    }   
+    @media (min-width: 768px) {
+        .card {
+            width: 70rem;  /* Increase the width of card on larger screens */
+            
+        }
+    }
+    @media (max-width: 767px) {
+        .card {
+            font-size: small;
+            width: 30rem;  /* Keep the current width on smaller screens */
+            height: 95%;
+        }
+    }
+</style>
+
 <div class="container">
-   <div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
-        <div class="card shadow" style="width: 30rem; background-color: #023047;">
+   <div class="container d-flex align-items-center justify-content-center" style="height: 100%;">
+        <div class="card shadow" style="background-color: #023047;">
             <div class="card-body">
-                <h4 class="card-title text-center" style="color: #FB8500;">Sign Up for STAMA</h2>
+                <h3 class="card-title text-center" style="color: #FB8500;">Sign Up for STAMA</h3>
                 <form method="POST" style="color: #ffffff;">
                     {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <div class="row my-md-4">
+                        <div class="form-group col-md-5">
+                            <label for="{{ form.first_name.id_for_label }}">First Name</label>
+                            <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.html_name }}" value="{{ form.first_name.value|default_if_none:'' }}">
+                            {% if form.first_name.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.first_name.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="{{ form.middle_initial.id_for_label }}">Middle Initial</label>
+                            <input type="text" class="form-control" id="{{ form.middle_initial.id_for_label }}" name="{{ form.middle_initial.html_name }}" value="{{ form.middle_initial.value|default_if_none:'' }}">
+                            {% if form.middle_initial.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.middle_initial.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+                            <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}" name="{{ form.last_name.html_name }}" value="{{ form.last_name.value|default_if_none:'' }}">
+                        </div>
+                    </div>
+                    <div class="row my-md-4">
+                        <div class="form-group col-md-6">
+                            <label for="{{ form.username.id_for_label }}">Username</label>
+                            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}">
+                            {% if form.username.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="{{ form.email.id_for_label }}">Email address</label>
+                            <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}">
+                            {% if form.email.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                    </div>
                 
-                    <div class="form-group">
-                        <label for="{{ form.username.id_for_label }}">Username:</label>
-                        <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}">
+                    <div class="row my-md-4">
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.dob.id_for_label }}">Date Of Birth</label>
+                            <input type="text" class="form-control" id="{{ form.dob.id_for_label }}" name="{{ form.dob.html_name }}" value="{{ form.dob.value|default_if_none:'' }}">
+                            {% if form.dob.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.dob.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.matric_num.id_for_label }}">Matric Number</label>
+                            <input type="text" class="form-control" id="{{ form.matric_num.id_for_label }}" name="{{ form.matric_num.html_name }}" value="{{ form.matric_num.value|default_if_none:'' }}">
+                            {% if form.matric_num.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.matric_num.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.sex.id_for_label }}">Sex</label>
+                            <input type="text" class="form-control" id="{{ form.sex.id_for_label }}" name="{{ form.sex.html_name }}">
+                            {% if form.sex.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.sex.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="{{ form.email.id_for_label }}">Email address:</label>
-                        <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}">
+                    <div class="row my-md-4">
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.faculty.id_for_label }}">Faculty</label>
+                            <input type="text" class="form-control" id="{{ form.faculty.id_for_label }}" name="{{ form.faculty.html_name }}" value="{{ form.faculty.value|default_if_none:'' }}">
+                            {% if form.faculty.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.faculty.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.department.id_for_label }}">Department</label>
+                            <input type="text" class="form-control" id="{{ form.department.id_for_label }}" name="{{ form.department.html_name }}" value="{{ form.department.value|default_if_none:'' }}">
+                            {% if form.department.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.department.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.user_image.id_for_label }}">Profile Image</label>
+                            <input type="file" class="form-control" id="{{ form.user_image.id_for_label }}" name="{{ form.user_image.html_name }}">
+                        </div>  
+
                     </div>
-                    <div class="form-group">
-                        <label for="{{ form.dob.id_for_label }}">Dob:</label>
-                        <input type="text" class="form-control" id="{{ form.dob.id_for_label }}" name="{{ form.dob.html_name }}" value="{{ form.dob.value|default_if_none:'' }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ form.matric_num.id_for_label }}">Matric num:</label>
-                        <input type="text" class="form-control" id="{{ form.matric_num.id_for_label }}" name="{{ form.matric_num.html_name }}" value="{{ form.matric_num.value|default_if_none:'' }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ form.sex.id_for_label }}">Sex:</label>
-                        <input type="text" class="form-control" id="{{ form.sex.id_for_label }}" name="{{ form.sex.html_name }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ form.faculty.id_for_label }}">Faculty:</label>
-                        <input type="text" class="form-control" id="{{ form.faculty.id_for_label }}" name="{{ form.faculty.html_name }}" value="{{ form.faculty.value|default_if_none:'' }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ form.department.id_for_label }}">Department:</label>
-                        <input type="text" class="form-control" id="{{ form.department.id_for_label }}" name="{{ form.department.html_name }}" value="{{ form.department.value|default_if_none:'' }}">
-                    </div>
-                    <div class="form-group">
+                         
+                <div class="row my-md-4">
+                    <div class="form-group col-md-6">
                         <label for="{{ form.password1.id_for_label }}">Password:</label>
                         <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" value="{{ form.password1.value|default_if_none:'' }}">
+                        {% if form.password1.errors %}
+                            <small class="alert alert-danger mt-2">
+                                {{ form.password1.errors }}
+                            </small>
+                        {% endif %}
                         <small id="passwordHelp" class="form-text" style="color: #8ecae641;">
                             Your password can’t be too similar to your other personal information.
                             Your password must contain at least 8 characters.
-                            Your password can’t be a commonly used password.
-                            Your password can’t be entirely numeric.
                         </small>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label for="{{ form.password2.id_for_label }}">Password confirmation:</label>
                         <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" value="{{ form.password2.value|default_if_none:'' }}">
+                        {% if form.password2.errors %}
+                            <div class="alert alert-danger mt-1 small">
+                                {{ form.password2.errors }}
+                            </div>
+                        {% endif %}
                         <small id="passwordConfirmHelp" class="form-text" style="color: #8ecae641;">
                             Enter the same password as before, for verification.
                         </small>
                     </div>
+                </div>
 
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn" style="background-color: #E63946; color: aliceblue;">Submit</button>

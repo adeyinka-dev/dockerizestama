@@ -7,11 +7,15 @@ class TenantCreationForm(UserCreationForm):
         model = Tenant
         fields = UserCreationForm.Meta.fields + (
             "email",
+            "first_name",
+            "middle_initial",
+            "last_name",
             "dob",
             "matric_num",
             "sex",
             "faculty",
             "department",
+            "user_image",
         )
 
 

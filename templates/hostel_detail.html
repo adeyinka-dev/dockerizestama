@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="col-md-4">
+        <img src="{{ hostel.image.url }}" class="img-fluid rounded-start" alt="...">
+      </div>
+    <h2> {{ hostel.name }}</h2>
+    <h3>{{ hostel.stama_id }}</h3>
+    <h5> {{ hostel.address }}</h5>
+    <p>{{ hostel.amenities }}</p>
+
+</div>
+
+{% endblock content %}

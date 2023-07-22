@@ -10,8 +10,11 @@ class TenantAdmin(UserAdmin):
     form = TenantChangeForm
     model = Tenant
     list_display = [
-        "email",
         "username",
+        "email",
+        "first_name",
+        "middle_initial",
+        "last_name",
         "stama_id",
         "dob",
         "matric_num",
@@ -20,17 +23,40 @@ class TenantAdmin(UserAdmin):
         "department",
         "age",
         "is_staff",
+        "user_image",
     ]
     fieldsets = UserAdmin.fieldsets + (
         (
             None,
-            {"fields": ("dob", "sex", "matric_num", "faculty", "department")},
+            {
+                "fields": (
+                    "middle_initial",
+                    "dob",
+                    "sex",
+                    "matric_num",
+                    "faculty",
+                    "department",
+                    "user_image",
+                )
+            },
         ),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
             None,
-            {"fields": ("dob", "sex", "matric_num", "faculty", "department")},
+            {
+                "fields": (
+                    "dob",
+                    "sex",
+                    "matric_num",
+                    "faculty",
+                    "department",
+                    "first_name",
+                    "middle_initial",
+                    "last_name",
+                    "user_image",
+                )
+            },
         ),
     )
 

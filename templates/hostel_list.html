@@ -4,19 +4,13 @@
 
 {% block content %}
 <style>
-    @media (min-width: 992px) { /* Apply these styles when the screen is at least 992px wide */
-      .card.mb-3 {
-        width: 80%; /* Set the width of the card */
-        height: 200px; /* Set the height of the card */
-        margin: auto;
-      }
-      .img-fluid.rounded-start {
-        object-fit: cover; /* Make sure the image covers the entire space */
-        height: 200px; /* Make the image take up the full height of the card */
-        width: 250px;
-      }
-    }
-</style>
+  .img-fluid.rounded-start {
+      object-fit: cover;
+      height: 200px;
+      width: 100%;
+  }
+  </style>
+
 
 {% for hostel in hostel_list %}
 
@@ -35,6 +29,7 @@
                 <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
               </svg> {{ hostel.address }}</h7>
               <p class="card-text"><small>Le Chateau, located at {{ hostel.address }}, offers affordable, fully furnished rooms for students. Just a 10-minute walk from campus and close to local amenities, it's an ideal blend of convenience and comfort.</small></p>
+              <a href="{{ hostel.get_absolute_url }}" class="btn m-1" style="background-color: #FB8500; color: aliceblue;"> More Details </a>
             </div>
           </div>
         </div>
