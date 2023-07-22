@@ -11,7 +11,15 @@
     <h3>{{ hostel.stama_id }}</h3>
     <h5> {{ hostel.address }}</h5>
     <p>{{ hostel.amenities }}</p>
+    <p>Total rooms: {{ total_rooms }}</p>
+    <p>Occupied rooms: {{ occupied_rooms }}</p>
+    <p>Unoccupied rooms: {{ unoccupied_rooms }}</p>
+    {% for tenant in tenants %}
+    <p>Name: {{ tenant.first_name }} {{ tenant.last_name }} - Room Number: {{ tenant.room_number }}</p>
+    {% endfor %}
 
 </div>
+
+
 
 {% endblock content %}
