@@ -37,3 +37,8 @@ class HostelDetailView(DetailView):
             if room.tenant is not None
         ]
         return context
+
+
+class RoomDetailView(DetailView):
+    model = Room
+    template_name = "room_detail.html"

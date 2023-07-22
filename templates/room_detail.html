@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Room Detail</h1>
+
+  <p>Room ID: {{ object.room_id }}</p>
+
+  <p>Hostel: {{ object.hostel.name }}</p>
+
+  <p>Occupation Status: {{ object.get_status_display }}</p>
+
+  <p>Manager : {{ object.hostel.manager}}</p>
+
+{% endblock %}

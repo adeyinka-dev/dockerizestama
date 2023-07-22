@@ -74,6 +74,10 @@ class Room(models.Model):
     def __str__(self):
         return self.room_id
 
+    # This is to tell django to generate a URL for the Room model. This will be used to generate the room dashboard
+    def get_absolute_url(self):
+        return reverse("room_detail", kwargs={"pk": self.pk})
+
 
 # room unique ID, will take the hostel id and consecutive numbers will be added.
 @receiver(post_save, sender=Room)
