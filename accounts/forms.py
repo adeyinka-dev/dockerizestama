@@ -16,6 +16,7 @@ class TenantCreationForm(UserCreationForm):
             "faculty",
             "department",
             "user_image",
+            "phone_number",
         )
 
 

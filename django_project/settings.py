@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "pages",
     "bootstrap5",
     "accommodations",
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [

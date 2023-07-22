@@ -43,6 +43,7 @@ class TenantAdmin(UserAdmin):
                     "faculty",
                     "department",
                     "user_image",
+                    "phone_number",
                 )
             },
         ),
@@ -61,6 +62,7 @@ class TenantAdmin(UserAdmin):
                     "middle_initial",
                     "last_name",
                     "user_image",
+                    "phone_number",
                 )
             },
         ),

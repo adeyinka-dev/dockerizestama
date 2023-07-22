@@ -14,6 +14,7 @@ class ManagersTests(TestCase):
             matric_num="12345678",
             faculty="CAD",
             department="Medicine",
+            phone_number="12345678910",
         )
         self.assertEqual(user.username, "testuser")
         self.assertEqual(user.email, "testuser@example.com")
@@ -21,6 +22,7 @@ class ManagersTests(TestCase):
         self.assertEqual(user.matric_num, "12345678")
         self.assertEqual(user.faculty, "CAD")
         self.assertEqual(user.department, "Medicine")
+        self.assertEqual(user.phone_number, "12345678910")
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
