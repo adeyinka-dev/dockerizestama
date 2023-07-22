@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %} Hostels {% endblock %}
 
 {% block content %}
@@ -18,8 +18,11 @@
     <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="{{ hostel.image.url }}" class="img-fluid rounded-start" alt="...">
-          </div>
+            {% if hostel.image %}
+            <img src="{{ hostel.image.url }}" class="img-fluid rounded-start" alt="..."></div>
+            {% else %}
+            <img src="{% static 'img/default.png' %}" class="img-fluid rounded-start" alt="..."></div>
+            {% endif %}
           <div class="col-md-8">
             <div class="card-body">
               <h4 class="card-title">{{ hostel.name }}</h4>
