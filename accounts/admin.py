@@ -24,7 +24,13 @@ class TenantAdmin(UserAdmin):
         "age",
         "is_staff",
         "user_image",
+        "room_number",
+        "hostel",
+        "room_id",
     ]
+
+    readonly_fields = ("room_number", "room_id", "hostel")
+
     fieldsets = UserAdmin.fieldsets + (
         (
             None,

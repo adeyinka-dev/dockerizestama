@@ -37,6 +37,18 @@ class Tenant(AbstractUser):
         else:
             return None
 
+    @property
+    def room_id(self):
+        return self.room.room_id if self.room else "No room assigned"
+
+    @property
+    def room_number(self):
+        return self.room.room_number if self.room else "No room assigned"
+
+    @property
+    def hostel(self):
+        return self.room.hostel.name if self.room else "No hostel assigned"
+
 
 # Function to generate a unique STAMA_ID , assigned to each user on registration. This is will serve as login later.
 # The @receiver decorator inidctaes the function should run when a tenant instance is saved

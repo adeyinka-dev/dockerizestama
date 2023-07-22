@@ -3,8 +3,8 @@ from django.db.models.signals import post_save
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
-import random
-from accounts.models import Tenant  # Imported tenant from the account app.
+import random  # Imported tenant from the account app.
+from accounts.models import Tenant
 
 
 class Hostel(models.Model):
