@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="row my-md-4">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label for="{{ form.username.id_for_label }}">Username</label>
                             <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}">
                             {% if form.username.errors %}
@@ -68,12 +68,21 @@
                             </div>
                         {% endif %}
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label for="{{ form.email.id_for_label }}">Email address</label>
-                            <input type="email" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}">
+                            <input type="email" class="form-control" id="{{ form.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}">
                             {% if form.email.errors %}
                             <div class="alert alert-danger mt-2">
                                 {{ form.email.errors }}
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="{{ form.phone_number.id_for_label }}" maxlength="11">Phone Number</label>
+                            <input type="phone" class="form-control" id="{{ form.phone_number.id_for_label }}" name="{{ form.phone_number.html_name }}" value="{{ form.phone_number.value|default_if_none:'' }}">
+                            {% if form.phone_number.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.phone_number.errors }}
                             </div>
                         {% endif %}
                         </div>

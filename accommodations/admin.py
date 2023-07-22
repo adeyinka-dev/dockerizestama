@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Hostel, Room
+from accounts.models import Tenant
 
 # To see more informations about our Hostel
 
@@ -16,6 +17,12 @@ class RoomAdmin(admin.ModelAdmin):
 
 
 class HostelAdmin(admin.ModelAdmin):
+    # Manage Field can only be ffrom user with is_staff status active
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "manager":
+            kwargs["queryset"] = Tenant.objects.filter(is_staff=True)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
     list_display = ["name", "address", "manager", "phone", "image", "room_count"]
 
 
