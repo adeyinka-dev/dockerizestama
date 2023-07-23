@@ -1,86 +1,147 @@
-{% extends "base.html" %}
 
-{% block title %} Home {% endblock title %}
+{% load static %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <!-- boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-<div class="container">
-    <div class="d-flex align-items-center justify-content-center">
-        <div class="text-center">
-            <h1 style="color: #023047;">Welcome to your STAMA Dashboard!</h1>
-        </div>
+</head>
+<body>
+  {% if user.is_authenticated %}
+<div id="navbar" class="sidebar">
+    <div class="logo">
+      
+        <img src="{% static 'img/default.png' %}" alt="logo">
     </div>
+    <ul class="menu">
+        <li class="active">
+            <a href="#">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+        </li>
+            <li>
+                <a href="{% url 'room_detail' user.room.pk %}">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span>Raise Repair</span>
+                </a>
+            <li>
+                <a href="{% url 'room_detail' user.room.pk %}">
+                    <i class="fa-solid fa-money-check-dollar"></i>
+                    <span>Room Details</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <span>Edit Profile</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="{% url 'logout' %}">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log out</span>
+                </a>
+            </li>
+        </ul>
 </div>
-            {% if user.is_authenticated %}
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                  <div class="col col-md-9 col-lg-7 col-xl-5">
-                    <div class="card" style="border-radius: 15px;">
-                      <div class="card-body p-4">
-                        <div class="d-flex text-black">
-                          <div class="flex-shrink-0">
-                            <img src="https://i.pinimg.com/564x/08/e1/07/08e1074b36d375d4feb3e01da81d9a96.jpg"
-                              alt="Generic placeholder image" class="img-fluid"
-                              style="width: 180px; border-radius: 10px;">
-                          </div>
-                          <div class="flex-grow-1 ms-3">
-                            <h5 class="mb-1" class="lead" style="color: #023047;">Hi {{user.username}},</h5>
-                            <p class="mb-2 pb-1" style="color: #126782;">{{ user.stama_id }}</p>
-                            <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
-                              style="background-color: #F1FAEE;">
-                              <div>
-                                <p class="small mb-1" style="color: #fb8600b9;">Sex</p>
-                                <p class="mb-0" style="color: #126782;">{{ user.sex }}</p>
-                              </div>
-                              <div class="px-3">
-                                <p class="small mb-1" style="color: #fb8600b9;">Age</p>
-                                <p class="mb-0" style="color: #126782;">{{ user.age }}</p>
-                              </div>
-                              <div>
-                                <p class="small mb-1" style="color: #fb8600b9;">Level</p>
-                                <p class="mb-0" style="color: #126782;">200</p>
-                              </div>
-                            </div>
-                            <div class="d-flex pt-1">
-                                <p style="color: #023047;">
-                                    {{user.faculty}} | {{ user.department }}
-                                </p>
-                            </div>
-                        </div>
-                        </div>
 
-                        <div>
-                          <p class="small mb-1" style="color: #fb8600b9;">Room</p>
-                          <p class="mb-0" style="color: #126782;">{{ user.room.room_number }}</p>
-                      </div>
-                      <div class="px-3">
-                          <p class="small mb-1" style="color: #fb8600b9;">Hostel</p>
-                          <p class="mb-0" style="color: #126782;">{{ user.room.hostel.name }}</p>
-                          <a href="{% url 'room_detail' user.room.pk %}"> room detail </a>
-                      </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% else %}
+    
 
-            <div class="container">
-                <div class="d-flex align-items-center justify-content-center">
-                    <div class="text-center">
-                        <p class="lead">You are not logged in</p>
-                    </div>
+
+
+    <div class="main-content container-fluid pt-2">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span>{{user.first_name}}'s</span>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="user-info">
+                <div class="search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search">
                 </div>
-                <div class="d-flex justify-content-center">
-                    <a href="{% url 'login' %}" class="btn m-1" style="background-color: #023047; color: aliceblue;">Log In</a>
-                    <a href="{% url 'signup' %}" class="btn m-1" style="background-color: #FB8500; color: aliceblue;">Sign Up</a>
+                {% if user.image%}
+                <img src="{{ user.image.url }}" alt="">
+                {% else %}
+                <img src="https://i.pinimg.com/564x/08/e1/07/08e1074b36d375d4feb3e01da81d9a96.jpg" alt="me">
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="row align-items-stretch">
+        
+             <div class="col-lg-3 col-md-10">
+                <div class="card border-0 shadow h-100 mb-4">
+                    {% if user.image %}
+                    <img class="card-img-top rounded-circle mx-auto d-block" src="{{ user.image.url }}" alt="Profile Picture" style="width: 70%; max-width: 200px;">
+                    {% else %}
+                    <img class="card-img-top rounded-circle mx-auto d-block" src="https://i.pinimg.com/564x/08/e1/07/08e1074b36d375d4feb3e01da81d9a96.jpg" alt="Profile Picture" style="width: 70%; max-width: 200px;">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title">STM ID</h5>
+                        <p class="card-text">{{ user.stama_id }}</p>
+                    </div>
                 </div>
             </div>
-            {% endif %}
+    
+           
+            <div class="col-lg-9 col-md-10 user-dashboard">
+                <div class="card border-0 shadow h-100 mb-4 profile-card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">User Information</h5>
+                        <div class="row user-info-list">
+                            <div class="col-sm-6 info"><strong>Name</strong><br> <span class="info-content">{{user.first_name}} {{user.last_name}}</span></div>
+                            <div class="col-sm-6 info"><strong>Phone</strong><br> <span class="info-content">{{user.phone_num}}</span></div>
+                            <div class="col-sm-6 info"><strong>Email</strong><br> <span class="info-content">{{user.email}}</span></div>
+                            <div class="col-sm-6 info"><strong>Address</strong><br> <span class="info-content">123 Main St, City, State, Country</span></div>
+                            <div class="col-sm-6 info"><strong>Department</strong><br><span class="info-content">{{user.faculty}}/{{ user.department }}</span> </div>
+                            <div class="col-sm-6 info"><strong>Hostel</strong><br> <span class="info-content">{{ user.room.hostel.name }}</span></div>
+                            <div class="col-sm-6 info"><strong>Room Number</strong><br> <span class="info-content">{{user.room.room_number}}</span></div>
+                            <div class="col-sm-6 info"><strong>Email</strong><br> <span class="info-content">{{user.email}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-       
-{% endblock content %}
+          </div>
+    </div>
+    {% else %}
+    <header class="sticky-top">
+      <div class="p-3 mb-3 d-flex align-items-center justify-content-between">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="https://i.ibb.co/m4fWbc8/stama-high-resolution-logo-color-on-transparent-background-1.png" alt="logo" style="width: 100px; height: 60px;"></a>
+      </div>
+  </header>
+  
+  <div class="container-fluid d-flex align-items-center justify-content-center" style="height: calc(100vh - 50px);">
+      <main class="my-container text-center">
+          <h1 style="color: #023047;">Welcome to STAMA!</h1>
+          <p class="lead">You are not logged in</p>
+          <div class="d-flex justify-content-center">
+              <a href="{% url 'login' %}" class="btn m-1" style="background-color: #023047; color: aliceblue;">Log In</a>
+              <a href="{% url 'signup' %}" class="btn m-1" style="background-color: #FB8500; color: aliceblue;">Sign Up</a>
+          </div>
+      </main>
+  </div>
+  
+  {% endif %}
+  
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-                
-            
-               
+</body>
+</html>
