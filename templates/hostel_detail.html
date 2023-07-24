@@ -1,25 +1,140 @@
-{% extends "base.html" %}
 
-{% block content %}
+{% load static %}
 
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/hostel.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <div class="sidebar" >
+        <div class="logo">
+            <img src="{% static 'img/logox.png' %}" alt="logo">
+        </div>
+        <ul class="menu">
+            <li class="active">
+                <a href="#">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                    <a href="#">
+                        <i class="fas fa-user"></i>
+                        <span>Tenants</span>
+                    </a>
+            </li>
+            <li>
+                    <a href="#">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span>Statistics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span>Repairs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <span>Finances</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Address</span>
+                    </a>
+                </li>
+                <li class="logout">
+                    <a href="#">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Log out</span>
+                    </a>
+                </li>
+            </ul>
+        
+    </div>
 
-    <div class="col-md-4">
-        <img src="{{ hostel.image.url }}" class="img-fluid rounded-start" alt="...">
-      </div>
-    <h2> {{ hostel.name }}</h2>
-    <h3>{{ hostel.stama_id }}</h3>
-    <h5> {{ hostel.address }}</h5>
-    <p>{{ hostel.amenities }}</p>
-    <p>Total rooms: {{ total_rooms }}</p>
-    <p>Occupied rooms: {{ occupied_rooms }}</p>
-    <p>Unoccupied rooms: {{ unoccupied_rooms }}</p>
-    {% for tenant in tenants %}
-    <p>Name: {{ tenant.first_name }} {{ tenant.last_name }} - Room Number: {{ tenant.room_number }}</p>
-    {% endfor %}
+    <div class="main-content">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span style="color: #FB8500;">{{ hostel.name }}</span>
+                <h4><i class="fa-solid fa-location-dot"></i> {{ hostel.address }}</h4>
 
-</div>
+            </div>
+            <div class="user-info">
+                <div class="search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                {% if hostel.image %}
+                <img src="{{ hostel.image.url }}" alt="me">
+                {% else %}
+                <img src="{% static 'img/default.png' %}" alt="me">
+                {% endif %}
+            </div>
+        </div>
 
+        <div class="card-container">
+            <h3 class="main-title">Statistics</h3>
+            <div class="card-wrapper">
+                <div class="section-card light-blue">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Total Number of Tenants
+                            </span>
+                            <span class="right-value">00{{ occupied_rooms }}</span>
+                        </div>
+                        <i class="fa-solid fa-users card-icon dark-blue"></i>
+                    </div>
+                </div>
 
+                <div class="section-card light-green">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Occupied Units
+                            </span>
+                            <span class="right-value">00{{ occupied_rooms }}</span>
+                        </div>
+                        <i class="fa-solid fa-house-lock card-icon dark-green"></i>
+                    </div>
+                </div>
 
-{% endblock content %}
+                <div class="section-card light-yellow">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Unoccupied Units
+                            </span>
+                            <span class="right-value">00{{ unoccupied_rooms }}</span>
+                        </div>
+                        <i class="fa-solid fa-house-circle-check card-icon dark-yellow"></i>
+                    </div>
+                </div>
+
+                <div class="section-card light-red">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Unavailable Units
+                            </span>
+                            <span class="right-value">0000</span>
+                        </div>
+                        <i class="fa-solid fa-person-digging card-icon dark-red"></i>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -35,15 +35,21 @@
                 </a>
         </li>
             <li>
-                <a href="{% url 'room_detail' user.room.pk %}">
+                <a href="#">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                     <span>Raise Repair</span>
                 </a>
             <li>
+                {% if user.room_details %} 
                 <a href="{% url 'room_detail' user.room.pk %}">
+                    <a href="#"></a>
+                 
                     <i class="fa-solid fa-money-check-dollar"></i>
                     <span>Room Details</span>
                 </a>
+                { %else %}
+                <div></div>
+                {% endif %}
             </li>
             <li>
                 <a href="#">
