@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "bootstrap5",
     "accommodations",
     "phonenumber_field",
+    "repairs",
 ]
 
 MIDDLEWARE = [
