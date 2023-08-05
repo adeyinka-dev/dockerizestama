@@ -58,9 +58,8 @@ class Maintenance(models.Model):
     def __str__(self):
         return f"Operative to attend to{self.type}, subtype: {self.subtype} at: {self.room.hostel}, room: {self.room.room_number}"
 
-    # Funtion to generate a repair unique ID, that will be used for repair search.
 
-
+# Funtion to generate a repair unique ID, that will be used for repair search.
 @receiver(post_save, sender=Maintenance)
 def create_repair_id(sender, instance, created, **kwargs):
     if created and not instance.repair_id:
