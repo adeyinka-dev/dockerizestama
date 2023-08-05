@@ -1,5 +1,8 @@
+from typing import Any, Dict
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from .models import Hostel, Room
+from maintenance.forms import MaintenaceForm
 
 
 class HostelListView(ListView):
@@ -42,3 +45,18 @@ class HostelDetailView(DetailView):
 class RoomDetailView(DetailView):
     model = Room
     template_name = "room_detail.html"
+
+    # Django get_context_data method to allow forms to be accessed in the template.
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = MaintenaceForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = MaintenaceForm(request.POST)
+        if form.is_valid():
+            maintenance = form.save(commit=False)
+            maintenance.room = self.get_object()
+            maintenance.save()
+            return redirect("submit_success")
+        return self.get(request, *args, **kwargs)
