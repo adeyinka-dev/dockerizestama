@@ -1,27 +1,34 @@
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-import random  # Imported tenant from the account app.
+import random
 from accounts.models import Tenant
 
 
 class Hostel(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
-    phone = models.IntegerField()
-    amenities = models.TextField(max_length=9999)
+    phone = models.IntegerField(blank=True, null=True)
+    amenities = models.TextField(max_length=9999, null=True, blank=True)
     manager = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     stama_id = models.CharField(max_length=12, unique=True, null=True, blank=True)
     # First Time I will be trying the image field
     image = models.ImageField(upload_to="hostels/", null=True, blank=True)
     room_count = models.IntegerField(default=0)
 
+    # Manager can only be a user with is_staff status
+    def save(self, *args, **kwargs):
+        if not self.manager.is_staff:
+            raise ValidationError("Only staff users can be added as manager")
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.name
 
-    # This is to tell django to generate a URL for the hostel model. This will be used to generate the Hostel dashboard
+    # This is to tell django to generate a URL for the hostel model. This will be used to generate information about Hostel on dashboard
     def get_absolute_url(self):
         return reverse("hostel_detail", kwargs={"pk": self.pk})
 

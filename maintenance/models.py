@@ -1,7 +1,7 @@
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.db import models
-from accommodations.models import Room
+from accommodations.models import Room, Hostel
 import random
 
 """ Instead of hardcoding different types and subtypes of repair, I created a general and """
