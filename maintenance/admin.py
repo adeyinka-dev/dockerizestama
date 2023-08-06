@@ -3,7 +3,10 @@ from .models import Maintenance, MaintenanceType, MaintenanceSubType
 
 
 class MaintenanceAdmin(admin.ModelAdmin):
-    list_display = ["room", "type", "subtype", "repair_id"]
+    list_display = ["hostel", "room", "type", "repair_id"]
+    readonly_fields = ["hostel", "room", "repair_id"]
+    # Filter
+    list_filter = ["room__hostel", "type", "subtype"]
 
 
 admin.site.register(Maintenance, MaintenanceAdmin)

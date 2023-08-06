@@ -1,7 +1,7 @@
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.db import models
-from accommodations.models import Room, Hostel
+from accommodations.models import Room
 import random
 
 """ Instead of hardcoding different types and subtypes of repair, I created a general and """
@@ -24,13 +24,19 @@ class MaintenanceType(models.Model):
 
 class MaintenanceSubType(models.Model):
     name = models.CharField(max_length=50)
-    type = models.ForeignKey(MaintenanceType, on_delete=models.CASCADE)
+    parent = models.ForeignKey(
+        MaintenanceType,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="subtypes",
+    )
 
     def __str__(self):
         return self.name
 
 
-# The actual model which is associated with each room and shows the tyoe of repair needed
+# The actual model which is associated with each room and shows the tye of repair needed
 
 
 class Maintenance(models.Model):
@@ -46,6 +52,7 @@ class Maintenance(models.Model):
         null=True,
         blank=True,
     )
+
     repair_id = models.CharField(
         max_length=20,
         unique=True,
@@ -54,6 +61,11 @@ class Maintenance(models.Model):
     )
     is_pending = models.BooleanField(default=True)
     description = models.TextField(blank=True, null=True)
+
+    # Returns the Hostel name associated with the Room of the Maintenance.
+    @property
+    def hostel(self):
+        return self.room.hostel
 
     def __str__(self):
         return f"Operative to attend to{self.type}, subtype: {self.subtype} at: {self.room.hostel}, room: {self.room.room_number}"
