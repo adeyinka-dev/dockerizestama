@@ -134,7 +134,7 @@
             </div>
             
         </div>
-<hr>
+        <hr>
         <div class="card-container">
             <h3 class="main-title">Maintenance</h3>
             <div class="card-wrapper">
@@ -182,6 +182,37 @@
                         <i class="fa-solid fa-check-double card-icon dark-green"></i>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="table--wrapper">
+            <h3 class="main-title">Repairs</h3>
+            <div class="table--container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Repair ID</th>
+                            <th>Type</th>
+                            <th>Subtype</th>
+                            <th>Room</th>
+                            <th>Status</th>
+                        </tr>
+                        {% for repair in pending_repairs %}
+                        <tbody>
+                            <tr>
+                                <td>{{ repair.repair_id }}</td>
+                                <td>{{ repair.type.name }}</td>
+                                <td>{{ repair.subtype.name }}</td>
+                                <td>{{ repair.room.room_number }}</td>
+                                {% if repair.is_pending %}
+                                <td>Pending</td>
+                                {% else %}
+                                <td>Completed</td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </thead>
+                </table>
             </div>
         </div>
     </div>
