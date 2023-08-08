@@ -3,6 +3,8 @@ from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from .models import Hostel, Room
 from maintenance.forms import MaintenanceForm
+from django.apps import apps
+from maintenance.models import Maintenance
 
 
 class HostelListView(ListView):
@@ -39,6 +41,11 @@ class HostelDetailView(DetailView):
             for room in rooms
             if room.tenant is not None
         ]
+
+        # Repairs in each hostel
+        pending_repairs = Maintenance.objects.filter(room__in=rooms, is_pending=True)
+        context["pending_repairs_count"] = pending_repairs.count()
+        context["pending_repairs"] = pending_repairs
         return context
 
 

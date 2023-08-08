@@ -85,18 +85,6 @@
         <div class="card-container">
             <h3 class="main-title">Statistics</h3>
             <div class="card-wrapper">
-                <div class="section-card light-blue">
-                    <div class="card-header">
-                        <div class="value">
-                            <span class="title">
-                                Total Number of Tenants
-                            </span>
-                            <span class="right-value">00{{ occupied_rooms }}</span>
-                        </div>
-                        <i class="fa-solid fa-users card-icon dark-blue"></i>
-                    </div>
-                </div>
-
                 <div class="section-card light-green">
                     <div class="card-header">
                         <div class="value">
@@ -106,6 +94,17 @@
                             <span class="right-value">00{{ occupied_rooms }}</span>
                         </div>
                         <i class="fa-solid fa-house-lock card-icon dark-green"></i>
+                    </div>
+                </div>
+                <div class="section-card light-blue">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Total Number of Tenants
+                            </span>
+                            <span class="right-value">00{{ occupied_rooms }}</span>
+                        </div>
+                        <i class="fa-solid fa-users card-icon dark-blue"></i>
                     </div>
                 </div>
 
@@ -135,6 +134,60 @@
             </div>
             
         </div>
+<hr>
+        <div class="card-container">
+            <h3 class="main-title">Maintenance</h3>
+            <div class="card-wrapper">
+                <div class="section-card light-red">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Pending Repairs
+                            </span>
+                            <span class="right-value">{{ pending_repairs_count }}</span>
+                        </div>
+                        <i class="fa-solid fa-screwdriver-wrench card-icon dark-red"></i>
+                    </div>
+                </div>
+                <div class="section-card light-yellow">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Work in Progress
+                            </span>
+                            <span class="right-value">0</span>
+                        </div>
+                        <i class="fa-solid fa-spinner card-icon dark-yellow"></i>
+                    </div>
+                </div>
+                <div class="section-card light-blue">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Pending Inspection
+                            </span>
+                            <span class="right-value">0</span>
+                        </div>
+                        <i class="fa-solid fa-hourglass card-icon dark-blue"></i>
+                    </div>
+                </div>
+                <div class="section-card light-green">
+                    <div class="card-header">
+                        <div class="value">
+                            <span class="title">
+                                Work Complete
+                            </span>
+                            <span class="right-value">0</span>
+                        </div>
+                        <i class="fa-solid fa-check-double card-icon dark-green"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+    
+
 </body>
 </html>

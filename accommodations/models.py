@@ -6,6 +6,7 @@ from django.db import models
 from django.urls import reverse
 import random
 from accounts.models import Tenant
+from django.apps import apps
 
 
 class Hostel(models.Model):
