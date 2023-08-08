@@ -1,0 +1,47 @@
+<div class="main-content">
+    
+    <div class="repair-detail-container">
+
+        <!-- Table-like box for repair details -->
+        <div class="repair-detail-box">
+            <div class="detail-row">
+                <span class="detail-title">Repair ID</span>
+                <span class="detail-value">{{ object.repair_id }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-title">Room:</span>
+                <span class="detail-value">1</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-title">Type</span>
+                <span class="detail-value">{{ object.type }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-title">Subtype</span>
+                <span class="detail-value">{{ object.subtype }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-title">Status</span>
+                {% if repair.is_pending %}
+                <span class="detail-value">Pending</span>
+                {% else %}
+                <span class="detail-value">Completed</span>
+                {% endif %}
+            </div>
+            <div class="detail-row">
+                <span class="detail-title">Description: </span>
+                <br>
+                <span class="detail-value" id="description" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</span>
+            </div>
+        </div>
+    
+    
+        <div class="note-section">
+            <h3>Add Note</h3>
+            <textarea placeholder="Write your note here..."></textarea>
+        
+        </div>
+    
+    </div>
+
+</div>

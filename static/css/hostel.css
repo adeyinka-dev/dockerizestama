@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
 
 *{
     margin: 0;
@@ -6,7 +8,7 @@
     border: none;
     outline: none;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 
@@ -152,7 +154,7 @@ body {
 /* card container design */
 .card-container{
     background: #fff;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 10px;
     margin-top: 0.5rem;
 }
@@ -260,7 +262,7 @@ body {
     background: #fff;
     margin-top: 1rem;
     border-radius: 10px;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .table--container{
@@ -304,10 +306,14 @@ tfoot {
 tfoot td {
     padding: 15px;
 }
-.table--container button {
-    color: #FB8500;
-    background: none;
+
+.active_id {
+    background: #1D3557;
+    text-decoration: none;
+    padding: 4px;
+    color: #fff;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 

@@ -2,6 +2,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.db import models
 from accommodations.models import Room
+from django.urls import reverse
 import random
 
 """ Instead of hardcoding different types and subtypes of repair, I created a general and """
@@ -69,6 +70,10 @@ class Maintenance(models.Model):
 
     def __str__(self):
         return f"Operative to attend to{self.type}, subtype: {self.subtype} at: {self.room.hostel}, room: {self.room.room_number}"
+
+    # generate url for each repair
+    def get_absolute_url(self):
+        return reverse("repair_detail", kwargs={"pk": self.pk})
 
 
 # Funtion to generate a repair unique ID, that will be used for repair search.

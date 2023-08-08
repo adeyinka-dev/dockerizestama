@@ -1,0 +1,58 @@
+
+
+.repair-detail-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.repair-detail-box {
+    width: 48%; /* Adjust as needed */
+    background-color: #D5E1F1;
+    border: 1px solid #D5E1F1;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(2, 88, 168, 0.358); /* Optional: Adds a subtle shadow */
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #fff;
+    padding: 10px 0;
+}
+
+.detail-title {
+    font-weight: bold;
+    margin-right: 5px;
+    color: #1D3557;
+    padding: 5px 5px;
+    background: transparent;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.detail-value {
+    margin-left: 10px;
+    text-align: right;
+    width: 70%;
+    box-sizing: border-box;
+    color: #1D3557;
+}
+
+
+.note-section {
+    width: 48%; /* Adjust as needed */
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
