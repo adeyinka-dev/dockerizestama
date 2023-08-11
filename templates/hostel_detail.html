@@ -207,8 +207,12 @@
                                         <td>{{ repair.type.name }}</td>
                                         <td>{{ repair.subtype.name }}</td>
                                         <td>{{ repair.room.room_number }}</td>
-                                        {% if repair.is_pending %}
+                                        {% if repair.status == "P" %}
                                         <td>Pending</td>
+                                        {% elif repair.status == "WP" %}
+                                        <td>Work in Progress</td>
+                                        {% elif repair.status == "INP" %}
+                                        <td>Pending Inspection</td>
                                         {% else %}
                                         <td>Completed</td>
                                         {% endif %}

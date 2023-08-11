@@ -22,8 +22,12 @@
             </div>
             <div class="detail-row">
                 <span class="detail-title">Status</span>
-                {% if object.is_pending %}
+                {% if object.status == "P" %}
                 <span class="detail-value">Pending</span>
+                {% elif object.status == "WP" %}
+                <span class="detail-value">Work in Progress</span>
+                {% elif object.status == "INP" %}
+                <span class="detail-value">Pending Inspection</span>
                 {% else %}
                 <span class="detail-value">Completed</span>
                 {% endif %}

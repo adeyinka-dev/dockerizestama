@@ -44,7 +44,9 @@ class HostelDetailView(DetailView):
 
         # Repairs in each hostel
         repairs = Maintenance.objects.filter(room__in=rooms)
-        pending_repairs = Maintenance.objects.filter(room__in=rooms, is_pending=True)
+        pending_repairs = Maintenance.objects.filter(
+            room__in=rooms, status=Maintenance.PENDING
+        )
         context["pending_repairs_count"] = pending_repairs.count()
         context["pending_repairs"] = pending_repairs
         context["repairs"] = repairs

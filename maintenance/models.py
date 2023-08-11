@@ -41,6 +41,17 @@ class MaintenanceSubType(models.Model):
 
 
 class Maintenance(models.Model):
+    # Work status to be divided into 3 ,
+    PENDING = "P"
+    INPROGRESS = "WP"
+    INSPECTION = "INP"
+    COMPLETED = "C"
+    WORK_STATUS = [
+        (PENDING, "Pending"),
+        (INPROGRESS, "In_Progress"),
+        (INSPECTION, "Pending_Inspection"),
+        (COMPLETED, "Completed"),
+    ]
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="repairs")
     location = models.CharField(max_length=20, null=True, blank=True)
     type = models.ForeignKey(
@@ -60,7 +71,7 @@ class Maintenance(models.Model):
         null=True,
         blank=True,
     )
-    is_pending = models.BooleanField(default=True)
+    status = models.CharField(max_length=20, choices=WORK_STATUS, default=PENDING)
     description = models.TextField(blank=True, null=True)
 
     # Returns the Hostel name associated with the Room of the Maintenance.
