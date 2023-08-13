@@ -1,0 +1,89 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/raise_repair.css' %}">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+</head>
+<body>
+    <div id="navbar" class="sidebar">
+        <div class="logo">
+      
+            <img src="{% static 'img/default.png' %}" alt="logo">
+        </div>
+        <ul class="menu">
+            <li class="active">
+                <a href="{% url 'home' %}">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                    <a href="#">
+                        <i class="fa-solid fa-person-shelter"></i>
+                        <span>Room Details</span>
+                    </a>
+            <li class="logout">
+                    <a href="{% url 'logout' %}">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Log out</span>
+                    </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span>Hi {{user.first_name}}</span>
+                <h3>Submit a Maintenance Request</h3>
+            </div>
+            <div class="user-info">
+                {% if user.image%}
+                <img src="{{ user.image.url }}" alt="">
+                {% else %}
+                <img src="https://i.pinimg.com/564x/08/e1/07/08e1074b36d375d4feb3e01da81d9a96.jpg" alt="me">
+                {% endif %}
+            </div>
+        </div>
+        <div class="repair-detail-container">
+           
+            <div class="repair-detail-box">
+                <form method="post" action="{% url 'raise_repair' object.pk %}">
+                    {% csrf_token %}
+        
+                    <div class="detail-row">
+                        <label for="{{ form.type.id_for_label }}" class="detail-title">Type</label>
+                        {{ form.type }}
+                    </div>
+        
+                    <div class="detail-row">
+                        <label for="{{ form.subtype.id_for_label }}" class="detail-title">Subtype</label>
+                        {{ form.subtype }}
+                    </div>
+                    <div class="detail-row">
+                        <label for="{{ form.location.id_for_label }}" class="detail-title">Location</label>
+                        {{ form.location }}
+                    </div>
+                    <div class="detail-row">
+                        <label for="{{ form.description.id_for_label }}" class="detail-title">Description</label>
+                        {{ form.description }}
+                    </div>
+        
+                    <div class="detail-row">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+    </div>
+
+</body>
+</html>

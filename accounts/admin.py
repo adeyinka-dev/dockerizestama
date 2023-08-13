@@ -27,9 +27,15 @@ class TenantAdmin(UserAdmin):
         "room_number",
         "hostel",
         "room_id",
+        "rent_start_date",
+        "rent_validity",
     ]
 
-    readonly_fields = ("room_number", "room_id", "hostel")
+    readonly_fields = (
+        "room_number",
+        "room_id",
+        "hostel",
+    )
 
     fieldsets = UserAdmin.fieldsets + (
         (
@@ -44,6 +50,7 @@ class TenantAdmin(UserAdmin):
                     "department",
                     "user_image",
                     "phone_number",
+                    "rent_start_date",
                 )
             },
         ),
@@ -63,6 +70,7 @@ class TenantAdmin(UserAdmin):
                     "last_name",
                     "user_image",
                     "phone_number",
+                    "rent_start_date",
                 )
             },
         ),

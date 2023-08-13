@@ -55,4 +55,35 @@ textarea {
     margin-bottom: 20px;
 }
 
+.repair-detail-box select.detail-value {
+    width: 70%;
+    padding: 5px;
+    border: 1px solid #1D3557;
+    background-color: #D5E1F1;
+    color: #1D3557;
+    box-sizing: border-box;
+}
+
+/* Styling for the textarea inside the form */
+.repair-detail-box textarea.detail-value {
+    width: 70%;
+    padding: 5px;
+    border: 1px solid #1D3557;
+    background-color: #D5E1F1;
+    color: #1D3557;
+    box-sizing: border-box;
+    resize: vertical; /* Allows vertical resizing */
+}
+
+/* Styling for the submit button */
+.repair-detail-box button.detail-title {
+    cursor: pointer;
+    background-color: #1D3557;
+    color: #D5E1F1;
+    transition: background-color 0.3s;
+}
+
+.repair-detail-box button.detail-title:hover {
+    background-color: #2a4565;
+}
 

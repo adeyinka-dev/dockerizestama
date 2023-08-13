@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{% static 'css/hostel.css' %}">
-    <link rel="stylesheet" href="{% static 'css/repair.css' %}">
+    <link rel="stylesheet" href="{% static 'css/repair_detail.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <script></script>
 </head>
@@ -117,7 +117,7 @@
                     <div class="detail-row">
                         <span class="detail-title">Description: </span>
                         <br>
-                        <span class="detail-value" id="description" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</span>
+                        <span class="detail-value" id="description" >{{ object.description }}</span>
                     </div>
                 </div>
             

@@ -14,6 +14,7 @@ body {
     display: flex;
 }
 
+
 .sidebar{
     position: sticky;
     top: 0;
@@ -178,6 +179,62 @@ body {
 }
 
 
+.table--wrapper{
+    background: #fff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.table--container{
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #FF9720;
+    color: #fff;
+}
+
+th{
+    padding: 15px;
+    text-align: left;
+}
+
+tbody {
+    background: #FFF6EC;
+}
+
+td {
+    padding: 15px;
+    font-size: 14px;
+    color: #1D3557;
+}
+
+tr:nth-child(even) {
+    background: #fff;
+}
+
+
+tfoot td {
+    padding: 15px;
+}
+
+.active_id {
+    background: #FB8500;
+    text-decoration: none;
+    padding: 4px;
+    color: #1D3557;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+
+
 @media (max-width: 767px) {
   
     .search-box {
@@ -230,7 +287,7 @@ body {
 
 
 .profile-card {
-    background-color: #ffffff; /* white background */
+    background-color: #FFDCB5; /* white background */
     color: rgba(29, 53, 87, 1); /* blue text */
 }
 
@@ -378,3 +435,4 @@ body {
         font-size: 15px;
     }
 }
+

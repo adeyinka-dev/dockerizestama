@@ -144,5 +144,8 @@ AUTH_USER_MODEL = "accounts.Tenant"
 
 # Where to direct user on login and logout
 
-LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "dashboard"
+LOGOUT_REDIRECT_URL = "login"
+
+# Date format
+DATE_FORMAT = ["%d-%m-%y"]
