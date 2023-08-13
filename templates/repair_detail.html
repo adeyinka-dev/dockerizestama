@@ -83,8 +83,6 @@
         <div class="main-content">
             <h1 class="main-title">Repair Request</h1>
             <div class="repair-detail-container">
-            
-                <!-- Table-like box for repair details -->
                 <div class="repair-detail-box">
                     <div class="detail-row">
                         <span class="detail-title">Repair ID</span>
@@ -123,9 +121,12 @@
             
             
                 <div class="note-section">
-                    <h3>Add Note</h3>
-                    <textarea placeholder="Write your note here..."></textarea>
-                
+                    
+                    <textarea placeholder="Write your note here...">add Note</textarea>
+                    {% for note in object.note_set.all %}
+
+                    <h3>{{ note }}</h3>
+                    {% endfor %}
                 </div>
             
             </div>
