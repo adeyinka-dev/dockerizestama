@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.db import models
@@ -94,3 +95,15 @@ def create_repair_id(sender, instance, created, **kwargs):
         random_num = f"{random.randint(1, 1000):04}"
         instance.repair_id = "REP" + random_num
         instance.save()
+
+
+class Note(models.Model):
+    description = models.ForeignKey(Maintenance, on_delete=models.CASCADE)
+    note = models.CharField(max_length=140)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.note
