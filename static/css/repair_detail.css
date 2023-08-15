@@ -6,11 +6,11 @@
 }
 
 .repair-detail-box {
-    width: 48%; /* Adjust as needed */
+    width: 48%; 
     background-color: #D5E1F1;
     border: 1px solid #D5E1F1;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(2, 88, 168, 0.358); /* Optional: Adds a subtle shadow */
+    box-shadow: 0 0 10px rgba(2, 88, 168, 0.358);
 }
 
 .detail-row {
@@ -45,7 +45,7 @@
 
 
 .note-section {
-    width: 48%; /* Adjust as needed */
+    width: 48%;
     padding: 20px;
 }
 
@@ -64,18 +64,8 @@ textarea {
     box-sizing: border-box;
 }
 
-/* Styling for the textarea inside the form */
-.repair-detail-box textarea.detail-value {
-    width: 70%;
-    padding: 5px;
-    border: 1px solid #1D3557;
-    background-color: #D5E1F1;
-    color: #1D3557;
-    box-sizing: border-box;
-    resize: vertical; /* Allows vertical resizing */
-}
 
-/* Styling for the submit button */
+
 .repair-detail-box button.detail-title {
     cursor: pointer;
     background-color: #1D3557;
@@ -87,3 +77,11 @@ textarea {
     background-color: #2a4565;
 }
 
+
+.repair-note-box {
+    width: 28%; 
+    background-color: #D5E1F1;
+    border: 1px solid #D5E1F1;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(2, 88, 168, 0.358);
+}

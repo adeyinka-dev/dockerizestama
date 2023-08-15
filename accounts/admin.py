@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from .forms import TenantCreationForm, TenantChangeForm
 from .models import Tenant
+from accommodations.models import Room
 
 
 class TenantAdmin(UserAdmin):
@@ -31,11 +32,7 @@ class TenantAdmin(UserAdmin):
         "rent_validity",
     ]
 
-    readonly_fields = (
-        "room_number",
-        "room_id",
-        "hostel",
-    )
+    readonly_fields = ("hostel",)
 
     fieldsets = UserAdmin.fieldsets + (
         (
@@ -60,6 +57,7 @@ class TenantAdmin(UserAdmin):
             None,
             {
                 "fields": (
+                    "room_id",
                     "dob",
                     "sex",
                     "matric_num",
@@ -75,6 +73,17 @@ class TenantAdmin(UserAdmin):
             },
         ),
     )
+
+    # Overrode the save_model method in the form to automatically assign a tenant to a room based on the provided room_id and update the room's status to "Occupied".
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+
+        if "room_id" in form.cleaned_data:
+            room_id = form.cleaned_data["room_id"]
+            room = Room.objects.get(room_id=room_id)
+            room.tenant = obj
+            room.status = Room.OCCUPIED
+            room.save()
 
 
 admin.site.register(Tenant, TenantAdmin)

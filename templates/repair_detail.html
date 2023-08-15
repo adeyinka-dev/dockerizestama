@@ -118,16 +118,21 @@
                         <span class="detail-value" id="description" >{{ object.description }}</span>
                     </div>
                 </div>
-            
-            
-                <div class="note-section">
-                    
-                    <textarea placeholder="Write your note here...">add Note</textarea>
-                    {% for note in object.note_set.all %}
 
-                    <h3>{{ note }}</h3>
-                    {% endfor %}
+
+                <div class="repair-note-box">
+                    <div class="note-section">
+                        {% for note in object.note_set.all %}
+    
+                        <h3>{{ note }}</h3>
+                        <h1>{{ note.time_added|date:"F j, Y, P"}}</h1>
+                        <small>{{ note.author }}</small>
+                        {% endfor %}
+                    </div>
                 </div>
+            
+            
+                
             
             </div>
             

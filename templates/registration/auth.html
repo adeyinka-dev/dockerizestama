@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Authentication Page</title>
+</head>
+<body>
+ 
+<div class="auth-wrapper" id="authWrapper">
+    <div class="auth-form register-form">
+        
+        <form method="POST" class="form-container">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+            {% endif %}
+            <h2 class="form-title">Register</h2>
+        
+            <div class="input-group">
+                <i class="fa-solid fa-user input-icon" id="regUsernameIcon"></i>
+                <input type="text" name="{{ form.username.name }}" placeholder="Username" onfocus="highlightIcon('regUsernameIcon')" onblur="removeHighlight('regUsernameIcon')" value="{{ form.username.value }}" />
+          
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-envelope input-icon" id="regEmailIcon"></i>
+                <input type="email" name="{{ form.email.name }}" placeholder="Email" onfocus="highlightIcon('regEmailIcon')" onblur="removeHighlight('regEmailIcon')" value="{{ form.email.value }}" />
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-user-graduate input-icon" id="regDeptIcon"></i>
+                <input type="text" name="{{ form.department.name }}" placeholder="Department" onfocus="highlightIcon('regDeptIcon')" onblur="removeHighlight('regDeptIcon')" value="{{ form.department.value|default_if_none:'' }}">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-passport input-icon" id="regRoomIcon"></i>
+                <input type="text" name="{{ form.room_id.name }}" placeholder="Room ID" onfocus="highlightIcon('regRoomIcon')" onblur="removeHighlight('regRoomIcon')" value="{{ form.room_id.value }}"/>
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-fingerprint input-icon" id="regPasswordIcon"></i>
+                <input type="password" name="{{ form.password1.name }}" placeholder="Password" onfocus="highlightIcon('regPasswordIcon')" onblur="removeHighlight('regPasswordIcon')" />
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-fingerprint input-icon" id="regPassword2Icon"></i>
+                <input type="password" name="{{ form.password2.name }}" placeholder="Confirm Password" onfocus="highlightIcon('regPassword2Icon')" onblur="removeHighlight('regPassword2Icon')" />
+            </div>
+        
+            <button>Sign Up</button>
+        </form>
+        
+        
+    </div>
+    <div class="auth-form login-form">
+    <form action="{% url 'login' %}" method="post"> 
+        {% csrf_token %}
+        <h2 class="form-title">Sign In</h2>
+        <div class="input-group">
+            <i class="fa-solid fa-user input-icon" id="signInUsernameIcon"></i>
+            <label for="{{ form.username.id_for_label }}"></label>
+            <input type="text" name="{{ form.username.name }}" placeholder="Username" onfocus="highlightIcon('signInUsernameIcon')" onblur="removeHighlight('signInUsernameIcon')" />
+        </div>
+        <div class="input-group">
+            <i class="fa-solid fa-fingerprint input-icon" id="signInPasswordIcon"></i>
+            <label for="{{ form.password.id_for_label }}"></label>
+            <input type="password" name="{{ form.password.name }}" placeholder="Password" onfocus="highlightIcon('signInPasswordIcon')" onblur="removeHighlight('signInPasswordIcon')" />
+        </div>
+        <button>Sign In</button>
+        <a href="#" style="color: #FDC500;">Forgot your password?</a>
+    </form>
+</div>
+    <div class="auth-overlay-wrapper">
+        <div class="auth-overlay">
+            <div class="auth-overlay-panel overlay-left-panel">
+                <img src="{% static 'img/imgwhite.png' %}" alt="">
+                <h1>Manage with Ease!</h1>
+                <p>Log in to access your dashboard and oversee your property details.</p>
+                <button class="transparent-btn" id="loginBtn">Sign In</button>
+            </div>
+            <div class="auth-overlay-panel overlay-right-panel">
+                <img src="{% static 'img/imgwhite.png' %}" alt="">
+                <h1>New to Our Platform?</h1>
+                <p>Register now to streamline your property management experience.</p>
+                <button class="transparent-btn" id="registerBtn">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mobile-forms">
+    <div class="mobile-login-form">
+        <form action="#">
+            <img src="{% static 'img/imgmobile.png' %}" alt="mob">
+            <h2 class="form-title">Sign In</h2>
+            <div class="input-group">
+                <i class="fa-solid fa-user input-icon" id="signInUsernameIcon"></i>
+                <input type="text" placeholder="Username" onfocus="highlightIcon('signInUsernameIcon')" onblur="removeHighlight('signInUsernameIcon')" />
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-fingerprint input-icon" id="signInPasswordIcon"></i>
+                <input type="password" placeholder="Password" onfocus="highlightIcon('signInPasswordIcon')" onblur="removeHighlight('signInPasswordIcon')" />
+            </div>
+            <button>Sign In</button>
+            <a href="#" style="color: #FDC500;">Forgot your password?</a>
+        </form>
+            <span class="text">Not a member?
+                <a href="#" class="text signup-link" id="showMobileRegister">Register</a>
+            </span>
+    </div>
+    <div class="mobile-register-form" style="display: none;">
+        <form action="{% url 'register' %}" method="post" class="form-container">
+            {% csrf_token %}
+            <h2 class="form-title">Register</h2>
+        
+            <div class="input-group">
+                <i class="fa-solid fa-user input-icon" id="regUsernameIcon"></i>
+                <input type="text" name="{{ form.username.name }}" placeholder="Username" onfocus="highlightIcon('regUsernameIcon')" onblur="removeHighlight('regUsernameIcon')" value="{{ form.username.value }}" />
+                {{ form.username.errors }}
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-envelope input-icon" id="regEmailIcon"></i>
+                <input type="email" name="{{ form.email.name }}" placeholder="Email" onfocus="highlightIcon('regEmailIcon')" onblur="removeHighlight('regEmailIcon')" value="{{ form.email.value }}" />
+                {{ form.email.errors }}
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-user-graduate input-icon" id="regDeptIcon"></i>
+                <input type="text" name="{{ form.department.name }}" placeholder="Department" onfocus="highlightIcon('regDeptIcon')" onblur="removeHighlight('regDeptIcon')" value="{{ form.department.value }}" />
+                {{ form.department.errors }}
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-passport input-icon" id="regRoomIcon"></i>
+                <input type="text" name="{{ form.room_id.name }}" placeholder="Room ID" onfocus="highlightIcon('regRoomIcon')" onblur="removeHighlight('regRoomIcon')" value="{{ form.room_id.value }}"/>
+                {{ form.room_id.errors }}
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-fingerprint input-icon" id="regPasswordIcon"></i>
+                <input type="password" name="{{ form.password1.name }}" placeholder="Password" onfocus="highlightIcon('regPasswordIcon')" onblur="removeHighlight('regPasswordIcon')" />
+                {{ form.password1.errors }}
+            </div>
+        
+            <button>Sign Up</button>
+        </form>
+        
+        <span class="text">Already a member?
+            <a href="#" class="text login-link" id="showMobileLogin">Login Now</a>
+        </span>
+    </div>
+</div>
+<script src="{% static 'js/authpage.js' %}"></script>
+</body>
+</html>

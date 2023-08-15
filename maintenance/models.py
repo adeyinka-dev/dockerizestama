@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.conf import settings
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -104,6 +105,7 @@ class Note(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
+    time_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.note
