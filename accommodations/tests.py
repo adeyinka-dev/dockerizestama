@@ -14,6 +14,7 @@ class HostelModelTest(TestCase):
             faculty="CAD",
             department="Medicine",
             phone_number="12345678910",
+            is_staff=True,
         )
         self.hostel = Hostel.objects.create(
             name="Hostel A",
@@ -49,6 +50,7 @@ class RoomModelTest(TestCase):
             faculty="CAD",
             department="Medicine",
             phone_number="12345678910",
+            is_staff=True,
         )
         self.hostel = Hostel.objects.create(
             name="Hostel A",
