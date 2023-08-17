@@ -1,13 +1,55 @@
+from typing import Any, Dict
 from django.shortcuts import redirect, render
-from django.views.generic import DetailView
+from django.urls import reverse
+from django.views.generic import DetailView, FormView
+from django.views import View
 from .models import Maintenance
 from accommodations.models import Room
-from .forms import MaintenanceForm
+from .forms import MaintenanceForm, NoteForm
 
 
-class RepairDetailView(DetailView):
+class NoteGet(DetailView):
     model = Maintenance
     template_name = "repair_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = NoteForm()
+        return context
+
+
+class PostNote(FormView):
+    model = Maintenance
+    form_class = NoteForm
+    template_name = "repair_detail.html"
+
+    def get_maintenance(self):
+        return Maintenance.objects.get(pk=self.kwargs["pk"])
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_maintenance()
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        note = form.save(commit=False)
+        note.maintenance = self.object
+        note.author = self.request.user
+        note.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        maintenance = self.object
+        return reverse("repair_detail", kwargs={"pk": maintenance.pk})
+
+
+class RepairDetailView(View):
+    def get(self, request, *args, **kwargs):
+        view = NoteGet.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        view = PostNote.as_view()
+        return view(request, *args, **kwargs)
 
 
 class RoomRepair(DetailView):

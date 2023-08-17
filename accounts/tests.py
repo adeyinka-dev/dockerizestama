@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+from datetime import date
 
 
 class ManagersTests(TestCase):
@@ -46,3 +47,13 @@ class SignUpPageTests(TestCase):
     def test_signup_url_location_is_correct(self):
         response = self.client.get("/accounts/signup/")
         self.assertEqual(response.status_code, 200)
+
+
+class RentValidityTest(TestCase):
+    def test_rent_validity(self):
+        User = get_user_model()
+        user = User.objects.create(
+            username="tenantUser", rent_start_date=date(2022, 1, 1)
+        )
+        expected_due_date = date(2023, 1, 1)
+        self.assertEqual(user.rent_validity(), expected_due_date)

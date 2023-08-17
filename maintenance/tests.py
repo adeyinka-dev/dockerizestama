@@ -16,14 +16,11 @@ class MaintenanceTypeModelTest(TestCase):
 class MaintenanceSubTypeModelTest(TestCase):
     def setUp(self):
         self.maint_type = MaintenanceType.objects.create(name="Electrical")
-        self.maint_subtype = MaintenanceSubType.objects.create(
-            name="Socket", type=self.maint_type
-        )
+        self.maint_subtype = MaintenanceSubType.objects.create(name="Socket")
 
     def test_maintenance_subtype_creation(self):
         self.assertEqual(MaintenanceSubType.objects.count(), 1)
         self.assertEqual(self.maint_subtype.name, "Socket")
-        self.assertEqual(self.maint_subtype.type, self.maint_type)
 
 
 class MaintenanceModelTest(TestCase):
@@ -37,6 +34,7 @@ class MaintenanceModelTest(TestCase):
             faculty="CAD",
             department="Medicine",
             phone_number="12345678910",
+            is_staff=True,
         )
         self.hostel = Hostel.objects.create(
             name="Hostel A",
@@ -48,9 +46,7 @@ class MaintenanceModelTest(TestCase):
         )
         self.room = Room.objects.create(hostel=self.hostel, room_number="101")
         self.maint_type = MaintenanceType.objects.create(name="Electrical")
-        self.maint_subtype = MaintenanceSubType.objects.create(
-            name="Socket", type=self.maint_type
-        )
+        self.maint_subtype = MaintenanceSubType.objects.create(name="Socket")
         self.maintenance = Maintenance.objects.create(
             room=self.room,
             location="Location",

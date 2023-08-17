@@ -202,9 +202,9 @@ input:focus {
 }
 
 .auth-overlay-panel img {
-    max-width: 80%;  /* You can adjust this as needed */
+    max-width: 80%;
     height: auto;
-    margin: 20px 0;  /* Adds some space above and below the image */
+    margin: 20px 0;  
 }
 
 .auth-wrapper.right-panel-active .auth-overlay-wrapper {

@@ -27,7 +27,7 @@ body {
     color: #fff;
     overflow: hidden;
     transition: all 0.5s linear;
-    background: rgba(29, 53, 87, 1);
+    background: #00296B;
 }
 
 .sidebar:hover{
@@ -96,7 +96,7 @@ body {
 /* main body section design */
 .main-content{
     position: relative;
-    background: #EAF0F8;
+    background: #E2EDFF;
     width: 100%;
     padding: 1rem;
 }
@@ -275,7 +275,7 @@ table {
 }
 
 thead {
-    background: #1D3557;
+    background: #00296B;
     color: #fff;
 }
 
@@ -285,7 +285,7 @@ th{
 }
 
 tbody {
-    background: #D5E1F1;
+    background: #C5DCFF;
 }
 
 td {
@@ -308,7 +308,7 @@ tfoot td {
 }
 
 .active_id {
-    background: #1D3557;
+    background: #00296B;
     text-decoration: none;
     padding: 4px;
     color: #fff;

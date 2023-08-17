@@ -124,11 +124,19 @@
                     <div class="note-section">
                         {% for note in object.note_set.all %}
     
-                        <h3>{{ note }}</h3>
-                        <h1>{{ note.time_added|date:"F j, Y, P"}}</h1>
-                        <small>{{ note.author }}</small>
+                        <p>{{ note }}</p>
+                        <small>{{ note.time_added|date:"F j, Y, P"}}</small>
+                        <h4>{{ note.author }}</h4>
                         {% endfor %}
+                        <hr>
                     </div>
+                    <h3>Add a note</h3>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <textarea name="note" rows="4" cols="50" placeholder="Write your note here..."></textarea>
+                            <button type="submit">Save</button>
+                        </form>
+                        
                 </div>
             
             

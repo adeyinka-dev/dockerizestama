@@ -82,7 +82,7 @@ class Maintenance(models.Model):
         return self.room.hostel
 
     def __str__(self):
-        return f"Operative to attend to{self.type}, subtype: {self.subtype} at: {self.room.hostel}, room: {self.room.room_number}"
+        return self.repair_id
 
     # generate url for each repair
     def get_absolute_url(self):
@@ -99,7 +99,7 @@ def create_repair_id(sender, instance, created, **kwargs):
 
 
 class Note(models.Model):
-    description = models.ForeignKey(Maintenance, on_delete=models.CASCADE)
+    maintenance = models.ForeignKey(Maintenance, on_delete=models.CASCADE)
     note = models.CharField(max_length=140)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -109,3 +109,6 @@ class Note(models.Model):
 
     def __str__(self):
         return self.note
+
+    def get_absolute_url(self):
+        return reverse("repair_detail")
