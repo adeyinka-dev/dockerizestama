@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Maintenance, MaintenanceType, MaintenanceSubType
+from .models import Maintenance, MaintenanceType, MaintenanceSubType, Note
 from accommodations.models import Room, Hostel
 from accounts.models import Tenant
 
@@ -53,6 +53,11 @@ class MaintenanceModelTest(TestCase):
             type=self.maint_type,
             subtype=self.maint_subtype,
         )
+        self.note = Note.objects.create(
+            note="This is a note, I'm obviously testing the note creation",
+            maintenance=self.maintenance,
+            author=self.manager,
+        )
 
     def test_maintenance_creation(self):
         self.assertEqual(Maintenance.objects.count(), 1)
@@ -63,3 +68,11 @@ class MaintenanceModelTest(TestCase):
     def test_repair_id_creation(self):
         self.assertIsNotNone(self.maintenance.repair_id)
         self.assertTrue(self.maintenance.repair_id.startswith("REP"))
+
+    def test_note_creation(self):
+        self.assertEqual(Note.objects.count(), 1)
+        self.assertEqual(
+            self.note.note, "This is a note, I'm obviously testing the note creation"
+        )
+        self.assertEqual(self.note.maintenance, self.maintenance)
+        self.assertEqual(self.note.author, self.manager)
