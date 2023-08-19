@@ -1,182 +1,126 @@
-{% extends "base.html" %}
-{% block title %}Sign Up{% endblock title %}
-{% block content %}
+{% load static %}
 
-<style>
-    input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
-        height: 32px;
-        width: 100%;  
-    }   
-    @media (min-width: 768px) {
-        .card {
-            width: 70rem;  /* Increase the width of card on larger screens */
-            
-        }
-    }
-    @media (max-width: 767px) {
-        .card {
-            font-size: small;
-            width: 30rem;  /* Keep the current width on smaller screens */
-            height: 95%;
-        }
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<div class="container">
-   <div class="container d-flex align-items-center justify-content-center" style="height: 100%;">
-        <div class="card shadow" style="background-color: #023047;">
-            <div class="card-body">
-                <h3 class="card-title text-center" style="color: #FB8500;">Sign Up for STAMA</h3>
-                <form method="POST" style="color: #ffffff;">
-                    {% csrf_token %}
-                    {% if form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            {{ form.non_field_errors }}
-                        </div>
-                    {% endif %}
-                    <div class="row my-md-4">
-                        <div class="form-group col-md-5">
-                            <label for="{{ form.first_name.id_for_label }}">First Name</label>
-                            <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.html_name }}" value="{{ form.first_name.value|default_if_none:'' }}">
-                            {% if form.first_name.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.first_name.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="{{ form.middle_initial.id_for_label }}">Middle Initial</label>
-                            <input type="text" class="form-control" id="{{ form.middle_initial.id_for_label }}" name="{{ form.middle_initial.html_name }}" value="{{ form.middle_initial.value|default_if_none:'' }}">
-                            {% if form.middle_initial.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.middle_initial.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="{{ form.last_name.id_for_label }}">Last Name</label>
-                            <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}" name="{{ form.last_name.html_name }}" value="{{ form.last_name.value|default_if_none:'' }}">
-                        </div>
-                    </div>
-                    <div class="row my-md-4">
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.username.id_for_label }}">Username</label>
-                            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}">
-                            {% if form.username.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.username.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.email.id_for_label }}">Email address</label>
-                            <input type="email" class="form-control" id="{{ form.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}">
-                            {% if form.email.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.email.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.phone_number.id_for_label }}" maxlength="11">Phone Number</label>
-                            <input type="phone" class="form-control" id="{{ form.phone_number.id_for_label }}" name="{{ form.phone_number.html_name }}" value="{{ form.phone_number.value|default_if_none:'' }}">
-                            {% if form.phone_number.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.phone_number.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                    </div>
-                
-                    <div class="row my-md-4">
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.dob.id_for_label }}">Date Of Birth</label>
-                            <input type="text" class="form-control" id="{{ form.dob.id_for_label }}" name="{{ form.dob.html_name }}" value="{{ form.dob.value|default_if_none:'' }}">
-                            {% if form.dob.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.dob.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.matric_num.id_for_label }}">Matric Number</label>
-                            <input type="text" class="form-control" id="{{ form.matric_num.id_for_label }}" name="{{ form.matric_num.html_name }}" value="{{ form.matric_num.value|default_if_none:'' }}">
-                            {% if form.matric_num.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.matric_num.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.sex.id_for_label }}">Sex</label>
-                            <input type="text" class="form-control" id="{{ form.sex.id_for_label }}" name="{{ form.sex.html_name }}">
-                            {% if form.sex.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.sex.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                    </div>
-                    <div class="row my-md-4">
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.faculty.id_for_label }}">Faculty</label>
-                            <input type="text" class="form-control" id="{{ form.faculty.id_for_label }}" name="{{ form.faculty.html_name }}" value="{{ form.faculty.value|default_if_none:'' }}">
-                            {% if form.faculty.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.faculty.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.department.id_for_label }}">Department</label>
-                            <input type="text" class="form-control" id="{{ form.department.id_for_label }}" name="{{ form.department.html_name }}" value="{{ form.department.value|default_if_none:'' }}">
-                            {% if form.department.errors %}
-                            <div class="alert alert-danger mt-2">
-                                {{ form.department.errors }}
-                            </div>
-                        {% endif %}
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="{{ form.user_image.id_for_label }}">Profile Image</label>
-                            <input type="file" class="form-control" id="{{ form.user_image.id_for_label }}" name="{{ form.user_image.html_name }}">
-                        </div>  
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+   <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Regstration Page</title>
+    <style>
+      input:focus,
+      button:focus {
+        border-color: #fdc500;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(194, 191, 11, 0.3);
+      }
+    </style>
+  </head>
+  <body
+    class="h-screen flex flex-col items-center justify-center dark text-bodydark bg-light pt-20 sm:pt-0"
+  >
+    <img
+      src="{% static 'images/stmadmlg.png' %}"
+      alt="Your Logo"
+      class="mb-1"
+      style="width: 150px; margin-right: 60px"
+    />
 
-                    </div>
-                         
-                <div class="row my-md-4">
-                    <div class="form-group col-md-6">
-                        <label for="{{ form.password1.id_for_label }}">Password:</label>
-                        <input type="password" class="form-control" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" value="{{ form.password1.value|default_if_none:'' }}">
-                        {% if form.password1.errors %}
-                            <small class="alert alert-danger mt-2">
-                                {{ form.password1.errors }}
-                            </small>
-                        {% endif %}
-                        <small id="passwordHelp" class="form-text" style="color: #8ecae641;">
-                            Your password can’t be too similar to your other personal information.
-                            Your password must contain at least 8 characters.
-                        </small>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="{{ form.password2.id_for_label }}">Password confirmation:</label>
-                        <input type="password" class="form-control" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" value="{{ form.password2.value|default_if_none:'' }}">
-                        {% if form.password2.errors %}
-                            <div class="alert alert-danger mt-1 small">
-                                {{ form.password2.errors }}
-                            </div>
-                        {% endif %}
-                        <small id="passwordConfirmHelp" class="form-text" style="color: #8ecae641;">
-                            Enter the same password as before, for verification.
-                        </small>
-                    </div>
-                </div>
-
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn" style="background-color: #E63946; color: aliceblue;">Submit</button>
-                    </div>
-                </form>
+    <div class="bg-light p-3 rounded-lg shadow-md w-96 sm:mt-8">
+        <h1 class="text-xl font-bold mb-4 text-center text" style="color: #00296B;">Sign Up for Dashboard</h1>
+        <form method="POST" class="form-container">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            <div class="bg-red-500 text-white p-2 mb-4 rounded">
+                {{ form.non_field_errors }}
             </div>
-        </div>
+            {% endif %}
+    
+            <!-- Username Input -->
+            <div class="mb-4 relative">
+                <i class="fa-solid fa-user absolute left-2 top-5 text-gray-400"></i>
+                <input type="text" name="{{ form.username.name }}" placeholder="Username" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-10 pr-4 outline-none focus-visible:shadow-none">
+                {% if form.username.errors %}
+                <div class="text-sm text-red-500">
+                    {{ form.username.errors }}
+                </div>
+                {% endif %}
+            </div>
+    
+            <!-- Email Input -->
+            <div class="mb-4 relative">
+                <i class="fa-solid fa-envelope absolute left-2 top-5 text-gray-400"></i>
+                <input type="email" name="{{ form.email.name }}" placeholder="Email" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-10 pr-4 outline-none focus-visible:shadow-none">
+                {% if form.email.errors %}
+                <div class="text-sm text-red-500">
+                    {{ form.email.errors }}
+                </div>
+                {% endif %}
+            </div>
+    
+            <!-- Department Input -->
+            <div class="mb-4 relative">
+                <i class="fa-solid fa-user-graduate absolute left-2 top-5 text-gray-400"></i>
+                <input type="text" name="{{ form.department.name }}" placeholder="Department" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-10 pr-4 outline-none focus-visible:shadow-none">
+                {% if form.department.errors %}
+                <div class="text-sm text-red-500">
+                    {{ form.department.errors }}
+                </div>
+                {% endif %}
+            </div>
+    
+            <!-- Room ID Input -->
+            <div class="mb-4 relative">
+                <i class="fa-solid fa-passport absolute left-2 top-5 text-gray-400"></i>
+                <input type="text" name="{{ form.room_id.name }}" placeholder="Room ID" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-10 pr-4 outline-none focus-visible:shadow-none">
+                {% if form.room_id.errors %}
+                <div class="text-sm text-red-500">
+                    {{ form.room_id.errors }}
+                </div>
+                {% endif %}
+            </div>
+    
+            <!-- Password Input -->
+            <div class="mb-4 relative">
+                <i class="fa-solid fa-fingerprint absolute left-2 top-5 text-gray-400"></i>
+                <input type="password" name="{{ form.password1.name }}" placeholder="Password" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-10 pr-4 outline-none focus-visible:shadow-none">
+                {% if form.password1.errors %}
+                <div class="text-sm text-red-500">
+                    {{ form.password1.errors }}
+                </div>
+                {% endif %}
+            </div>
+    
+            <!-- Confirm Password Input -->
+            <div class="mb-4 relative">
+                <i class="fa-solid fa-fingerprint absolute left-2 top-5 text-gray-400"></i>
+                <input type="password" name="{{ form.password2.name }}" placeholder="Confirm Password" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-10 pr-4 outline-none focus-visible:shadow-none">
+                {% if form.password2.errors %}
+                <div class="text-sm text-red-500">
+                    {{ form.password2.errors }}
+                </div>
+                {% endif %}
+            </div>
+    
+            <!-- Submit Button -->
+            <div class="mb-5">
+                <button type="submit" class="w-full cursor-pointer rounded-lg border p-4 font-medium text-white transition hover:bg-opacity-90" style="background-color: #00296B;">Sign Up</button>
+            </div>
+        </form>
+        <div class="mt-6 text-center">
+            <p class="font-medium text-bodydark2">
+              Signed up already?
+              <a href="{% url 'login' %}" class="text" style="color: #00296B;">Sign In</a>
+            </p>
+          </div>
     </div>
-
-{% endblock content %}
+    
+    </div>
+  </body>
+</html>

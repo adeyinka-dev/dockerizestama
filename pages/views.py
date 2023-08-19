@@ -24,45 +24,43 @@ class HomePageView(RedirectView):
             else:
                 return reverse("processing")
         else:
-            return reverse("auth")
-
-
-class AuthPageView(TemplateView):
-    template_name = "registration/auth.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["login_form"] = AuthenticationForm()
-        context["register_form"] = UserCreationForm()
-        return context
+            return reverse("login")
 
 
 class Login(auth_views.LoginView):
-    template_name = "registration/auth.html"
+    template_name = "registration/login.html"
     success_url = reverse_lazy("home")
 
 
 class SignUp(CreateView):
-    template_name = "registration/auth.html"
+    template_name = "registration/signup.html"
     form_class = TenantCreationForm
     success_url = reverse_lazy("home")
 
     def form_valid(self, form):
-        # Save the tenant/user
-        user = form.save()
-
+        # Save the user
+        user = form.save(commit=False)  # Dont save yet, will save on line 66
+        user.save()
         # Get the room using the provided room_id
-        room_id = form.cleaned_data.get("room_id")
-        room = Room.objects.get(room_id=room_id)
+        try:
+            room_id = form.cleaned_data.get("room_id")
+            room = Room.objects.get(room_id=room_id)
 
-        # Assign the room to the user
-        room.tenant = user
-        room.status = Room.OCCUPIED  # Assuming you have this status defined
-        room.save()
+            # Check if the room is already occupied
+            if room.status == Room.OCCUPIED:
+                form.add_error("room_id", "This room is already occupied")
+                return self.form_invalid(form)
+            # Assign the room to the user
+            room.tenant = user
+            room.status = Room.OCCUPIED  # Assuming you have this status defined
+            room.save()
 
-        # Log in the user and redirect to the success URL
-        login(self.request, user)
-        return super().form_valid(form)
+            # Log in the user and redirect to the success URL
+            login(self.request, user)
+            return super().form_valid(form)
+        except Room.DoesNotExist:
+            form.add_error("room_id", "Room with this ID does not exist")
+            return self.form_invalid(form)
 
 
 class DashboardView(TemplateView):

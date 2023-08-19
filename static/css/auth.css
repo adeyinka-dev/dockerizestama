@@ -288,6 +288,22 @@ input:focus {
     display: none;
 }
 
+.errorlist {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    list-style-type: none;
+}
+
+.alert.alert-danger {
+    color: red;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
 @media (max-width: 768px) {
     .auth-wrapper, .auth-overlay-wrapper {
         display: none; /* Hide original content on mobile */
