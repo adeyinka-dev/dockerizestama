@@ -1,4 +1,5 @@
 from typing import Any, Dict
+from django.db.models.query import QuerySet
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from .models import Hostel, Room
@@ -65,6 +66,19 @@ class HostelDetailView(DetailView):
         context["completed_count"] = completed_repairs.count()
         context["repairs"] = repairs
         context["repairs_count"] = repairs.count()
+        return context
+
+
+class RoomListView(ListView):
+    model = Room
+    template_name = "room_list.html"
+
+    def get_queryset(self):
+        return Room.objects.filter(hostel__pk=self.kwargs["pk"])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hostel"] = Hostel.objects.get(pk=self.kwargs["pk"])
         return context
 
 

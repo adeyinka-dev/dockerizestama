@@ -4090,7 +4090,7 @@
   }
   .data-table-one .datatable-table > tbody > tr> td:first-child{
     --tw-text-opacity: 1;
-    color: rgb(60 80 224 / var(--tw-text-opacity));
+    color: rgb(0, 166, 251 / var(--tw-text-opacity));
   }
   .dark .data-table-one .datatable-table > tbody > tr> td:first-child{
     --tw-text-opacity: 1;
@@ -4104,6 +4104,7 @@
     padding-bottom: 1.25rem;
     font-weight: 500;
   }
+  
   .dark .data-table-common .datatable-table > tbody > tr> td{
     --tw-border-opacity: 1;
     border-color: rgb(46 58 71 / var(--tw-border-opacity));

@@ -43,7 +43,7 @@
 >
   <!-- SIDEBAR HEADER -->
   <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-    <a href="index.html">
+    <a href="#">
       <img src="{% static 'images/stmlg.png' %}" alt="Logo" style="width: 100px;" />
     </a>
 
@@ -153,7 +153,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                  href="index.html"
+                  href="{% url 'room_list' pk=hostel.pk %}"
                   :class="page === 'crm' && '!text-white'"
                 >
                   Room Directory
@@ -787,7 +787,8 @@
               </a>
             </li>
           </ul>
-          <button
+          <a
+          href="{% url 'logout' %}"
             class="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
           >
             <svg
@@ -808,7 +809,7 @@
               />
             </svg>
             Log Out
-          </button>
+          </a>
         </div>
         <!-- Dropdown End -->
       </div>
@@ -973,7 +974,7 @@
                     >
                       {{ unavailable_rooms }}
                     </h3>
-                    <p class="font-medium">Under Maintenance</p>
+                    <p class="font-medium">Unavailable</p>
                     <span class="mt-2 flex items-center gap-2">
                       <span
                         class="flex items-center gap-1 rounded-md bg-danger p-1 text-xs font-medium text-white"

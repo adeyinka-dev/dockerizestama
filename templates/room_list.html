@@ -43,7 +43,7 @@
 >
   <!-- SIDEBAR HEADER -->
   <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-    <a href="{{ object.room.hostel.get_absolute_url }}">
+    <a href="#">
       <img src="{% static 'images/stmlg.png' %}" alt="Logo" style="width: 100px;" />
     </a>
 
@@ -153,7 +153,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                  href="index.html"
+                  href="{% url 'room_list' pk=hostel.pk %}"
                   :class="page === 'crm' && '!text-white'"
                 >
                   Room Directory
@@ -787,7 +787,8 @@
               </a>
             </li>
           </ul>
-          <button
+          <a
+          href="{% url 'logout' %}"
             class="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
           >
             <svg
@@ -808,160 +809,161 @@
               />
             </svg>
             Log Out
-          </button>
+          </a>
         </div>
         <!-- Dropdown End -->
       </div>
       <!-- User Area -->
-        </div>
     </div>
-    </header>
-    <main>
-        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-          <!-- ===== Data Stats Start ===== -->
+  </div>
+</header>
+
+<main>
+    <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+      <!-- Breadcrumb Start -->
+      <div
+        class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <h2 class="text-title-md2 font-bold text-black dark:text-white">
+          Room Direcroty
+        </h2>
+
+        <nav>
+          <ol class="flex items-center gap-2">
+            <li>
+              <a class="font-medium" href="index.html">Dashboard /</a>
+            </li>
+            <li class="font-medium text" style="color: #00a6fb;">Room Data</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- Breadcrumb End -->
+
+      <div class="flex flex-col gap-5 md:gap-7 2xl:gap-10">
+        <!-- ====== Data Table One Start -->
+        <div
+          class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+        >
           <div
-            class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+            class="data-table-common data-table-one max-w-full overflow-x-auto"
           >
-            <div>
-              <h4 class="text-title-sm4 font-bold text-black dark:text-white">
-                {{ object.room.room_number }} | {{ object.repair_id }}
-              </h4>
-            </div>
+            <table class="table w-full table-auto" id="dataTableOne">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="flex items-center gap-1.5">
+                      <p>Room ID</p>
+                      <div class="inline-flex flex-col space-y-[2px]">
+                        <span class="inline-block">
+                          <svg
+                            class="fill-current"
+                            width="10"
+                            height="5"
+                            viewBox="0 0 10 5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M5 0L0 5H10L5 0Z" fill="" />
+                          </svg>
+                        </span>
+                        <span class="inline-block">
+                          <svg
+                            class="fill-current"
+                            width="10"
+                            height="5"
+                            viewBox="0 0 10 5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z"
+                              fill=""
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </th>
+                  <th data-type="date" data-format="YYYY/DD/MM">
+                    <div class="flex items-center gap-1.5">
+                      <p>Room Number</p>
+                      <div class="inline-flex flex-col space-y-[2px]">
+                        <span class="inline-block">
+                          <svg
+                            class="fill-current"
+                            width="10"
+                            height="5"
+                            viewBox="0 0 10 5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M5 0L0 5H10L5 0Z" fill="" />
+                          </svg>
+                        </span>
+                        <span class="inline-block">
+                          <svg
+                            class="fill-current"
+                            width="10"
+                            height="5"
+                            viewBox="0 0 10 5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z"
+                              fill=""
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="flex items-center gap-1.5">
+                      <p>Occupant</p>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="flex items-center gap-1.5">
+                      <p>Status</p>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for room in object_list %}
+                <tr>
+                  <td><p class="inline-flex rounded-full  bg-opacity-10 py-1 px-3 text-sm font-medium text-white mt-1" style="background: #00a7fb10; color: #00a6fb;">{{ room.room_id }}</p></td>
+                  <td>{{ room.room_number}}</td>
+                  <td>{{ room.tenant.stama_id }}</td>
+                  <td>
+                    {% if room.status == "OC" %}
+                    <p class="inline-flex rounded-full  bg-opacity-10 py-1 px-3 text-sm font-medium text-white mt-1" style="background: #00a7fb29; color: #00a6fb;">Occupied</p>
+                    {% elif room.status == "UC"%}
+                    <p class="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success mt-1">Available</p>
+                    {% else %}
+                    <p class="inline-flex rounded-full bg-danger bg-opacity-10 py-1 px-3 text-sm font-medium text-danger mt-1">Under Maintenance</p>
+                    {% endif %}
+                  </td>
 
-            <div class="flex items-center">
-              <p class="font-medium text-black dark:text-white">
-                Saturday, 19 August 2023
-              </p>
-            </div>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
-
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 xl:grid-cols-2 2xl:gap-7.5">
-              <div>
-                  <div class="px-4 sm:px-0">
-                    <h3 class="font-semibold leading-7 text-black dark:text-white">Maintenance Details</h3>
-                    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Repair reqeusts and details.</p>
-                  </div>
-                  <div class="mt-6 border-t border-gray-100">
-                    <dl class="divide-y divide-gray-100">
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-semibold leading-6 text-black dark:text-white">Tenant Name</dt>
-                        <dd class="mt-1 text-sm leading-6 text-black dark:text-white sm:col-span-2 sm:mt-0">Adeyinka Makinde</dd>
-                      </div>
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-semibold leading-6 text-black dark:text-white">Type</dt>
-                        <dd class="mt-1 text-sm leading-6 text-black dark:text-white sm:col-span-2 sm:mt-0">{{ object.type }}</dd>
-                      </div>
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-semibold leading-6 text-black dark:text-white">Subtype</dt>
-                        <dd class="mt-1 text-sm leading-6 text-black dark:text-white sm:col-span-2 sm:mt-0">{{ object.subtype }}</dd>
-                      </div>
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-semibold leading-6 text-black dark:text-white">Resident Contact</dt>
-                        <dd class="mt-1 text-sm leading-6 text-black dark:text-white sm:col-span-2 sm:mt-0">07862800000</dd>
-                      </div>
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-semibold leading-6 text-black dark:text-white">Description</dt>
-                        <dd class="mt-1 text-sm leading-6 text-black dark:text-white sm:col-span-2 sm:mt-0">{{ object.description }}</dd>
-                      </div>
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt class="text-sm font-semibold leading-6 text-black dark:text-white">Time Created</dt>
-                          <dd class="mt-1 text-sm leading-6 text-black dark:text-white sm:col-span-2 sm:mt-0">{{ object.time_created }}</dd>
-                      </div>
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt class="text-sm font-semibold leading-6 text-black dark:text-white">Status</dt>
-                          <dd class="mt-1 text-sm leading-6 text-black dark:text-white sm:col-span-2 sm:mt-0">
-                                {% if object.status == "P" %}
-                                <p class="inline-flex rounded-full bg-danger py-1 px-3 text-sm font-medium text-white mt-1">
-                                    Pending
-                                </p>
-                                {% elif object.status == "WP" %}
-                                <p class="inline-flex rounded-full bg-warning py-1 px-3 text-sm font-medium text-white mt-1">
-                                Work in progress
-                                </p>
-                                {% elif object.status == "INP" %}
-                                <p class="inline-flex rounded-full bg-secondary py-1 px-3 text-sm font-medium text-white mt-1">
-                                Pending Inspection
-                                </p>
-                                {% else %}
-                                <p class="inline-flex rounded-full bg-success py-1 px-3 text-sm font-medium text-white mt-1">
-                                Completed
-                                </p>
-                                {% endif %}
-                          </dd>
-                      </div>
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
-                        <dd class="mt-2 text-sm text-black dark:text-white sm:col-span-2 sm:mt-0">
-                          <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-                            <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                              <div class="flex w-0 flex-1 items-center">
-                                <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                  <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                                </svg>
-                                <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                                  <span class="truncate font-medium">45WQRRRS.pdf</span>
-                                  <span class="flex-shrink-0 text-gray-400">4.5mb</span>
-                                </div>
-                              </div>
-                              <div class="ml-4 flex-shrink-0">
-                                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
-                              </div>
-                            </li>
-                          </ul>
-                        </dd>
-                      </div>
-                    </dl>
-                  </div>
-              </div>
-
-              <div>
-                  <div class="px-4 sm:px-0">
-                      <h3 class="text-base font-semibold leading-7 text-black dark:text-white">Work Log</h3>
-                      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Maintenance Note and Time Stamps.</p>
-                  </div>
-                  <div class="mt-6 border-t border-gray-100">
-                      <div class="mt-4">
-                        {% for note in object.note_set.all %}
-                          <div class="bg-white p-4 rounded shadow-sm border border-gray-200 dark:bg-boxdark dark:border-strokedark mb-2">
-                            
-                              <p class="text-black dark:text-white mb-2">{{ note }}</p>
-                              <div class="flex justify-between items-center mt-2 text-sm">
-                                  <span class="flex items-center text-sm font-semibold text-gray-800 dark:text-gray-400 p-1">
-                                      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                                          <style>svg{fill:#2a9d8f}</style><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
-                                      </svg>
-                                       - {{ note.author }}
-                                  </span>
-                                  
-                                  <small class="text-gray-500 dark:text-gray-400 px-1.5 py-0.5 border border-gray-200 rounded dark:border-gray-700 text-xs font-medium">{{ note.time_added|date:"F j, Y, P"}}</small>
-                                </div>
-                          </div>
-                        {% endfor %}
-                              <div class="relative">
-                                <form action= "" method="post" >
-                                    {% csrf_token %}
-                                  <label class="mb-3 block text-sm font-medium text-black dark:text-white"></label>
-                                  <textarea rows="6" name="note" placeholder="notes" class="w-full rounded-lg border-[1.5px] border-meta-03 bg-transparent py-3 px-5 font-medium outline-none transition focus:border-secondary active:border-meta-03 disabled:cursor-default disabled:bg-whiter dark:bg-form-input">
-                                  </textarea>
-                                  <button class="mt-3 inline-flex items-centxer justify-end rounded-md bg-success py-1 px-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-3 xl:px-6" type="submit" >
-                                      Add Note
-                                  </button>
-                              </form>
-                            </div>
-                          </div>
-                      </dl>
-                  </div>
-              </div>
-            </div>
-       </main>
+        </div>
+        <!-- ====== Data Table One End -->
+      </div>
+    </div>
+  </main>
 
 
- <!-- ===== Main Content End ===== -->
+
+
 </div>
 <!-- ===== Content Area End ===== -->
 </div>
 <!-- ===== Page Wrapper End ===== -->
-
 <script  defer src="{% static 'js/bundle.js' %}"></script>
 </body>
 </html>
