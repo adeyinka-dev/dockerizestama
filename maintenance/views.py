@@ -1,4 +1,5 @@
 from typing import Any, Dict
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import DetailView, FormView
@@ -10,7 +11,7 @@ from .forms import MaintenanceForm, NoteForm
 
 class NoteGet(DetailView):
     model = Maintenance
-    template_name = "repair_detail.html"
+    template_name = "work_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,7 +22,7 @@ class NoteGet(DetailView):
 class PostNote(FormView):
     model = Maintenance
     form_class = NoteForm
-    template_name = "repair_detail.html"
+    template_name = "work_detail.html"
 
     def get_maintenance(self):
         return Maintenance.objects.get(pk=self.kwargs["pk"])
@@ -39,7 +40,7 @@ class PostNote(FormView):
 
     def get_success_url(self):
         maintenance = self.object
-        return reverse("repair_detail", kwargs={"pk": maintenance.pk})
+        return reverse("work_detail", kwargs={"pk": maintenance.pk})
 
 
 class RepairDetailView(View):

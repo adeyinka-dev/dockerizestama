@@ -59,6 +59,7 @@ class Maintenance(models.Model):
     type = models.ForeignKey(
         MaintenanceType, on_delete=models.CASCADE, related_name="repairs"
     )
+    time_created = models.DateTimeField(auto_now_add=True)
     subtype = models.ForeignKey(
         MaintenanceSubType,
         on_delete=models.CASCADE,
@@ -86,7 +87,7 @@ class Maintenance(models.Model):
 
     # generate url for each repair
     def get_absolute_url(self):
-        return reverse("repair_detail", kwargs={"pk": self.pk})
+        return reverse("work_detail", kwargs={"pk": self.pk})
 
 
 # Funtion to generate a repair unique ID, that will be used for repair search.

@@ -14,7 +14,7 @@ class HostelListView(ListView):
 
 class HostelDetailView(DetailView):
     model = Hostel
-    template_name = "hostel_detail.html"
+    template_name = "hostel_dashboard.html"
 
     def get_context_data(self, **kwargs):
         """
@@ -31,7 +31,8 @@ class HostelDetailView(DetailView):
         rooms = Room.objects.filter(hostel=self.object)
         context["total_rooms"] = rooms.count()
         context["occupied_rooms"] = rooms.filter(status=Room.OCCUPIED).count()
-        context["unoccupied_rooms"] = context["total_rooms"] - context["occupied_rooms"]
+        context["unoccupied_rooms"] = rooms.filter(status=Room.UNOCCUPIED).count()
+        context["unavailable_rooms"] = rooms.filter(status=Room.UNAVAILABLE).count()
         context["tenants"] = [
             {
                 "first_name": room.tenant.first_name,
@@ -43,17 +44,27 @@ class HostelDetailView(DetailView):
         ]
 
         # Repairs in each hostel
-        repairs = Maintenance.objects.filter(room__in=rooms)
+        repairs = Maintenance.objects.filter(room__in=rooms).order_by("-time_created")[
+            :5
+        ]
         pending_repairs = Maintenance.objects.filter(
             room__in=rooms, status=Maintenance.PENDING
         )
-        context["pending_repairs_count"] = pending_repairs.count()
-        context["pending_repairs"] = pending_repairs
+        inprogress_repairs = Maintenance.objects.filter(
+            room__in=rooms, status=Maintenance.INPROGRESS
+        )
+        inspection_repairs = Maintenance.objects.filter(
+            room__in=rooms, status=Maintenance.INSPECTION
+        )
+        completed_repairs = Maintenance.objects.filter(
+            room__in=rooms, status=Maintenance.COMPLETED
+        )
+        context["pending_count"] = pending_repairs.count()
+        context["inprogress_count"] = inprogress_repairs.count()
+        context["inspection_count"] = inspection_repairs.count()
+        context["completed_count"] = completed_repairs.count()
         context["repairs"] = repairs
         context["repairs_count"] = repairs.count()
-        context["work_complete"] = (
-            context["repairs_count"] - context["pending_repairs_count"]
-        )
         return context
 
 

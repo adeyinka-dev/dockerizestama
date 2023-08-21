@@ -3229,6 +3229,12 @@
     --tw-text-opacity: 1;
     color: rgb(28 36 52 / var(--tw-text-opacity));
   }
+
+  .text-xblue-2{
+    --tw-text-opacity: 1;
+    color: rgb(0, 41, 107 / var(--tw-text-opacity));
+  }
+
   .text-black-2{
     --tw-text-opacity: 1;
     color: rgb(1 1 1 / var(--tw-text-opacity));

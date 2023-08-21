@@ -4,7 +4,7 @@ from .views import RepairDetailView, RoomRepair
 
 urlpatterns = [
     path(
-        "maintenance/repair/<int:pk>/", RepairDetailView.as_view(), name="repair_detail"
+        "maintenance/repair/<int:pk>/", RepairDetailView.as_view(), name="work_detail"
     ),
     path("room/<int:pk>/", RoomRepair.as_view(), name="raise_repair"),
     path(
