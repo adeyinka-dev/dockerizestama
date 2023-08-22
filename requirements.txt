@@ -1,0 +1,16 @@
+asgiref==3.7.2
+beautifulsoup4==4.12.2
+black==23.7.0
+click==8.1.4
+Django==4.2.3
+django-bootstrap-v5==1.0.11
+django-phonenumber-field==7.1.0
+django-phonenumbers==1.0.1
+mypy-extensions==1.0.0
+packaging==23.1
+pathspec==0.11.1
+phonenumbers==8.13.17
+Pillow==10.0.0
+platformdirs==3.8.1
+soupsieve==2.4.1
+sqlparse==0.4.4

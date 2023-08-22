@@ -82,6 +82,19 @@ class RoomListView(ListView):
         return context
 
 
+class ResidentListView(ListView):
+    model = Room
+    template_name = "resident_list.html"
+
+    def get_queryset(self):
+        return Room.objects.filter(hostel__pk=self.kwargs["pk"])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hostel"] = Hostel.objects.get(pk=self.kwargs["pk"])
+        return context
+
+
 class RoomDetailView(DetailView):
     model = Room
     template_name = "room_detail.html"

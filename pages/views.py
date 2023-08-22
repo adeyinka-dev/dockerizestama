@@ -76,3 +76,7 @@ class DashboardView(TemplateView):
 
 class ProcessingView(TemplateView):
     template_name = "processing.html"
+
+
+class BaseView(TemplateView):
+    template_name = "base2.html"

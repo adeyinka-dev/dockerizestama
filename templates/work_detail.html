@@ -27,7 +27,7 @@
   class="fixed left-0 top-0 z-999999 flex h-screen w-screen items-center justify-center bg-white dark:bg-black"
 >
   <div
-    class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"
+    class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-secondary border-t-transparent"
   ></div>
 </div>
 
@@ -144,7 +144,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                  href="index.html"
+                  href="{{ object.room.hostel.get_absolute_url }}"
                   :class="page === 'crm' && '!text-white'"
                 >
                   STAMA WorkSpace
@@ -153,7 +153,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                  href="index.html"
+                  href="#"
                   :class="page === 'crm' && '!text-white'"
                 >
                   Room Directory
@@ -162,7 +162,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                  href="index.html"
+                  href="#"
                   :class="page === 'crm' && '!text-white'"
                 >
                   Residents Registry
@@ -835,7 +835,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 xl:grid-cols-2 2xl:gap-7.5">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 xl:grid-template-columns: 2fr 1fr 2xl:gap-7.5">
               <div>
                   <div class="px-4 sm:px-0">
                     <h3 class="font-semibold leading-7 text-black dark:text-white">Maintenance Details</h3>

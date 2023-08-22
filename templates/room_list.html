@@ -144,7 +144,7 @@
               <li>
                 <a
                   class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                  href="index.html"
+                  href="{% url 'hostel_detail' hostel.pk %}"
                   :class="page === 'crm' && '!text-white'"
                 >
                   STAMA WorkSpace
@@ -427,7 +427,7 @@
       </button>
       <!-- Hamburger Toggle BTN -->
       <a class="block flex-shrink-0 lg:hidden" href="index.html">
-        <img src="src/images/logo/logo-icon.svg" alt="Logo" />
+        <img src="{% static 'images/stmlg.png' %}" style="width: 60px;" alt="Logo" />
       </a>
     </div>
     <div class="hidden sm:block">
@@ -935,7 +935,7 @@
                 <tr>
                   <td><p class="inline-flex rounded-full  bg-opacity-10 py-1 px-3 text-sm font-medium text-white mt-1" style="background: #00a7fb10; color: #00a6fb;">{{ room.room_id }}</p></td>
                   <td>{{ room.room_number}}</td>
-                  <td>{{ room.tenant.stama_id }}</td>
+                  <td>{{ room.tenant.first_name }} {{ room.tenant.last_name }}</td>
                   <td>
                     {% if room.status == "OC" %}
                     <p class="inline-flex rounded-full  bg-opacity-10 py-1 px-3 text-sm font-medium text-white mt-1" style="background: #00a7fb29; color: #00a6fb;">Occupied</p>
