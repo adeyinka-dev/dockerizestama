@@ -1174,9 +1174,23 @@
                             <small>{{ repair.time_created|date:"g:i a" }}</small>
                           </td>
                           <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                            {% if repair.status == "P" %}
+                            <p class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium text" style="background: #e6394724; color: #e63946;">
+                              Pending
+                            </p>
+                            {% elif repair.status == "WP" %}
+                            <p class="inline-flex rounded-full py-1 px-3 text-sm font-medium text" style="background: #fcc04926; color: #fcbf49;">
+                              Work In Progress
+                            </p>
+                            {% elif repair.status == "INP" %}
+                            <p class="inline-flex rounded-full py-1 px-3 text-sm font-medium text" style="background: #00a7fb33; color: #00a6fb;">
+                              Inpection
+                            </p>
+                            {% else %}
                             <p class="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
                               Completed
                             </p>
+                            {% endif %}
                           </td>
                         </tr>
                       </tbody>
