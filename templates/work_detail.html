@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -829,9 +830,22 @@
             </div>
 
             <div class="flex items-center">
-              <p class="font-medium text-black dark:text-white">
-                Saturday, 19 August 2023
-              </p>
+              <form action="" class="flex items-center" method="post">
+                {% csrf_token %}
+                
+                <!-- Status Dropdown -->
+                <div class="flex items-center">
+                  <!-- Status Dropdown -->
+                  <div class="relative w-20 mr-2">
+                      {{ status_form.status|add_class:"block w-full h-7 pl-3 pr-5 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md" }}
+                  </div>
+              
+                  <!-- Submit Button -->
+                  <button class="w-35 h-7 inline-flex items-center justify-center rounded-md text-white hover:bg-opacity-90 text-xs p-2" type="submit" style="background: #00a6fb;">
+                      Update Status
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
 
@@ -916,16 +930,18 @@
 
               <div>
                   <div class="px-4 sm:px-0">
-                      <h3 class="text-base font-semibold leading-7 text-black dark:text-white">Work Log</h3>
-                      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Maintenance Note and Time Stamps.</p>
-                  </div>
+                        <!-- Heading -->
+                    <h3 class="text-base font-semibold leading-7 text-black dark:text-white">Work Log</h3>
+                    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Maintenance Note and Time Stamps.</p>
+                </div>
+                
                   <div class="mt-6 border-t border-gray-100">
                       <div class="mt-4">
                         {% for note in object.note_set.all %}
                           <div class="bg-white p-4 rounded shadow-sm border border-gray-200 dark:bg-boxdark dark:border-strokedark mb-2">
                             
-                              <p class="text-black dark:text-white mb-2">{{ note }}</p>
-                              <div class="flex justify-between items-center mt-2 text-sm">
+                                <p class="text-black dark:text-white mb-2">{{ note }}</p>
+                                <div class="flex justify-between items-center mt-2 text-sm">
                                   <span class="flex items-center text-sm font-semibold text-gray-800 dark:text-gray-400 p-1">
                                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                           <style>svg{fill:#2a9d8f}</style><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
@@ -946,13 +962,13 @@
                                   <button class="mt-3 inline-flex items-centxer justify-end rounded-md bg-success py-1 px-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-3 xl:px-6" type="submit" >
                                       Add Note
                                   </button>
-                              </form>
-                            </div>
+                                </form>
+                              </div>
                           </div>
-                      </dl>
-                  </div>
+                    </div>
               </div>
             </div>
+            
        </main>
 
 

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "accommodations",
     "phonenumber_field",
     "maintenance",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [

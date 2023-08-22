@@ -8,6 +8,12 @@ class MaintenanceForm(forms.ModelForm):
         fields = ["type", "subtype", "description", "location"]
 
 
+class MaintenanceStatusForm(forms.ModelForm):
+    class Meta:
+        model = Maintenance
+        fields = ["status"]
+
+
 class NoteForm(forms.ModelForm):
     class Meta:
         model = Note

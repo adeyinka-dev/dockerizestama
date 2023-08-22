@@ -6,7 +6,7 @@ from django.views.generic import DetailView, FormView
 from django.views import View
 from .models import Maintenance
 from accommodations.models import Room
-from .forms import MaintenanceForm, NoteForm
+from .forms import MaintenanceForm, NoteForm, MaintenanceStatusForm
 
 
 class NoteGet(DetailView):
@@ -16,6 +16,7 @@ class NoteGet(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["form"] = NoteForm()
+        context["status_form"] = MaintenanceStatusForm(instance=self.object)
         return context
 
 
@@ -41,6 +42,18 @@ class PostNote(FormView):
     def get_success_url(self):
         maintenance = self.object
         return reverse("work_detail", kwargs={"pk": maintenance.pk})
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_maintenance()
+
+        # Check if status form was submitted
+        status_form = MaintenanceStatusForm(request.POST, instance=self.object)
+        if status_form.is_valid():
+            status_form.save()
+            return redirect(self.get_success_url())  # Redirect to the detail page
+
+        # If status form wasn't submitted, continue with the note processing
+        return super().post(request, *args, **kwargs)
 
 
 class RepairDetailView(View):

@@ -50,8 +50,8 @@ class Maintenance(models.Model):
     COMPLETED = "C"
     WORK_STATUS = [
         (PENDING, "Pending"),
-        (INPROGRESS, "In_Progress"),
-        (INSPECTION, "Pending_Inspection"),
+        (INPROGRESS, "Work In Progress"),
+        (INSPECTION, "Inspection"),
         (COMPLETED, "Completed"),
     ]
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="repairs")
