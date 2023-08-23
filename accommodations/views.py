@@ -10,7 +10,7 @@ from maintenance.models import Maintenance
 
 class HostelListView(ListView):
     model = Hostel
-    template_name = "hostel_list.html"
+    template_name = "hostels_list.html"
 
 
 class HostelDetailView(DetailView):
