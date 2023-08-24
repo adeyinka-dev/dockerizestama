@@ -45,7 +45,7 @@
                     </a>
             </li>
             <li>
-                    <a href="#">
+                    <a href="{% url 'edit' user.pk %}">
                         <i class="fa-solid fa-user-pen"></i>
                         <span>Edit Profile</span>
                     </a>
@@ -101,7 +101,7 @@
                         <h5 class="card-title text-center">User Information</h5>
                         <div class="row user-info-list">
                             <div class="col-sm-6 info"><strong>Name</strong><br> <span class="info-content">{{user.first_name}} {{user.last_name}}</span></div>
-                            <div class="col-sm-6 info"><strong>Phone</strong><br> <span class="info-content">{{user.phone_num}}</span></div>
+                            <div class="col-sm-6 info"><strong>Phone</strong><br> <span class="info-content">{{user.phone_number}}</span></div>
                             <div class="col-sm-6 info"><strong>Email</strong><br> <span class="info-content">{{user.email}}</span></div>
                             <div class="col-sm-6 info"><strong>Address</strong><br> <span class="info-content">123 Main St, City, State, Country</span></div>
                             <div class="col-sm-6 info"><strong>Department</strong><br><span class="info-content">{{user.faculty}}/{{ user.department }}</span> </div>

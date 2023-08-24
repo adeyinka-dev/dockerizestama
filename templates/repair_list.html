@@ -1,5 +1,4 @@
 {% load static %}
-{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,6 +125,26 @@
                             Repair
                           </a>
                         </li>
+                        <li>
+                            <a
+                              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                              href="messages.html"
+                              @click="selected = (selected === 'Messages' ? '':'Messages')"
+                              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Messages') && (page === 'Messages') }"
+                            >
+                            <svg 
+                                class="fill-current"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 512 512"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/>
+                            </svg>
+                
+                              Repair Histroy
+                            </a>
+                          </li>
                         <!-- Menu Item Messages -->
               
                         <!-- Menu Item Inbox -->
@@ -481,106 +500,74 @@
 
             <!-- ===== Main Content Start ===== -->
             <main>
-                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-                  <!-- Breadcrumb Start -->
-                  <div
-                    class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-                  >
-      
-                    <nav>
-                      <ol class="flex items-center gap-2 mx-auto">
-                        <li>
-                          <a class="font-medium" href="index.html">Dashboard /</a>
-                        </li>
-                        <li class="font-medium" style="color: #FB8500;">Maintenance Request</li>
-                      </ol>
-                    </nav>
-                  </div>
-                  <!-- Breadcrumb End -->
-      
-                  <!-- ====== Form Layout Section Start -->
-                  <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
-                    <div class="flex flex-col gap-9">
-                      <!-- Contact Form -->
-                      <div
-                        class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                      >
-                        <div
-                          class="border-b border-stroke py-4 px-6.5 dark:border-strokedark"
-                        >
-                          <h3 class="font-semibold text-black dark:text-white">
-                            Raise a Repair
-                          </h3>
+                <div class="col-span-12 ml-3 mt-3 mr-3">
+                    <div
+                      class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
+                    >
+                      <div class="max-w-full overflow-x-auto">
+                        <table class="w-full table-auto">
+                          <thead>
+                            <tr class="bg-gray-2 text-left dark:bg-meta-4">
+                              <th
+                                class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11"
+                              >
+                                RepairID
+                              </th>
+                              <th
+                                class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
+                              >
+                                Type
+                              </th>
+                              <th
+                                class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white"
+                              >
+                                Time Created
+                              </th>
+                              <th class="py-4 px-4 font-medium text-black dark:text-white">
+                                Actions
+                              </th>
+                            </tr>
+                          </thead>
+                  
+                          <tbody>
+                            <tr>
+                              <td
+                                class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
+                              >
+                                <a
+                                  href="#"
+                                  class="font-semibold no-underline hover:underline"
+                                  style="color: #FB8500"
+                                >
+                                  245454
+                                </a>
+                              </td>
+                              <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                                <p class="text-black dark:text-white">Electricity</p>
+                                <small>Sockets</small>
+                              </td>
+                              <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                                <p class="text-black dark:text-white">14/04/2023</p>
+                                <small>23/05/23</small>
+                              </td>
+                              <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                                <p
+                                  class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium text"
+                                  style="background: #e6394724; color: #e63946"
+                                >
+                                  Pending
+                                </p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="text-right mt-4">
+                          <a href="#" class="text-blue-500 hover:underline">All Repairs</a>
                         </div>
-                        <form method="post" action="{% url 'raise_repair' object.pk %}">
-                            {% csrf_token %}
-                          <div class="p-6.5">
-                            <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
-                              <div class="w-full xl:w-1/2">
-                                <button class="inline-flex border py-1 px-2 text-sm font-medium text-primary hover:opacity-80" style="border: 1px solid #FB8500; color: #FB8500;">
-                                    001
-                                </button>
-                              </div>
-      
-                              <div class="w-full xl:w-1/2">
-                                <button class="inline-flex border py-1 px-2 text-sm font-medium text-primary hover:opacity-80" style="border: 1px solid #FB8500; color: #FB8500;">
-                                    DIAMOND RESIDENCE
-                                </button>
-                              </div>
-                            </div>
-      
-                            <div class="mb-4.5">
-                              <label class="mb-2.5 block text-black dark:text-white" for="{{ form.contact.id_for_label }}">
-                                 Contact Details <span class="text-meta-1">*</span>
-                              </label>
-                                    {{ form.contact|add_class:"w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border active:border disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border"}}
-                            </div>
-                            <div class="mb-4.5">
-                                <div class="detail-row">
-                                  <label for="{{ form.type.id_for_label }}" class="mb-2.5 block text-black dark:text-white">Type</label>
-                                  {{ form.type|add_class:"relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border active:border dark:border-form-strokedark dark:bg-form-input dark:focus:border" }}
-                                  </div>
-                              </div>
-                              <div class="mb-4.5">
-                                  <div class="detail-row">
-                                    <label for="{{ form.subtype.id_for_label }}" class="mb-2.5 block text-black dark:text-white">Subtype</label>
-                                    {{ form.subtype|add_class:"relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border active:border dark:border-form-strokedark dark:bg-form-input dark:focus:border" }}
-                                    </div>
-                                </div>  
-        
-                            <div class="mb-4.5">
-                              <label class="mb-2.5 block text-black dark:text-white" for="{{ form.location.id_for_label }}">
-                                Location
-                              </label>
-                              {{ form.location|add_class:"w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border active:border disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border" }}
-                              
-                            </div>
-      
-                            
-                            <div class="mb-6">
-                              <label class="mb-2.5 block text-black dark:text-white" for="{{ form.description.id_for_label }}">
-                                Description
-                              </label>
-                              
-                              {{ form.description|add_class:"w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border active:border disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border" }}
-                              
-                            </div>
-      
-                            <button
-                              class="flex w-full justify-center rounded p-3 font-medium text-gray" style="background-color: #FB8500;"
-                            >
-                              Submit Request
-                            </button>
-                          </div>
-                        </form>
                       </div>
                     </div>
-      
-                    
-                  
-                  
-                </div>
-              </main>
+                  </div>
+            </main>
             
         
             <!-- ===== Main Content End ===== -->
@@ -591,3 +578,11 @@
     <script  defer src="{% static 'js/bundle.js' %}"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+

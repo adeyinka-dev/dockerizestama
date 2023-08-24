@@ -1,10 +1,11 @@
 from typing import Any
 from django.contrib.auth import views as auth_views
-from django.views.generic import RedirectView, TemplateView, CreateView
+from django.views.generic import RedirectView, TemplateView, CreateView, UpdateView
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from maintenance.models import Maintenance
+from maintenance.models import Maintenance, Room
 from accommodations.models import Room
-from accounts.forms import TenantCreationForm
+from accounts.models import Tenant
+from accounts.forms import TenantCreationForm, TenantChangeForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import login
 
@@ -80,3 +81,14 @@ class ProcessingView(TemplateView):
 
 class BaseView(TemplateView):
     template_name = "base2.html"
+
+
+class UserView(TemplateView):
+    template_name = "repair_list.html"
+
+
+class EditInfo(UpdateView):
+    model = Tenant
+    template_name = "update_profile.html"
+    form_class = TenantChangeForm
+    success_url = reverse_lazy("home")

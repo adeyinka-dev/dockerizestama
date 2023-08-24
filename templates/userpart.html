@@ -1,5 +1,4 @@
 {% load static %}
-{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,6 +125,26 @@
                             Repair
                           </a>
                         </li>
+                        <li>
+                            <a
+                              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                              href="messages.html"
+                              @click="selected = (selected === 'Messages' ? '':'Messages')"
+                              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Messages') && (page === 'Messages') }"
+                            >
+                            <svg 
+                                class="fill-current"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 512 512"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/>
+                            </svg>
+                
+                              Repair Histroy
+                            </a>
+                          </li>
                         <!-- Menu Item Messages -->
               
                         <!-- Menu Item Inbox -->
@@ -482,103 +501,162 @@
             <!-- ===== Main Content Start ===== -->
             <main>
                 <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-                  <!-- Breadcrumb Start -->
-                  <div
-                    class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-                  >
+                  <div class="mx-auto max-w-242.5">
+                    <!-- Breadcrumb Start -->
+                    <div
+                      class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+                    >
+                      <h2 class="text-title-md text-black dark:text-white">
+                        Bx's Profile
+                      </h2>
       
-                    <nav>
-                      <ol class="flex items-center gap-2 mx-auto">
-                        <li>
-                          <a class="font-medium" href="index.html">Dashboard /</a>
-                        </li>
-                        <li class="font-medium" style="color: #FB8500;">Maintenance Request</li>
-                      </ol>
-                    </nav>
-                  </div>
-                  <!-- Breadcrumb End -->
+                      <nav>
+                        <ol class="flex items-center gap-2">
+                          <li>
+                            <a class="font-medium" href="index.html">Dashboard /</a>
+                          </li>
+                          <li style="color: #FB8500;">Profile</li>
+                        </ol>
+                      </nav>
+                    </div>
+                    <!-- Breadcrumb End -->
       
-                  <!-- ====== Form Layout Section Start -->
-                  <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
-                    <div class="flex flex-col gap-9">
-                      <!-- Contact Form -->
-                      <div
-                        class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                      >
+                    <!-- ====== Profile Section Start -->
+                    <div
+                      class="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+                    >
+                      <div class="relative z-20 h-5 md:h-65">
+                
+                      </div>
+                      <div class="px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
                         <div
-                          class="border-b border-stroke py-4 px-6.5 dark:border-strokedark"
+                          class="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3"
                         >
-                          <h3 class="font-semibold text-black dark:text-white">
-                            Raise a Repair
-                          </h3>
-                        </div>
-                        <form method="post" action="{% url 'raise_repair' object.pk %}">
-                            {% csrf_token %}
-                          <div class="p-6.5">
-                            <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
-                              <div class="w-full xl:w-1/2">
-                                <button class="inline-flex border py-1 px-2 text-sm font-medium text-primary hover:opacity-80" style="border: 1px solid #FB8500; color: #FB8500;">
-                                    001
-                                </button>
-                              </div>
-      
-                              <div class="w-full xl:w-1/2">
-                                <button class="inline-flex border py-1 px-2 text-sm font-medium text-primary hover:opacity-80" style="border: 1px solid #FB8500; color: #FB8500;">
-                                    DIAMOND RESIDENCE
-                                </button>
-                              </div>
-                            </div>
-      
-                            <div class="mb-4.5">
-                              <label class="mb-2.5 block text-black dark:text-white" for="{{ form.contact.id_for_label }}">
-                                 Contact Details <span class="text-meta-1">*</span>
-                              </label>
-                                    {{ form.contact|add_class:"w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border active:border disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border"}}
-                            </div>
-                            <div class="mb-4.5">
-                                <div class="detail-row">
-                                  <label for="{{ form.type.id_for_label }}" class="mb-2.5 block text-black dark:text-white">Type</label>
-                                  {{ form.type|add_class:"relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border active:border dark:border-form-strokedark dark:bg-form-input dark:focus:border" }}
-                                  </div>
-                              </div>
-                              <div class="mb-4.5">
-                                  <div class="detail-row">
-                                    <label for="{{ form.subtype.id_for_label }}" class="mb-2.5 block text-black dark:text-white">Subtype</label>
-                                    {{ form.subtype|add_class:"relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border active:border dark:border-form-strokedark dark:bg-form-input dark:focus:border" }}
-                                    </div>
-                                </div>  
-        
-                            <div class="mb-4.5">
-                              <label class="mb-2.5 block text-black dark:text-white" for="{{ form.location.id_for_label }}">
-                                Location
-                              </label>
-                              {{ form.location|add_class:"w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border active:border disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border" }}
-                              
-                            </div>
-      
-                            
-                            <div class="mb-6">
-                              <label class="mb-2.5 block text-black dark:text-white" for="{{ form.description.id_for_label }}">
-                                Description
-                              </label>
-                              
-                              {{ form.description|add_class:"w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border active:border disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border" }}
-                              
-                            </div>
-      
-                            <button
-                              class="flex w-full justify-center rounded p-3 font-medium text-gray" style="background-color: #FB8500;"
+                          <div class="relative drop-shadow-2">
+                            <img src="{% static 'images/mex.png' %}" alt="profile" />
+                            <label
+                              for="profile"
+                              class="absolute bottom-0 right-0 flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-full text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2"
+                              style="background: #FB8500;"
                             >
-                              Submit Request
-                            </button>
+                              <svg
+                                class="fill-current"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 14 14"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  clip-rule="evenodd"
+                                  d="M4.76464 1.42638C4.87283 1.2641 5.05496 1.16663 5.25 1.16663H8.75C8.94504 1.16663 9.12717 1.2641 9.23536 1.42638L10.2289 2.91663H12.25C12.7141 2.91663 13.1592 3.101 13.4874 3.42919C13.8156 3.75738 14 4.2025 14 4.66663V11.0833C14 11.5474 13.8156 11.9925 13.4874 12.3207C13.1592 12.6489 12.7141 12.8333 12.25 12.8333H1.75C1.28587 12.8333 0.840752 12.6489 0.512563 12.3207C0.184375 11.9925 0 11.5474 0 11.0833V4.66663C0 4.2025 0.184374 3.75738 0.512563 3.42919C0.840752 3.101 1.28587 2.91663 1.75 2.91663H3.77114L4.76464 1.42638ZM5.56219 2.33329L4.5687 3.82353C4.46051 3.98582 4.27837 4.08329 4.08333 4.08329H1.75C1.59529 4.08329 1.44692 4.14475 1.33752 4.25415C1.22812 4.36354 1.16667 4.51192 1.16667 4.66663V11.0833C1.16667 11.238 1.22812 11.3864 1.33752 11.4958C1.44692 11.6052 1.59529 11.6666 1.75 11.6666H12.25C12.4047 11.6666 12.5531 11.6052 12.6625 11.4958C12.7719 11.3864 12.8333 11.238 12.8333 11.0833V4.66663C12.8333 4.51192 12.7719 4.36354 12.6625 4.25415C12.5531 4.14475 12.4047 4.08329 12.25 4.08329H9.91667C9.72163 4.08329 9.53949 3.98582 9.4313 3.82353L8.43781 2.33329H5.56219Z"
+                                  fill=""
+                                />
+                                <path
+                                  fill-rule="evenodd"
+                                  clip-rule="evenodd"
+                                  d="M7.00004 5.83329C6.03354 5.83329 5.25004 6.61679 5.25004 7.58329C5.25004 8.54979 6.03354 9.33329 7.00004 9.33329C7.96654 9.33329 8.75004 8.54979 8.75004 7.58329C8.75004 6.61679 7.96654 5.83329 7.00004 5.83329ZM4.08337 7.58329C4.08337 5.97246 5.38921 4.66663 7.00004 4.66663C8.61087 4.66663 9.91671 5.97246 9.91671 7.58329C9.91671 9.19412 8.61087 10.5 7.00004 10.5C5.38921 10.5 4.08337 9.19412 4.08337 7.58329Z"
+                                  fill=""
+                                />
+                              </svg>
+                              <input
+                                type="file"
+                                name="profile"
+                                id="profile"
+                                class="sr-only"
+                              />
+                            </label>
                           </div>
-                        </form>
+                        </div>
+                        <div class="mt-4">
+                          <h3
+                            class="mb-1.5 text-2xl font-medium text-black dark:text-white"
+                          >
+                            Makinde Adeyinka
+                          </h3>
+                          <p class="font-medium">PHYSIOLOGY</p>
+                          <div
+                            class="mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-3 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]"
+                          >
+                            <div
+                              class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row"
+                            >
+                            <span class="text-sm"></span>
+                              <span class="text-black dark:text-white"
+                                >001</span
+                              >
+                            </div>
+                            <div
+                              class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row"
+                            >
+                              <span class="text-black dark:text-white">Diamond</span>
+                            </div>
+                            <div
+                              class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row"
+                            >
+                              <span class="text-black dark:text-white text-success">27/03/2024</span>
+                            </div>
+                          </div>
+      
+                          <div class="mx-auto max-w-180">
+                            <div class="mb-7.5 flex flex-wrap gap-5 xl:gap-7.5 items-center justify-center">
+                                <a
+                                  href="#"
+                                  class="inline-flex items-center justify-center gap-2.5 rounded-md py-2 px-5 text-center font-medium text hover:bg-opacity-90 lg:px-8 xl:px-10 text-black dark:text-white"
+
+                                >
+                                  <span>
+                                    <svg 
+                                        class="fill-current"
+                                        width="20"
+                                        height="20"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+                                    </svg>
+                                  </span>
+                                  makindeyink@gmail.com
+                                </a>
+                                <a
+                                  href="#"
+                                  class="inline-flex items-center justify-center gap-2.5 rounded-md py-2 px-5 text-center font-medium text hover:bg-opacity-90 lg:px-8 xl:px-10 text-black dark:text-white"
+            
+                                >
+                                  <span>
+                                    <svg 
+                                        class="fill-current"
+                                        width="20"
+                                        height="20"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+                                    </svg>
+                                  </span>
+                                  07862884499
+                                </a>
+                            </div>
+                          </div>
+      
+                          <div class="mt-8">
+                            <h4 class="mb-2">
+                                Next of Kin
+                            </h4>
+                            <div class="flex items-center justify-center gap-3.5">
+                                <a
+                                    href="#"
+                                    class="inline-flex items-center justify-center gap-2.5 border border-danger py-2 px-5 text-center font-medium text-danger hover:bg-opacity-90 lg:px-8 xl:px-10"
+                                >
+                                    <span>
+
+                                    </span>
+                                    Adedamola Adegbite - 0814451215
+                                </a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-      
-                    
-                  
-                  
+                    <!-- ====== Profile Section End -->
+                  </div>
                 </div>
               </main>
             

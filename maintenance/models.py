@@ -74,6 +74,7 @@ class Maintenance(models.Model):
         null=True,
         blank=True,
     )
+    contact = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=20, choices=WORK_STATUS, default=PENDING)
     description = models.TextField(blank=True, null=True)
 

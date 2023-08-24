@@ -5,7 +5,7 @@ from .models import Maintenance, Note
 class MaintenanceForm(forms.ModelForm):
     class Meta:
         model = Maintenance
-        fields = ["type", "subtype", "description", "location"]
+        fields = ["type", "subtype", "description", "location", "contact"]
 
 
 class MaintenanceStatusForm(forms.ModelForm):

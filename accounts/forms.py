@@ -42,4 +42,11 @@ class TenantCreationForm(UserCreationForm):
 class TenantChangeForm(UserChangeForm):
     class Meta:
         model = Tenant
-        fields = UserChangeForm.Meta.fields
+        fields = [
+            "first_name",
+            "last_name",
+            "phone_number",
+            "matric_num",
+            "faculty",
+            "user_image",
+        ]
