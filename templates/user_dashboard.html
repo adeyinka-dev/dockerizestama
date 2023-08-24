@@ -18,7 +18,7 @@
     </style>
   </head>
 
-  <body
+  <body 
     x-data="{ page: 'crm', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
@@ -83,7 +83,7 @@
                         <li>
                           <a
                             class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                            href="profile.html"
+                            href="#"
                             @click="selected = (selected === 'Profile' ? '':'Profile')"
                             :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Profile') && (page === 'profile') }"
                             :class="page === 'profile' && 'bg-graydark'"
@@ -108,7 +108,7 @@
                         <li>
                           <a
                             class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                            href="messages.html"
+                            href="{% url 'raise_repair' user.room.pk %}"
                             @click="selected = (selected === 'Messages' ? '':'Messages')"
                             :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Messages') && (page === 'Messages') }"
                           >
@@ -128,7 +128,7 @@
                         <li>
                             <a
                               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                              href="messages.html"
+                              href="#"
                               @click="selected = (selected === 'Messages' ? '':'Messages')"
                               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Messages') && (page === 'Messages') }"
                             >
@@ -218,7 +218,7 @@
                             </span>
                         </button>
                         <!-- Hamburger Toggle BTN -->
-                        <a class="block flex-shrink-0 lg:hidden" href="index.html">
+                        <a class="block flex-shrink-0 lg:hidden" href="#">
                           <img src="{% static 'images/stmlg.png' %}" style="width: 60px;" alt="Logo" />
                         </a>
                     </div>
@@ -356,9 +356,9 @@
                             >
                             <span class="hidden text-right lg:block">
                                 <span class="block text-sm font-medium text-black dark:text-white"
-                                >Bukky Akinbola</span
+                                >{{user.first_name}} {{user.last_name}}</span
                                 >
-                                <span class="block text-xs font-medium">Physics</span>
+                                <span class="block text-xs font-medium">{{ user.stama_id }}</span>
                             </span>
 
                             <span class="h-12 w-12 rounded-full">
@@ -393,7 +393,7 @@
                             >
                                 <li>
                                 <a
-                                    href="profile.html"
+                                    href="#"
                                     class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out lg:text-base"
                                     id="myaid"
                                 >
@@ -441,7 +441,7 @@
                                 </li>
                                 <li>
                                 <a
-                                    href="settings.html"
+                                    href="{% url 'edit' user.pk %}"
                                     class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out lg:text-base"
                                     id="myaid"
                                 >
@@ -507,13 +507,13 @@
                       class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
                     >
                       <h2 class="text-title-md text-black dark:text-white">
-                        Bx's Profile
+                        <span>{{user.username}}'s</span> Profile
                       </h2>
       
                       <nav>
                         <ol class="flex items-center gap-2">
                           <li>
-                            <a class="font-medium" href="index.html">Dashboard /</a>
+                            <a class="font-medium" href="#">Dashboard /</a>
                           </li>
                           <li style="color: #FB8500;">Profile</li>
                         </ol>
@@ -525,7 +525,7 @@
                     <div
                       class="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
                     >
-                      <div class="relative z-20 h-5 md:h-65">
+                      <div class="relative z-20 h-30 md:h-65">
                 
                       </div>
                       <div class="px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
@@ -573,9 +573,9 @@
                           <h3
                             class="mb-1.5 text-2xl font-medium text-black dark:text-white"
                           >
-                            Makinde Adeyinka
+                          {{user.first_name}} {{user.last_name}}
                           </h3>
-                          <p class="font-medium">PHYSIOLOGY</p>
+                          <p class="font-medium">{{ user.department }}</p>
                           <div
                             class="mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-3 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark dark:bg-[#37404F]"
                           >
@@ -584,18 +584,18 @@
                             >
                             <span class="text-sm"></span>
                               <span class="text-black dark:text-white"
-                                >001</span
+                                >{{user.room.room_number}}</span
                               >
                             </div>
                             <div
                               class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row"
                             >
-                              <span class="text-black dark:text-white">Diamond</span>
+                              <span class="text-black dark:text-white">{{ user.room.hostel.name }}</span>
                             </div>
                             <div
                               class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row"
                             >
-                              <span class="text-black dark:text-white text-success">27/03/2024</span>
+                              <span class="text-black dark:text-white text-success">{{ user.rent_validity }}</span>
                             </div>
                           </div>
       
@@ -615,7 +615,7 @@
                                         <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
                                     </svg>
                                   </span>
-                                  makindeyink@gmail.com
+                                  {{user.email}}
                                 </a>
                                 <a
                                   href="#"
@@ -631,7 +631,7 @@
                                         <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
                                     </svg>
                                   </span>
-                                  07862884499
+                                  {{user.phone_number}}
                                 </a>
                             </div>
                           </div>

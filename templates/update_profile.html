@@ -73,7 +73,7 @@
                 <nav class="mt-5 py-4 px-4 lg:mt-9 lg:px-6" x-data="{selected: $persist('Dashboard')}" >
                 <!-- Menu Group -->
                 <div>
-                    <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">DASHBOARD</h3>
+                    <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2"></h3>
                     <ul class="mb-6 flex flex-col gap-1.5">
                         <!-- Menu Item Dashboard -->
                         <!-- Menu Item Dashboard -->
@@ -83,7 +83,7 @@
                         <li>
                           <a
                             class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                            href="profile.html"
+                            href="#"
                             @click="selected = (selected === 'Profile' ? '':'Profile')"
                             :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Profile') && (page === 'profile') }"
                             :class="page === 'profile' && 'bg-graydark'"
@@ -98,7 +98,7 @@
                             <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
                             </svg>
               
-                            Profile
+                           
                           </a>
                         </li>
               
@@ -108,7 +108,7 @@
                         <li>
                           <a
                             class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                            href="messages.html"
+                            href="#"
                             @click="selected = (selected === 'Messages' ? '':'Messages')"
                             :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Messages') && (page === 'Messages') }"
                           >
@@ -122,13 +122,13 @@
                             <path d="M78.6 5C69.1-2.4 55.6-1.5 47 7L7 47c-8.5 8.5-9.4 22-2.1 31.6l80 104c4.5 5.9 11.6 9.4 19 9.4h54.1l109 109c-14.7 29-10 65.4 14.3 89.6l112 112c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-112-112c-24.2-24.2-60.6-29-89.6-14.3l-109-109V104c0-7.5-3.5-14.5-9.4-19L78.6 5zM19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L233.7 374.3c-7.8-20.9-9-43.6-3.6-65.1l-61.7-61.7L19.9 396.1zM512 144c0-10.5-1.1-20.7-3.2-30.5c-2.4-11.2-16.1-14.1-24.2-6l-63.9 63.9c-3 3-7.1 4.7-11.3 4.7H352c-8.8 0-16-7.2-16-16V102.6c0-4.2 1.7-8.3 4.7-11.3l63.9-63.9c8.1-8.1 5.2-21.8-6-24.2C388.7 1.1 378.5 0 368 0C288.5 0 224 64.5 224 144l0 .8 85.3 85.3c36-9.1 75.8 .5 104 28.7L429 274.5c49-23 83-72.8 83-130.5zM56 432a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/>
                         </svg>
               
-                            Repair
+                           
                           </a>
                         </li>
                         <li>
                             <a
                               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                              href="messages.html"
+                              href="#"
                               @click="selected = (selected === 'Messages' ? '':'Messages')"
                               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Messages') && (page === 'Messages') }"
                             >
@@ -142,7 +142,7 @@
                                 <path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/>
                             </svg>
                 
-                              Repair Histroy
+                            
                             </a>
                           </li>
                         <!-- Menu Item Messages -->
@@ -163,7 +163,7 @@
                                     <path d="M192 32c17.7 0 32 14.3 32 32V199.5l111.5-66.9c15.2-9.1 34.8-4.2 43.9 11s4.2 34.8-11 43.9L254.2 256l114.3 68.6c15.2 9.1 20.1 28.7 11 43.9s-28.7 20.1-43.9 11L224 312.5V448c0 17.7-14.3 32-32 32s-32-14.3-32-32V312.5L48.5 379.4c-15.2 9.1-34.8 4.2-43.9-11s-4.2-34.8 11-43.9L129.8 256 15.5 187.4c-15.2-9.1-20.1-28.7-11-43.9s28.7-20.1 43.9-11L160 199.5V64c0-17.7 14.3-32 32-32z"/>
                                 </svg>
                 
-                              Room Details
+                              
                             </a>
                           </li>
 
@@ -218,7 +218,7 @@
                             </span>
                         </button>
                         <!-- Hamburger Toggle BTN -->
-                        <a class="block flex-shrink-0 lg:hidden" href="index.html">
+                        <a class="block flex-shrink-0 lg:hidden" href="#">
                           <img src="{% static 'images/stmlg.png' %}" style="width: 60px;" alt="Logo" />
                         </a>
                     </div>
@@ -278,69 +278,7 @@
                             <!-- Dark Mode Toggler -->
                             </li>
 
-                            <!-- Notification Menu Area -->
-                            <li
-                            class="relative"
-                            x-data="{ dropdownOpen: false, notifying: true }"
-                            @click.outside="dropdownOpen = false"
-                            >
-                            <a
-                                class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
-                                href="#"
-                                @click.prevent="dropdownOpen = ! dropdownOpen; notifying = false"
-                            >
-                                <span
-                                :class="!notifying && 'hidden'"
-                                class="absolute -top-0.5 right-0 z-1 h-2 w-2 rounded-full bg-meta-1"
-                                >
-                                <span
-                                    class="absolute -z-1 inline-flex h-full w-full animate-ping rounded-full bg-meta-1 opacity-75"
-                                ></span>
-                                </span>
-
-                                <svg
-                                class="fill-current duration-300 ease-in-out"
-                                width="18"
-                                height="18"
-                                viewBox="0 0 18 18"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                >
-                                <path
-                                    d="M16.1999 14.9343L15.6374 14.0624C15.5249 13.8937 15.4687 13.7249 15.4687 13.528V7.67803C15.4687 6.01865 14.7655 4.47178 13.4718 3.31865C12.4312 2.39053 11.0812 1.7999 9.64678 1.6874V1.1249C9.64678 0.787402 9.36553 0.478027 8.9999 0.478027C8.6624 0.478027 8.35303 0.759277 8.35303 1.1249V1.65928C8.29678 1.65928 8.24053 1.65928 8.18428 1.6874C4.92178 2.05303 2.4749 4.66865 2.4749 7.79053V13.528C2.44678 13.8093 2.39053 13.9499 2.33428 14.0343L1.7999 14.9343C1.63115 15.2155 1.63115 15.553 1.7999 15.8343C1.96865 16.0874 2.2499 16.2562 2.55928 16.2562H8.38115V16.8749C8.38115 17.2124 8.6624 17.5218 9.02803 17.5218C9.36553 17.5218 9.6749 17.2405 9.6749 16.8749V16.2562H15.4687C15.778 16.2562 16.0593 16.0874 16.228 15.8343C16.3968 15.553 16.3968 15.2155 16.1999 14.9343ZM3.23428 14.9905L3.43115 14.653C3.5999 14.3718 3.68428 14.0343 3.74053 13.6405V7.79053C3.74053 5.31553 5.70928 3.23428 8.3249 2.95303C9.92803 2.78428 11.503 3.2624 12.6562 4.2749C13.6687 5.1749 14.2312 6.38428 14.2312 7.67803V13.528C14.2312 13.9499 14.3437 14.3437 14.5968 14.7374L14.7655 14.9905H3.23428Z"
-                                    fill=""
-                                />
-                                </svg>
-                            </a>
-
-                            <!-- Dropdown Start -->
-                            <div
-                                x-show="dropdownOpen"
-                                class="absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80"
-                            >
-                                <div class="px-4.5 py-3">
-                                <h5 class="text-sm font-medium text-bodydark2">Notification</h5>
-                                </div>
-
-                                <ul class="flex h-auto flex-col overflow-y-auto">
-                                <li>
-                                    <a
-                                    class="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                                    href="#"
-                                    >
-                                    <p class="text-sm">
-                                        <span class="text-black dark:text-white">Notifications</span>
-                                        Rent Due on 24th of June 2024
-                                    </p>
-
-                                    <p class="text-xs">18 Aug, 2023</p>
-                                    </a>
-                                </li>
-                                </ul>
-                            </div>
-                            <!-- Dropdown End -->
-                            </li>
-                            <!-- Notification Menu Area -->
+                            
                         </ul>
 
                         <!-- User Area -->
@@ -358,7 +296,7 @@
                                 <span class="block text-sm font-medium text-black dark:text-white"
                                 >Bukky Akinbola</span
                                 >
-                                <span class="block text-xs font-medium">Physics</span>
+                                <span class="block text-xs font-medium"></span>
                             </span>
 
                             <span class="h-12 w-12 rounded-full">
@@ -506,8 +444,8 @@
                   <div
                     class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
                   >
-                    <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                      Settings Page
+                    <h2 class="text-black dark:text-white">
+                      Update Profile
                     </h2>
     
                     <nav>
@@ -515,7 +453,7 @@
                         <li>
                           <a class="font-medium" href="index.html">Dashboard /</a>
                         </li>
-                        <li class="font-medium text-primary">Settings</li>
+                        <li class="font-medium" style="color: #FB8500;">Edit</li>
                       </ol>
                     </nav>
                   </div>
@@ -541,7 +479,7 @@
                                 <label
                                   class="mb-3 block text-sm font-medium text-black dark:text-white"
                                   for="fullName"
-                                  >Full Name</label
+                                  >First Name</label
                                 >
                                 <div class="relative">
                                   <span class="absolute left-4.5 top-4">
@@ -570,31 +508,140 @@
                                     </svg>
                                   </span>
                                   <input
-                                    class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                                    class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white"
                                     type="text"
-                                    name="fullName"
-                                    id="fullName"
-                                    placeholder="Devid Jhon"
-                                    value="Devid Jhon"
+                                    name="first_name"
+                                    id="first_name"
+                                    placeholder=""
+                                    value=""
                                   />
                                 </div>
                               </div>
-    
+
                               <div class="w-full sm:w-1/2">
                                 <label
                                   class="mb-3 block text-sm font-medium text-black dark:text-white"
-                                  for="phoneNumber"
-                                  >Phone Number</label
+                                  for="fullName"
+                                  >Surname</label
                                 >
-                                <input
-                                  class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                                  type="text"
-                                  name="phoneNumber"
-                                  id="phoneNumber"
-                                  placeholder="+990 3343 7865"
-                                  value="+990 3343 7865"
-                                />
+                                <div class="relative">
+                                  <span class="absolute left-4.5 top-4">
+                                    <svg
+                                      class="fill-current"
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 20 20"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <g opacity="0.8">
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M3.72039 12.887C4.50179 12.1056 5.5616 11.6666 6.66667 11.6666H13.3333C14.4384 11.6666 15.4982 12.1056 16.2796 12.887C17.061 13.6684 17.5 14.7282 17.5 15.8333V17.5C17.5 17.9602 17.1269 18.3333 16.6667 18.3333C16.2064 18.3333 15.8333 17.9602 15.8333 17.5V15.8333C15.8333 15.1703 15.5699 14.5344 15.1011 14.0655C14.6323 13.5967 13.9964 13.3333 13.3333 13.3333H6.66667C6.00363 13.3333 5.36774 13.5967 4.8989 14.0655C4.43006 14.5344 4.16667 15.1703 4.16667 15.8333V17.5C4.16667 17.9602 3.79357 18.3333 3.33333 18.3333C2.8731 18.3333 2.5 17.9602 2.5 17.5V15.8333C2.5 14.7282 2.93899 13.6684 3.72039 12.887Z"
+                                          fill=""
+                                        />
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M9.99967 3.33329C8.61896 3.33329 7.49967 4.45258 7.49967 5.83329C7.49967 7.214 8.61896 8.33329 9.99967 8.33329C11.3804 8.33329 12.4997 7.214 12.4997 5.83329C12.4997 4.45258 11.3804 3.33329 9.99967 3.33329ZM5.83301 5.83329C5.83301 3.53211 7.69849 1.66663 9.99967 1.66663C12.3009 1.66663 14.1663 3.53211 14.1663 5.83329C14.1663 8.13448 12.3009 9.99996 9.99967 9.99996C7.69849 9.99996 5.83301 8.13448 5.83301 5.83329Z"
+                                          fill=""
+                                        />
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <input
+                                    class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"
+                                    type="text"
+                                    name="last_name"
+                                    id="last_name"
+                                    placeholder=""
+                                    value=" "
+                                  />
+                                </div>
                               </div>
+                             
+                            </div>
+                            <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
+                              <div class="w-full sm:w-1/2">
+                                <label
+                                  class="mb-3 block text-sm font-medium text-black dark:text-white"
+                                  for="fullName"
+                                  >Username</label
+                                >
+                                <div class="relative">
+                                  <span class="absolute left-4.5 top-4">
+                                    <svg
+                                      class="fill-current"
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 20 20"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <g opacity="0.8">
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M3.72039 12.887C4.50179 12.1056 5.5616 11.6666 6.66667 11.6666H13.3333C14.4384 11.6666 15.4982 12.1056 16.2796 12.887C17.061 13.6684 17.5 14.7282 17.5 15.8333V17.5C17.5 17.9602 17.1269 18.3333 16.6667 18.3333C16.2064 18.3333 15.8333 17.9602 15.8333 17.5V15.8333C15.8333 15.1703 15.5699 14.5344 15.1011 14.0655C14.6323 13.5967 13.9964 13.3333 13.3333 13.3333H6.66667C6.00363 13.3333 5.36774 13.5967 4.8989 14.0655C4.43006 14.5344 4.16667 15.1703 4.16667 15.8333V17.5C4.16667 17.9602 3.79357 18.3333 3.33333 18.3333C2.8731 18.3333 2.5 17.9602 2.5 17.5V15.8333C2.5 14.7282 2.93899 13.6684 3.72039 12.887Z"
+                                          fill=""
+                                        />
+                                        <path
+                                          fill-rule="evenodd"
+                                          clip-rule="evenodd"
+                                          d="M9.99967 3.33329C8.61896 3.33329 7.49967 4.45258 7.49967 5.83329C7.49967 7.214 8.61896 8.33329 9.99967 8.33329C11.3804 8.33329 12.4997 7.214 12.4997 5.83329C12.4997 4.45258 11.3804 3.33329 9.99967 3.33329ZM5.83301 5.83329C5.83301 3.53211 7.69849 1.66663 9.99967 1.66663C12.3009 1.66663 14.1663 3.53211 14.1663 5.83329C14.1663 8.13448 12.3009 9.99996 9.99967 9.99996C7.69849 9.99996 5.83301 8.13448 5.83301 5.83329Z"
+                                          fill=""
+                                        />
+                                      </g>
+                                    </svg>
+                                  </span>
+                                  <input
+                                    class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"
+                                    type="text"
+                                    name="first_name"
+                                    id="first_name"
+                                    placeholder=""
+                                    value=""
+                                  />
+                                </div>
+                              </div>
+
+                              <div class="w-full sm:w-1/2">
+                                <label
+                                  class="mb-3 block text-sm font-medium text-black dark:text-white"
+                                  for="fullName"
+                                  >DOB</label
+                                >
+                                <div class="relative">
+                                  <span class="absolute left-4.5 top-4">
+                                    <svg
+                                      class="fill-current"
+                                      width="20"
+                                      height="20"
+                                      fill="none"
+                                      viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                      <g id="SVGRepo_iconCarrier">
+                                        <path d="M266.815 537.708c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.77 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.775 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.77 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zM266.815 679.347c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.77 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.775 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.77 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zM266.815 820.988c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.77 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.775 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zm182.77 0c0 22.62-18.34 40.96-40.96 40.96s-40.96-18.34-40.96-40.96 18.34-40.96 40.96-40.96 40.96 18.34 40.96 40.96zM228.18 81.918v153.6c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48v-153.6c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48zm528.09 0v153.6c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48v-153.6c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48z">
+
+                                        </path>
+                                      <path d="M890.877 137.517c33.931 0 61.44 27.509 61.44 61.44v703.375c0 33.931-27.509 61.44-61.44 61.44h-757.76c-33.931 0-61.44-27.509-61.44-61.44V198.957c0-33.931 27.509-61.44 61.44-61.44h757.76zm-757.76 40.96c-11.309 0-20.48 9.171-20.48 20.48v703.375c0 11.309 9.171 20.48 20.48 20.48h757.76c11.309 0 20.48-9.171 20.48-20.48V198.957c0-11.309-9.171-20.48-20.48-20.48h-757.76z"></path><path d="M575.03 338.288c0-33.93-27.51-61.44-61.44-61.44s-61.44 27.51-61.44 61.44c0 33.93 27.51 61.44 61.44 61.44s61.44-27.51 61.44-61.44zm40.96 0c0 56.551-45.849 102.4-102.4 102.4s-102.4-45.849-102.4-102.4c0-56.551 45.849-102.4 102.4-102.4s102.4 45.849 102.4 102.4z">
+
+                                    </path></g>
+                                  </svg>
+                                  </span>
+                                  <input
+                                    class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"
+                                    type="text"
+                                    name="last_name"
+                                    id="last_name"
+                                    placeholder=""
+                                    value=" "
+                                  />
+                                </div>
+                              </div>
+                             
                             </div>
     
                             <div class="mb-5.5">
@@ -630,95 +677,83 @@
                                   </svg>
                                 </span>
                                 <input
-                                  class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                                  class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"
                                   type="email"
-                                  name="emailAddress"
-                                  id="emailAddress"
-                                  placeholder="devidjond45@gmail.com"
-                                  value="devidjond45@gmail.com"
+                                  name="email"
+                                  id="email"
+                                  placeholder=""
+                                  value=""
                                 />
                               </div>
                             </div>
-    
-                            <div class="mb-5.5">
-                              <label
-                                class="mb-3 block text-sm font-medium text-black dark:text-white"
-                                for="Username"
-                                >Username</label
-                              >
-                              <input
-                                class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                                type="text"
-                                name="Username"
-                                id="Username"
-                                placeholder="devidjhon24"
-                                value="devidjhon24"
-                              />
-                            </div>
-    
-                            <div class="mb-5.5">
-                              <label
-                                class="mb-3 block text-sm font-medium text-black dark:text-white"
-                                for="Username"
-                                >BIO</label
-                              >
-                              <div class="relative">
-                                <span class="absolute left-4.5 top-4">
-                                  <svg
-                                    class="fill-current"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 20 20"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <g
-                                      opacity="0.8"
-                                      clip-path="url(#clip0_88_10224)"
-                                    >
-                                      <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M1.56524 3.23223C2.03408 2.76339 2.66997 2.5 3.33301 2.5H9.16634C9.62658 2.5 9.99967 2.8731 9.99967 3.33333C9.99967 3.79357 9.62658 4.16667 9.16634 4.16667H3.33301C3.11199 4.16667 2.90003 4.25446 2.74375 4.41074C2.58747 4.56702 2.49967 4.77899 2.49967 5V16.6667C2.49967 16.8877 2.58747 17.0996 2.74375 17.2559C2.90003 17.4122 3.11199 17.5 3.33301 17.5H14.9997C15.2207 17.5 15.4326 17.4122 15.5889 17.2559C15.7452 17.0996 15.833 16.8877 15.833 16.6667V10.8333C15.833 10.3731 16.2061 10 16.6663 10C17.1266 10 17.4997 10.3731 17.4997 10.8333V16.6667C17.4997 17.3297 17.2363 17.9656 16.7674 18.4344C16.2986 18.9033 15.6627 19.1667 14.9997 19.1667H3.33301C2.66997 19.1667 2.03408 18.9033 1.56524 18.4344C1.0964 17.9656 0.833008 17.3297 0.833008 16.6667V5C0.833008 4.33696 1.0964 3.70107 1.56524 3.23223Z"
-                                        fill=""
-                                      />
-                                      <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M16.6664 2.39884C16.4185 2.39884 16.1809 2.49729 16.0056 2.67253L8.25216 10.426L7.81167 12.188L9.57365 11.7475L17.3271 3.99402C17.5023 3.81878 17.6008 3.5811 17.6008 3.33328C17.6008 3.08545 17.5023 2.84777 17.3271 2.67253C17.1519 2.49729 16.9142 2.39884 16.6664 2.39884ZM14.8271 1.49402C15.3149 1.00622 15.9765 0.732178 16.6664 0.732178C17.3562 0.732178 18.0178 1.00622 18.5056 1.49402C18.9934 1.98182 19.2675 2.64342 19.2675 3.33328C19.2675 4.02313 18.9934 4.68473 18.5056 5.17253L10.5889 13.0892C10.4821 13.196 10.3483 13.2718 10.2018 13.3084L6.86847 14.1417C6.58449 14.2127 6.28409 14.1295 6.0771 13.9225C5.87012 13.7156 5.78691 13.4151 5.85791 13.1312L6.69124 9.79783C6.72787 9.65131 6.80364 9.51749 6.91044 9.41069L14.8271 1.49402Z"
-                                        fill=""
-                                      />
-                                    </g>
-                                    <defs>
-                                      <clipPath id="clip0_88_10224">
-                                        <rect width="20" height="20" fill="white" />
-                                      </clipPath>
-                                    </defs>
-                                  </svg>
-                                </span>
-    
-                                <textarea
-                                  class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
-                                  name="bio"
-                                  id="bio"
-                                  rows="6"
-                                  placeholder="Write your bio here"
+                            <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
+                              <div class="w-full sm:w-1/2">
+                                <label
+                                  class="mb-3 block text-sm font-medium text-black dark:text-white"
+                                  for="fullName"
+                                  >Contact Number</label
                                 >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet.
-                                  </textarea
-                                >
+                                <div class="relative">
+                                  <span class="absolute left-4.5 top-4">
+                                    <svg 
+                                      class="fill-current"
+                                      width="20"
+                                      height="20"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                      <path d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM144 448c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16s-7.2-16-16-16H160c-8.8 0-16 7.2-16 16zM304 64H80V384H304V64z"/></svg>
+                                  </span>
+                                  <input
+                                    class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"
+                                    type="text"
+                                    name="first_name"
+                                    id="first_name"
+                                    placeholder=""
+                                    value=""
+                                  />
+                                </div>
                               </div>
+
+                              <div class="w-full sm:w-1/2">
+                                <label
+                                  class="mb-3 block text-sm font-medium text-black dark:text-white"
+                                  for="fullName"
+                                  >Department</label
+                                >
+                                <div class="relative">
+                                  <span class="absolute left-4.5 top-4">
+                                    <svg 
+                                      class="fill-current"
+                                      width="20"
+                                      height="20"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                      <path d="M219.3 .5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128s-128-57.3-128-128V102.9L48 93.3v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3s-7.6 5.9-12.4 5.9H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64C0 52.6 8.1 42.7 19.3 40.5l200-40zM111.9 327.7c10.5-3.4 21.8 .4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5C401 348.6 448 409.4 448 481.3c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6z"/>
+                                    </svg>
+                                  </span>
+                                  <input
+                                    class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"
+                                    type="text"
+                                    name="last_name"
+                                    id="last_name"
+                                    placeholder=""
+                                    value=" "
+                                  />
+                                </div>
+                              </div>
+                             
                             </div>
     
                             <div class="flex justify-end gap-4.5">
                               <button
-                                class="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
+                                class="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white focus-visible:outline-none"
                                 type="submit"
                               >
                                 Cancel
                               </button>
                               <button
-                                class="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
+                                class="flex justify-center rounded py-2 px-6 font-medium text-gray hover:opacity-90"
+                                style="background-color: #FB8500;"
                                 type="submit"
                               >
                                 Save
@@ -743,7 +778,7 @@
                           <form action="#">
                             <div class="mb-4 flex items-center gap-3">
                               <div class="h-14 w-14 rounded-full">
-                                <img src="src/images/user/user-03.png" alt="User" />
+                                <img src="{% static 'img/settingsphot.png' %}" alt="User" />
                               </div>
                               <div>
                                 <span
@@ -767,7 +802,8 @@
     
                             <div
                               id="FileUpload"
-                              class="relative mb-5.5 block w-full cursor-pointer appearance-none rounded border-2 border-dashed border-primary bg-gray py-4 px-4 dark:bg-meta-4 sm:py-7.5"
+                              class="relative mb-5.5 block w-full cursor-pointer appearance-none rounded border-2 border-dashed bg-gray py-4 px-4 dark:bg-meta-4 sm:py-7.5"
+                              style="border: 1px solid #FB8500;"
                             >
                               <input
                                 type="file"
@@ -791,24 +827,24 @@
                                       fill-rule="evenodd"
                                       clip-rule="evenodd"
                                       d="M1.99967 9.33337C2.36786 9.33337 2.66634 9.63185 2.66634 10V12.6667C2.66634 12.8435 2.73658 13.0131 2.8616 13.1381C2.98663 13.2631 3.1562 13.3334 3.33301 13.3334H12.6663C12.8431 13.3334 13.0127 13.2631 13.1377 13.1381C13.2628 13.0131 13.333 12.8435 13.333 12.6667V10C13.333 9.63185 13.6315 9.33337 13.9997 9.33337C14.3679 9.33337 14.6663 9.63185 14.6663 10V12.6667C14.6663 13.1971 14.4556 13.7058 14.0806 14.0809C13.7055 14.456 13.1968 14.6667 12.6663 14.6667H3.33301C2.80257 14.6667 2.29387 14.456 1.91879 14.0809C1.54372 13.7058 1.33301 13.1971 1.33301 12.6667V10C1.33301 9.63185 1.63148 9.33337 1.99967 9.33337Z"
-                                      fill="#3C50E0"
+                                      fill="#FB8500"
                                     />
                                     <path
                                       fill-rule="evenodd"
                                       clip-rule="evenodd"
                                       d="M7.5286 1.52864C7.78894 1.26829 8.21106 1.26829 8.4714 1.52864L11.8047 4.86197C12.0651 5.12232 12.0651 5.54443 11.8047 5.80478C11.5444 6.06513 11.1223 6.06513 10.8619 5.80478L8 2.94285L5.13807 5.80478C4.87772 6.06513 4.45561 6.06513 4.19526 5.80478C3.93491 5.54443 3.93491 5.12232 4.19526 4.86197L7.5286 1.52864Z"
-                                      fill="#3C50E0"
+                                      fill="#FB8500"
                                     />
                                     <path
                                       fill-rule="evenodd"
                                       clip-rule="evenodd"
                                       d="M7.99967 1.33337C8.36786 1.33337 8.66634 1.63185 8.66634 2.00004V10C8.66634 10.3682 8.36786 10.6667 7.99967 10.6667C7.63148 10.6667 7.33301 10.3682 7.33301 10V2.00004C7.33301 1.63185 7.63148 1.33337 7.99967 1.33337Z"
-                                      fill="#3C50E0"
+                                      fill="#FB8500"
                                     />
                                   </svg>
                                 </span>
                                 <p class="text-sm font-medium">
-                                  <span class="text-primary">Click to upload</span>
+                                  <span style="color: #FB8500;">Click to upload</span>
                                   or drag and drop
                                 </p>
                                 <p class="mt-1.5 text-sm font-medium">
@@ -828,8 +864,9 @@
                                 Cancel
                               </button>
                               <button
-                                class="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
+                                class="flex justify-center rounded py-2 px-6 font-medium text-gray hover:opacity-90"
                                 type="submit"
+                                style="background-color: #FB8500;"
                               >
                                 Save
                               </button>
@@ -866,7 +903,3 @@
 
 
 
-<form method="POST">
-  {% csrf_token %} {{form.as_p}}
-  <input type="submit" value="Update" />
-</form>

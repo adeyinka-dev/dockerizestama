@@ -65,7 +65,7 @@ class SignUp(CreateView):
 
 
 class DashboardView(TemplateView):
-    template_name = "dashboard.html"
+    template_name = "user_dashboard.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -80,11 +80,11 @@ class ProcessingView(TemplateView):
 
 
 class BaseView(TemplateView):
-    template_name = "base2.html"
+    template_name = "submit_success.html"
 
 
 class UserView(TemplateView):
-    template_name = "repair_list.html"
+    template_name = "userpart.html"
 
 
 class EditInfo(UpdateView):
