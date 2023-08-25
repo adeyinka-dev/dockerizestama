@@ -46,8 +46,10 @@ class TenantChangeForm(UserChangeForm):
             "first_name",
             "last_name",
             "phone_number",
+            "email",
             "matric_num",
             "department",
             "user_image",
             "dob",
+            "department",
         ]
