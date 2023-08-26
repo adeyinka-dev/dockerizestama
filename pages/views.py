@@ -1,7 +1,13 @@
-from typing import Any
+from typing import Any, Dict
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import views as auth_views
-from django.views.generic import RedirectView, TemplateView, CreateView, UpdateView
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.views.generic import (
+    RedirectView,
+    TemplateView,
+    CreateView,
+    UpdateView,
+    ListView,
+)
 from maintenance.models import Maintenance, Room
 from accommodations.models import Room
 from accounts.models import Tenant
@@ -64,30 +70,23 @@ class SignUp(CreateView):
             return self.form_invalid(form)
 
 
-class DashboardView(TemplateView):
+class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "user_dashboard.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+
+class RepairHistoryView(LoginRequiredMixin, ListView):
+    model = Maintenance
+    template_name = "repair_history.html"
+    context_object_name = "repairs"
+
+    def get_queryset(self):
         user = self.request.user
         if user.is_authenticated and hasattr(user, "room") and user.room:
-            context["repairs"] = Maintenance.objects.filter(room=user.room)
-        return context
+            return Maintenance.objects.filter(room=user.room)
+        return Maintenance.objects.none()
 
 
-class ProcessingView(TemplateView):
-    template_name = "processing.html"
-
-
-class BaseView(TemplateView):
-    template_name = "submit_success.html"
-
-
-class UserView(TemplateView):
-    template_name = "userpart.html"
-
-
-class EditInfo(UpdateView):
+class EditInfo(LoginRequiredMixin, UpdateView):
     model = Tenant
     template_name = "update_profile.html"
     form_class = TenantChangeForm

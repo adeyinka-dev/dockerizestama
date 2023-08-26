@@ -1,5 +1,5 @@
 from typing import Any, Dict
-from django.db.models.query import QuerySet
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from .models import Hostel, Room

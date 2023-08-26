@@ -1,4 +1,5 @@
 from typing import Any, Dict
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -9,7 +10,7 @@ from accommodations.models import Room
 from .forms import MaintenanceForm, NoteForm, MaintenanceStatusForm
 
 
-class NoteGet(DetailView):
+class NoteGet(LoginRequiredMixin, DetailView):
     model = Maintenance
     template_name = "work_detail.html"
 
@@ -20,7 +21,7 @@ class NoteGet(DetailView):
         return context
 
 
-class PostNote(FormView):
+class PostNote(LoginRequiredMixin, FormView):
     model = Maintenance
     form_class = NoteForm
     template_name = "work_detail.html"
@@ -56,7 +57,7 @@ class PostNote(FormView):
         return super().post(request, *args, **kwargs)
 
 
-class RepairDetailView(View):
+class RepairDetailView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         view = NoteGet.as_view()
         return view(request, *args, **kwargs)
@@ -66,7 +67,7 @@ class RepairDetailView(View):
         return view(request, *args, **kwargs)
 
 
-class RoomRepair(DetailView):
+class RoomRepair(LoginRequiredMixin, DetailView):
     model = Room
     template_name = "raise_repair.html"
 

@@ -128,7 +128,7 @@
                         <li>
                             <a
                               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                              href="#"
+                              href="{% url 'repair_history' %}"
                               @click="selected = (selected === 'Messages' ? '':'Messages')"
                               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Messages') && (page === 'Messages') }"
                             >
@@ -142,7 +142,7 @@
                                 <path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/>
                             </svg>
                 
-                              Repair Histroy
+                              Repair History
                             </a>
                           </li>
                         <!-- Menu Item Messages -->
@@ -330,7 +330,7 @@
                                     >
                                     <p class="text-sm">
                                         <span class="text-black dark:text-white">Notifications</span>
-                                        Rent Due on 24th of June 2024
+                                        Rent Due on {{ user.rent_validity }}
                                     </p>
 
                                     <p class="text-xs">18 Aug, 2023</p>
@@ -360,10 +360,14 @@
                                 >
                                 <span class="block text-xs font-medium">{{ user.stama_id }}</span>
                             </span>
-
-                            <span class="h-12 w-12 rounded-full">
-                                <img src="{% static 'images/mex.png' %}" alt="User" />
+                            <span class="h-12 w-12 relative">
+                              {% if user.user_image %}
+                                  <img class="absolute rounded-full object-cover object-center h-full w-full" src="{{ user.user_image.url }}" alt="User" />
+                              {% else %}
+                                  <img class="absolute rounded-full object-cover object-center h-full w-full" src="{% static 'img/settingsphot.png' %}" alt="User" />
+                              {% endif %}
                             </span>
+                          
 
                             <svg
                                 :class="dropdownOpen && 'rotate-180'"
@@ -513,7 +517,7 @@
                       <nav>
                         <ol class="flex items-center gap-2">
                           <li>
-                            <a class="font-medium" href="#">Dashboard /</a>
+                            <a class="font-medium" href="#">{{ user.room.hostel.name }} /</a>
                           </li>
                           <li style="color: #FB8500;">Profile</li>
                         </ol>
@@ -532,8 +536,12 @@
                         <div
                           class="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3"
                         >
-                          <div class="relative drop-shadow-2">
-                            <img src="{% static 'images/mex.png' %}" alt="profile" />
+                        <div class="relative drop-shadow-2 h-full w-full">
+                                {% if user.user_image %}
+                                <img class="rounded-full object-cover h-full w-full" src="{{ user.user_image.url }}" alt="profile" />
+                                {% else %}
+                                <img class="rounded-full object-cover h-full w-full" src="{% static 'img/settingsphot.png' %}" alt="profile" />
+                                {% endif %}
                             <label
                               for="profile"
                               class="absolute bottom-0 right-0 flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-full text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2"
@@ -590,7 +598,7 @@
                             <div
                               class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row"
                             >
-                              <span class="text-black dark:text-white">{{ user.room.hostel.name }}</span>
+                              <span class="text-black dark:text-white">{{ user.matric_num }}</span>
                             </div>
                             <div
                               class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row"

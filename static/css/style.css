@@ -3908,6 +3908,8 @@
     }
   }
   
+
+
   .data-table-common .datatable-search{
     position: relative;
     margin-left: 0px !important;
@@ -4253,7 +4255,7 @@
   }
   .data-table-two .datatable-search input:focus{
     --tw-border-opacity: 1;
-    border-color: rgb(60 80 224 / var(--tw-border-opacity));
+    border-color: rgb(251, 133, 0 / var(--tw-border-opacity));
   }
   .dark .data-table-two .datatable-search input{
     --tw-border-opacity: 1;
@@ -4263,7 +4265,7 @@
   }
   .dark .data-table-two .datatable-search input:focus{
     --tw-border-opacity: 1;
-    border-color: rgb(60 80 224 / var(--tw-border-opacity));
+    border-color: rgb(251, 133, 0 / var(--tw-border-opacity));
   }
   
   input[type=search]::-webkit-search-cancel-button{

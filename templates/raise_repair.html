@@ -84,7 +84,7 @@
                         <li>
                           <a
                             class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                            href="profile.html"
+                            href="{% url 'home' %}"
                             @click="selected = (selected === 'Profile' ? '':'Profile')"
                             :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Profile') && (page === 'profile') }"
                             :class="page === 'profile' && 'bg-graydark'"
@@ -199,7 +199,7 @@
                             </span>
                         </button>
                         <!-- Hamburger Toggle BTN -->
-                        <a class="block flex-shrink-0 lg:hidden" href="index.html">
+                        <a class="block flex-shrink-0 lg:hidden" href="{% url 'home' %}">
                           <img src="{% static 'images/stmlg.png' %}" style="width: 60px;" alt="Logo" />
                         </a>
                     </div>
@@ -337,13 +337,17 @@
                             >
                             <span class="hidden text-right lg:block">
                                 <span class="block text-sm font-medium text-black dark:text-white"
-                                >Bukky Akinbola</span
+                                >{{user.first_name}} {{user.last_name}}</span
                                 >
-                                <span class="block text-xs font-medium">Physics</span>
+                                <span class="block text-xs font-medium">{{ user.stama_id }}</span>
                             </span>
 
-                            <span class="h-12 w-12 rounded-full">
-                                <img src="{% static 'images/mex.png' %}" alt="User" />
+                            <span class="h-12 w-12 relative">
+                              {% if user.user_image %}
+                                  <img class="absolute rounded-full object-cover object-center h-full w-full" src="{{ user.user_image.url }}" alt="User" />
+                              {% else %}
+                                  <img class="absolute rounded-full object-cover object-center h-full w-full" src="{% static 'img/settingsphot.png' %}" alt="User" />
+                              {% endif %}
                             </span>
 
                             <svg
@@ -374,7 +378,7 @@
                             >
                                 <li>
                                 <a
-                                    href="profile.html"
+                                    href="#"
                                     class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out lg:text-base"
                                     id="myaid"
                                 >
@@ -422,7 +426,7 @@
                                 </li>
                                 <li>
                                 <a
-                                    href="settings.html"
+                                    href="#"
                                     class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out lg:text-base"
                                     id="myaid"
                                 >
@@ -490,7 +494,7 @@
                     <nav>
                       <ol class="flex items-center gap-2 mx-auto">
                         <li>
-                          <a class="font-medium" href="index.html">Dashboard /</a>
+                          <a class="font-medium" href="#">Dashboard /</a>
                         </li>
                         <li class="font-medium" style="color: #FB8500;">Maintenance Request</li>
                       </ol>
@@ -517,13 +521,13 @@
                           <div class="p-6.5">
                             <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
                               <div class="w-full xl:w-1/2">
-                                <button class="inline-flex border py-1 px-2 text-sm font-medium text-primary hover:opacity-80" style="border: 1px solid #FB8500; color: #FB8500;">
+                                <button class="inline-flex border py-1 px-2 text-sm font-small text-primary hover:opacity-80" style="border: 1px solid #FB8500; color: #FB8500;">
                                     001
                                 </button>
                               </div>
       
                               <div class="w-full xl:w-1/2">
-                                <button class="inline-flex border py-1 px-2 text-sm font-medium text-primary hover:opacity-80" style="border: 1px solid #FB8500; color: #FB8500;">
+                                <button class="inline-flex border py-1 px-2 text-sm font-small text-primary hover:opacity-80" style="border: 1px solid #FB8500; color: #FB8500;">
                                     DIAMOND RESIDENCE
                                 </button>
                               </div>
