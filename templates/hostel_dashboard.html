@@ -178,7 +178,7 @@
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="calendar.html"
+              href="#"
               @click="selected = (selected === 'Calendar' ? '':'Calendar')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Calendar') && (page === 'calendar') }"
             >
@@ -426,7 +426,7 @@
         </span>
       </button>
       <!-- Hamburger Toggle BTN -->
-      <a class="block flex-shrink-0 lg:hidden" href="index.html">
+      <a class="block flex-shrink-0 lg:hidden" href="{% url 'home' %}">
         <img src="{% static 'images/stmlg.png' %}" style="width: 60px;" alt="Logo" />
       </a>
     </div>
@@ -645,7 +645,7 @@
               <li>
                 <a
                   class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                  href="messages.html"
+                  href="#"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
                     <img src="{% static 'images/mex.png' %}" alt="User" />
@@ -717,7 +717,7 @@
           >
             <li>
               <a
-                href="profile.html"
+                href="#"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
@@ -763,7 +763,7 @@
             </li>
             <li>
               <a
-                href="settings.html"
+                href="#"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg

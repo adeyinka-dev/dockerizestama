@@ -32,6 +32,10 @@ class Tenant(AbstractUser):
     stama_id = models.CharField(max_length=10, unique=True, null=True, blank=True)
     user_image = models.ImageField(upload_to=unique_file_path, null=True, blank=True)
     rent_start_date = models.DateField(null=True, blank=True)
+    # Next of kin model added to user part
+    nok_name = models.CharField(max_length=30, null=True, blank=True)
+    nok_phone = models.CharField(max_length=30, null=True, blank=True)
+    nok_email = models.EmailField(max_length=30, null=True, blank=True)
 
     # rent vailidy
     def rent_validity(self):

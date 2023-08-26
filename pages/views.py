@@ -1,5 +1,5 @@
 from typing import Any, Dict
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth import views as auth_views
 from django.views.generic import (
     RedirectView,

@@ -592,8 +592,7 @@
                                     </svg>
                                   </span>
                                  
-                                   {{ form.matric_num|add_class:"w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"}}
-                                  
+                                    {{ form.matric_num|add_class:"w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"}}
                                 </div>
                               </div>
 
@@ -601,7 +600,7 @@
                                 <label
                                   class="mb-3 block text-sm font-medium text-black dark:text-white"
                                   for="fullName"
-                                  >DOB</label
+                                  >Date Of Birth <small>(YYYY-MM-DD)</small></label
                                 >
                                 <div class="relative">
                                   <span class="absolute left-4.5 top-4">
@@ -624,7 +623,11 @@
                                   </span>
                                  
                                   {{ form.dob|add_class:"w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"}}
-                                    
+                                  {% if form.dob.errors %}
+                                  <div class="text-sm text-danger">
+                                      {{ form.dob.errors }}
+                                  </div>
+                                  {% endif %}
                                 </div>
                               </div>
                              
@@ -664,7 +667,11 @@
                                 </span>
                                
                                 {{ form.email|add_class:"w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none"}}
-                                  
+                                {% if form.email.errors %}
+                                  <div class="text-sm text-danger">
+                                      {{ form.email.errors }}
+                                  </div>
+                                  {% endif %}
                               </div>
                             </div>
                             <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">

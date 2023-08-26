@@ -33,6 +33,11 @@ STAMA bridges the gap between accommodation providers and tenants. With features
   - View your personal and room details.
   - Notice an issue? Raise a repair request directly from the dashboard.
 
+## Error Handling Documentations (loopholes)
+
+- **User:**
+  - Encountered quite lot of loopholes with django views while using LoginRequiredMixin, UserPassesTestMixin to handle specific
+
 ## Contributing 🤝
 
 We're open to enhancements & bug-fixes. Feel free to contribute by opening a PR with any suggested changes.

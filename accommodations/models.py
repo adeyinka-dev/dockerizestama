@@ -9,6 +9,16 @@ from accounts.models import Tenant
 from django.apps import apps
 
 
+# Workers for assigned to various works in each hostel
+class Workers(models.Model):
+    full_name = models.CharField(max_length=30)
+    speciality = models.CharField(max_length=30)
+    contact = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.full_name
+
+
 class Hostel(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
@@ -19,6 +29,7 @@ class Hostel(models.Model):
     # First Time I will be trying the image field
     image = models.ImageField(upload_to="hostels/", null=True, blank=True)
     room_count = models.IntegerField(default=0)
+    worker = models.ForeignKey(Workers, on_delete=models.CASCADE, null=True, blank=True)
 
     # Manager can only be a user with is_staff status
     def save(self, *args, **kwargs):
@@ -59,8 +70,6 @@ def create_rooms(sender, instance, **kwargs):
 
 
 # Room model (This will be chnage to FLat model in case this was created for block of flats)
-
-
 class Room(models.Model):
     # room divided to 3 different status. For statistics purpose on admin dashboard
     OCCUPIED = "OC"
