@@ -10,17 +10,24 @@ from .views import (
     Login,
     EditInfo,
     RepairHistoryView,
+    TestPage,
 )
 
 urlpatterns = [
+    path("test/", TestPage.as_view(), name="test"),
     path("", HomePageView.as_view(), name="home"),
     path("login/", Login.as_view(), name="login"),
     path("register/", SignUp.as_view(), name="register"),
+    path(
+        "registration-successful/",
+        TemplateView.as_view(template_name="register_success.html"),
+        name="register_success",
+    ),
     path("user/", DashboardView.as_view(), name="dashboard"),
     path("repair-history/", RepairHistoryView.as_view(), name="repair_history"),
     path("edit-profile/<int:pk>/", EditInfo.as_view(), name="edit_profile"),
     path(
-        "update_success/",
+        "update-success/",
         TemplateView.as_view(template_name="edit_success.html"),
         name="update_success",
     ),

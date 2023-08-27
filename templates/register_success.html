@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You!</title>
+    <link rel="icon" href="favicon.ico" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body
+    x-data="{ page: 'crm', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <div
+      x-show="loaded"
+      x-init="window.addEventListener('DOMContentLoaded', () => {setTimeout(() => loaded = false, 500)})"
+      class="fixed left-0 top-0 z-999999 flex h-screen w-screen items-center justify-center bg-white dark:bg-black"
+    >
+      <div
+        class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-t-transparent"
+      ></div>
+    </div>
+
+   
+    <div class="flex h-screen overflow-hidden">
+      
+
+      
+      <div
+        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden h-100"
+      >
+        
+        <main>
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <!-- Breadcrumb Start -->
+            <div
+              class="rounded-sm  px-5 py-10 dark:border-strokedark dark:bg-boxdark sm:py-20"
+            >
+              <div class="mx-auto max-w-[490px]">
+                <img
+                  src="{% static 'images/successdd.svg' %}"
+                  alt="illustration"
+                  style="height: 80%; width: 80%;"
+                />
+
+                <div class="mt-7.5 text-center">
+                  <h2
+                    class="mb-3 text-2xl font-bold text-black dark:text-white"
+                  >
+                    Your registration is successful!
+                  </h2>
+                  <p class="font-medium">
+                    You will be redirected to the Sign-in page shortly. Please update your profile under account settings to unlock all features.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+   
+    </div>
+    <script>
+      setTimeout(function() {
+        window.location.href = "{% url 'login' %}";
+      }, 5000);
+    </script>
+  
+    <!-- ===== Page Wrapper End ===== -->
+    <script defer src="{% static 'js/bundle.js' %}"></script>
+  </body>
+</html>

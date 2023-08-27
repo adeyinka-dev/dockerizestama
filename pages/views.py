@@ -14,6 +14,7 @@ from accounts.models import Tenant
 from accounts.forms import TenantCreationForm, TenantChangeForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import login
+from django.db import transaction
 
 
 class HomePageView(RedirectView):
@@ -42,8 +43,9 @@ class Login(auth_views.LoginView):
 class SignUp(CreateView):
     template_name = "registration/signup.html"
     form_class = TenantCreationForm
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("register_success")
 
+    @transaction.atomic
     def form_valid(self, form):
         # Save the user
         user = form.save(commit=False)  # Dont save yet, will save on line 66
@@ -51,8 +53,7 @@ class SignUp(CreateView):
         # Get the room using the provided room_id
         try:
             room_id = form.cleaned_data.get("room_id")
-            room = Room.objects.get(room_id=room_id)
-
+            room = Room.objects.select_for_update().get(room_id=room_id)
             # Check if the room is already occupied
             if room.status == Room.OCCUPIED:
                 form.add_error("room_id", "This room is already occupied")
@@ -96,3 +97,7 @@ class EditInfo(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.get_object() == self.request.user
+
+
+class TestPage(TemplateView):
+    template_name = "testing.html"

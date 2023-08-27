@@ -180,7 +180,7 @@
               <div class="flex flex-wrap items-center">
                 <div class="hidden w-full xl:block xl:w-1/2">
                   <div class="py-17.5 px-26 text-center">
-                    <a class="mb-5.5 inline-block" href="#">
+                    <a class="mb-5.5 inline-block" href="index.html">
                       <img
                         class="hidden dark:block"
                         src="{% static 'img/stamapro.png' %}"
@@ -221,7 +221,7 @@
                     <form action="{% url 'login' %}" method="post">
                         {% csrf_token %}
                         {% if form.non_field_errors %}
-                        <div class="text-danger font-semibold">
+                        <div class="alert alert-danger">
                         {{ form.non_field_errors }}
                         </div>
                         {% endif %}

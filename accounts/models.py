@@ -33,7 +33,7 @@ class Tenant(AbstractUser):
     middle_initial = models.CharField(max_length=1, null=True, blank=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     dob = models.DateField(null=True, blank=True)
-    matric_num = models.CharField(max_length=10, unique=True, blank=True, null=True)
+    matric_num = models.CharField(max_length=20, unique=True, blank=True, null=True)
     sex = models.CharField(max_length=1, null=True, blank=True)
     faculty = models.CharField(max_length=50, null=True, blank=True)
     department = models.CharField(max_length=50, null=True, blank=True)

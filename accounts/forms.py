@@ -21,7 +21,6 @@ class TenantCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + (
             "username",
             "email",
-            "department",
             "room_id",
         )
 
