@@ -8,6 +8,7 @@ from django.views import View
 from .models import Maintenance
 from accommodations.models import Room
 from .forms import MaintenanceForm, NoteForm, MaintenanceStatusForm
+from django.core.mail import send_mail
 
 
 class NoteGet(LoginRequiredMixin, DetailView):
@@ -80,8 +81,18 @@ class RoomRepair(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         form = MaintenanceForm(request.POST)
         if form.is_valid():
             maintenance = form.save(commit=False)
-            maintenance.room = self.get_object()
+            room = self.get_object()
+            maintenance.room = room
             maintenance.save()
+            hostel_email = room.hostel.email
+            if hostel_email:
+                send_mail(
+                    "Room Repair Requested",
+                    "A tenant has raised a repair request.",
+                    "makindeyinkax@gmail.com",
+                    [hostel_email],
+                    fail_silently=False,
+                )
             return redirect("submit_success")
         return self.get(request, *args, **kwargs)
 

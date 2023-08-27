@@ -150,3 +150,12 @@ LOGOUT_REDIRECT_URL = "login"
 
 # Date format
 DATE_FORMAT = ["%d-%m-%y"]
+
+
+# Email Notification
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "makindeyinkax@gmail.com"
+EMAIL_HOST_PASSWORD = "gxjmlorgmqczrahc"
