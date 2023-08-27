@@ -4,9 +4,26 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-import random
+import random, uuid, os
 from accounts.models import Tenant
 from django.apps import apps
+
+
+def unique_file_path(instance, filename):
+    """Generates unique name for uploaded file."""
+    base_filename, file_extension = os.path.splitext(filename)
+    unique_name = f"{uuid.uuid4()}{file_extension}"
+    return os.path.join("hostels/", unique_name)
+
+
+# Validate Image size
+def validate_file_size(value):
+    filesize = value.size
+
+    if filesize > 2 * 1024 * 1024:
+        raise ValidationError("The maximum file size that can be uploaded is 2MB")
+    else:
+        return value
 
 
 # Workers for assigned to various works in each hostel
@@ -27,7 +44,12 @@ class Hostel(models.Model):
     manager = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     stama_id = models.CharField(max_length=12, unique=True, null=True, blank=True)
     # First Time I will be trying the image field
-    image = models.ImageField(upload_to="hostels/", null=True, blank=True)
+    image = models.ImageField(
+        upload_to=unique_file_path,
+        validators=[validate_file_size],
+        null=True,
+        blank=True,
+    )
     room_count = models.IntegerField(default=0)
     worker = models.ForeignKey(Workers, on_delete=models.CASCADE, null=True, blank=True)
 

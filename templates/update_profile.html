@@ -4,6 +4,7 @@
 {% load static %}
 {% load widget_tweaks %} 
 
+
 <!-- page title -->
 {% block title %} Edit profile {% endblock title %} 
 
@@ -45,7 +46,7 @@
             </h3>
           </div>
           <div class="p-7">
-            <form method="post">
+            <form role="form" action="" method="post" enctype="multipart/form-data">
               {% csrf_token %}
               <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
                 <div class="w-full sm:w-1/2">
@@ -332,25 +333,7 @@
                 </div>
                
               </div>
-
-              <div class="flex justify-end gap-4.5">
-                
-                <a
-                  href="{% url 'home' %}"
-                  class="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white focus-visible:outline-none"
-                  
-                >
-                  Cancel
-                </a>
-                <button
-                  class="flex justify-center rounded py-2 px-6 font-medium text-gray hover:opacity-90"
-                  style="background-color: #FB8500;"
-                  type="submit"
-                >
-                  Save
-                </button>
-              </div>
-            </form>
+            
           </div>
         </div>
       </div>
@@ -366,10 +349,16 @@
             </h3>
           </div>
           <div class="p-7">
-            <form role="form" action="" method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              {{ form.user_image|add_class:"w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 mb-4 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none" }}      
+            
+              {{ form.user_image|add_class:"w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 mb-4 font-medium text-black dark:border-strokedark dark:bg-meta-4 dark:text-white focus-visible:outline-none" }}
+              {{ form.user_image.errors }}
               <div class="flex justify-end gap-4.5">
+                <a
+                  href="{% url 'home' %}"
+                  class="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white focus-visible:outline-none"
+                >
+                  Cancel
+                </a>
                 <button
                   class="flex justify-center rounded py-2 px-6 font-medium text-gray hover:opacity-90"
                   type="submit"
