@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from environs import Env
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -154,8 +158,8 @@ DATE_FORMAT = ["%d-%m-%y"]
 
 # Email Notification
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
+EMAIL_HOST = env.str("EMAIL_SMTP")
+EMAIL_PORT = env.int("EMAIL_PORT")
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "makindeyinkax@gmail.com"
-EMAIL_HOST_PASSWORD = "gxjmlorgmqczrahc"
+EMAIL_HOST_USER = env.str("EMAIL")
+EMAIL_HOST_PASSWORD = env.str("EMAIL_PASSWORD")
