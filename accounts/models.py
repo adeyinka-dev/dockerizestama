@@ -8,6 +8,7 @@ import uuid
 import os
 
 
+# Save with random name to avoid conflict
 def unique_file_path(instance, filename):
     """Generates unique name for uploaded file."""
     base_filename, file_extension = os.path.splitext(filename)

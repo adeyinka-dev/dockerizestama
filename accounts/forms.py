@@ -52,4 +52,6 @@ class TenantChangeForm(UserChangeForm):
             "user_image",
             "dob",
             "department",
+            "nok_name",
+            "nok_phone",
         ]

@@ -1,5 +1,5 @@
 from typing import Any, Dict
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -67,7 +67,7 @@ class RepairDetailView(LoginRequiredMixin, View):
         return view(request, *args, **kwargs)
 
 
-class RoomRepair(LoginRequiredMixin, DetailView):
+class RoomRepair(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Room
     template_name = "raise_repair.html"
 
@@ -84,3 +84,7 @@ class RoomRepair(LoginRequiredMixin, DetailView):
             maintenance.save()
             return redirect("submit_success")
         return self.get(request, *args, **kwargs)
+
+    def test_func(self):
+        room = self.get_object()
+        return room.tenant == self.request.user

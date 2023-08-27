@@ -1,5 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import (
@@ -16,8 +17,13 @@ urlpatterns = [
     path("login/", Login.as_view(), name="login"),
     path("register/", SignUp.as_view(), name="register"),
     path("user/", DashboardView.as_view(), name="dashboard"),
-    path("repair_history/", RepairHistoryView.as_view(), name="repair_history"),
-    path("edit/<int:pk>/", EditInfo.as_view(), name="edit"),
+    path("repair-history/", RepairHistoryView.as_view(), name="repair_history"),
+    path("edit-profile/<int:pk>/", EditInfo.as_view(), name="edit_profile"),
+    path(
+        "update_success/",
+        TemplateView.as_view(template_name="edit_success.html"),
+        name="update_success",
+    ),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]
 

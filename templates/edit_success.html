@@ -1,0 +1,55 @@
+{% extends "user_base.html" %} 
+
+<!-- load static files  -->
+{% load static %}
+
+<!-- page title -->
+{% block title %} Successful {% endblock title %} 
+
+<!-- start page content -->
+{% block content %}
+<div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+  <!-- Breadcrumb Start -->
+  <div
+    class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <h2 class="text-title-md font-bold text-black dark:text-white">
+      Successful
+    </h2>
+
+    <nav>
+      <ol class="flex items-center gap-2">
+        <li>
+          <a class="font-medium" href="#">Dashboard /</a>
+        </li>
+        <li class="font-medium" style="color: #fb8500">Sucess</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- Breadcrumb End -->
+
+  <div
+    class="rounded-sm border border-stroke bg-white px-5 py-10 shadow-default dark:border-strokedark dark:bg-boxdark sm:py-20"
+  >
+    <div class="mx-auto max-w-[490px]">
+      <img src="{% static 'img/redirect.svg' %}" alt="illustration" />
+
+      <div class="mt-7.5 text-center">
+        <h2
+          class="mb-3 text-2xl font-bold text-black dark:text-white"
+        >
+            Information updated successfully!
+        </h2>
+        <p class="font-medium">
+            You'll be redirected to the home page shortly...
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    setTimeout(function() {
+        window.location.href = "{% url 'home' %}";
+    }, 3000);  // Redirect after 3 seconds
+</script>
+{% endblock content %}

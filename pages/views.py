@@ -86,8 +86,13 @@ class RepairHistoryView(LoginRequiredMixin, ListView):
         return Maintenance.objects.none()
 
 
-class EditInfo(LoginRequiredMixin, UpdateView):
+class EditInfo(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Tenant
     template_name = "update_profile.html"
     form_class = TenantChangeForm
-    success_url = reverse_lazy("home")
+
+    def get_success_url(self):
+        return reverse("update_success")
+
+    def test_func(self):
+        return self.get_object() == self.request.user
