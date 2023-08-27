@@ -1,5 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,6 +31,12 @@ urlpatterns = [
         "update-success/",
         TemplateView.as_view(template_name="edit_success.html"),
         name="update_success",
+    ),
+    path("password_change/", PasswordChangeView.as_view(), name="password_change"),
+    path(
+        "password_change/done/",
+        PasswordChangeDoneView.as_view(),
+        name="password_change_done",
     ),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]
