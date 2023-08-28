@@ -22,15 +22,8 @@ class HomePageView(RedirectView):
         user = self.request.user
         # to check if user is authenticated
         if user.is_authenticated:
-            # To check if user is staff
-            if user.is_staff:
-                return reverse("hostel_list")
-            # Check if user has a room
-            elif hasattr(user, "room") and user.room:
-                return reverse("dashboard")
+            return reverse("dashboard")
             # redirect to a room processing page if user has no room
-            else:
-                return reverse("processing")
         else:
             return reverse("login")
 
