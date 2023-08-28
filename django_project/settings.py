@@ -49,7 +49,29 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "maintenance",
     "widget_tweaks",
+    # Homepage
+    "stamapro",
 ]
+
+# LOGGING ERRROR
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": "debug.log",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -162,4 +184,4 @@ EMAIL_HOST = env.str("EMAIL_SMTP")
 EMAIL_PORT = env.int("EMAIL_PORT")
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env.str("EMAIL")
-EMAIL_HOST_PASSWORD = env.str("EMAIL_PASSWORD")
+EMAIL_HOST_PASSWORD = env.str("EMAIL_PASSWORD", default="")

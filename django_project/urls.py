@@ -25,6 +25,7 @@ urlpatterns = [
     path("hostels/", include("accommodations.urls")),
     path("maintenance/", include("maintenance.urls")),
     path("", include("pages.urls")),
+    path("", include("stamapro.urls")),
 ]
 
 

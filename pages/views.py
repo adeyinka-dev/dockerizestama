@@ -100,4 +100,4 @@ class EditInfo(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 
 class TestPage(TemplateView):
-    template_name = "testing.html"
+    template_name = "thanks.html"
