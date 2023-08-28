@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .forms import TenantCreationForm, TenantChangeForm
+from .forms import TenantCreationForm, TenantChangeForm, ManagerProxy
 from .models import Tenant
 from accommodations.models import Room
 
@@ -84,6 +84,26 @@ class TenantAdmin(UserAdmin):
             room.tenant = obj
             room.status = Room.OCCUPIED
             room.save()
+
+
+class ManagerAdmin(admin.ModelAdmin):
+    form = TenantCreationForm
+    add_form = TenantCreationForm
+
+    def get_form(self, request, obj=None, **kwargs):
+        FormClass = super(ManagerAdmin, self).get_form(request, obj, **kwargs)
+
+        class FormWithMode(
+            FormClass
+        ):  # Define a subclass to modify form initialization
+            def __init__(self, *args, **kwargs):
+                kwargs["mode"] = "manager"  # Set mode to 'manager'
+                super(FormWithMode, self).__init__(*args, **kwargs)
+
+        return FormWithMode
+
+
+admin.site.register(ManagerProxy, ManagerAdmin)
 
 
 admin.site.register(Tenant, TenantAdmin)

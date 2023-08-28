@@ -1,19 +1,53 @@
-from typing import Any, Dict
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from .models import Hostel, Room
 from maintenance.forms import MaintenanceForm
-from django.apps import apps
 from maintenance.models import Maintenance
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.views import View
+from django.core.exceptions import PermissionDenied
+
+
+class ManagerPermissionMixin:
+    """
+    Mixin that ensures that the logged-in user is the manager of the hostel or a superuser.
+    """
+
+    def dispatch(self, request, *args, **kwargs):
+        hostel = self.get_object()
+        # Check if the logged-in user is the manager of the hostel or a superuser
+        if request.user == hostel.manager or request.user.is_superuser:
+            return super().dispatch(request, *args, **kwargs)
+        raise PermissionDenied
 
 
 class HostelListView(ListView):
-    model = Hostel
-    template_name = "hostels_list.html"
+    def get(self, request, *args, **kwargs):
+        hostels = Hostel.objects.filter(manager=request.user)
+        return render(request, "hostel_list.html", {"hostels": hostels})
 
 
-class HostelDetailView(DetailView):
+class StaffLoginView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "admin_login.html")
+
+    def post(self, request, *args, **kwargs):
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None and user.is_staff:
+            login(request, user)
+            return redirect(reverse("hostel_list"))
+        else:
+            return render(
+                request, "admin_login.html", {"error": "Invalid login credentials"}
+            )
+
+
+class HostelDetailView(ManagerPermissionMixin, DetailView):
     model = Hostel
     template_name = "hostel_dashboard.html"
 
