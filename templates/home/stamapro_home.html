@@ -56,7 +56,7 @@
         text-align: center;
       }
       </style>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+		<link rel="icon" type="image/svg+xml" href="{% static 'images/faviconc.ico' %}">
 		<meta name="generator" content="Astro v1.6.14">
 		<meta name="description" content="Template built with tailwindcss using Tailus blocks v2">
 		<title>StamaPro</title>
@@ -143,7 +143,7 @@
                   <h1 class="text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-7xl">Streamlined Management with <span class="text-primary dark:text-white">StamaPro</span></h1>
                   <p class="mt-8 text-gray-700 dark:text-gray-300">This is the future of streamlined accommodations management. We simplify every aspect, from tenant interactions to room allocations, ensuring both landlords and residents enjoy a seamless experience.</p>
                   <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
-                      <a href="#" class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
+                      <a href="{% url 'getstarted' %}" class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
                         <span class="relative text-base font-semibold text-white">Get started</span>
                       </a>
                       <a href="#features" class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
@@ -182,7 +182,7 @@
       </div><div class="mt-16 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden rounded-3xl border border-gray-100 text-gray-600 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4">
         <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
           <div class="relative space-y-8 py-12 p-8">
-            <img src="spinner-solid.svg" class="w-12" width="512" height="512" alt="burger illustration">
+            <img src="{% static 'images/spinner-solid.svg' %}" class="w-12" width="512" height="512" alt="burger illustration">
 
             <div class="space-y-2">
               <h5 class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
@@ -202,7 +202,7 @@
         </div>
         <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
           <div class="relative space-y-8 py-12 p-8">
-            <img src="roomall.svg" class="w-12" width="512" height="512" alt="burger illustration">
+            <img src="{% static 'images/roomall.svg' %}" class="w-12" width="512" height="512" alt="burger illustration">
 
             <div class="space-y-2">
               <h5 class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
@@ -222,8 +222,7 @@
         </div>
         <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
           <div class="relative space-y-8 py-12 p-8">
-            <img src="datasm.svg" class="w-12" width="512" height="512" alt="burger illustration">
-
+            <img src="{% static 'images/datasm.svg' %}" class="w-12" width="512" height="512" alt="burger illustration">
             <div class="space-y-2">
               <h5 class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
                 Centralized Data, Operational Excellence & Resolution
@@ -242,7 +241,7 @@
         </div>
         <div class="group relative bg-gray-50 dark:bg-gray-900 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
           <div class="relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-white dark:group-hover:bg-gray-800">
-            <img src="louder.svg" class="w-12" width="512" height="512" alt="burger illustration">
+            <img src="{% static 'images/louder.svg' %}" class="w-12" width="512" height="512" alt="burger illustration">
 
             <div class="space-y-2">
               <h5 class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
@@ -270,7 +269,7 @@
           <path fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z" clip-rule="evenodd"></path>
         </svg><div class="space-y-6 justify-between text-gray-600 md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
           <div class="md:5/12 lg:w-1/2">
-            <img src="./images/pie.svg" alt="image" loading="lazy" width="" height="" class="w-full">
+            <img src="{% static 'images/pie.svg' %}" alt="image" loading="lazy" width="" height="" class="w-full">
           </div>
           <div class="md:7/12 lg:w-1/2">
             <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
@@ -307,7 +306,7 @@
       </div><div class="md:columns-2 lg:columns-3 gap-8 space-y-8">
         <div class="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div class="flex gap-4">
-            <img class="w-12 h-12 rounded-full" src="./images/avatars/avatar.webp" alt="user avatar" width="400" height="400" loading="lazy">
+            <img class="w-12 h-12 rounded-full" src="{% static 'images/blackmale.jpeg' %}" alt="user avatar" width="400" height="400" loading="lazy">
             <div>
               <h6 class="text-lg font-medium text-gray-700 dark:text-white">Sam Adebanjo</h6>
               <p class="text-sm text-gray-500 dark:text-gray-300">Real Estate Developer</p>
@@ -317,7 +316,7 @@
         </div>
         <div class="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div class="flex gap-4">
-            <img class="w-12 h-12 rounded-full" src="./images/avatars/avatar-1.webp" alt="user avatar" width="200" height="200" loading="lazy">
+            <img class="w-12 h-12 rounded-full" src="{% static 'images/IMG_6820.jpg' %}" alt="user avatar" width="200" height="200" loading="lazy">
             <div>
               <h6 class="text-lg font-medium text-gray-700 dark:text-white">Olusogo Emmanuel</h6>
               <p class="text-sm text-gray-500 dark:text-gray-300">Property Manager</p>
@@ -327,7 +326,7 @@
         </div>
         <div class="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div class="flex gap-4">
-            <img class="w-12 h-12 rounded-full" src="./images/avatars/avatar-2.webp" alt="user avatar" width="200" height="200" loading="lazy">
+            <img class="w-12 h-12 rounded-full" src="{% static 'images/blackgirl.jpeg' %}" alt="user avatar" width="200" height="200" loading="lazy">
             <div>
               <h6 class="text-lg font-medium text-gray-700 dark:text-white">Ayo Sogbesan</h6>
               <p class="text-sm text-gray-500 dark:text-gray-300">Civil Servant</p>
@@ -381,14 +380,14 @@
         </div><div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div class="relative overflow-hidden rounded-xl">
-              <img src="https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
+              <img src="https://i.pinimg.com/564x/50/78/01/5078010753260d4a8bc8f25e7038ee06.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
             </div>
             <div class="mt-6 relative">
               <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                De fuga fugiat lorem ispum laboriosam expedita.
+                Acc A
               </h3>
               <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+                Advsertise Here
               </p>
               <a class="inline-block" href="#">
                 <span class="text-primary dark:text-blue-300">Read more</span>
@@ -398,14 +397,14 @@
           </div>
           <div class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div class="relative overflow-hidden rounded-xl">
-              <img src="https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
+              <img src="https://i.pinimg.com/564x/5b/d5/5e/5bd55e49b73a75f2102a6865a6b7ae04.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
             </div>
             <div class="mt-6 relative">
               <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                De fuga fugiat lorem ispum laboriosam expedita.
+                Acc B
               </h3>
               <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+                Advsertise Here
               </p>
               <a class="inline-block" href="#">
                 <span class="text-primary dark:text-blue-300">Read more</span>
@@ -415,14 +414,14 @@
           </div>
           <div class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
             <div class="relative overflow-hidden rounded-xl">
-              <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
+              <img src="https://i.pinimg.com/564x/cd/c0/89/cdc089800af0c3a8b5f30a0f6b9853a3.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
             </div>
             <div class="mt-6 relative">
               <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                De fuga fugiat lorem ispum laboriosam expedita.
+                Acc C
               </h3>
               <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                Voluptates harum aliquam totam, doloribus eum impedit atque! Temporibus...
+                Advtertise Here
               </p>
               <a class="inline-block" href="#">
                 <span class="text-primary dark:text-blue-300">Read more</span>
