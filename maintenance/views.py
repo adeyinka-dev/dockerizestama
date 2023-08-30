@@ -3,72 +3,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import DetailView, FormView
-from django.views import View
-from .models import Maintenance
+from django.views.generic import DetailView
 from accommodations.models import Room
-from .forms import MaintenanceForm, NoteForm, MaintenanceStatusForm
 from django.core.mail import send_mail
 import logging
 
 logger = logging.getLogger(__name__)
-
-
-class NoteGet(LoginRequiredMixin, DetailView):
-    model = Maintenance
-    template_name = "work_detail.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["form"] = NoteForm()
-        context["status_form"] = MaintenanceStatusForm(instance=self.object)
-        return context
-
-
-class PostNote(LoginRequiredMixin, FormView):
-    model = Maintenance
-    form_class = NoteForm
-    template_name = "work_detail.html"
-
-    def get_maintenance(self):
-        return Maintenance.objects.get(pk=self.kwargs["pk"])
-
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_maintenance()
-        return super().post(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        note = form.save(commit=False)
-        note.maintenance = self.object
-        note.author = self.request.user
-        note.save()
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        maintenance = self.object
-        return reverse("work_detail", kwargs={"pk": maintenance.pk})
-
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_maintenance()
-
-        # Check if status form was submitted
-        status_form = MaintenanceStatusForm(request.POST, instance=self.object)
-        if status_form.is_valid():
-            status_form.save()
-            return redirect(self.get_success_url())  # Redirect to the detail page
-
-        # If status form wasn't submitted, continue with the note processing
-        return super().post(request, *args, **kwargs)
-
-
-class RepairDetailView(LoginRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        view = NoteGet.as_view()
-        return view(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        view = PostNote.as_view()
-        return view(request, *args, **kwargs)
 
 
 class RoomRepair(LoginRequiredMixin, UserPassesTestMixin, DetailView):

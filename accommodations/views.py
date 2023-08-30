@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, FormView
 from .models import Hostel, Room
-from maintenance.forms import MaintenanceForm
+from maintenance.forms import MaintenanceForm, MaintenanceStatusForm, NoteForm
 from maintenance.models import Maintenance
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
@@ -18,9 +18,20 @@ class ManagerPermissionMixin:
     """
 
     def dispatch(self, request, *args, **kwargs):
-        hostel = self.get_object()
-        # Check if the logged-in user is the manager of the hostel or a superuser
-        if request.user == hostel.manager or request.user.is_superuser:
+        if isinstance(self, DetailView):
+            obj = self.get_object()
+        elif isinstance(self, ListView):
+            obj = self.get_queryset().first()
+        else:
+            raise ValueError("ManagerPermissionMixin used in an inappropriate view")
+        # Check if the object is a Room and reference the manager of its related Hostel
+        if isinstance(obj, Room):
+            manager = obj.hostel.manager
+        elif isinstance(obj, Maintenance):
+            manager = obj.room.hostel.manager
+        else:
+            manager = obj.manager
+        if request.user == manager or request.user.is_superuser:
             return super().dispatch(request, *args, **kwargs)
         raise PermissionDenied
 
@@ -33,7 +44,7 @@ class HostelListView(ListView):
 
 class StaffLoginView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, "admin/admin_login.html")
+        return render(request, "registration/admin_login.html")
 
     def post(self, request, *args, **kwargs):
         username = request.POST["username"]
@@ -45,14 +56,14 @@ class StaffLoginView(View):
         else:
             return render(
                 request,
-                "admin/admin_login.html",
+                "registration/admin_login.html",
                 {"error": "Invalid login credentials"},
             )
 
 
 class HostelDetailView(ManagerPermissionMixin, DetailView):
     model = Hostel
-    template_name = "admin/hostel_dashboard.html"
+    template_name = "management/hostel_dashboard.html"
 
     def get_context_data(self, **kwargs):
         """
@@ -124,9 +135,9 @@ class HostelDetailView(ManagerPermissionMixin, DetailView):
         return context
 
 
-class RoomListView(ListView):
+class RoomListView(ManagerPermissionMixin, ListView):
     model = Room
-    template_name = "admin/room_registry.html"
+    template_name = "management/room_registry.html"
 
     def get_queryset(self):
         return Room.objects.filter(hostel__pk=self.kwargs["pk"])
@@ -137,9 +148,9 @@ class RoomListView(ListView):
         return context
 
 
-class ResidentListView(ListView):
+class ResidentListView(ManagerPermissionMixin, ListView):
     model = Room
-    template_name = "admin/resident_list.html"
+    template_name = "management/resident_list.html"
 
     def get_queryset(self):
         return Room.objects.filter(hostel__pk=self.kwargs["pk"])
@@ -150,7 +161,7 @@ class ResidentListView(ListView):
         return context
 
 
-class RoomDetailView(DetailView):
+class RoomDetailView(ManagerPermissionMixin, DetailView):
     model = Room
     template_name = "room_detail.html"
 
@@ -168,3 +179,77 @@ class RoomDetailView(DetailView):
             maintenance.save()
             return redirect("submit_success")
         return self.get(request, *args, **kwargs)
+
+
+class RepairListView(ManagerPermissionMixin, ListView):
+    model = Maintenance
+    template_name = "management/repair_list.html"
+
+    def get_queryset(self):
+        return Maintenance.objects.filter(room__hostel__pk=self.kwargs["pk"])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hostel"] = Hostel.objects.get(pk=self.kwargs["pk"])
+        return context
+
+    def get_object(self):
+        # Override the get_object method to return the related Hostel object
+        return Hostel.objects.get(pk=self.kwargs["pk"])
+
+
+class NoteGet(DetailView):
+    model = Maintenance
+    template_name = "work_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = NoteForm()
+        context["status_form"] = MaintenanceStatusForm(instance=self.object)
+        return context
+
+
+class PostNote(FormView):
+    model = Maintenance
+    form_class = NoteForm
+    template_name = "work_detail.html"
+
+    def get_maintenance(self):
+        return Maintenance.objects.get(pk=self.kwargs["pk"])
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_maintenance()
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        note = form.save(commit=False)
+        note.maintenance = self.object
+        note.author = self.request.user
+        note.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        maintenance = self.object
+        return reverse("work_detail", kwargs={"pk": maintenance.pk})
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_maintenance()
+
+        # Check if status form was submitted
+        status_form = MaintenanceStatusForm(request.POST, instance=self.object)
+        if status_form.is_valid():
+            status_form.save()
+            return redirect(self.get_success_url())  # Redirect to the detail page
+
+        # If status form wasn't submitted, continue with the note processing
+        return super().post(request, *args, **kwargs)
+
+
+class RepairDetailView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        view = NoteGet.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        view = PostNote.as_view()
+        return view(request, *args, **kwargs)

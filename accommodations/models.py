@@ -42,7 +42,7 @@ class Hostel(models.Model):
     phone = models.IntegerField(blank=True, null=True)
     amenities = models.TextField(max_length=9999, null=True, blank=True)
     manager = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="admin"
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="management"
     )
     email = models.EmailField(null=True, blank=True)
     stama_id = models.CharField(max_length=12, unique=True, null=True, blank=True)

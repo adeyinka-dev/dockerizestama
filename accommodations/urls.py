@@ -8,6 +8,8 @@ from .views import (
     RoomListView,
     ResidentListView,
     StaffLoginView,
+    RepairListView,
+    RepairDetailView,
 )
 
 urlpatterns = [
@@ -15,6 +17,8 @@ urlpatterns = [
     path("", StaffLoginView.as_view(), name="management"),
     path("<int:pk>/", HostelDetailView.as_view(), name="hostel_dashboard"),
     path("<int:pk>/rooms/", RoomListView.as_view(), name="room_list"),
+    path("maintenance/<int:pk>/", RepairDetailView.as_view(), name="work_detail"),
+    path("<int:pk>/repairs/", RepairListView.as_view(), name="repairs_registry"),
     path("<int:pk>/residents/", ResidentListView.as_view(), name="resident_list"),
     path("room/<int:pk>/", RoomDetailView.as_view(), name="room_detail"),
     path(

@@ -1,11 +1,8 @@
 from django.urls import path
 from django.views.generic import TemplateView
-from .views import RepairDetailView, RoomRepair
+from .views import RoomRepair
 
 urlpatterns = [
-    path(
-        "maintenance/repair/<int:pk>/", RepairDetailView.as_view(), name="work_detail"
-    ),
     path("room/<int:pk>/", RoomRepair.as_view(), name="raise_repair"),
     path(
         "submit_success/",
