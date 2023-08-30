@@ -1,0 +1,179 @@
+{% extends "admin/base.html" %} 
+
+<!-- load static files  -->
+{% load static %}
+
+<!-- page title -->
+{% block title %} Dashboard {% endblock title %} 
+
+<!-- start page content -->
+{% block content %}
+<div class="mx-auto max-w-screen-2xl p-2 md:p-6 2xl:p-8">
+        <!-- Breadcrumb Start -->
+        <!-- Breadcrumb Start -->
+        <div
+          class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <h2 class="font-bold text-black dark:text-white">
+            Residents
+          </h2>
+
+          <nav>
+            <ol class="flex items-center gap-2">
+              <li>
+                <a class="font-medium" href="#">Registry /</a>
+              </li>
+              <li class="font-medium text-primary">Residents</li>
+            </ol>
+          </nav>
+        </div>
+    <!-- Breadcrumb End -->
+
+    <div class="flex flex-col gap-5 md:gap-7 2xl:gap-10">
+      <!-- ====== Data Table One Start -->
+      <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+        <div class="data-table-common data-table-one max-w-full overflow-x-auto">
+          <table class="table w-full table-auto" id="dataTableOne">
+            <thead>
+              <tr>
+                <th>
+                  <div class="flex items-center gap-1.5">
+                    <p>Name/ID</p>
+                    <div class="inline-flex flex-col space-y-[2px]">
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 0L0 5H10L5 0Z" fill="" />
+                        </svg>
+                      </span>
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex items-center gap-1.5">
+                    <p>Room</p>
+                    <div class="inline-flex flex-col space-y-[2px]">
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 0L0 5H10L5 0Z" fill="" />
+                        </svg>
+                      </span>
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </th>
+                <th data-type="date" data-format="YYYY/DD/MM">
+                  <div class="flex items-center gap-1.5">
+                    <p>DOB</p>
+                    <div class="inline-flex flex-col space-y-[2px]">
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 0L0 5H10L5 0Z" fill="" />
+                        </svg>
+                      </span>
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex items-center gap-1.5">
+                    <p>Contact</p>
+                    <div class="inline-flex flex-col space-y-[2px]">
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 0L0 5H10L5 0Z" fill="" />
+                        </svg>
+                      </span>
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex items-center gap-1.5">
+                    <p>Next of Kin</p>
+                    <div class="inline-flex flex-col space-y-[2px]">
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 0L0 5H10L5 0Z" fill="" />
+                        </svg>
+                      </span>
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex items-center gap-1.5">
+                    <p>Rent Due Date</p>
+                    <div class="inline-flex flex-col space-y-[2px]">
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 0L0 5H10L5 0Z" fill="" />
+                        </svg>
+                      </span>
+                      <span class="inline-block">
+                        <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for room in object_list %}
+                {% if room.tenant%}
+              <tr>
+                <td>{{ room.tenant.first_name }} {{ room.tenant.last_name }}</td>
+                <td>{{ room.room_number }}</td>
+                <td>{{ room.tenant.dob }}</td>
+                <td>{{ room.tenant.phone_number }}</td>
+                <td>{{ room.tenant.nok_phone }}</td>
+                <td>{{ room.tenant.rent_vailidity }}</td>
+              </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- ====== Data Table One End -->
+
+      <!-- ====== Data Table Two Start -->
+      <!-- ====== Data Table Two End -->
+    </div>
+  </div>
+
+{% endblock content %}

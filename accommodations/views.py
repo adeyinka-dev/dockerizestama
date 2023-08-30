@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
+import math
 from django.core.exceptions import PermissionDenied
 
 
@@ -32,7 +33,7 @@ class HostelListView(ListView):
 
 class StaffLoginView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, "admin_login.html")
+        return render(request, "admin/admin_login.html")
 
     def post(self, request, *args, **kwargs):
         username = request.POST["username"]
@@ -43,13 +44,15 @@ class StaffLoginView(View):
             return redirect(reverse("hostel_list"))
         else:
             return render(
-                request, "admin_login.html", {"error": "Invalid login credentials"}
+                request,
+                "admin/admin_login.html",
+                {"error": "Invalid login credentials"},
             )
 
 
 class HostelDetailView(ManagerPermissionMixin, DetailView):
     model = Hostel
-    template_name = "hostel_dashboard.html"
+    template_name = "admin/hostel_dashboard.html"
 
     def get_context_data(self, **kwargs):
         """
@@ -64,10 +67,28 @@ class HostelDetailView(ManagerPermissionMixin, DetailView):
         """
         context = super().get_context_data(**kwargs)
         rooms = Room.objects.filter(hostel=self.object)
-        context["total_rooms"] = rooms.count()
-        context["occupied_rooms"] = rooms.filter(status=Room.OCCUPIED).count()
-        context["unoccupied_rooms"] = rooms.filter(status=Room.UNOCCUPIED).count()
-        context["unavailable_rooms"] = rooms.filter(status=Room.UNAVAILABLE).count()
+        # Get Percentage
+        total_rooms = rooms.count()
+        occupied_rooms = rooms.filter(status=Room.OCCUPIED).count()
+        unoccupied_rooms = rooms.filter(status=Room.UNOCCUPIED).count()
+        unavailable_rooms = rooms.filter(status=Room.UNAVAILABLE).count()
+        occupied_percentage = (
+            math.ceil((occupied_rooms / total_rooms) * 100) if total_rooms else 0
+        )
+        unoccupied_percentage = (
+            math.ceil((unoccupied_rooms / total_rooms) * 100) if total_rooms else 0
+        )
+        unavailable_percentage = (
+            math.ceil((unavailable_rooms / total_rooms) * 100) if total_rooms else 0
+        )
+        context["total_rooms"] = total_rooms
+        context["occupied_rooms"] = occupied_rooms
+        context["unoccupied_rooms"] = unoccupied_rooms
+        context["unavailable_rooms"] = unavailable_rooms
+        context["occupied_percentage"] = occupied_percentage
+        context["unoccupied_percentage"] = unoccupied_percentage
+        context["unavailable_percentage"] = unavailable_percentage
+
         context["tenants"] = [
             {
                 "first_name": room.tenant.first_name,
@@ -105,7 +126,7 @@ class HostelDetailView(ManagerPermissionMixin, DetailView):
 
 class RoomListView(ListView):
     model = Room
-    template_name = "room_list.html"
+    template_name = "admin/room_registry.html"
 
     def get_queryset(self):
         return Room.objects.filter(hostel__pk=self.kwargs["pk"])
@@ -118,7 +139,7 @@ class RoomListView(ListView):
 
 class ResidentListView(ListView):
     model = Room
-    template_name = "resident_list.html"
+    template_name = "admin/resident_list.html"
 
     def get_queryset(self):
         return Room.objects.filter(hostel__pk=self.kwargs["pk"])

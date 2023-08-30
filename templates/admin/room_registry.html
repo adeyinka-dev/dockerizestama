@@ -1,0 +1,148 @@
+{% extends "admin/base.html" %} 
+
+<!-- load static files  -->
+{% load static %}
+
+<!-- page title -->
+{% block title %} Dashboard {% endblock title %} 
+
+<!-- start page content -->
+{% block content %}
+<div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-8">
+    <!-- Breadcrumb Start -->
+    <div
+      class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <h2 class="text-title font-bold text-black dark:text-white">
+        Room Directory
+      </h2>
+
+      <nav>
+        <ol class="flex items-center gap-2">
+          <li>
+            <a class="font-medium" href="#">Registry /</a>
+          </li>
+          <li class="font-medium text" style="color: #00a6fb;">Room Data</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <div class="flex flex-col gap-5 md:gap-7 2xl:gap-10">
+      <!-- ====== Data Table One Start -->
+      <div
+        class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+      >
+        <div
+          class="data-table-common data-table-one max-w-full overflow-x-auto"
+        >
+          <table class="table w-full table-auto" id="dataTableOne">
+            <thead>
+              <tr>
+                <th>
+                  <div class="flex items-center gap-1.5">
+                    <p>Room ID</p>
+                    <div class="inline-flex flex-col space-y-[2px]">
+                      <span class="inline-block">
+                        <svg
+                          class="fill-current"
+                          width="10"
+                          height="5"
+                          viewBox="0 0 10 5"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M5 0L0 5H10L5 0Z" fill="" />
+                        </svg>
+                      </span>
+                      <span class="inline-block">
+                        <svg
+                          class="fill-current"
+                          width="10"
+                          height="5"
+                          viewBox="0 0 10 5"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z"
+                            fill=""
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </th>
+                <th data-type="date" data-format="YYYY/DD/MM">
+                  <div class="flex items-center gap-1.5">
+                    <p>Room Number</p>
+                    <div class="inline-flex flex-col space-y-[2px]">
+                      <span class="inline-block">
+                        <svg
+                          class="fill-current"
+                          width="10"
+                          height="5"
+                          viewBox="0 0 10 5"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M5 0L0 5H10L5 0Z" fill="" />
+                        </svg>
+                      </span>
+                      <span class="inline-block">
+                        <svg
+                          class="fill-current"
+                          width="10"
+                          height="5"
+                          viewBox="0 0 10 5"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z"
+                            fill=""
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex items-center gap-1.5">
+                    <p>Occupant</p>
+                  </div>
+                </th>
+                <th>
+                  <div class="flex items-center gap-1.5">
+                    <p>Status</p>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for room in object_list %}
+              <tr>
+                <td><p class="inline-flex rounded-full  bg-opacity-10 py-1 px-3 text-sm font-medium text-white mt-1" style="background: #00a7fb10; color: #00a6fb;">{{ room.room_id }}</p></td>
+                <td>{{ room.room_number}}</td>
+                <td>{{ room.tenant.first_name }} {{ room.tenant.last_name }}</td>
+                <td>
+                  {% if room.status == "OC" %}
+                  <p class="inline-flex rounded-full  bg-opacity-10 py-1 px-3 text-sm font-medium text-white mt-1" style="background: #00a7fb29; color: #00a6fb;">Occupied</p>
+                  {% elif room.status == "UC"%}
+                  <p class="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success mt-1">Available</p>
+                  {% else %}
+                  <p class="inline-flex rounded-full bg-danger bg-opacity-10 py-1 px-3 text-sm font-medium text-danger mt-1">Under Maintenance</p>
+                  {% endif %}
+                </td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- ====== Data Table One End -->
+    </div>
+  </div>
+
+{% endblock content %}

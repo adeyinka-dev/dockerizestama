@@ -67,7 +67,7 @@ class Hostel(models.Model):
 
     # This is to tell django to generate a URL for the hostel model. This will be used to generate information about Hostel on dashboard
     def get_absolute_url(self):
-        return reverse("hostel_detail", kwargs={"pk": self.pk})
+        return reverse("hostel_dashboard", kwargs={"pk": self.pk})
 
 
 @receiver(post_save, sender=Hostel)
