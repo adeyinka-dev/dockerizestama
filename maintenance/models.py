@@ -88,7 +88,7 @@ class Maintenance(models.Model):
 
     # generate url for each repair
     def get_absolute_url(self):
-        return reverse("work_detail", kwargs={"pk": self.pk})
+        return reverse("work_detail", args=[str(self.pk)])
 
 
 # Funtion to generate a repair unique ID, that will be used for repair search.

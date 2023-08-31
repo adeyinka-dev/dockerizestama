@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.views import View
 import math
 from django.core.exceptions import PermissionDenied
+from django.http import JsonResponse
 
 
 class ManagerPermissionMixin:
@@ -22,6 +23,8 @@ class ManagerPermissionMixin:
             obj = self.get_object()
         elif isinstance(self, ListView):
             obj = self.get_queryset().first()
+        elif isinstance(self, View):
+            obj = Maintenance.objects.get(pk=self.kwargs["pk"])
         else:
             raise ValueError("ManagerPermissionMixin used in an inappropriate view")
         # Check if the object is a Room and reference the manager of its related Hostel
@@ -200,7 +203,7 @@ class RepairListView(ManagerPermissionMixin, ListView):
 
 class NoteGet(DetailView):
     model = Maintenance
-    template_name = "work_detail.html"
+    template_name = "management/work_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -212,13 +215,27 @@ class NoteGet(DetailView):
 class PostNote(FormView):
     model = Maintenance
     form_class = NoteForm
-    template_name = "work_detail.html"
+    template_name = "management/work_detail.html"
 
     def get_maintenance(self):
         return Maintenance.objects.get(pk=self.kwargs["pk"])
 
+    def get_success_url(self):
+        maintenance = self.object
+        return reverse("work_detail", kwargs={"pk": maintenance.pk})
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_maintenance()
+
+        # Check if status form was submitted
+        status_form = MaintenanceStatusForm(request.POST, instance=self.object)
+        if status_form.is_valid():
+            status_form.save()
+            return JsonResponse(
+                {"status": "success", "message": "Status updated successfully!"}
+            )
+
+        # If status form wasn't submitted, continue with the note processing
         return super().post(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -226,11 +243,22 @@ class PostNote(FormView):
         note.maintenance = self.object
         note.author = self.request.user
         note.save()
-        return super().form_valid(form)
+        data = {
+            "status": "success",
+            "message": "Note added successfully!",
+            "note": {
+                "author": str(note.author),
+                "content": str(note),
+                "time_added": note.time_added.strftime("%B %d, %Y, %I:%M %p"),
+            },
+        }
+        return JsonResponse(data)
 
-    def get_success_url(self):
-        maintenance = self.object
-        return reverse("work_detail", kwargs={"pk": maintenance.pk})
+    def form_invalid(self, form):
+        return JsonResponse(
+            {"status": "error", "message": "There was an error processing the form."},
+            status=400,
+        )
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_maintenance()
@@ -245,7 +273,7 @@ class PostNote(FormView):
         return super().post(request, *args, **kwargs)
 
 
-class RepairDetailView(LoginRequiredMixin, View):
+class RepairDetailView(ManagerPermissionMixin, View):
     def get(self, request, *args, **kwargs):
         view = NoteGet.as_view()
         return view(request, *args, **kwargs)

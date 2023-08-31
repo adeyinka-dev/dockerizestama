@@ -4,7 +4,10 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import DetailView
+from django.views import View
+from .models import Maintenance
 from accommodations.models import Room
+from .forms import MaintenanceForm
 from django.core.mail import send_mail
 import logging
 
