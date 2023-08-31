@@ -26,16 +26,6 @@ def validate_file_size(value):
         return value
 
 
-# Workers for assigned to various works in each hostel
-class Workers(models.Model):
-    full_name = models.CharField(max_length=30)
-    speciality = models.CharField(max_length=30)
-    contact = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.full_name
-
-
 class Hostel(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
@@ -54,7 +44,6 @@ class Hostel(models.Model):
         blank=True,
     )
     room_count = models.IntegerField(default=0)
-    worker = models.ForeignKey(Workers, on_delete=models.CASCADE, null=True, blank=True)
 
     # Manager can only be a user with is_staff status
     def save(self, *args, **kwargs):
@@ -92,6 +81,18 @@ def create_rooms(sender, instance, **kwargs):
     elif existing_room_count > instance.room_count:
         # If the current number of rooms is more than room_count, keep existing rooms, don't delete
         pass
+
+
+class Operative(models.Model):
+    full_name = models.CharField(max_length=50)
+    speciality = models.CharField(max_length=30)
+    contact = models.CharField(max_length=50)
+    hostel = models.ForeignKey(
+        Hostel, max_length=100, on_delete=models.CASCADE, null=True, blank=True
+    )
+
+    def __str__(self):
+        return self.full_name
 
 
 # Room model (This will be chnage to FLat model in case this was created for block of flats)

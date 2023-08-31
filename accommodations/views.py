@@ -1,7 +1,6 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, FormView
-from .models import Hostel, Room
+from .models import Hostel, Room, Operative
 from maintenance.forms import MaintenanceForm, MaintenanceStatusForm, NoteForm
 from maintenance.models import Maintenance
 from django.contrib.auth import authenticate, login
@@ -39,10 +38,21 @@ class ManagerPermissionMixin:
         raise PermissionDenied
 
 
-class HostelListView(ListView):
+class HostelListView(ManagerPermissionMixin, ListView):
     def get(self, request, *args, **kwargs):
         hostels = Hostel.objects.filter(manager=request.user)
         return render(request, "hostel_list.html", {"hostels": hostels})
+
+
+class OperativeListView(ListView):
+    model = Operative
+    template_name = "management/operative_list.html"
+    context_object_name = "operatives"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hostel"] = Hostel.objects.get(pk=self.kwargs.get("pk"))
+        return context
 
 
 class StaffLoginView(View):

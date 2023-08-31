@@ -1,8 +1,12 @@
 from django.contrib import admin
-from .models import Hostel, Room
+from .models import Hostel, Room, Operative
 from accounts.models import Tenant
 
 # To see more informations about our Hostel
+
+
+class OperativeAdmin(admin.ModelAdmin):
+    list_display = ["full_name", "speciality", "contact"]
 
 
 class RoomAdmin(admin.ModelAdmin):
@@ -26,5 +30,6 @@ class HostelAdmin(admin.ModelAdmin):
     list_display = ["name", "address", "manager", "phone", "image", "room_count"]
 
 
+admin.site.register(Operative)
 admin.site.register(Hostel, HostelAdmin)
 admin.site.register(Room, RoomAdmin)

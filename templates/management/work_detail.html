@@ -712,7 +712,8 @@
                                
                               </div>
                           </div>
-                        <div x-show="openTab === 2" class="font-medium leading-relaxed" style="display: none" id="notesContainer">
+                        <div x-show="openTab === 2" class="font-medium leading-relaxed" style="display: none">
+                            <div id="notesContainer">
                             {% for note in object.note_set.all %}
                               <div class="max-w-125">
                                   <p class="mb-2.5 text-sm font-medium">{{ note.author }}</p>
@@ -724,6 +725,7 @@
                                   <p class="text-xs font-medium">{{ note.time_added|date:"F j, Y, P"}}</p>
                             </div>
                             {% endfor %}
+                            </div>
                             <div class="sticky bottom-0 border-t border-stroke bg-white py-5 dark:border-strokedark dark:bg-boxdark">
                               <form class="flex items-center" id="noteForm" method="post" >
                                 {% csrf_token %}
@@ -814,7 +816,7 @@
                                 <p class="text-xs font-medium">${response.note.time_added}</p>
                             </div>
                         `;
-                        $(newNoteHtml).prependTo("#notesContainer");
+                        $(newNoteHtml).appendTo("#notesContainer");
                         // Optionally, clear the textarea
                         $('textarea[name="note"]').val('');
                     },

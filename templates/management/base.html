@@ -287,6 +287,16 @@
                                             href="{% url 'repairs_registry' pk=hostel.pk %}"
                                             :class="page === 'kanban' && '!text-white'"
                                         > Repair List
+                                        <span class="absolute right-4 block rounded bg-danger py-1 px-2 text-xs font-medium text-white">{{ pending_count }}</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a
+                                            class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
+                                            href="{% url 'operative_list' pk=hostel.pk %}"
+                                            :class="page === 'kanban' && '!text-white'"
+                                        > Operatives
                                         </a>
                                         
                                     </li>

@@ -35,7 +35,7 @@
                     </span>
             </div>
 
-            <div x-data="{percent : {{ occupied_rooms }}}">
+            <div x-data="{percent : {{ occupied_percentage }}}">
                 <svg class="h-17.5 w-17.5 -rotate-90 transform">
                 <circle
                     class="text-stroke dark:text-strokedark"
@@ -179,7 +179,7 @@
       <div class="rounded-sm border border-stroke bg-white p-2 shadow-default dark:border-strokedark dark:bg-boxdark md:p-6 xl:p-7.5">
         <div class="flex items-end justify-between">
           <div>
-                <h3 class="mb-4 text-title-lg font-bold text-black dark:text-white">{{ unavailable_percentage }}</h3>
+                <h3 class="mb-4 text-title-lg font-bold text-black dark:text-white">{{ unavailable_rooms }}</h3>
                 <p class="font-medium">Unavailable</p>
                 <span class="mt-2 flex items-center gap-2">
                 <span
@@ -197,7 +197,7 @@
                         fill="white"
                     />
                     </svg>
-                    <span>{{unavailable_percentage}}.0%</span>
+                    <span>{{ unavailable_percentage }}.0%</span>
                 </span>
 
                 </span>
@@ -267,7 +267,7 @@
 
               <span
                 class="inline-block rounded-md py-0.5 px-1.5 text-xs font-medium text-white" style="background-color: #e63946;"
-                >2
+                >{{ pending_count }}
               </span>
             </div>
             <div class="flex items-center justify-between">
@@ -278,7 +278,7 @@
 
               <span
                 class="inline-block rounded-md py-0.5 px-1.5 text-xs font-medium text-white" style="background-color: #fcbf49;">
-                2
+                {{ inprogress_count }}
               </span>
             </div>
 
@@ -290,7 +290,7 @@
 
               <span
                 class="inline-block rounded-md py-0.5 px-1.5 text-xs font-medium text-white"
-                style="background-color: #0284c7;">2</span
+                style="background-color: #0284c7;">{{ inspection_count }}</span
               >
             </div>
 
@@ -302,7 +302,7 @@
 
               <span
                 class="inline-block rounded-md py-0.5 px-1.5 text-xs font-medium text-white" style="background-color: #2a9d8f;"
-                >2</span
+                >{{ completed_count }}</span
               >
             </div>
           </div>

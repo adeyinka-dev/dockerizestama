@@ -10,6 +10,7 @@ from .views import (
     StaffLoginView,
     RepairListView,
     RepairDetailView,
+    OperativeListView,
 )
 
 urlpatterns = [
@@ -21,6 +22,7 @@ urlpatterns = [
     path("<int:pk>/repairs/", RepairListView.as_view(), name="repairs_registry"),
     path("<int:pk>/residents/", ResidentListView.as_view(), name="resident_list"),
     path("room/<int:pk>/", RoomDetailView.as_view(), name="room_detail"),
+    path("operatives/<int:pk>", OperativeListView.as_view(), name="operative_list"),
     path(
         "submit_success/",
         TemplateView.as_view(template_name="submit_success.html"),
