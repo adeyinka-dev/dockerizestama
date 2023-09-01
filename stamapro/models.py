@@ -11,9 +11,10 @@ class Client(models.Model):
         CANCELLED = "cancelled", "Cancelled"
 
     hostel_name = models.CharField(max_length=200)
-    address = models.TextField()
-    number_of_rooms = models.PositiveIntegerField()
-    additional_features = models.TextField(blank=True)
+    address = models.TextField(null=True, blank=True)
+    number_of_rooms = models.PositiveIntegerField(null=True, blank=True)
+    additional_features = models.TextField(blank=True, null=True)
+    message = models.TextField(blank=True, null=True)
 
     contact_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)

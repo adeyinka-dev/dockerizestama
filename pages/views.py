@@ -11,10 +11,15 @@ from django.views.generic import (
 from maintenance.models import Maintenance, Room
 from accommodations.models import Room
 from accounts.models import Tenant
-from accounts.forms import TenantCreationForm, TenantChangeForm
+from accounts.forms import (
+    TenantCreationForm,
+    TenantChangeForm,
+    CustomAuthenticationForm,
+)
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import login
 from django.db import transaction
+from .utils import send_signup_notification_email
 
 
 class HomePageView(RedirectView):
@@ -30,6 +35,7 @@ class HomePageView(RedirectView):
 
 class Login(auth_views.LoginView):
     template_name = "registration/login.html"
+    authentication_form = CustomAuthenticationForm
     success_url = reverse_lazy("home")
 
 
@@ -56,6 +62,7 @@ class SignUp(CreateView):
             room.status = Room.OCCUPIED  # Assuming you have this status defined
             room.save()
 
+            send_signup_notification_email(user, room)
             # Log in the user and redirect to the success URL
             login(self.request, user)
             return super().form_valid(form)

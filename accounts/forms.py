@@ -6,6 +6,13 @@ from django_project import settings
 from .models import Tenant
 from accommodations.models import Room
 from django.db import models
+from django.contrib.auth.forms import AuthenticationForm
+
+
+class CustomAuthenticationForm(AuthenticationForm):
+    username = forms.CharField(
+        label="Username or Email", widget=forms.TextInput(attrs={"autofocus": True})
+    )
 
 
 class ManagerProxy(Tenant):

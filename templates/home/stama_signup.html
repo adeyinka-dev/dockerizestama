@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 
 
 <!DOCTYPE html>
@@ -79,46 +80,53 @@
 
                         <div class="mt-12 grid gap-12 sm:mx-auto sm:max-w-lg lg:max-w-max lg:grid-cols-2">
                             <div class="relative">
-                                <form action="" class="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12">
+                                
+
+                                <form action="" method="post" class="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12">
+                                    {% csrf_token %}
+                                    {% if form.errors %}
+                                    <ul class="error-list">
+                                        {% for field, errors in form.errors.items %}
+                                            {% for error in errors %}
+                                                <li>{{ field }}: {{ error }}</li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
                                     <div class="absolute inset-0 hidden scale-105 rounded-3xl bg-gradient-to-b from-transparent dark:block dark:to-gray-900/80"></div>
                                     <div class="relative">
                                         <h2 class="text-2xl font-bold text-gray-800 dark:text-white">What should we know ?</h2>
                                         <div class="mt-8 mb-6 space-y-4">
                                             <div>
-                                                <label for="name" class="mb-2 block text-gray-600 dark:text-gray-300">Your name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
-                                                <input type="text" name="name" id="name" autocomplete="name" class="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" />
-                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                                <label for="{{ form.contact_name.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Your name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                                {{ form.contact_name|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
                                             </div>
                                             <div>
-                                                <label for="email" class="mb-2 block text-gray-600 dark:text-gray-300">Work email <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
-                                                <input type="email" name="email" id="email" autocomplete="email" class="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" />
-                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                                <label for="{{ form.email.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Work email <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                                {{ form.email|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
                                             </div>
                                             <div>
-                                                <label for="phone" class="mb-2 block text-gray-600 dark:text-gray-300">Phone <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
-                                                <input type="tel" name="phone" id="phone" autocomplete="tel" class="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" />
-                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                                <label for="{{ form.phone.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Phone <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                                {{ form.phone|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
                                             </div>
                                             <div>
-                                                <label for="company" class="mb-2 block text-gray-600 dark:text-gray-300">Accommodation name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
-                                                <input type="text" name="company" id="company" autocomplete="work" class="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" />
-                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                                <label for="{{ form.hostel_name.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Hostel name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                                {{ form.hostel_name|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
                                             </div>
                                             <div>
-                                                <label for="message" class="mb-2 block text-gray-600 dark:text-gray-300">Message</label>
-                                                <textarea name="message" id="message" class="peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700"></textarea>
-
-                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                                <label for="{{ form.message.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Message</label>
+                                                {{ form.message|add_class:"peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
                                             </div>
                                         </div>
-
                                         <p class="mb-8 text-sm text-gray-600 dark:text-gray-300">By clicking submit below, you agree to the processing of your personal information by StamaPro as described in the Privacy Policy.</p>
-
-                                        <button type="submit" class="relative ml-auto flex h-11 w-max items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition-transform before:duration-300 active:duration-75 active:before:scale-95 dark:before:bg-primaryLight">
-                                            <span class="relative text-base font-semibold text-white dark:text-gray-900">Get started</span>
-                                        </button>
+                                        <div class="flex justify-center">
+                                            <button type="submit" class="relative flex h-11 w-max items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition-transform before:duration-300 active:duration-75 active:before:scale-95 dark:before:bg-primaryLight">
+                                                <span class="relative text-base font-semibold text-white dark:text-gray-900">Get started</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </form>
+
                             </div>
 
                             <div>

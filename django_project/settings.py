@@ -178,6 +178,11 @@ LOGOUT_REDIRECT_URL = "login"
 DATE_FORMAT = ["%d-%m-%y"]
 
 
+AUTHENTICATION_BACKENDS = [
+    "accounts.backends.EmailOrUsernameModelBackend",
+]
+
+
 # Email Notification
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env.str("EMAIL_SMTP")

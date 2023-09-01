@@ -2,6 +2,9 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 from .forms import ClientCreationForm
 from django.core.mail import send_mail, BadHeaderError
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class StamaClient(FormView):
@@ -56,6 +59,10 @@ class StamaClient(FormView):
             pass
 
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        logger.error(f"Form errors: {form.errors}")
+        return super().form_invalid(form)
 
 
 class StamaHome(TemplateView):

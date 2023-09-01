@@ -8,7 +8,7 @@ class ClientCreationForm(forms.ModelForm):
         fields = [
             "hostel_name",
             "address",
-            "number_of_rooms",
+            "message",
             "contact_name",
             "email",
             "phone",
