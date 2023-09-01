@@ -6,7 +6,7 @@ from django.db import models
 from django.urls import reverse
 import random, uuid, os
 from accounts.models import Tenant
-from django.apps import apps
+from djmoney.models.fields import MoneyField
 
 
 def unique_file_path(instance, filename):
@@ -44,6 +44,9 @@ class Hostel(models.Model):
         blank=True,
     )
     room_count = models.IntegerField(default=0)
+    maintenance_budget = MoneyField(
+        max_digits=14, decimal_places=2, default_currency="USD", null=True
+    )
 
     # Manager can only be a user with is_staff status
     def save(self, *args, **kwargs):
@@ -129,3 +132,10 @@ def create_room_id(sender, instance, created, **kwargs):
         room_number = f"{instance.pk:03}"
         instance.room_id = instance.hostel.stama_id + "/RM/" + instance.room_number
         instance.save(update_fields=["room_id"])
+
+
+class Announcement(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    date_posted = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

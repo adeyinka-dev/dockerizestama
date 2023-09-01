@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "maintenance",
     "widget_tweaks",
+    "djmoney",
     # Homepage
     "stamapro",
 ]

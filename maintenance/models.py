@@ -1,4 +1,4 @@
-from datetime import datetime
+from djmoney.models.fields import MoneyField
 from django.conf import settings
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -6,6 +6,7 @@ from django.db import models
 from accommodations.models import Room
 from django.urls import reverse
 import random
+
 
 """ Instead of hardcoding different types and subtypes of repair, I created a general and """
 """ seperate models for them linking them with foreign keys"""
@@ -77,6 +78,9 @@ class Maintenance(models.Model):
     contact = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=20, choices=WORK_STATUS, default=PENDING)
     description = models.TextField(blank=True, null=True)
+    cost = MoneyField(
+        max_digits=14, decimal_places=2, default_currency="USD", null=True
+    )
 
     # Returns the Hostel name associated with the Room of the Maintenance.
     @property
