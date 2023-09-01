@@ -8,78 +8,133 @@
 
 <!-- start page content -->
 {% block content %}
-<div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-    <div class="col-span-12">
-        <div class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-          <div class="max-w-full overflow-x-auto">
-            <table class="w-full table-auto">
-              <thead>
-                <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                  <th
-                    class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11"
-                  >
-                    RepairID
-                  </th>
-                  <th
-                    class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
-                  >
-                    Type
-                  </th>
-                  <th
-                    class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white"
-                  >
-                    Time Created
-                  </th>
-                  <th class="py-4 px-4 font-medium text-black dark:text-white">
-                    Status
-                  </th>
-                </tr>
-              </thead>
-              {% for repair in object_list %}
-              <tbody>
-                <tr>
-                  <td
-                    class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
-                  >
+<div class="flex flex-col gap-5 md:gap-7 2xl:gap-10">
+  <!-- ====== Data Table One Start -->
+  <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+    <div class="data-table-common data-table-one max-w-full overflow-x-auto">
+      <table class="table w-full table-auto" id="dataTableOne">
+        <thead>
+          <tr>
+            <th>
+              <div class="flex items-center gap-1.5">
+                <p>RepairID</p>
+                <div class="inline-flex flex-col space-y-[2px]">
+                  <span class="inline-block">
+                    <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 0L0 5H10L5 0Z" fill="" />
+                    </svg>
+                  </span>
+                  <span class="inline-block">
+                    <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </th>
+            <th data-type="date" data-format="YYYY/DD/MM">
+              <div class="flex items-center gap-1.5">
+                <p>Type</p>
+                <div class="inline-flex flex-col space-y-[2px]">
+                  <span class="inline-block">
+                    <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 0L0 5H10L5 0Z" fill="" />
+                    </svg>
+                  </span>
+                  <span class="inline-block">
+                    <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </th>
+            <th>
+              <div class="flex items-center gap-1.5">
+                <p>Time Created</p>
+                <div class="inline-flex flex-col space-y-[2px]">
+                  <span class="inline-block">
+                    <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 0L0 5H10L5 0Z" fill="" />
+                    </svg>
+                  </span>
+                  <span class="inline-block">
+                    <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </th>
+            <th>
+              <div class="flex items-center gap-1.5">
+                <p>Status</p>
+                <div class="inline-flex flex-col space-y-[2px]">
+                  <span class="inline-block">
+                    <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 0L0 5H10L5 0Z" fill="" />
+                    </svg>
+                  </span>
+                  <span class="inline-block">
+                    <svg class="fill-current" width="10" height="5" viewBox="0 0 10 5" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 5L10 0L-4.37114e-07 8.74228e-07L5 5Z" fill="" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for repair in object_list %}
+          <tr>
+              <td class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                   <a href="{{ repair.get_absolute_url }}" class="font-semibold no-underline hover:underline text-primary">
-                    {{ repair.repair_id }}
-                </a>
-           
-                  </td>
-                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p class="text-black dark:text-white">{{ repair.type.name }}</p>
-                    <small>{{ repair.subtype.name }}</small>
-                  </td>
-                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p class="text-black dark:text-white">{{ repair.time_created|date:"F j, Y" }}
-                    </p>
-                    <small>{{ repair.time_created|date:"g:i a" }}</small>
-                  </td>
-                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    {% if repair.status == "P" %}
-                    <div class="xsm:col-span-2 sm:col-span-1">
-                        <span class="inline-block rounded bg-red/[0.08] py-1 px-2.5 text-sm font-medium text-danger">Pending</span>
-                    </div>
-                    {% elif repair.status == "WP" %}
-                    <div class="xsm:col-span-2 sm:col-span-1">
-                      <span class="inline-block rounded bg-warning bg-opacity-10 py-1 px-2.5 text-sm font-medium text-warning">Work In Progress</span>
-                    </div>
-                    {% elif repair.status == "INP" %}
-                    <div class="xsm:col-span-2 sm:col-span-1">
-                        <span class="inline-block rounded bg-primary/[0.08] py-1 px-2.5 text-sm font-medium text-primary">Inspection</span>
-                    </div>
-                    {% else %}
-                    <div class="xsm:col-span-2 sm:col-span-1">
-                        <span class="inline-block rounded bg-meta-3/[0.08] py-1 px-2.5 text-sm font-medium text-meta-3">Completed</span>
-                    </div>
-                    {% endif %}
-                  </td>
-                </tr>
-              </tbody>
-              {% endfor %}
-            </table>
-          </div>
-        </div>
-      </div>
+                  {{ repair.repair_id }}
+                  </a>
+              </td>
+              <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  <p class="text-black dark:text-white">{{ repair.type.name }}</p>
+                  <small>{{ repair.subtype.name }}</small>
+              </td>
+              <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  <p class="text-black dark:text-white">{{ repair.time_created|date:"F j, Y" }}
+                  </p>
+                  <small>{{ repair.time_created|date:"g:i a" }}</small>
+              </td>
+              <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  {% if repair.status == "P" %}
+                  <div class="xsm:col-span-2 sm:col-span-1">
+                      <span class="inline-block rounded bg-red/[0.08] py-1 px-2.5 text-sm font-medium text-danger">Pending</span>
+                  </div>
+                  {% elif repair.status == "WP" %}
+                  <div class="xsm:col-span-2 sm:col-span-1">
+                    <span class="inline-block rounded bg-warning bg-opacity-10 py-1 px-2.5 text-sm font-medium text-warning">Work In Progress</span>
+                  </div>
+                  {% elif repair.status == "INP" %}
+                  <div class="xsm:col-span-2 sm:col-span-1">
+                      <span class="inline-block rounded bg-primary/[0.08] py-1 px-2.5 text-sm font-medium text-primary">Inspection</span>
+                  </div>
+                  {% else %}
+                  <div class="xsm:col-span-2 sm:col-span-1">
+                      <span class="inline-block rounded bg-meta-3/[0.08] py-1 px-2.5 text-sm font-medium text-meta-3">Completed</span>
+                  </div>
+                  {% endif %}
+               </td>
+          </tr>
+            
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 {% endblock content %}

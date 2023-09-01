@@ -39,9 +39,15 @@ class ManagerPermissionMixin:
 
 
 class HostelListView(ManagerPermissionMixin, ListView):
-    def get(self, request, *args, **kwargs):
-        hostels = Hostel.objects.filter(manager=request.user)
-        return render(request, "hostel_list.html", {"hostels": hostels})
+    model = Hostel
+    template_name = "hostel_list.html"
+    context_object_name = "hostels"
+
+    def get_queryset(self):
+        """
+        Override the get_queryset method to filter hostels by the logged-in manager.
+        """
+        return Hostel.objects.filter(manager=self.request.user)
 
 
 class OperativeListView(ListView):
@@ -127,6 +133,10 @@ class HostelDetailView(ManagerPermissionMixin, DetailView):
         repairs = Maintenance.objects.filter(room__in=rooms).order_by("-time_created")[
             :5
         ]
+        # Nofication to show only last 3 pending maintnance request
+        nofity_repairs = Maintenance.objects.filter(
+            room__in=rooms, status=Maintenance.PENDING
+        ).order_by("-time_created")[:3]
         pending_repairs = Maintenance.objects.filter(
             room__in=rooms, status=Maintenance.PENDING
         )
@@ -144,6 +154,7 @@ class HostelDetailView(ManagerPermissionMixin, DetailView):
         context["inspection_count"] = inspection_repairs.count()
         context["completed_count"] = completed_repairs.count()
         context["repairs"] = repairs
+        context["notify_repairs"] = nofity_repairs
         context["repairs_count"] = repairs.count()
         return context
 

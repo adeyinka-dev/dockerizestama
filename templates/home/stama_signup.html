@@ -1,260 +1,159 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SingUp</title>
-    <link rel="icon" href="favicon.ico" />
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="{% static 'images/faviconc.ico' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="tailus ui html-vite and tailwindcss 3.1 boilerplate" />
+        <title>Get Started</title>
 
-  <body
-    x-data="{ page: 'crm', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-    x-init="
-         darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
-    class="bg-white"
-  >
-    <!-- ===== Preloader Start ===== -->
-    <div
-      x-show="loaded"
-      x-init="window.addEventListener('DOMContentLoaded', () => {setTimeout(() => loaded = false, 500)})"
-      class="fixed left-0 top-0 z-999999 flex h-screen w-screen items-center justify-center bg-white dark:bg-black"
-    >
-      <div
-        class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-t-transparent"
-      ></div>
-    </div>
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap" rel="stylesheet" />
+      <!-- <script type="module" crossorigin src="{% static 'js/management/getstarted.js' %}"></script> -->
+      <link rel="stylesheet" href="{% static 'css/getstarted.css' %}">
+      <style>
+        /* Center the loader */
+        #loader {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          z-index: 1;
+          width: 100px;
+          height: 100px;
+          margin: -76px 0 0 -76px;
+          border: 5px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 5px solid #00a6fb;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+        }
+        
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        /* Add animation to "page content" */
+        .animate-bottom {
+          position: relative;
+          -webkit-animation-name: animatebottom;
+          -webkit-animation-duration: 1s;
+          animation-name: animatebottom;
+          animation-duration: 1s
+        }
+        
+        @-webkit-keyframes animatebottom {
+          from { bottom:-100px; opacity:0 } 
+          to { bottom:0px; opacity:1 }
+        }
+        
+        @keyframes animatebottom { 
+          from{ bottom:-100px; opacity:0 } 
+          to{ bottom:0; opacity:1 }
+        }
+        
+        #myDiv {
+          display: none;
+          text-align: center;
+        }
+        </style>
+    </head>
+    <body class="min-h-screen overflow-x-hidden bg-white selection:bg-primary/10 selection:text-primary" onload="myFunction()" style="margin:0;">
+        <div id="loader"class="bg-white"></div>
+            <div style="display:none;" id="myDiv" class="animate-bottom">
+            
 
-    <!-- ===== Preloader End ===== -->
+                <section class="py-32 sm:pt-20 md:pt-20 lg:pt-20">
+                    <div class="mx-auto px-4 sm:px-12 xl:max-w-5xl xl:px-0">
+                        <div class="relative z-10 text-center md:mx-auto md:w-5/6 lg:w-4/6">
+                            <h1 class="relative text-center text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">Get Started <span class="opacity-80">here.</span></h1>
+                            <p class="mt-6 text-gray-700 dark:text-gray-300">We'll help you find the right management plan and pricing for your accommodation.</p>
+                        </div>
 
-    <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex overflow-hidden">
-      <!-- ===== Sidebar Start ===== -->
-      <div
-        class="relative flex flex-1 flex-col"
-      >
-        <!-- ===== Main Content Start ===== -->
-        <main>
-            <div class="max-w-180 sm:w-4/4 mx-auto my-auto p-4 md:p-6 2xl:p-10">
-                
-                <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark m-0">
-                    <div class="w p-1 sm:p-12.5 xl:p-10">
-                        <span class="mb-1.5 block font-medium">Get Started</span>
-                        <h2 class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2"> Register your Interest </h2>
-
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="mb-4 ml-4 mr-4">
-                                <label
-                                class="mb-2.5 block font-medium text-black dark:text-white"
-                                >Hostel Name</label
-                                >
-                                <div class="relative">
-                                <input
-                                    type="text" name="{{ form.hostel_name.name }}" required
-                                    class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input"
-                                />
-
-                                <span class="absolute right-4 top-4">
-                                    <svg 
-                                        class="fill-current"
-                                        width="22"
-                                        height="22"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                        <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/>
-                                    </svg>
-                                </span>
-                                </div>
-                                {% if form.hostel_name.errors %}
-                                <div class="text-sm text-danger">
-                                    {{ form.hostel_name.errors }}
-                                </div>
-                                {% endif %}
-                            </div>
-
-                            <div class="mb-4 ml-4 mr-4">
-                                <label
-                                class="mb-2.5 block font-medium text-black dark:text-white"
-                                >Address</label
-                                >
-                                <div class="relative">
-                                <input
-                                type="text" name="{{ form.address.name }}"
-                                    
-                                    class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input"
-                                />
-
-                                <span class="absolute right-4 top-4">
-                                    <svg 
-                                        class="fill-current"
-                                        width="22"
-                                        height="22"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                                        <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/>
-                                    </svg>
-                                </span>
-                                </div>
-                                {% if form.address.errors %}
-                                <div class="text-sm text-danger">
-                                    {{ form.address.errors }}
-                                </div>
-                                {% endif %}
-                            </div>
-                            <div class="mb-4 ml-4 mr-4">
-                                <label
-                                class="mb-2.5 block font-medium text-black dark:text-white"
-                                >Number of Rooms</label
-                                >
-                                <div class="relative">
-                                <input
-                                    type="number" name="{{ form.number_of_rooms.name }}" required
-                                    class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input"
-                                />
-
-                                <span class="absolute right-4 top-4">
-                                    <svg 
-                                        class="fill-current"
-                                        width="22"
-                                        height="22"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"viewBox="0 0 512 512">
-                                        <path d="M24 56c0-13.3 10.7-24 24-24H80c13.3 0 24 10.7 24 24V176h16c13.3 0 24 10.7 24 24s-10.7 24-24 24H40c-13.3 0-24-10.7-24-24s10.7-24 24-24H56V80H48C34.7 80 24 69.3 24 56zM86.7 341.2c-6.5-7.4-18.3-6.9-24 1.2L51.5 357.9c-7.7 10.8-22.7 13.3-33.5 5.6s-13.3-22.7-5.6-33.5l11.1-15.6c23.7-33.2 72.3-35.6 99.2-4.9c21.3 24.4 20.8 60.9-1.1 84.7L86.8 432H120c13.3 0 24 10.7 24 24s-10.7 24-24 24H32c-9.5 0-18.2-5.6-22-14.4s-2.1-18.9 4.3-25.9l72-78c5.3-5.8 5.4-14.6 .3-20.5zM224 64H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32zm0 160H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32zm0 160H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
-                                </span>
-                                </div>
-                                    {% if form.number_of_rooms.errors %}
-                                    <div class="text-sm text-danger">
-                                    {{ form.number_of_rooms.errors }}
-                                    </div>
-                                    {% endif %}
-                            </div>
-
-                            <div class="mb-4 ml-4 mr-4">
-                                <label
-                                class="mb-2.5 block font-medium text-black dark:text-white"
-                                >Contact Name</label
-                                >
-                                <div class="relative">
-                                <input
-                                    type="name"
-                                    name="{{ form.contact_name.name }}"
-                                    class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input"
-                                />
-
-                                <span class="absolute right-4 top-4">
-                                    <svg 
-                                        class="fill-current"
-                                        width="22"
-                                        height="22"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
-                                </span>
-                                </div>
-                                        {% if form.contact_name.errors %}
-                                        <div class="text-sm text-danger">
-                                        {{ form.contact_name.errors }}
-                                        </div>
-                                        {% endif %}
-                                </div>
-                           
-                                <div class="mb-4 ml-4 mr-4">
-                                    <label
-                                    class="mb-2.5 block font-medium text-black dark:text-white"
-                                    >Phone</label
-                                    >
+                        <div class="mt-12 grid gap-12 sm:mx-auto sm:max-w-lg lg:max-w-max lg:grid-cols-2">
+                            <div class="relative">
+                                <form action="" class="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12">
+                                    <div class="absolute inset-0 hidden scale-105 rounded-3xl bg-gradient-to-b from-transparent dark:block dark:to-gray-900/80"></div>
                                     <div class="relative">
-                                        <input
-                                            type="name"
-                                            name="{{ form.phone.name }}"
-                                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input"
-                                        />
+                                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">What should we know ?</h2>
+                                        <div class="mt-8 mb-6 space-y-4">
+                                            <div>
+                                                <label for="name" class="mb-2 block text-gray-600 dark:text-gray-300">Your name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                                <input type="text" name="name" id="name" autocomplete="name" class="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" />
+                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                            </div>
+                                            <div>
+                                                <label for="email" class="mb-2 block text-gray-600 dark:text-gray-300">Work email <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                                <input type="email" name="email" id="email" autocomplete="email" class="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" />
+                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                            </div>
+                                            <div>
+                                                <label for="phone" class="mb-2 block text-gray-600 dark:text-gray-300">Phone <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                                <input type="tel" name="phone" id="phone" autocomplete="tel" class="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" />
+                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                            </div>
+                                            <div>
+                                                <label for="company" class="mb-2 block text-gray-600 dark:text-gray-300">Accommodation name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                                <input type="text" name="company" id="company" autocomplete="work" class="peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700" />
+                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                            </div>
+                                            <div>
+                                                <label for="message" class="mb-2 block text-gray-600 dark:text-gray-300">Message</label>
+                                                <textarea name="message" id="message" class="peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 dark:border-gray-700"></textarea>
 
-                                        <span class="absolute right-4 top-4">
-                                            <svg 
-                                                class="fill-current"
-                                                width="22"
-                                                height="22"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                            <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
-                                            </svg>
+                                                <span class="mt-1 hidden text-sm text-red-500 peer-invalid:block">Helper</span>
+                                            </div>
+                                        </div>
 
-                                        </span>
-                                        </div>
-                                        {% if form.phone.errors %}
-                                        <div class="text-sm text-danger">
-                                        {{ form.phone.errors }}
-                                        </div>
-                                        {% endif %}
+                                        <p class="mb-8 text-sm text-gray-600 dark:text-gray-300">By clicking submit below, you agree to the processing of your personal information by StamaPro as described in the Privacy Policy.</p>
+
+                                        <button type="submit" class="relative ml-auto flex h-11 w-max items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition-transform before:duration-300 active:duration-75 active:before:scale-95 dark:before:bg-primaryLight">
+                                            <span class="relative text-base font-semibold text-white dark:text-gray-900">Get started</span>
+                                        </button>
                                     </div>
-                               
-                                    <div class="mb-4 ml-4 mr-4">
-                                    <label
-                                    class="mb-2.5 block font-medium text-black dark:text-white"
-                                    >Email</label
-                                    >
+                                </form>
+                            </div>
+
+                            <div>
+                                <div class="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:px-12">
+                                    <div class="absolute inset-0 hidden scale-105 rounded-3xl bg-gradient-to-b from-transparent dark:block dark:to-gray-900/80"></div>
                                     <div class="relative">
-                                    <input
-                                        type="name"
-                                        name="{{ form.email.name }}" required
-                                        class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input"
-                                    />
-
-                                    <span class="absolute right-4 top-4">
-                                        <svg 
-                                            class="fill-current"
-                                            width="22"
-                                            height="22"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                                            <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                                        </span>
-                                    </div>
-                                        {% if form.email.errors %}
-                                        <div class="text-sm text-danger">
-                                        {{ form.email.errors }}
+                                        <img class="h-12 w-8 dark:contrast-100 dark:grayscale dark:invert" src="{% static 'images/contactstama.png' %}" alt="stama" width="" height="" />
+                                        <p class="mt-2 mb-8 text-gray-600 dark:text-gray-300">Thank you for considering StamaPro for your property management needs. I built this platform with landlords like you in mind, striving to simplify property management, one property at a time. We're here to support you every step of the way. Welcome aboard!</p>
+                                        <div class="flex gap-4">
+                                            <img class="h-12 w-12 rounded-full" src="{% static 'images/mex.png' %}" alt="user avatar" width="200" height="200" loading="lazy" />
+                                            <div>
+                                                <h2 class="leading-0 text-lg font-medium text-gray-700 dark:text-white">Adeyinka Makinde</h2>
+                                                <p class="leading-0 -mt-0.5 text-sm text-gray-500 dark:text-gray-400">Founder</p>
+                                            </div>
                                         </div>
-                                        {% endif %}
-                                    </div>
-
-                                    <div class="mb-5">
-                                        <input
-                                        type="submit"
-                                        value="Submit"
-                                        class="w-full cursor-pointer rounded-lg border p-4 font-medium text-white transition hover:opacity-90"
-                                        style="background-color: #00a6fb;"
-                                        />
                                     </div>
                                 </div>
+                                
                             </div>
-                        </form>
-
-                  </div>
-                </div>
-
+                        </div>
+                    </div>
+                </section>
             </div>
-            <!-- ====== Forms Section End -->
-          </div>
-        </main>
-        <!-- ===== Main Content End ===== -->
-      </div>
-      <!-- ===== Content Area End ===== -->
-    </div>
-    <!-- ===== Page Wrapper End ===== -->
-    <script defer src="{% static 'js/bundle.js' %}"></script>
-  </body>
+        </div>
+        
+
+        <script>
+            var myVar;
+            function myFunction() {
+              myVar = setTimeout(showPage, 1000);
+            }
+            function showPage() {
+              document.getElementById("loader").style.display = "none";
+              document.getElementById("myDiv").style.display = "block";
+            }
+            </script>
+    </body>
 </html>
