@@ -24,6 +24,8 @@ platformdirs==3.8.1
 psycopg==3.1.8
 psycopg-binary==3.1.8
 py-moneyed==3.0
+pyscopg2==66.0.2
+python-decouple==3.8
 python-dotenv==1.0.0
 soupsieve==2.4.1
 sqlparse==0.4.4
