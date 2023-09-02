@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, FormView
-from .models import Hostel, Room, Operative
+from .models import Hostel, Room, Operative, Announcement
 from maintenance.forms import MaintenanceForm, MaintenanceStatusForm, NoteForm
 from maintenance.models import Maintenance
 from django.contrib.auth import authenticate, login
@@ -302,3 +302,8 @@ class RepairDetailView(ManagerPermissionMixin, View):
     def post(self, request, *args, **kwargs):
         view = PostNote.as_view()
         return view(request, *args, **kwargs)
+
+
+class AnnoucementListView(ListView):
+    model = Announcement
+    template_name = "annoucement_list.html"

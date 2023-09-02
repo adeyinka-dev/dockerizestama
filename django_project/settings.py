@@ -59,20 +59,20 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "handlers": {
-        "file": {
+        "console": {
             "level": "DEBUG",
-            "class": "logging.FileHandler",
-            "filename": "debug.log",
+            "class": "logging.StreamHandler",
         },
     },
     "loggers": {
         "django": {
-            "handlers": ["file"],
+            "handlers": ["console"],
             "level": "DEBUG",
             "propagate": True,
         },
     },
 }
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
