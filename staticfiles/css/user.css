@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+body {
+    display: flex;
+}
+
+
+.sidebar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 110px;
+    height: 93vh;
+    padding: 0 1.7rem;
+    color: rgba(29, 53, 87, 1);
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background: #fff;
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 20px;
+}
+
+
+.sidebar:hover{
+    width: 240px;
+    transition: 0;
+}
+
+.logo{
+    height: 150px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo img{
+    height: 70px;
+    align-items: center;
+    margin-right: 30px;
+    max-width: 100px;
+}
+
+.menu {
+    height: 80%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+
+.menu li:hover, 
+.active {
+    background: #FB8500;
+}
+
+.menu a {
+    color: #1D3557;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.menu a span {
+    overflow: hidden;
+}
+
+.menu a i {
+    font-size: 1.2rem;
+}
+
+.logout{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+/* main body section design */
+.main-content{
+    position: relative;
+    background: #EAF0F8;
+    width: 100%;
+    padding: 1rem;
+}
+
+
+.header-wrapper img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.header-wrapper{
+    margin-top: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 10px;
+    padding: 3px 1rem;
+    margin-bottom: 10px;
+}
+
+.header-title {
+    color: rgba(29, 53, 87, 1);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-box {
+    background: #EAF0F8;
+    border-radius: 15px;
+    color: rgba(29, 53, 87, 1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+}
+
+.search-box input {
+    background: transparent;
+    padding: 10px;
+    transition: all 0.5s ease-out;
+}
+
+.search-box i:hover {
+    transform: scale(1.3);
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+.card-img-top {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.card-title {
+    color: #1D3557;
+}
+
+.card-text {
+    color: #457B9D;
+}
+
+
+.table--wrapper{
+    background: #fff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.table--container{
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #FF9720;
+    color: #fff;
+}
+
+th{
+    padding: 15px;
+    text-align: left;
+}
+
+tbody {
+    background: #FFF6EC;
+}
+
+td {
+    padding: 15px;
+    font-size: 14px;
+    color: #1D3557;
+}
+
+tr:nth-child(even) {
+    background: #fff;
+}
+
+
+tfoot td {
+    padding: 15px;
+}
+
+.active_id {
+    background: #FB8500;
+    text-decoration: none;
+    padding: 4px;
+    color: #1D3557;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+
+
+@media (max-width: 767px) {
+  
+    .search-box {
+      display: none;
+    }
+  
+    .header-wrapper img {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .header-title h2 {
+      font-size: 1.2rem;
+    }
+  
+    .header-title span {
+      font-size: 1.0rem;
+    }
+  }
+  
+
+
+@media (max-width: 767px) { /* This will only apply to screens less than 576px wide (typically mobile devices) */
+    .sidebar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: space-around; /* evenly distribute the menu items horizontally */
+      flex-wrap: wrap; /* Allow the items to wrap onto a new line if there isn't enough space */
+    }
+  
+    .menu {
+      flex-direction: row; /* Make the menu items display in a row instead of a column */
+    }
+  
+    .menu li {
+      flex: 1 0 auto; /* Allow the menu items to shrink and grow as necessary, but don't allow them to take up more space than their content requires */
+    }
+  
+    .menu a {
+      justify-content: center; /* Center the icons and text within each menu item */
+    }
+    
+    .main-content {
+      padding-top: 4rem; /* Add some space at the top of the main content to ensure it's not covered by the new bottom nav bar */
+    }
+}
+
+
+.profile-card {
+    background-color: #FFDCB5; /* white background */
+    color: rgba(29, 53, 87, 1); /* blue text */
+}
+
+.profile-card .card-body {
+    padding: 1.5rem;
+}
+
+.profile-card .card-title {
+    margin-bottom: 1.5rem;
+    color: rgba(29, 53, 87, 1); /* blue title */
+    font-weight: bold;
+}
+
+.user-info-list {
+    list-style-type: none; /* remove bullet points */
+    padding-left: 0;
+}
+
+.user-info-list div {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(29, 53, 87, 0.1);
+}
+
+.user-info-list div:last-child {
+    border-bottom: none;
+}
+
+.user-info-list div strong {
+    display: block;
+    color: rgba(29, 53, 87, 1); /* blue labels */
+    margin-bottom: 0.3rem;
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 10px;
+    height: 100vh;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    background: #fff;
+    z-index: 1000;
+    display: none;
+}
+
+.navbar:hover,
+.navbar:focus-within{
+    width: 100px;
+    transition: 0;
+    display: flex;
+}
+
+.navbar .logo {
+   display: none;
+
+}
+
+.navbar .menu {
+    flex-direction: row;
+}
+
+.navbar .menu li {
+    flex: 1 0 auto;
+}
+
+.navbar .menu a {
+    justify-content: center;
+}
+
+.navbar .logout {
+    position: relative;
+    width: auto;
+    bottom: unset;
+}
+
+@media (max-width: 767px) { 
+    .sidebar {
+        display: none;
+    }
+
+    .navbar {
+        display: flex;
+    }
+
+    li span {
+        display: none;
+    }
+
+    .user-dashboard{
+        padding-top: 1rem;
+    }
+    .info strong{
+        display: block;
+        margin-bottom: -20px; /* Adjust this value as necessary */
+    }
+    
+    .info br {
+        line-height: 0.5; /* Adjust this value as necessary */
+    }
+    .info-content {
+        display: block;
+        margin-top: -20px; /* Adjust this value as necessary */
+    }
+    
+}
+
+    
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+}
+
+
+
+.my-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: 80px;
+}
+
+.btn {
+    margin: 1rem;
+}
+
+.navbar-brand img {
+    width: 100px;
+    height: 60px;
+}
+
+@media (max-width: 767px) {
+    .my-container {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-left: auto;
+        margin-left: -15%;
+    }
+    .my-container h1 {
+        font-size: 15px;
+    }
+}
+

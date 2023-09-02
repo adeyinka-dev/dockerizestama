@@ -1,12 +1,31 @@
 version: "3.11"
 
 services:
-  app:
+  web:
     build: .
+    command: gunicorn django_project.wsgi -b 0.0.0.0:8000
     volumes:
       - .:/stamaaws
     ports:
-      - "8000:8000"
-    image: application:django
-    container_name: stama
-    command: gunicorn django_project.wsgi:application --bind 0.0.0.0:8000
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - "DJANGO_SECRET_KEY=4Dx5f3TRmyGGQJ5U19eozyMy8s1hRoDh7d5DUSfc8ZU"
+      - "DJANGO_DEBUG=True"
+      - "DJANGO_SECURE_SSL_REDIRECT=False"
+      - "DJANGO_SECURE_HSTS_SECONDS=0"
+      - "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=False"
+      - "DJANGO_SECURE_HSTS_PRELOAD=False"
+      - "DJANGO_SESSION_COOKIE_SECURE=False"
+      - "DJANGO_CSRF_COOKIE_SECURE=False" 
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+
+volumes:
+  postgres_data:
+    

@@ -16,7 +16,7 @@ def send_signup_notification_email(user, room):
         send_mail(
             subject,
             message,
-            from_email="your_email@example.com",
+            from_email="elizaluxhomes@gmail.com",
             recipient_list=[hostel_email],
             fail_silently=True,
         )
