@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 
-ALLOWED_HOSTS = ["sleepy-gorge-24775.herokuapp.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["quiet-sea-26099.herokuapp.com", "localhost", "127.0.0.1"]
 
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
