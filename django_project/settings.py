@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-["quiet-sea-41180.herokuapp.com", "localhost", "127.0.0.1"]
+["stama.onrender.com", "localhost", "127.0.0.1"]
 
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
