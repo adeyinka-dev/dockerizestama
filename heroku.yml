@@ -1,5 +1,14 @@
+setup:
+  addons:
+  - plan: heroku-postgresql
 build:
   docker:
+    release:
+       dockerfile: Dockerfile
     web: Dockerfile
+release:
+  image: web
+  command:
+    - python manage.py collectstatic --noinput
 run:
-  web: bundle exec puma -C config/puma.rb
+  web: gunicorn django_project.wsgi
