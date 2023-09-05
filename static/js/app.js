@@ -1,14 +1,28 @@
-window.addEventListener('resize', () => {
-    const navbar = document.getElementById('navbar');
-    const isMobile = window.innerWidth <= 767;
+function typeWriter(elementId, speed) {
+    var element = document.getElementById(elementId);
+    var text = element.innerHTML;
+    element.innerHTML = "";
 
-    if (isMobile) {
-        navbar.classList.remove('sidebar');
-        navbar.classList.add('navbar');
-    } else {
-        navbar.classList.remove('navbar');
-        navbar.classList.add('sidebar');
-    }
-});
+    var i = 0;
+    var interval = setInterval(function () {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(interval);
+        }
+    }, speed);
+}
 
-window.dispatchEvent(new Event('resize'));
+window.onload = function () {
+    typeWriter('loadit', 200);
+    setTimeout(function () {
+        document.getElementById('lastline').style.visibility = "visible";
+        typeWriter('lastline', 100);
+    }, 10000);
+}
+
+
+document.body.classList.add('js-loaded');
+
+

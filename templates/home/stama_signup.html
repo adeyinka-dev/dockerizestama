@@ -1,7 +1,5 @@
 {% load static %}
-{% load widget_tweaks %}
-
-
+{% load widget_tweaks %} 
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,159 +7,190 @@
         <link rel="icon" type="image/svg+xml" href="{% static 'images/faviconc.ico' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="tailus ui html-vite and tailwindcss 3.1 boilerplate" />
-        <title>Get Started</title>
+        <title>StamaPro | contact</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap" rel="stylesheet" />
-      <!-- <script type="module" crossorigin src="{% static 'js/management/getstarted.js' %}"></script> -->
-      <link rel="stylesheet" href="{% static 'css/getstarted.css' %}">
-      <style>
-        /* Center the loader */
-        #loader {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          z-index: 1;
-          width: 100px;
-          height: 100px;
-          margin: -76px 0 0 -76px;
-          border: 5px solid #f3f3f3;
-          border-radius: 50%;
-          border-top: 5px solid #00a6fb;
-          -webkit-animation: spin 2s linear infinite;
-          animation: spin 2s linear infinite;
-        }
-        
-        @-webkit-keyframes spin {
-          0% { -webkit-transform: rotate(0deg); }
-          100% { -webkit-transform: rotate(360deg); }
-        }
-        
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        
-        /* Add animation to "page content" */
-        .animate-bottom {
-          position: relative;
-          -webkit-animation-name: animatebottom;
-          -webkit-animation-duration: 1s;
-          animation-name: animatebottom;
-          animation-duration: 1s
-        }
-        
-        @-webkit-keyframes animatebottom {
-          from { bottom:-100px; opacity:0 } 
-          to { bottom:0px; opacity:1 }
-        }
-        
-        @keyframes animatebottom { 
-          from{ bottom:-100px; opacity:0 } 
-          to{ bottom:0; opacity:1 }
-        }
-        
-        #myDiv {
-          display: none;
-          text-align: center;
-        }
-        </style>
+        <script type="module" crossorigin src="{% static 'stmhome/js/stmhome.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'stmhome/css/stmhome.css' %}">
     </head>
-    <body class="min-h-screen overflow-x-hidden bg-white selection:bg-primary/10 selection:text-primary" onload="myFunction()" style="margin:0;">
-        <div id="loader"class="bg-white"></div>
-            <div style="display:none;" id="myDiv" class="animate-bottom">
-            
+    <body class="min-h-screen overflow-x-hidden bg-white selection:bg-primary/10 selection:text-primary dark:bg-gray-900">
+        <header>
+            <nav id="navbar" class="fixed inset-x-0 z-20 w-full border-b border-gray-100 bg-white/80 backdrop-blur dark:border-gray-700/30 dark:bg-gray-900/80">
+                <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+                    <div class="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 lg:py-4">
+                        <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
+                            <a href="/" aria-label="logo" class="flex items-center space-x-1">
+                                <img src="{% static 'stmhome/images/s-high.png' %}" alt="Logo" style="max-width: 20px; max-height: 20px"/>
+                            </a>
 
-                <section class="py-32 sm:pt-20 md:pt-20 lg:pt-20">
-                    <div class="mx-auto px-4 sm:px-12 xl:max-w-5xl xl:px-0">
-                        <div class="relative z-10 text-center md:mx-auto md:w-5/6 lg:w-4/6">
-                            <h1 class="relative text-center text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">Get Started <span class="opacity-80">here.</span></h1>
-                            <p class="mt-6 text-gray-700 dark:text-gray-300">We'll help you find the right management plan and pricing for your accommodation.</p>
+                            <button aria-label="humburger" id="hamburger" class="relative -mr-6 p-6 lg:hidden">
+                                <div aria-hidden="true" class="m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"></div>
+                                <div aria-hidden="true" class="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"></div>
+                            </button>
                         </div>
+                        <div id="layer" aria-hidden="true" class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-500 dark:bg-gray-900/70 lg:hidden"></div>
+                        <div id="navlinks" class="invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:visible lg:relative lg:flex lg:w-auto lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none lg:peer-checked:translate-y-0 dark:lg:bg-transparent">
+                            <div class="text-gray-600 dark:text-gray-300 lg:pr-4">
+                                <ul class="space-y-6 text-base font-medium tracking-wide lg:flex lg:space-y-0 lg:text-sm">
+                                    <li>
+                                        <a href="{% url 'stmhome' %}" class="block transition hover:text-primary md:px-4">
+                                            <span>Features</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block transition hover:text-primary md:px-4">
+                                            <span>Listings</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="./pricing.html" class="block transition hover:text-primary md:px-4">
+                                            <span>Pricing</span>
+                                        </a>
+                                    </li>
 
-                        <div class="mt-12 grid gap-12 sm:mx-auto sm:max-w-lg lg:max-w-max lg:grid-cols-2">
-                            <div class="relative">
-                                
-
-                                <form action="" method="post" class="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12">
-                                    {% csrf_token %}
-                                    {% if form.errors %}
-                                    <ul class="error-list">
-                                        {% for field, errors in form.errors.items %}
-                                            {% for error in errors %}
-                                                <li>{{ field }}: {{ error }}</li>
-                                            {% endfor %}
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                    <div class="absolute inset-0 hidden scale-105 rounded-3xl bg-gradient-to-b from-transparent dark:block dark:to-gray-900/80"></div>
-                                    <div class="relative">
-                                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">What should we know ?</h2>
-                                        <div class="mt-8 mb-6 space-y-4">
-                                            <div>
-                                                <label for="{{ form.contact_name.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Your name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
-                                                {{ form.contact_name|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
-                                            </div>
-                                            <div>
-                                                <label for="{{ form.email.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Work email <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
-                                                {{ form.email|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
-                                            </div>
-                                            <div>
-                                                <label for="{{ form.phone.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Phone <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
-                                                {{ form.phone|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
-                                            </div>
-                                            <div>
-                                                <label for="{{ form.hostel_name.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Hostel name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
-                                                {{ form.hostel_name|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
-                                            </div>
-                                            <div>
-                                                <label for="{{ form.message.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Message</label>
-                                                {{ form.message|add_class:"peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 focus:ring-2 dark:border-gray-700" }}
-                                            </div>
-                                        </div>
-                                        <p class="mb-8 text-sm text-gray-600 dark:text-gray-300">By clicking submit below, you agree to the processing of your personal information by StamaPro as described in the Privacy Policy.</p>
-                                        <div class="flex justify-center">
-                                            <button type="submit" class="relative flex h-11 w-max items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition-transform before:duration-300 active:duration-75 active:before:scale-95 dark:before:bg-primaryLight">
-                                                <span class="relative text-base font-semibold text-white dark:text-gray-900">Get started</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-
+                                </ul>
                             </div>
+                            <button aria-label="switch theme" class="switcher group relative hidden h-9 w-9 rounded-full before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 lg:flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="transistion relative m-auto hidden h-5 w-5 fill-gray-500 duration-300 group-hover:rotate-180 group-hover:fill-yellow-400 dark:block dark:fill-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="transistion relative m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:-rotate-90 group-hover:fill-blue-900 dark:hidden" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="fixed top-3 right-14 z-20 sm:right-24 lg:hidden">
+                            <button aria-label="switche theme" class="switcher group relative flex h-9 w-9 rounded-full before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="transistion relative m-auto hidden h-5 w-5 fill-gray-500 duration-300 group-hover:rotate-180 group-hover:fill-yellow-400 dark:block dark:fill-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="transistion relative m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:-rotate-90 group-hover:fill-blue-900 dark:hidden" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-                            <div>
-                                <div class="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:px-12">
-                                    <div class="absolute inset-0 hidden scale-105 rounded-3xl bg-gradient-to-b from-transparent dark:block dark:to-gray-900/80"></div>
-                                    <div class="relative">
-                                        <img class="h-12 w-8 dark:contrast-100 dark:grayscale dark:invert" src="{% static 'images/contactstama.png' %}" alt="stama" width="" height="" />
-                                        <p class="mt-2 mb-8 text-gray-600 dark:text-gray-300">Thank you for considering StamaPro for your property management needs. I built this platform with landlords like you in mind, striving to simplify property management, one property at a time. We're here to support you every step of the way. Welcome aboard!</p>
-                                        <div class="flex gap-4">
-                                            <img class="h-12 w-12 rounded-full" src="{% static 'images/mex.png' %}" alt="user avatar" width="200" height="200" loading="lazy" />
-                                            <div>
-                                                <h2 class="leading-0 text-lg font-medium text-gray-700 dark:text-white">Adeyinka Makinde</h2>
-                                                <p class="leading-0 -mt-0.5 text-sm text-gray-500 dark:text-gray-400">Founder</p>
-                                            </div>
+        <section class="py-32 sm:pt-20 md:pt-28 lg:pt-40">
+            <div class="mx-auto px-4 sm:px-12 xl:max-w-5xl xl:px-0">
+                <div class="relative z-10 text-center md:mx-auto md:w-5/6 lg:w-4/6">
+                    <h1 class="relative text-center text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">Get Started <span class="opacity-80">here.</span></h1>
+                    <p class="mt-6 text-gray-700 dark:text-gray-300">We'll help you find the right management plan and pricing for your accommodation.</p>
+                </div>
+
+                <div class="mt-12 grid gap-12 sm:mx-auto sm:max-w-lg lg:max-w-max lg:grid-cols-2">
+                    <div class="relative">
+                        <form action=""  method="post"  class="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12">
+                            <div class="absolute inset-0 hidden scale-105 rounded-3xl bg-gradient-to-b from-transparent dark:block dark:to-gray-900/80"></div>
+                            <div class="relative">
+                                <h2 class="text-2xl font-bold text-gray-800 dark:text-white">What should we know ?</h2>
+                                <div class="mt-8 mb-6 space-y-4">
+                                    <div>
+                                        <label for="{{ form.contact_name.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Full name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                        {{ form.contact_name|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 dark:border-gray-700"}}
+                                    
+                                        {% if form.contact_name.errors %}
+                                        <div class="text-sm text-red">
+                                        {{ form.contact_name.errors }}
                                         </div>
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        <label for="{{ form.email.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300"> Email <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                        {{ form.email|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 dark:border-gray-700"}}
+                                        {% if form.email.errors %}
+                                        <div class="text-sm text-red">
+                                        {{ form.email.errors }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        <label for="{{ form.phone.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Phone <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                        {{ form.phone|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 dark:border-gray-700"}}
+                                        {% if form.phone.errors %}
+                                        <div class="text-sm text-red">
+                                        {{ form.phone.errors }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        <label for="{{ form.hostel_name.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Hostel name <span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                        {{ form.hostel_name|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 dark:border-gray-700"}}
+                                        
+                                        {% if form.hostel_name.errors %}
+                                        <div class="text-sm text-red">
+                                        {{ form.hostel_name.errors }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        <label for="{{ form.messgae.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Message</label>
+                                        {{ form.message|add_class:"peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 dark:border-gray-700"}}
+                                        {% if form.message.errors %}
+                                        <div class="text-sm text-red">
+                                        {{ form.message.errors }}
+                                        </div>
+                                        {% endif %}
                                     </div>
                                 </div>
-                                
+
+                                <p class="mb-8 text-sm text-gray-600 dark:text-gray-300">By clicking submit below, you agree to the processing of your personal information by StamaPro as described in the Privacy Policy.</p>
+
+                                <button type="submit" class="relative ml-auto flex h-11 w-max items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition-transform before:duration-300 active:duration-75 active:before:scale-95">
+                                    <span class="relative text-base font-semibold text-white dark:text-gray-900">Get started</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        <div class="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:px-12">
+                            <div class="absolute inset-0 hidden scale-105 rounded-3xl bg-gradient-to-b from-transparent dark:block dark:to-gray-900/80"></div>
+                            <div class="relative">
+                                <img class="h-12 w-auto dark:contrast-100 dark:grayscale dark:invert" src="{% static 'stmhome/images/stamacon.png' %}" alt="microsoft" width="" height="" />
+                                <p class="mt-2 mb-8 text-gray-600 dark:text-gray-300">Thank you for considering StamaPro for your property management needs. I built this platform with landlords like you in mind, striving to simplify property management, one property at a time. We're here to support you every step of the way. Welcome aboard!</p>
+                                <div class="flex gap-4">
+                                    <img class="h-12 w-12 rounded-full" src="{% static 'stmhome/images/mex.png' %}" alt="user avatar" width="200" height="200" loading="lazy" />
+                                    <div>
+                                        <h2 class="leading-0 text-lg font-medium text-gray-700 dark:text-white">Adeyinka Makinde</h2>
+                                        <p class="leading-0 -mt-0.5 text-sm text-gray-500 dark:text-gray-400">Developer</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
-        </div>
-        
+        </section>
+        <footer class="border-t border-gray-100 pt-32 pb-8 dark:border-gray-800">
+            <div>
+                <div class="m-auto space-y-8 px-4 text-gray-600 dark:text-gray-400 sm:px-12 xl:max-w-6xl xl:px-0">
+                    <div class="grid grid-cols-8 gap-6 md:gap-0">
+                        <div class="col-span-8 md:col-span-2 lg:col-span-3">
+                            <div class="flex h-full items-center justify-between gap-6 border-b border-white py-6 dark:border-gray-800 md:flex-col md:items-start md:justify-between md:space-y-6 md:border-none md:py-0">
 
-        <script>
-            var myVar;
-            function myFunction() {
-              myVar = setTimeout(showPage, 1000);
-            }
-            function showPage() {
-              document.getElementById("loader").style.display = "none";
-              document.getElementById("myDiv").style.display = "block";
-            }
-            </script>
+                                <div class="flex gap-6">
+                                    <a href="#" target="blank" aria-label="twitter" class="hover:text-primary">
+                                        <span class="sr-only">Twitter</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                                            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                            <div class="flex justify-between text-sm md:pl-16">
+                                <span>&copy; bx 2003 - Present</span>
+                                <span>All right reserved</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

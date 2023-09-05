@@ -1,522 +1,318 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en" class="astro-2ML3US5U">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width">
-    <style>
-      /* Center the loader */
-      #loader {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        z-index: 1;
-        width: 100px;
-        height: 100px;
-        margin: -76px 0 0 -76px;
-        border: 5px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 5px solid #00a6fb;
-        -webkit-animation: spin 2s linear infinite;
-        animation: spin 2s linear infinite;
-      }
-      
-      @-webkit-keyframes spin {
-        0% { -webkit-transform: rotate(0deg); }
-        100% { -webkit-transform: rotate(360deg); }
-      }
-      
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      
-      /* Add animation to "page content" */
-      .animate-bottom {
-        position: relative;
-        -webkit-animation-name: animatebottom;
-        -webkit-animation-duration: 1s;
-        animation-name: animatebottom;
-        animation-duration: 1s
-      }
-      
-      @-webkit-keyframes animatebottom {
-        from { bottom:-100px; opacity:0 } 
-        to { bottom:0px; opacity:1 }
-      }
-      
-      @keyframes animatebottom { 
-        from{ bottom:-100px; opacity:0 } 
-        to{ bottom:0; opacity:1 }
-      }
-      
-      #myDiv {
-        display: none;
-        text-align: center;
-      }
-      </style>
-		<link rel="icon" type="image/svg+xml" href="{% static 'images/faviconc.ico' %}">
-		<meta name="generator" content="Astro v1.6.14">
-		<meta name="description" content="Template built with tailwindcss using Tailus blocks v2">
-		<title>StamaPro</title>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="{% static 'images/faviconc.ico' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="tailus ui html-vite and tailwindcss 3.1 boilerplate" />
+        <title>StamaPro</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap" rel="stylesheet" />
-	<link rel="stylesheet" href="{% static 'css/index.4596d31b.css' %}" /></head>
-	<body class="bg-white dark:bg-gray-900 astro-2ML3US5U" onload="myFunction()" style="margin:0;">
-    <div id="loader"class="bg-white"></div>
-    <div style="display:none;" id="myDiv" class="animate-bottom">
-      <header class="astro-N7KO5B74">
-      <nav class="z-10 w-full absolute astro-N7KO5B74">
-          <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-      <div class="flex flex-wrap items-center justify-between py-2 gap-6 md:py-4 md:gap-0 relative astro-N7KO5B74">
-                  <input aria-hidden="true" type="checkbox" name="toggle_nav" id="toggle_nav" class="hidden peer astro-N7KO5B74">
-                  <div class="relative z-20 w-full flex justify-between lg:w-max md:px-0 astro-N7KO5B74">
-                      <a href="#" aria-label="logo" class="flex space-x-2 items-center astro-N7KO5B74">
-                          
-                          <img src="{% static 'images/contactstama.png' %}" alt="" style="max-width: 160px;" class="h-12">
-                          
-                      </a>
-                      
-                      <div class="relative flex items-center lg:hidden max-h-10 astro-N7KO5B74">
-                          <label role="button" for="toggle_nav" aria-label="humburger" id="hamburger" class="relative  p-6 -mr-6 astro-N7KO5B74">
-                              <div aria-hidden="true" id="line" class="m-auto h-0.5 w-5 rounded bg-sky-900 dark:bg-gray-300 transition duration-300 astro-N7KO5B74"></div>
-                              <div aria-hidden="true" id="line2" class="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 dark:bg-gray-300 transition duration-300 astro-N7KO5B74"></div>
-                          </label>
-                      </div>
-                  </div>
-                  <div aria-hidden="true" class="fixed z-5 inset-0 h-screen w-screen bg-white/70 backdrop-blur-2xl origin-bottom scale-y-0 transition duration-500 peer-checked:origin-top peer-checked:scale-y-100 lg:hidden dark:bg-gray-900/70 astro-N7KO5B74"></div>
-                  <div class="flex-col z-20 flex-wrap gap-6 p-8 rounded-3xl border border-gray-100 bg-white shadow-2xl shadow-gray-600/10 justify-end w-full invisible opacity-0 translate-y-1  absolute top-full left-0 transition-all duration-300 scale-95 origin-top 
-                              lg:relative lg:scale-100 lg:peer-checked:translate-y-0 lg:translate-y-0 lg:flex lg:flex-row lg:items-center lg:gap-0 lg:p-0 lg:bg-transparent lg:w-7/12 lg:visible lg:opacity-100 lg:border-none
-                              peer-checked:scale-100 peer-checked:opacity-100 peer-checked:visible lg:shadow-none 
-                              dark:shadow-none dark:bg-gray-800 dark:border-gray-700 astro-N7KO5B74">
-                    
-                      <div class="text-gray-600 dark:text-gray-300 lg:pr-4 lg:w-auto w-full lg:pt-0 astro-N7KO5B74">
-                          <ul class="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-6 lg:gap-0 astro-N7KO5B74">
-                              <li class="astro-N7KO5B74">
-                                  <a href="#features" class="block md:px-4 transition hover:text-primary astro-N7KO5B74">
-                                      <span class="astro-N7KO5B74">Features</span>
-                                  </a>
-                              </li>
-                              <li class="astro-N7KO5B74">
-                                  <a href="#Listings" class="block md:px-4 transition hover:text-primary astro-N7KO5B74">
-                                      <span class="astro-N7KO5B74">Listings</span>
-                                  </a>
-                              </li>
-                              <li class="astro-N7KO5B74">
-                                  <a href="#Pricing" class="block md:px-4 transition hover:text-primary astro-N7KO5B74">
-                                      <span class="astro-N7KO5B74">Pricing</span>
-                                  </a>
-                              </li>
-                              <li class="astro-N7KO5B74">
-                                  <a href="#contact" class="block md:px-4 transition hover:text-primary astro-N7KO5B74">
-                                      <span class="astro-N7KO5B74">Contact Us</span>
-                                  </a>
-                              </li>
-                          </ul>
-                      </div>
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap" rel="stylesheet" />
+        <script type="module" crossorigin src="{% static 'stmhome/js/stmhome.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'stmhome/css/stmhome.css' %}">
+    </head>
+    <body class="min-h-screen bg-white selection:bg-primary/10 selection:text-primary dark:bg-gray-900">
+        <header>
+            <nav id="navbar" class="fixed inset-x-0 z-20 w-full border-b border-gray-100 bg-white/80 backdrop-blur dark:border-gray-700/30 dark:bg-gray-900/80">
+                <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+                    <div class="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 lg:py-4">
+                        <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
+                            <a href="/" aria-label="logo" class="flex items-center space-x-1">
+                                <img src="{% static 'stmhome/images/s-high.png' %}" alt="Logo" style="max-width: 20px; max-height: 20px"/>
+                            </a>
 
-                      <div class="mt-12 lg:mt-0 astro-N7KO5B74">
-                          <a href="{% url 'getstarted' %}" class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-N7KO5B74">
-                              <span class="relative text-sm font-semibold text-white astro-N7KO5B74">Get Started</span>
-                          </a>
-                      </div>
-                  </div>
-              </div>
-  </div>
-      </nav>
-      </header>
-      <main class="space-y-40 mb-40">
-      <div class="relative" id="home">
-      <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-          <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
-          <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
-      </div>
-      <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-      <div class="relative pt-36 ml-auto">
-              <div class="lg:w-2/3 text-center mx-auto">
-                  <h1 class="text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-7xl">Streamlined Management with <span class="text-primary dark:text-white">StamaPro</span></h1>
-                  <p class="mt-8 text-gray-700 dark:text-gray-300">This is the future of streamlined accommodations management. We simplify every aspect, from tenant interactions to room allocations, ensuring both landlords and residents enjoy a seamless experience.</p>
-                  <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
-                      <a href="{% url 'getstarted' %}" class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
-                        <span class="relative text-base font-semibold text-white">Get started</span>
-                      </a>
-                      <a href="#features" class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
-                        <span class="relative text-base font-semibold text-primary dark:text-white">Learn more</span>
-                      </a>
-                  </div>
-                  <div class="hidden py-8 mt-16 border-y border-gray-100 dark:border-gray-800 sm:flex justify-between">
-                      <div class="text-left">
-                          <h6 class="text-lg font-semibold text-gray-700 dark:text-white">The lowest price</h6>
-                          <p class="mt-2 text-gray-500">We offers top-tier accommodations management at unbeatable rates. Quality meets affordability.</p>
-                      </div>
-                      <div class="text-left" style="margin-right: 25px;">
-                          <h6 class="text-lg font-semibold text-gray-700 dark:text-white">The fastest on the market</h6>
-                          <p class="mt-2 text-gray-500">Experience swift listings and quick responses. StamaPro prioritizes your time</p>
-                      </div>
-                      <div class="text-left">
-                          <h6 class="text-lg font-semibold text-gray-700 dark:text-white">The most loved</h6>
-                          <p class="mt-2 text-gray-500">Our community speaks volumes. With StamaPro, join a loved and trusted network of accommodations</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-  </div>
-  </div>
-      <div id="features">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-      <div class="md:w-2/3 lg:w-1/2">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-secondary">
-          <path fill-rule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z" clip-rule="evenodd"></path>
-        </svg>
-        
-        <h2 class="my-8 text-2xl font-bold text-gray-700 dark:text-white md:text-4xl">
-          Tech-Driven Accommodation Management with StamaPro
-        </h2>
-        <p class="text-gray-600 dark:text-gray-300">Leveraging cutting-edge technology, StamaPro redefines property management. With smart algorithms and sleek design, we bring efficiency and simplicity to the forefront. Experience the future of accommodation with StamaPro.</p>
-      </div><div class="mt-16 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden rounded-3xl border border-gray-100 text-gray-600 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4">
-        <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-          <div class="relative space-y-8 py-12 p-8">
-            <img src="{% static 'images/spinner-solid.svg' %}" class="w-12" width="512" height="512" alt="burger illustration">
+                            <button aria-label="humburger" id="hamburger" class="relative -mr-6 p-6 lg:hidden">
+                                <div aria-hidden="true" class="m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"></div>
+                                <div aria-hidden="true" class="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"></div>
+                            </button>
+                        </div>
+                        <div id="layer" aria-hidden="true" class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-500 dark:bg-gray-900/70 lg:hidden"></div>
+                        <div id="navlinks" class="invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:visible lg:relative lg:flex lg:w-auto lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none lg:peer-checked:translate-y-0 dark:lg:bg-transparent">
+                            <div class="text-gray-600 dark:text-gray-300 lg:pr-4">
+                                <ul class="space-y-6 text-base font-medium tracking-wide lg:flex lg:space-y-0 lg:text-sm">
+                                    <li>
+                                        <a href="#features" class="block transition hover:text-primary md:px-4">
+                                            <span>Features</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block transition hover:text-primary md:px-4">
+                                            <span>Listings</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block transition hover:text-primary md:px-4">
+                                            <span>Pricing</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#footer" class="block transition hover:text-primary md:px-4">
+                                            <span>Contact Us</span>
+                                        </a>
+                                    </li>
 
-            <div class="space-y-2">
-              <h5 class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
-                Digital Onboarding & Integration
-              </h5>
-              <p class="text-gray-600 dark:text-gray-300">
-                Say goodbye to cumbersome paperwork. Residents register and seamlessly integrate into the platform. Their dedicated dashboard becomes the hub for all accommodation-related needs.
-              </p>
-            </div>
-            <a href="#" class="flex items-center justify-between group-hover:text-secondary">
-              <span class="text-sm">Read more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd"></path>
-              </svg>                
-            </a>
-          </div>
-        </div>
-        <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-          <div class="relative space-y-8 py-12 p-8">
-            <img src="{% static 'images/roomall.svg' %}" class="w-12" width="512" height="512" alt="burger illustration">
+                                </ul>
+                            </div>
 
-            <div class="space-y-2">
-              <h5 class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
-                Managerial Oversight & Allocation
-              </h5>
-              <p class="text-gray-600 dark:text-gray-300">
-                Managers have a comprehensive view of all properties. Utilize the dynamic room allocation system to optimize tenant placements and streamline operations.
-              </p>
-            </div>
-            <a href="#" class="flex items-center justify-between group-hover:text-secondary">
-              <span class="text-sm">Read more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd"></path>
-              </svg>                
-            </a>
-          </div>
-        </div>
-        <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-          <div class="relative space-y-8 py-12 p-8">
-            <img src="{% static 'images/datasm.svg' %}" class="w-12" width="512" height="512" alt="burger illustration">
-            <div class="space-y-2">
-              <h5 class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
-                Centralized Data, Operational Excellence & Resolution
-              </h5>
-              <p class="text-gray-600 dark:text-gray-300">
-                Manage all resident requests, needs, and essential data from a unified portal. Real-time tracking of maintenance requests ensures swift managerial responses.
-              </p>
-            </div>
-            <a href="#" class="flex items-center justify-between group-hover:text-secondary">
-              <span class="text-sm">Read more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd"></path>
-              </svg>                
-            </a>
-          </div>
-        </div>
-        <div class="group relative bg-gray-50 dark:bg-gray-900 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-          <div class="relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-white dark:group-hover:bg-gray-800">
-            <img src="{% static 'images/louder.svg' %}" class="w-12" width="512" height="512" alt="burger illustration">
-
-            <div class="space-y-2">
-              <h5 class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
-                Publicity Boost
-              </h5>
-              <p class="text-gray-600 dark:text-gray-300">
-                Increase property visibility with our complimentary promotion for registered accommodations
-              </p>
-            </div>
-            <a href="#" class="flex items-center justify-between group-hover:text-secondary">
-              <span class="text-sm">Read more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd"></path>
-              </svg>                
-            </a>
-          </div>
-        </div>
-      </div>
-  </div>
-  </div>
-      <div id="solution">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-sky-500">
-          <path fill-rule="evenodd" d="M2.25 13.5a8.25 8.25 0 018.25-8.25.75.75 0 01.75.75v6.75H18a.75.75 0 01.75.75 8.25 8.25 0 01-16.5 0z" clip-rule="evenodd"></path>
-          <path fill-rule="evenodd" d="M12.75 3a.75.75 0 01.75-.75 8.25 8.25 0 018.25 8.25.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75V3z" clip-rule="evenodd"></path>
-        </svg><div class="space-y-6 justify-between text-gray-600 md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
-          <div class="md:5/12 lg:w-1/2">
-            <img src="{% static 'images/pie.svg' %}" alt="image" loading="lazy" width="" height="" class="w-full">
-          </div>
-          <div class="md:7/12 lg:w-1/2">
-            <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
-              Real-Time Support with StamaPro
-            </h2>
-            <p class="my-8 text-gray-600 dark:text-gray-300">
-              In the dynamic world of accommodations, immediate assistance is paramount. 
-              StamaPro's real-time helpdesk ensures that every query, concern, or feedback doesn't just reach us <br> <br> 
-              It's acted upon promptly. Experience a support system tailored for today's fast-paced environment
-            </p>
-            <div class="divide-y space-y-4 divide-gray-100 dark:divide-gray-800">
-              <div class="mt-8 flex gap-4 md:items-center">
-                <div class="w-12 h-12 flex gap-4 rounded-full bg-indigo-100 dark:bg-indigo-900/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 m-auto text-indigo-500 dark:text-indigo-400">
-                    <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0112 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 01-3.476.383.39.39 0 00-.297.17l-2.755 4.133a.75.75 0 01-1.248 0l-2.755-4.133a.39.39 0 00-.297-.17 48.9 48.9 0 01-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97zM6.75 8.25a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H7.5z" clip-rule="evenodd"></path>
-                  </svg>        
+                            <div class="mt-12 -ml-1 flex w-full flex-col space-y-2 border-primary/10 dark:border-gray-700 sm:flex-row md:w-max lg:mt-0 lg:mr-6 lg:space-y-0 lg:border-l lg:pl-6">
+                                <a href="{% url 'getstarted' %}" class="relative ml-auto flex h-9 w-full items-center justify-center before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-primaryLight sm:px-4 lg:before:border lg:before:border-gray-200 lg:before:bg-gray-100 lg:dark:before:bg-gray-800">
+                                    <span class="relative text-sm font-semibold text-white dark:text-gray-900 lg:text-primary lg:dark:text-white">Get started</span>
+                                </a>
+                            </div>
+                            <button aria-label="switch theme" class="switcher group relative hidden h-9 w-9 rounded-full before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 lg:flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="transistion relative m-auto hidden h-5 w-5 fill-gray-500 duration-300 group-hover:rotate-180 group-hover:fill-yellow-400 dark:block dark:fill-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="transistion relative m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:-rotate-90 group-hover:fill-blue-900 dark:hidden" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="fixed top-3 right-14 z-20 sm:right-24 lg:hidden">
+                            <button aria-label="switche theme" class="switcher group relative flex h-9 w-9 rounded-full before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="transistion relative m-auto hidden h-5 w-5 fill-gray-500 duration-300 group-hover:rotate-180 group-hover:fill-yellow-400 dark:block dark:fill-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="transistion relative m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:-rotate-90 group-hover:fill-blue-900 dark:hidden" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="w-5/6">
-                  <h4 class="font-semibold text-lg text-gray-700 dark:text-indigo-300">Chat Anytime</h4>
-                  <p class="text-gray-500 dark:text-gray-400">Connect instantly with our team for immediate assistance or inquiries.</p>
-                </div> 
-              </div> 
-            </div>
-          </div>
-        </div>
-  </div>
-  </div>
-      <div class="text-gray-600 dark:text-gray-300" id="testimonials">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-      <div class="mb-20 space-y-4 px-6 md:px-0">
-        <h2 class="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
-          What People are saying about us.
-        </h2>
-      </div><div class="md:columns-2 lg:columns-3 gap-8 space-y-8">
-        <div class="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
-          <div class="flex gap-4">
-            <img class="w-12 h-12 rounded-full" src="{% static 'images/blackmale.jpeg' %}" alt="user avatar" width="400" height="400" loading="lazy">
-            <div>
-              <h6 class="text-lg font-medium text-gray-700 dark:text-white">Sam Adebanjo</h6>
-              <p class="text-sm text-gray-500 dark:text-gray-300">Real Estate Developer</p>
-            </div>
-          </div>
-          <p class="mt-8">I've tried multiple property management apps, but this one stands out. The user interface is intuitive, and the dynamic room allocation is a game-changer. Highly recommended for both residents and administrators!</p>
-        </div>
-        <div class="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
-          <div class="flex gap-4">
-            <img class="w-12 h-12 rounded-full" src="{% static 'images/IMG_6820.jpg' %}" alt="user avatar" width="200" height="200" loading="lazy">
-            <div>
-              <h6 class="text-lg font-medium text-gray-700 dark:text-white">Olusogo Emmanuel</h6>
-              <p class="text-sm text-gray-500 dark:text-gray-300">Property Manager</p>
-            </div>
-          </div>
-          <p class="mt-8"> As a property manager, efficiency and clear communication are key. This platform delivers both. The real-time maintenance tracking has made my job so much easier. Kudos to the team!</p>
-        </div>
-        <div class="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
-          <div class="flex gap-4">
-            <img class="w-12 h-12 rounded-full" src="{% static 'images/blackgirl.jpeg' %}" alt="user avatar" width="200" height="200" loading="lazy">
-            <div>
-              <h6 class="text-lg font-medium text-gray-700 dark:text-white">Ayo Sogbesan</h6>
-              <p class="text-sm text-gray-500 dark:text-gray-300">Civil Servant</p>
-            </div>
-          </div>
-          <p class="mt-8">Finally, an app that understands the needs of tenants! The personal dashboard is a breeze to use, and I love how transparent the entire process is. Reporting issues has never been this straightforward."</p>
-        </div>
-        
+            </nav>
+        </header>
 
-      </div>
-  </div>
-  </div>
-      <div class="relative py-16">
-    <div aria-hidden="true" class="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-      <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
-      <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
-    </div>
-    <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-      <div class="relative">
-        <!-- <div class="flex items-center justify-center -space-x-2">
-          <img loading="lazy" width="400" height="400" src="./images/avatars/avatar.webp" alt="member photo" class="h-8 w-8 rounded-full object-cover">
-          <img loading="lazy" width="200" height="200" src="./images/avatars/avatar-2.webp" alt="member photo" class="h-12 w-12 rounded-full object-cover">
-          <img loading="lazy" width="200" height="200" src="./images/avatars/avatar-3.webp" alt="member photo" class="z-10 h-16 w-16 rounded-full object-cover">
-          <img loading="lazy" width="200" height="200" src="./images/avatars/avatar-4.webp" alt="member photo" class="relative h-12 w-12 rounded-full object-cover">
-          <img loading="lazy" width="200" height="200" src="./images/avatars/avatar-1.webp" alt="member photo" class="h-8 w-8 rounded-full object-cover">
-        </div> -->
-        <div class="mt-6 m-auto space-y-6 md:w-8/12 lg:w-7/12">
-          <h1 class="text-center text-4xl font-bold text-gray-800 dark:text-white md:text-5xl">Get Started now</h1>
-          <p class="text-center text-xl text-gray-600 dark:text-gray-300">
-            Be at the forefront of a paradigm shift that prioritizes simplicity, trust, and superior living experiences. Plus, relish in the bonus of free publicity for your accommodation with us.
-          </p>
-          <div class="flex flex-wrap justify-center gap-6">
-            <a href="{% url 'getstarted' %}" class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
-                <span class="relative text-base font-semibold text-white dark:text-dark">Get Started</span>
-              </a>
-              <a href="#features" class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
-                <span class="relative text-base font-semibold text-primary dark:text-white">More about</span>
-            </a>
-          </div>
-        </div>
-      </div>
-  </div>
-  </div>
-      <div id="Listings">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-      <div class="mb-12 space-y-2 text-center">
-          <h2 class="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white">Listed Accommodations</h2>
-          <p class="lg:mx-auto lg:w-6/12 text-gray-600 dark:text-gray-300">
-            Explore our handpicked accommodations. For bookings, click on a property to get direct contact details. Find your ideal space with StamaPro.
-          </p>
-        </div><div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="https://i.pinimg.com/564x/50/78/01/5078010753260d4a8bc8f25e7038ee06.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
+        <section class="pt-32 sm:pt-36 md:pt-40 lg:pt-36">
+            <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+                <div class="text-center">
+                    <div class="items-center gap-12 lg:flex">
+                        <div class="md:mx-auto md:w-3/4 lg:ml-0 lg:w-1/2 lg:mr-12">
+                            <h1 class="text-center text-5xl font-bold text-blue-900 dark:text-white sm:text-6xl lg:text-left lg:text-7xl">
+                                <span>Streamlined Management with</span>
+                                <span class="relative">
+                                    <svg class="absolute inset-x-0 -bottom-1 w-full opacity-50" xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 260 15.6">
+                                        <style>
+                                            .st0 {
+                                              fill: #1565c0
+                                            }
+                                        </style>
+                                        <path class="st0" d="M206.8 7.3l-.1.3c.1-.2.2-.3.1-.3zM234.7 10h-.1c-.2.4-.1.3.1 0zM54.8 4.2l-.6-.4c.2.4.4.5.6.4zM17.1 5.1zM34.5 9.6l.1.3c0-.2 0-.3-.1-.3zM22.4 10.8c-.3-.1-.7-.1-1-.1.2.1.7.1 1 .1zM17.5 5c-.1.1-.2.1-.4.2.2-.1.3-.2.4-.2zM52.7 9.8l.5.9c-.1-.3-.3-.6-.5-.9zM19.5 11.6c-.2-.2-.4-.2-.6-.3 0 .2.3.3.6.3zM120.9 11.4c-.1.1-.2.2-.2.3.3-.1.3-.2.2-.3zM80.9 10.4h-.1s.1.1.2.1l-.1-.1zM92.6 10.4l-.2.2c.2-.1.2-.1.2-.2zM72.1 11.3c-.1.1-.3.2-.4.3l.4-.3z" />
+                                        <path
+                                            class="st0"
+                                            d="M260 6c-1-.6-4.7-1.2-5.8.3-.2-.1.1-.3.2-.4-.9.2-2.2.1-3.6 0s-2.9-.2-4.2 0c-1 1.5-3.9-.6-4.8 1.4l.5-.4c.9.5-1.2 1.4-1.5 1.9-.8-1.2-.1-1-1-2l1.1.4-.3-1c-3.1 2.8-6.2-.9-8.2 1.1.1-.1.1-.3.2-.4-1.4-.5-2.3.8-3.3 1.2-.1-.5.6-.9 1.1-1.3-2.4-.3-6.4 1.2-9 .4-.9.7.4.9-.6 1.5-.8-.2-1.4-.7-.4-1.1-2.3-1.2-7.6 1-11.1-.2-1.8.8-.7 1.1-3.5 1.6.7-.5-.7-1.7 1-1.7l.2-.5c-2.8-.1-6.6-.3-8.1 1.2-.1-1.1-.5-.2-1.6-.8-.4.1 0 .2.2.2-1 .9-1.6-.1-2.3.1l.3-.2-2 .7c-.3-.2-.8-.4-.9-.7v.8c-1.1 0-.5-1-1.9-.8l.3.6c-.9-.4-2.2.4-2.4-.5 0-.2.1-.1.4-.1-1.3-1.2-3.5.3-5.1-.3l.4 1.3c-1.6.4-1-.3-.9-.7-1.1 0-1.3-.4-2.7-.6-.7.3-.4.5-.6.8l-1.5-.4 1-.7c-2.3 1.8-5.6-.4-7.2 1.2-.8-.4.8-.7.3-1-2.6-.9-6 1-8.2 0-3.6-1-7.8-.4-11.8-1.1l.1.3-2.9-.4c-.8.7-2.7.3-4 1.1.1-.3-.1-.7.2-.9-1.2.1-2.6.4-3.3-.1l.4-.3c-2.7-.3-6.4-.5-7.9.1-.9 0-.9-.6-1.1-1-1.6-.1-2.6.2-3.9.7-.3-.2-.7-.3-1-.6l-.6.8c-.6-.1-.1-.7-.6-.9-2.5.9-5.3-.1-7-.1l.2.4c-.7.3-2.1-.3-1.2-.7-3.4-.6-5.1 1.2-9.6.8-.6-1.5-4.1.3-4.8-1.4-1.9.4-3.2-.3-4.5.6 0-.2-.2-.2.1-.3-.8-.6-3.3-.2-5.3.2l-.1-.5c-.9 1.2-4.2.9-4.9 2-.2-.2.4-.5.7-.7-1-1.1-1.8.5-3.1.2.1-.3-.3-.6 0-.8-4.4-1.2-10.6.7-16.3-.1-1.6 0 .6 1.2-1.5 1.1-.6-.6 1-1.1-.3-1.4-.9.7-1.3.5-2.6.5.2-.4 0-.6.9-.9-.7-.5-3.1.9-4.5 0 .1.3-.2.5-.5.7-2.1 1-4.9-.9-5.1-.4 0 0-.7.2-.1.3-.8 0-1.9-.2-1.7-.7-.4.3-.8.8-1.4.8l.3-.6c-.4.1-.8.5-1.1.6l.6.4c-.9-.5-2.6.8-2.6-.4h.3l-1.7-.5c-.7.5-1.3 1-2.5.9-.5-1.3-2.9-.2-4.3-.3l.1-.4c-1.1.6-4 .4-3.5.6-1.1 0-2.6-.2-2-.6-.8.1-2.7.1-3.2.9l-1.8-1c-1 1.6-3.6-.5-3.6 1.2-1-.2-.8-.6-1.5-.9-1.4.9-2.8.8-4.2.7v-.2c-1.4-.1-3.1.8-5.1 1l-.5-1.2c-1 .2-1.3 1.2-2.3 1-.2-.2 0-.3.2-.3-1 .3-2.3.1-3.1-.2-1.5 1-2.7.7-3.9 1.8-1.3-1 1.7-.6.6-1.6-2.2-.4-4.4.4-6.7 1.1-.2-.2 0-.4.1-.7 0 0-1.2.9-2.2 1.8C.9 8.3 0 9.4.5 10c-.5.9-1.2 1.4.9 2 .6-.5 2.5-1.3 2.9-.4l.1-.9c2.6-.6.4 1.8 3.6 1.6l-.7-.3c.6-.1 1.1-.7 1.8-.5.2.2-.2.4-.5.6.9-.5 1.7-.9 2.6-1.4.1.5.1.8-.4 1.2 2.5-.2-.6-1.6 2.4-1.4.6.4-.2.6-.5.9 1.4.7 2.3-.1 3.8-.6.1.8-.9.7.3 1.2-.3-.4-.5-1.1.5-1.2-.4.8.7.4 1.6.5-.2-.3-.1-.6.2-.8.4-.1.8.1 1.4.1l-1.1-.7c1.5-.8 2.4.3 3.6.6-.1.1-.3.3-.5.3 1.2.3 2.5.9 4.1.1l-.3.1c2.9-.9-1-1.3 2.4-2.2 1.1.1-.4 2.6 2.1 1.6-1.3-.6 1.6-1.7 3.1-2L32.4 10c.6 0 1.6-.5 2-.3l-.1-.3c-.2-1.3 1.9.1 3-.7-1.3 1.8-1.4 1.5-1.6 3.2 1-1 2.2-1.9 4.1-1.8l-1.5 1.4c2.5.2 5.5-1.9 7.6-3-.5 1 .3 1.4-.6 2.2l2.4-.3-.7 1.1c1-1.2 2.1-.4 1.9-1.9-.3.2-.2.4-.7.3.1-.4.5-1.4 1.7-1.3.9.3-.5.6-.2 1 .8-.6.9.3 1.7-.1l-.8-.6c.6-.9 1.4-.1 2.2-.5-1 .4-.7.9-.3 1.4l-.1-.1c.8-.1 1.6-.7 2-.2l-.5 1.2.9-.9c.3.1.6.6 0 .8 2.8.7-.1-2.5 3.6-1.5 0 .5-.4.8-1.4.5-.2.7.1 1.1 1.1 1.4v.1c1.9 0 4.4 0 5.6-.8.4.3 0 .6-.4.9 2.1.4 2.8-.7 5 .1l-1-.4c1.4-.6 4-.8 5.3.1l-.4.3c1.3-.7 3.5.6 4 0-.6-.4 0-.6-.8-1l3.4-.7.2 1.2 1.8-.4c-.4-.5 2.4.4 2.5-.7 1 .4-.4.9-.8 1.4 1-.3 1.1.2 2.1-.5l1 1.1 2.6-.7c-.1.1 0 .2-.1.3 1.2-.9 3.1.6 4.6-.9-.1.1-.1.1-.1.2.9-.8 2.9-.2 3.7 0 1.4-.2.6-1 .6-1.4 3.9.4 2.7.3 6-.9 2 1.4-2.4 2.1.1 3 .4-.6 2.1-1.1 4.1-1.3 1.8.5 4.8.9 6.5 1.9l-.2-.9 2.6-.4-1.5 1.2c.4-.3 1.7-.8 2.6-1.2 2.7-.7 1.4 1.9 3.5.7.1.1.1.2.2.3.7-.6 2.4-.3 4.4-.5l-.7 1.1-1.3-.3c.7 1.1 2.1-.1 3.4 0 1.3-.3.7-1.3 1.4-1.6.5.1 1.2-.2 1.6.1 1.1.4.1 1.3-.3 1.8 1-1.1 1.4-.9 3.6-1.3.1.5-.1.8-.4.9.5-.1.9-.3 1.2-.8l.7.7c2.5 1 2.6-2 5.6-1.5-.8.6 2.6 0 3.5.7-1.1.1.4 1.6-.2 2.3 2.4.5 1-1.3 3-1.4l-.9 1.3c1.9-.5.5-.7 2.4-1.1-.5.4.8.4-.3.8 2.5.2 1.9.1 4.1.3l.2-1.3c.7-.1 1 .5 1.2.7-.3 0-.8-.1-.7.1.8 1.2 1.4-.6 2.4.5-.2-.4-.5-1 .4-1.1-.3.8 1.4.8 1.4 1.2-.6-.6 2-.2 2.1-1 1 .7-.4.6-.4 1.1.9-1 3.7 0 4.6-.6 0 .1.1.1.1.2 1.2-.6 3-.7 5.3-1.5l-.8.7c2.2.4 1.4-1.5 3.3-1.5-.4 1.1 3.1 0 2.2 1.2 1.1-.6 2.3-.8 3.1-1.7 1 .6-2.1 1.4-.6 1.8l1.6-.5.3.6c.1-.4 1.5-.4 1.4-.8.2.7.9 1.2.8 1.8 1-.2 2.4.5 3.3-.1l.1.3c1-1.3 3.1-.2 3.6-1.5l.6.7c1.5-.1 1.3-1.5 2-1.8.6 0 1.4-.2 2 0-2 .8 1 1.1 1.4 1.6.8 0 3.1 0 3.7-.7-1 .7-.4 1.2-2.1 1.3.9 1.3 2.6-.2 4.5-.1v.6c2.7-.4 2.8-1.5 4-2.5.3.8.1 1-.7 1.7 1.8.5 4.7-.1 6.7 0 .6.5.2.9-.5 1.1 2.1-.6 4.7.1 6-1.2-.5.5.9.3 1.6.6 0-.3.1-.6.2-.6 1.3-.6 4.1-1.1 5.6-.7l-.5.4c1.7.1 3-.5 4.3-.9 1.3-.4 2.6-.8 4.5-.4.7.3-.7 1.1.7 1 .7-.5.4-1.5 2.2-1.3l-.1.9 1.2-.9c-.7-.7-2.6-.4-1.3-1.2 1.6.8 1.3-.9 3.3 0-.4.1-1 .8-1.3 1.2 2 .4 3.4.1 4.8-.1 1.4-.3 2.8-.6 4.9-.2 2-.8 4.6-1.2 5.9-1.9 0 .9 0 1.7-.8 2.4 1.8 0 2.4-2.1 3.7-.9.7-1.3 4.7-1.2 5-3l2-.8z"
+                                        />
+                                        <path class="st0" d="M58.1 11.1c-1 0-1.9 0-2.3.2.2.2 2.3.6 2.3-.2zM208.2 13.3c-.1 0-.3.1-.4.1.1 0 .3 0 .4-.1zM216.3 12.9c-.1-.1-.2-.2-.4-.3 0 .3.1.5.4.3zM132.6 11.5zM178.5 13.7c.7-.4 1-.7 1-1-.4.1-.7.3-1 1zM163 12.6c-.1.1-.2.1-.3.2.3-.1.3-.2.3-.2zM130.2 12c.7-.4 1.6-.3 2.4-.5-.7.2-1.9-.3-2.4.5zM226.1 11.4l-.7.6.8-.4zM218.6 12c-.3-.1-1.7.3-1.3.6.4-.3.9-.5 1.3-.6zM189.6 11.4l-.3.6.7-.5z" />
+                                    </svg>
+                                    <span class="relative bg-gradient-to-r from-primary to-primaryLight bg-clip-text text-transparent dark:to-primaryLight" id="loadit">StamaPro.</span>
+                                </span>
+                            </h1>
+                            <p class="mt-12 text-center text-lg text-gray-600 dark:text-gray-300 sm:text-xl lg:text-left">This is the future of streamlined accommodations management. We simplify every aspect, from tenant interactions to room allocations, ensuring both landlords and residents enjoy a seamless experience.</p>
+                            <form action="" class="mt-12">
+                                <div class="relative flex items-center rounded-full border border-primary/20 bg-white p-1 px-2 shadow-md dark:border-white/10 dark:bg-dark md:p-2 lg:pr-3">
+                                    <div class="py-3 pl-4 lg:pl-5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="m-auto h-6 w-6 fill-gray-500 dark:fill-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                        </svg>
+                                    </div>
+                                    <input autocomplete="email" placeholder="Your mail address" class="w-full rounded-full bg-transparent p-4 placeholder-gray-600 dark:placeholder-white" type="email" />
+                                    <div class="md:pr-1.5 lg:pr-0">
+                                        <button type="button" title="Start buying" class="relative ml-auto h-12 w-16 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:bg-primary sm:w-auto sm:px-6">
+                                            <span class="relative hidden w-max font-semibold text-white dark:text-gray-900 md:block"> Get Started </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="relative mx-auto h-6 w-6 text-white dark:text-gray-900 md:hidden">
+                                                <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                            <div class="text-center lg:text-left md:ml-12 sm:block hidden md:block hidden">
+                                <img class="mt-12 lg:mt-0 lg:ml-12 lg:w-1/2" src="{% static 'stmhome/images/management.svg' %}" alt="tailus stats and login components" style="width: 500px;" height="1000px" />
+                            </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-6 relative">
-              <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                Acc A
-              </h3>
-              <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                Advsertise Here
-              </p>
-              <a class="inline-block" href="#">
-                <span class="text-primary dark:text-blue-300">Read more</span>
-              </a>
-            </div>
-            
-          </div>
-          <div class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="https://i.pinimg.com/564x/5b/d5/5e/5bd55e49b73a75f2102a6865a6b7ae04.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
-            </div>
-            <div class="mt-6 relative">
-              <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                Acc B
-              </h3>
-              <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                Advsertise Here
-              </p>
-              <a class="inline-block" href="#">
-                <span class="text-primary dark:text-blue-300">Read more</span>
-              </a>
-            </div>
-            
-          </div>
-          <div class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
-            <div class="relative overflow-hidden rounded-xl">
-              <img src="https://i.pinimg.com/564x/cd/c0/89/cdc089800af0c3a8b5f30a0f6b9853a3.jpg" alt="art cover" loading="lazy" width="1000" height="667" class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105">
-            </div>
-            <div class="mt-6 relative">
-              <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                Acc C
-              </h3>
-              <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-                Advtertise Here
-              </p>
-              <a class="inline-block" href="#">
-                <span class="text-primary dark:text-blue-300">Read more</span>
-              </a>
-            </div>
-            
-          </div>
-        </div>
-  </div>
-  </div>
-      </main>
-      <footer class="py-20 md:py-40">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-      <div class="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
-          <div class="flex flex-wrap items-center justify-between md:flex-nowrap">
-            <div class="flex w-full justify-center space-x-12 text-gray-600 dark:text-gray-300 sm:w-7/12 md:justify-start">
-              <ul class="list-inside list-disc space-y-8">
-                <li><a href="#" class="transition hover:text-primary">Home</a></li>
-    
-                <li><a href="#" class="transition hover:text-primary">About</a></li>
-                <li><a href="#" class="transition hover:text-primary">Guide</a></li>
-                <li><a href="#" class="transition hover:text-primary">Blocks</a></li>
-                <li><a href="#" class="transition hover:text-primary">Contact</a></li>
-                <li><a href="#" class="transition hover:text-primary">Terms of Use</a></li>
-              </ul>
-    
-              <ul role="list" class="space-y-8">
-                <li>
-                  <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
-                      <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
-                    </svg>
-                    <span>Twitter</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
-                      <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"></path>
-                    </svg>
-                    <span>YouTube</span>
-                  </a>
-                </li>
-    
-                <li>
-                  <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
-                      <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
-                    </svg>
-                    <span>Facebook</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5" viewBox="0 0 16 16">
-                      <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
-                    </svg>
-                    <span>Instagram</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="m-auto mt-16 w-10/12 space-y-6 text-center sm:mt-auto sm:w-5/12 sm:text-left">
-    
-              <span class="block text-gray-500 dark:text-gray-400">STM &copy; <span id="year">2023</span></span>
-    
-              <span class="flex justify-between text-gray-600 dark:text-white">
-                <a href="#" class="font-medium">Terms of Use </a>
-                <a href="#" class="font-medium"> Privacy Policy</a>
-              </span>
-    
-              <span class="block text-gray-500 dark:text-gray-400">Need help? <a href="#" class="font-semibold text-gray-600 dark:text-white" id="contact"> Contact Us</a></span>
-            </div>
-          </div>
-        </div>
-  </div>
-      </footer>
-    </div>
-<script>
-var myVar;
-function myFunction() {
-  myVar = setTimeout(showPage, 1000);
-}
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-}
-</script>
-<script>
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    const toggleCheckbox = document.getElementById('toggle_nav');
-    const navLinks = document.querySelectorAll('.astro-N7KO5B74 ul li a'); // adjust this selector to target your nav links
+        </section>
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            toggleCheckbox.checked = false;
-        });
-    });
-});
-</script>
-</body>
+        <section class="my-32" id="features">
+            <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl xl:text-5xl">Tech-Driven Accommodation Management with StamaPro</h2>
+                    <p class="mx-auto mt-6 text-gray-700 dark:text-gray-300 md:w-3/4 lg:w-3/5">Leveraging cutting-edge technology, StamaPro redefines property management. With smart algorithms and sleek design, we bring efficiency and simplicity to the forefront. Experience the future of accommodation with StamaPro.</p>
+                </div>
+
+                <div class="mt-12 grid divide-x divide-y divide-gray-100 overflow-hidden rounded-3xl border border-gray-100 dark:divide-gray-700 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-3 lg:divide-y-0">
+                    <div class="group relative bg-white transition-shadow hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 dark:bg-gray-800">
+                        <div class="relative space-y-8 p-8 py-12">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png" loading="lazy" class="w-12" width="512" height="512" alt="burger illustration" />
+                            <div class="space-y-2">
+                                <h3 class="text-2xl font-semibold text-gray-700 transition group-hover:text-primary dark:text-white ">Digital Onboarding & Integration</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Say goodbye to cumbersome paperwork. Residents register and seamlessly integrate into the platform. Their dedicated dashboard becomes the hub for all accommodation-related needs.</p>
+                            </div>
+                            <a href="#" class="flex items-center justify-between text-gray-500 group-hover:text-primary dark:text-gray-400">
+                                <span class="text-sm">Read more</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                                    <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="group relative bg-white transition-shadow hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 dark:bg-gray-800">
+                        <div class="relative space-y-8 p-8 py-12">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4341/4341134.png" loading="lazy" class="w-12" width="512" height="512" alt="burger illustration" />
+                            <div class="space-y-2">
+                                <h3 class="text-2xl font-semibold text-gray-700 transition group-hover:text-primary dark:text-white">Managerial Oversight & Allocation</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Managers have a comprehensive view of all properties. Utilize the dynamic room allocation system to optimize tenant placements and streamline operations.</p>
+                            </div>
+                            <a href="#" class="flex items-center justify-between text-gray-500 group-hover:text-primary dark:text-gray-400">
+                                <span class="text-sm">Read more</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                                    <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="group relative bg-white transition-shadow hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 dark:bg-gray-800">
+                        <div class="relative space-y-8 p-8 py-12">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4341/4341160.png" loading="lazy" class="w-12" width="512" height="512" alt="burger illustration" />
+                            <div class="space-y-2">
+                                <h3 class="text-2xl font-semibold text-gray-700 transition group-hover:text-primary dark:text-white">Centralized Data, Operational Excellence & Resolution</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Manage all resident requests, needs, and essential data from a unified portal. Real-time tracking of maintenance requests ensures swift managerial responses.</p>
+                            </div>
+                            <a href="#" class="flex items-center justify-between text-gray-500 group-hover:text-primary dark:text-gray-400">
+                                <span class="text-sm">Read more</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                                    <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="group relative bg-gray-50 transition-shadow hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 dark:bg-gray-900 lg:hidden">
+                        <div class="relative space-y-8 p-8 py-12 transition duration-300 group-hover:bg-white dark:group-hover:bg-gray-800">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4341/4341025.png" loading="lazy" class="w-12" width="512" height="512" alt="burger illustration" />
+                            <div class="space-y-2">
+                                <h3 class="text-2xl font-semibold text-gray-700 transition group-hover:text-primary dark:text-white">Publicity Boost</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Increase property visibility with our complimentary promotion for registered accommodations</p>
+                            </div>
+                            <a href="#" class="flex items-center justify-between text-gray-500 group-hover:text-primary dark:text-gray-400">
+                                <span class="text-sm">Read more</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                                    <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+                <div class="flex flex-col gap-6 md:flex-row md:items-center">
+                    <div class="md:5/12 lg:w-6/12">
+                        <img src="{% static 'stmhome/images/help.svg' %}" alt="tailus stats and login components" loading="lazy" width="1779" height="1592" />
+                    </div>
+                    <div class="md:7/12 lg:w-6/12">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white md:text-4xl xl:text-5xl">Real-Time Support with StamaPro</h2>
+                        <p class="mt-8 text-gray-600 dark:text-gray-300">In the dynamic world of accommodations, immediate assistance is paramount. StamaPro's real-time helpdesk ensures that every query, concern, or feedback doesn't just reach us,</p>
+                        <p class="mt-4 text-gray-600 dark:text-gray-300">It's acted upon promptly. Experience a support system tailored for today's fast-paced environment</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="my-32">
+            <div class="container m-auto px-6 text-center md:px-12 lg:px-20">
+                <div class="relative mx-auto flex h-56 w-56 items-center justify-center">
+                    <div class="it absolute inset-0 flex flex-wrap opacity-40 blur-3xl dark:opacity-70">
+                        <div aria-hidden="true" class="h-1/2 w-1/2 bg-primary"></div>
+                        <div aria-hidden="true" class="h-1/2 w-1/2 bg-primaryLight"></div>
+                        <div aria-hidden="true" class="h-1/2 w-1/2 rounded-bl-full bg-primary"></div>
+                        <div aria-hidden="true" class="h-1/2 w-1/2 rounded-br-full bg-primaryLight"></div>
+                    </div>
+                    <img src="{% static 'stmhome/images/s-high.png' %}" alt="Logo" style="max-width: 40px; max-height: 40px"/>
+                </div>
+                <div class="relative -mt-12">
+                    <h2 class="mb-8 text-4xl font-bold text-blue-900 dark:text-white md:text-6xl">
+                        Get started
+                        <span class="relative">
+                            <svg class="absolute inset-x-0 -bottom-1 w-full opacity-50" xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 260 15.6">
+                                <path class="st0" d="M206.8 7.3l-.1.3c.1-.2.2-.3.1-.3zM234.7 10h-.1c-.2.4-.1.3.1 0zM54.8 4.2l-.6-.4c.2.4.4.5.6.4zM17.1 5.1zM34.5 9.6l.1.3c0-.2 0-.3-.1-.3zM22.4 10.8c-.3-.1-.7-.1-1-.1.2.1.7.1 1 .1zM17.5 5c-.1.1-.2.1-.4.2.2-.1.3-.2.4-.2zM52.7 9.8l.5.9c-.1-.3-.3-.6-.5-.9zM19.5 11.6c-.2-.2-.4-.2-.6-.3 0 .2.3.3.6.3zM120.9 11.4c-.1.1-.2.2-.2.3.3-.1.3-.2.2-.3zM80.9 10.4h-.1s.1.1.2.1l-.1-.1zM92.6 10.4l-.2.2c.2-.1.2-.1.2-.2zM72.1 11.3c-.1.1-.3.2-.4.3l.4-.3z" />
+                                <path
+                                    class="st0"
+                                    d="M260 6c-1-.6-4.7-1.2-5.8.3-.2-.1.1-.3.2-.4-.9.2-2.2.1-3.6 0s-2.9-.2-4.2 0c-1 1.5-3.9-.6-4.8 1.4l.5-.4c.9.5-1.2 1.4-1.5 1.9-.8-1.2-.1-1-1-2l1.1.4-.3-1c-3.1 2.8-6.2-.9-8.2 1.1.1-.1.1-.3.2-.4-1.4-.5-2.3.8-3.3 1.2-.1-.5.6-.9 1.1-1.3-2.4-.3-6.4 1.2-9 .4-.9.7.4.9-.6 1.5-.8-.2-1.4-.7-.4-1.1-2.3-1.2-7.6 1-11.1-.2-1.8.8-.7 1.1-3.5 1.6.7-.5-.7-1.7 1-1.7l.2-.5c-2.8-.1-6.6-.3-8.1 1.2-.1-1.1-.5-.2-1.6-.8-.4.1 0 .2.2.2-1 .9-1.6-.1-2.3.1l.3-.2-2 .7c-.3-.2-.8-.4-.9-.7v.8c-1.1 0-.5-1-1.9-.8l.3.6c-.9-.4-2.2.4-2.4-.5 0-.2.1-.1.4-.1-1.3-1.2-3.5.3-5.1-.3l.4 1.3c-1.6.4-1-.3-.9-.7-1.1 0-1.3-.4-2.7-.6-.7.3-.4.5-.6.8l-1.5-.4 1-.7c-2.3 1.8-5.6-.4-7.2 1.2-.8-.4.8-.7.3-1-2.6-.9-6 1-8.2 0-3.6-1-7.8-.4-11.8-1.1l.1.3-2.9-.4c-.8.7-2.7.3-4 1.1.1-.3-.1-.7.2-.9-1.2.1-2.6.4-3.3-.1l.4-.3c-2.7-.3-6.4-.5-7.9.1-.9 0-.9-.6-1.1-1-1.6-.1-2.6.2-3.9.7-.3-.2-.7-.3-1-.6l-.6.8c-.6-.1-.1-.7-.6-.9-2.5.9-5.3-.1-7-.1l.2.4c-.7.3-2.1-.3-1.2-.7-3.4-.6-5.1 1.2-9.6.8-.6-1.5-4.1.3-4.8-1.4-1.9.4-3.2-.3-4.5.6 0-.2-.2-.2.1-.3-.8-.6-3.3-.2-5.3.2l-.1-.5c-.9 1.2-4.2.9-4.9 2-.2-.2.4-.5.7-.7-1-1.1-1.8.5-3.1.2.1-.3-.3-.6 0-.8-4.4-1.2-10.6.7-16.3-.1-1.6 0 .6 1.2-1.5 1.1-.6-.6 1-1.1-.3-1.4-.9.7-1.3.5-2.6.5.2-.4 0-.6.9-.9-.7-.5-3.1.9-4.5 0 .1.3-.2.5-.5.7-2.1 1-4.9-.9-5.1-.4 0 0-.7.2-.1.3-.8 0-1.9-.2-1.7-.7-.4.3-.8.8-1.4.8l.3-.6c-.4.1-.8.5-1.1.6l.6.4c-.9-.5-2.6.8-2.6-.4h.3l-1.7-.5c-.7.5-1.3 1-2.5.9-.5-1.3-2.9-.2-4.3-.3l.1-.4c-1.1.6-4 .4-3.5.6-1.1 0-2.6-.2-2-.6-.8.1-2.7.1-3.2.9l-1.8-1c-1 1.6-3.6-.5-3.6 1.2-1-.2-.8-.6-1.5-.9-1.4.9-2.8.8-4.2.7v-.2c-1.4-.1-3.1.8-5.1 1l-.5-1.2c-1 .2-1.3 1.2-2.3 1-.2-.2 0-.3.2-.3-1 .3-2.3.1-3.1-.2-1.5 1-2.7.7-3.9 1.8-1.3-1 1.7-.6.6-1.6-2.2-.4-4.4.4-6.7 1.1-.2-.2 0-.4.1-.7 0 0-1.2.9-2.2 1.8C.9 8.3 0 9.4.5 10c-.5.9-1.2 1.4.9 2 .6-.5 2.5-1.3 2.9-.4l.1-.9c2.6-.6.4 1.8 3.6 1.6l-.7-.3c.6-.1 1.1-.7 1.8-.5.2.2-.2.4-.5.6.9-.5 1.7-.9 2.6-1.4.1.5.1.8-.4 1.2 2.5-.2-.6-1.6 2.4-1.4.6.4-.2.6-.5.9 1.4.7 2.3-.1 3.8-.6.1.8-.9.7.3 1.2-.3-.4-.5-1.1.5-1.2-.4.8.7.4 1.6.5-.2-.3-.1-.6.2-.8.4-.1.8.1 1.4.1l-1.1-.7c1.5-.8 2.4.3 3.6.6-.1.1-.3.3-.5.3 1.2.3 2.5.9 4.1.1l-.3.1c2.9-.9-1-1.3 2.4-2.2 1.1.1-.4 2.6 2.1 1.6-1.3-.6 1.6-1.7 3.1-2L32.4 10c.6 0 1.6-.5 2-.3l-.1-.3c-.2-1.3 1.9.1 3-.7-1.3 1.8-1.4 1.5-1.6 3.2 1-1 2.2-1.9 4.1-1.8l-1.5 1.4c2.5.2 5.5-1.9 7.6-3-.5 1 .3 1.4-.6 2.2l2.4-.3-.7 1.1c1-1.2 2.1-.4 1.9-1.9-.3.2-.2.4-.7.3.1-.4.5-1.4 1.7-1.3.9.3-.5.6-.2 1 .8-.6.9.3 1.7-.1l-.8-.6c.6-.9 1.4-.1 2.2-.5-1 .4-.7.9-.3 1.4l-.1-.1c.8-.1 1.6-.7 2-.2l-.5 1.2.9-.9c.3.1.6.6 0 .8 2.8.7-.1-2.5 3.6-1.5 0 .5-.4.8-1.4.5-.2.7.1 1.1 1.1 1.4v.1c1.9 0 4.4 0 5.6-.8.4.3 0 .6-.4.9 2.1.4 2.8-.7 5 .1l-1-.4c1.4-.6 4-.8 5.3.1l-.4.3c1.3-.7 3.5.6 4 0-.6-.4 0-.6-.8-1l3.4-.7.2 1.2 1.8-.4c-.4-.5 2.4.4 2.5-.7 1 .4-.4.9-.8 1.4 1-.3 1.1.2 2.1-.5l1 1.1 2.6-.7c-.1.1 0 .2-.1.3 1.2-.9 3.1.6 4.6-.9-.1.1-.1.1-.1.2.9-.8 2.9-.2 3.7 0 1.4-.2.6-1 .6-1.4 3.9.4 2.7.3 6-.9 2 1.4-2.4 2.1.1 3 .4-.6 2.1-1.1 4.1-1.3 1.8.5 4.8.9 6.5 1.9l-.2-.9 2.6-.4-1.5 1.2c.4-.3 1.7-.8 2.6-1.2 2.7-.7 1.4 1.9 3.5.7.1.1.1.2.2.3.7-.6 2.4-.3 4.4-.5l-.7 1.1-1.3-.3c.7 1.1 2.1-.1 3.4 0 1.3-.3.7-1.3 1.4-1.6.5.1 1.2-.2 1.6.1 1.1.4.1 1.3-.3 1.8 1-1.1 1.4-.9 3.6-1.3.1.5-.1.8-.4.9.5-.1.9-.3 1.2-.8l.7.7c2.5 1 2.6-2 5.6-1.5-.8.6 2.6 0 3.5.7-1.1.1.4 1.6-.2 2.3 2.4.5 1-1.3 3-1.4l-.9 1.3c1.9-.5.5-.7 2.4-1.1-.5.4.8.4-.3.8 2.5.2 1.9.1 4.1.3l.2-1.3c.7-.1 1 .5 1.2.7-.3 0-.8-.1-.7.1.8 1.2 1.4-.6 2.4.5-.2-.4-.5-1 .4-1.1-.3.8 1.4.8 1.4 1.2-.6-.6 2-.2 2.1-1 1 .7-.4.6-.4 1.1.9-1 3.7 0 4.6-.6 0 .1.1.1.1.2 1.2-.6 3-.7 5.3-1.5l-.8.7c2.2.4 1.4-1.5 3.3-1.5-.4 1.1 3.1 0 2.2 1.2 1.1-.6 2.3-.8 3.1-1.7 1 .6-2.1 1.4-.6 1.8l1.6-.5.3.6c.1-.4 1.5-.4 1.4-.8.2.7.9 1.2.8 1.8 1-.2 2.4.5 3.3-.1l.1.3c1-1.3 3.1-.2 3.6-1.5l.6.7c1.5-.1 1.3-1.5 2-1.8.6 0 1.4-.2 2 0-2 .8 1 1.1 1.4 1.6.8 0 3.1 0 3.7-.7-1 .7-.4 1.2-2.1 1.3.9 1.3 2.6-.2 4.5-.1v.6c2.7-.4 2.8-1.5 4-2.5.3.8.1 1-.7 1.7 1.8.5 4.7-.1 6.7 0 .6.5.2.9-.5 1.1 2.1-.6 4.7.1 6-1.2-.5.5.9.3 1.6.6 0-.3.1-.6.2-.6 1.3-.6 4.1-1.1 5.6-.7l-.5.4c1.7.1 3-.5 4.3-.9 1.3-.4 2.6-.8 4.5-.4.7.3-.7 1.1.7 1 .7-.5.4-1.5 2.2-1.3l-.1.9 1.2-.9c-.7-.7-2.6-.4-1.3-1.2 1.6.8 1.3-.9 3.3 0-.4.1-1 .8-1.3 1.2 2 .4 3.4.1 4.8-.1 1.4-.3 2.8-.6 4.9-.2 2-.8 4.6-1.2 5.9-1.9 0 .9 0 1.7-.8 2.4 1.8 0 2.4-2.1 3.7-.9.7-1.3 4.7-1.2 5-3l2-.8z"
+                                />
+                                <path class="st0" d="M58.1 11.1c-1 0-1.9 0-2.3.2.2.2 2.3.6 2.3-.2zM208.2 13.3c-.1 0-.3.1-.4.1.1 0 .3 0 .4-.1zM216.3 12.9c-.1-.1-.2-.2-.4-.3 0 .3.1.5.4.3zM132.6 11.5zM178.5 13.7c.7-.4 1-.7 1-1-.4.1-.7.3-1 1zM163 12.6c-.1.1-.2.1-.3.2.3-.1.3-.2.3-.2zM130.2 12c.7-.4 1.6-.3 2.4-.5-.7.2-1.9-.3-2.4.5zM226.1 11.4l-.7.6.8-.4zM218.6 12c-.3-.1-1.7.3-1.3.6.4-.3.9-.5 1.3-.6zM189.6 11.4l-.3.6.7-.5z" />
+                            </svg>
+                            <span class="relative px-2 text-blue-800 dark:text-primaryLight">now</span>
+                        </span>
+                    </h2>
+                    <p class="mb-12 mt-6 text-gray-600 dark:text-gray-300 md:mx-auto md:w-5/6 lg:w-1/2">Be at the forefront of a paradigm shift that prioritizes simplicity, trust, and superior living experiences. Plus, relish in the bonus of free publicity for your accommodation with us.</p>
+                    <a href="contact.html" class="relative mx-auto flex h-11 w-max items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition-transform before:duration-300 active:duration-75 active:before:scale-95">
+                        <span class="relative text-base font-semibold text-white dark:text-gray-900">Get started</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="border-t border-gray-100 pt-32 pb-8 dark:border-gray-800">
+            <div>
+                <div class="m-auto space-y-8 px-4 text-gray-600 dark:text-gray-400 sm:px-12 xl:max-w-6xl xl:px-0">
+                    <div class="grid grid-cols-8 gap-6 md:gap-0">
+                        <div class="col-span-8 md:col-span-2 lg:col-span-3">
+                            <div class="flex h-full items-center justify-between gap-6 border-b border-white py-6 dark:border-gray-800 md:flex-col md:items-start md:justify-between md:space-y-6 md:border-none md:py-0">
+
+                                <div class="flex gap-6">
+                                  
+                                    <a href="#" target="blank" aria-label="twitter" class="hover:text-primary">
+                                        <span class="sr-only">Twitter</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                                            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                                        </svg>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-8 md:col-span-6 lg:col-span-5">
+                            <div class="grid grid-cols-2 gap-6 pb-16 sm:grid-cols-3 md:pl-16">
+                                <div>
+                                    <h2 class="text-base font-medium text-gray-800 dark:text-gray-200">Company</h2>
+                                    <ul class="mt-4 list-inside space-y-4">
+                                        <li>
+                                            <a href="#" class="text-sm duration-100 hover:text-primary dark:hover:text-white">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-sm duration-100 hover:text-primary dark:hover:text-white">Customers</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-sm duration-100 hover:text-primary dark:hover:text-white">Enterprise</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-sm duration-100 hover:text-primary dark:hover:text-white">Partners</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-sm duration-100 hover:text-primary dark:hover:text-white">Jobs</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="flex justify-between text-sm md:pl-16">
+                                <span>&copy; bx 2003 - Present</span>
+                                <span>All right reserved</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="{% static 'js/app.js '%}"></script>
+    </body>
 </html>
