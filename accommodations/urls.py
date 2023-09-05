@@ -15,7 +15,7 @@ from .views import (
 
 urlpatterns = [
     path("hostel-list/", HostelListView.as_view(), name="hostel_list"),
-    path("/management", StaffLoginView.as_view(), name="management"),
+    path("", StaffLoginView.as_view(), name="management"),
     path("<int:pk>/", HostelDetailView.as_view(), name="hostel_dashboard"),
     path("<int:pk>/rooms/", RoomListView.as_view(), name="room_list"),
     path("maintenance/<int:pk>/", RepairDetailView.as_view(), name="work_detail"),
