@@ -39,7 +39,7 @@
             <!-- SIDEBAR HEADER -->
             <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
                 <a href="#">
-                    <img src="{% static 'images/management/stamacomb.png' %}" alt="Logo" width="176" height="32"/>
+                    <img src="{% static 'images/stamawhite.png' %}" alt="Logo" width="176" height="32"/>
                 </a>
 
                 <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">
@@ -611,7 +611,7 @@
                     </button>
                     <!-- Hamburger Toggle BTN -->
                     <a class="block flex-shrink-0 lg:hidden" href="{% url 'hostel_dashboard' pk=hostel.pk %}">
-                        <img src="{% static 'images/management/stamacomb.png' %}" alt="Logo" width="50" height="15"/>
+                        <img src="{% static 'images/stamablue.png' %}" alt="Logo" width="50" height="15"/>
                     </a>
                 </div>
                 <div class="hidden sm:block">
@@ -857,21 +857,21 @@
                         <span class="block text-xs font-medium">Administrator</span>
                     </span>
 
-                    <span class="h-12 w-12 rounded-full overflow-hidden">
-                        {% if user.user_image %}
-                        <img
-                          
-                          src="{{ user.user_image.url }}"
-                          alt="User"
-                        />
-                        {% else %}
-                        <img
-                
-                          src="{% static 'img/settingsphot.png' %}"
-                          alt="User"
-                        />
-                        {% endif %}
-                    </span>
+                        <span class="h-12 w-12 relative">
+                            {% if user.user_image %}
+                            <img
+                            class="absolute rounded-full object-cover object-center h-full w-full"
+                            src="{{ user.user_image.url }}"
+                            alt="User"
+                            />
+                            {% else %}
+                            <img
+                            class="absolute rounded-full object-cover object-center h-full w-full"
+                            src="{% static 'img/settingsphot.png' %}"
+                            alt="User"
+                            />
+                            {% endif %}
+                        </span>
                     <svg
                         :class="dropdownOpen && 'rotate-180'"
                         class="hidden fill-current sm:block"
