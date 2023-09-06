@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Admin Login</title>
     <link rel="icon" href="{% static 'images/management/favicon.png' %}" />
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <link
@@ -94,7 +94,7 @@
               <!-- Hamburger Toggle BTN -->
               <a class="block flex-shrink-0 lg:hidden" href="#">
                 <img
-                  src="{% static 'images/stmlg.png' %}"
+                  src="{% static 'images/stamablue.png' %}"
                   style="width: 60px"
                   alt="Logo"
                 />
@@ -107,8 +107,8 @@
                   <!-- Dark Mode Toggler -->
                   <label
                     :class="darkMode ? 'bg-stroke' : '' "
-                    class="relative m-0 block h-7.5 w-14 rounded-full"
-                    style="background-color: #fb8500"
+                    class="relative m-0 block h-7.5 w-14 rounded-full bg-primary"
+                    
                   >
                     <input
                       type="checkbox"
@@ -183,25 +183,23 @@
                     <a class="mb-5.5 inline-block" href="#">
                       <img
                         class="hidden dark:block"
-                        src="{% static 'img/stamapro.png' %}"
+                        src="{% static 'images/stamawhite.png' %}"
                         alt="Logo"
                         style="max-width: 15rem;"
                       />
                       <img
                         class="dark:hidden"
-                        src="{% static 'img/stamapro.png' %}"
+                        src="{% static 'images/stamablue.png' %}"
                         alt="Logo"
                         style="max-width: 15rem;"
                       />
                     </a>
 
-                    <p class="font-medium 2xl:px-20">
-                      Resident? Log in to access your dashboard. No account? Sign up with your unique room ID
-                    </p>
+                    
 
                     <span class="mt-15 inline-block">
                       <img
-                        src="{% static 'images/signup.svg' %}"
+                        src="{% static 'images/signin.svg' %}"
                         alt="illustration"
                       />
                     </span>
@@ -212,11 +210,11 @@
                 >
                   <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
                     <span class="mb-1.5 block font-medium">Welcome back!</span>
-                    <h2
-                      class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2"
+                    <h3
+                      class="mb-9 text-title-xl2  text-black dark:text-white sm:text-title-xl2 text-primary"
                     >
-                      Login to your dasboard
-                    </h2>
+                      Login to Hostel dashboard
+                    </h3>
 
                     <form action="" method="post">
                         {% csrf_token %}
@@ -227,7 +225,7 @@
                         {% endif %}
                       <div class="mb-4">
                         <label
-                          class="mb-2.5 block font-medium text-black dark:text-white"
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
                           >Username</label
                         >
                         <div class="relative">
@@ -264,7 +262,7 @@
 
                       <div class="mb-6">
                         <label
-                          class="mb-2.5 block font-medium text-black dark:text-white"
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
                           > Password</label
                         >
                         <div class="relative">
@@ -303,8 +301,8 @@
                         <input
                           type="submit"
                           value="Login"
-                          class="w-full cursor-pointer rounded-lg border p-4 font-medium text-white transition hover:bg-opacity-90"
-                          style="background-color: #fb8500;"
+                          class="w-full cursor-pointer rounded-lg border p-4 font-medium text-white transition hover:bg-opacity-90 bg-primary dark:border-strokedark"
+                          
                         />
                       </div>
 
@@ -346,13 +344,6 @@
                         </span>
                         Sign in with Google
                       </button>
-
-                      <div class="mt-6 text-center">
-                        <p class="font-medium">
-                          Don’t have any account?
-                          <a href="{% url 'register' %}" style="color: #fb8500;">Sign Up</a>
-                        </p>
-                      </div>
                     </form>
                   </div>
                 </div>
