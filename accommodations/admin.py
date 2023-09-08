@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Hostel, Room, Operative, Announcement
+from .models import Hostel, Room, Operative, GeneralMessage
 from accounts.models import Tenant
 
 # To see more informations about our Hostel
@@ -30,11 +30,11 @@ class HostelAdmin(admin.ModelAdmin):
     list_display = ["name", "address", "manager", "phone", "image", "room_count"]
 
 
-class AnnoucementAdmin(admin.ModelAdmin):
+class GeneralMessageAdmin(admin.ModelAdmin):
     list_display = ["title", "content", "author"]
 
 
-admin.site.register(Announcement, AnnoucementAdmin)
+admin.site.register(GeneralMessage, GeneralMessageAdmin)
 
 
 admin.site.register(Operative)

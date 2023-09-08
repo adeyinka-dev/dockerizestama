@@ -11,6 +11,9 @@ from .views import (
     RepairListView,
     RepairDetailView,
     OperativeListView,
+    GeneralMessageCreateView,
+    GeneralMessageListView,
+    GeneralMessageDetailView,
 )
 
 urlpatterns = [
@@ -22,6 +25,22 @@ urlpatterns = [
     path("<int:pk>/repairs/", RepairListView.as_view(), name="repairs_registry"),
     path("<int:pk>/residents/", ResidentListView.as_view(), name="resident_list"),
     path("room/<int:pk>/", RoomDetailView.as_view(), name="room_detail"),
+    # General Message URL start
+    path(
+        "hostel/<int:pk>/create_message/",
+        GeneralMessageCreateView.as_view(),
+        name="create_message",
+    ),
+    path(
+        "hostel/<int:pk>/general_message/",
+        GeneralMessageListView.as_view(),
+        name="general_message",
+    ),
+    path(
+        "hostel/<int:pk>/general_message/message_detail",
+        GeneralMessageDetailView.as_view(),
+        name="message_detail",
+    ),
     path("operatives/<int:pk>", OperativeListView.as_view(), name="operative_list"),
     path(
         "submit_success/",

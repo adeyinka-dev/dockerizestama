@@ -1,12 +1,15 @@
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, FormView
-from .models import Hostel, Room, Operative, Announcement
+from django.views.generic.edit import DeleteView, CreateView
+from .models import Hostel, Room, Operative, GeneralMessage
 from maintenance.forms import MaintenanceForm, MaintenanceStatusForm, NoteForm
 from maintenance.models import Maintenance
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
+from .forms import GeneralMessageForm
 import math
 from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
@@ -22,6 +25,8 @@ class ManagerPermissionMixin:
             obj = self.get_object()
         elif isinstance(self, ListView):
             obj = self.get_queryset().first()
+        elif isinstance(self, CreateView) and self.model == GeneralMessage:
+            obj = Hostel.objects.get(pk=self.kwargs["pk"])
         elif isinstance(self, View):
             obj = Maintenance.objects.get(pk=self.kwargs["pk"])
         else:
@@ -97,6 +102,7 @@ class HostelDetailView(ManagerPermissionMixin, DetailView):
         """
         context = super().get_context_data(**kwargs)
         rooms = Room.objects.filter(hostel=self.object)
+        messages = GeneralMessage.objects.filter(hostel=self.object)
         # Get Percentage
         total_rooms = rooms.count()
         occupied_rooms = rooms.filter(status=Room.OCCUPIED).count()
@@ -156,6 +162,7 @@ class HostelDetailView(ManagerPermissionMixin, DetailView):
         context["repairs"] = repairs
         context["notify_repairs"] = nofity_repairs
         context["repairs_count"] = repairs.count()
+        context["messages"] = messages
         return context
 
 
@@ -304,6 +311,38 @@ class RepairDetailView(ManagerPermissionMixin, View):
         return view(request, *args, **kwargs)
 
 
-class AnnoucementListView(ListView):
-    model = Announcement
-    template_name = "annoucement_list.html"
+# General Message View.
+class GeneralMessageListView(LoginRequiredMixin, ListView):
+    model = GeneralMessage
+    template_name = "management/general_message.html"
+
+    def get_queryset(self):
+        # Return all GeneralMessage objects related to the specific hostel.
+        return GeneralMessage.objects.filter(hostel__pk=self.kwargs["pk"])
+
+
+class GeneralMessageDetailView(LoginRequiredMixin, DetailView):
+    model = GeneralMessage
+    template_name = "management/message_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Get the associated hostel's id from the GeneralMessage instance
+        hostel_id = (
+            self.object.hostel.id if self.object and self.object.hostel else None
+        )
+        context["hostel_id"] = hostel_id
+        return context
+
+
+class GeneralMessageCreateView(ManagerPermissionMixin, CreateView):
+    model = GeneralMessage
+    form_class = GeneralMessageForm
+    template_name = "management/create_message.html"
+
+    def form_valid(self, form):
+        # Set the current hostel and author before saving the message
+        hostel = Hostel.objects.get(pk=self.kwargs["pk"])
+        form.instance.hostel = hostel
+        form.instance.author = self.request.user
+        return super().form_valid(form)

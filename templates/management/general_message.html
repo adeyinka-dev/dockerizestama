@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% endblock title %}</title>
+    <title>Work Detail</title>
   <link rel="icon" href="{% static 'images/management/favicon.png' %}"><link href="{% static 'css/stmstyle.css' %}" rel="stylesheet"></head>
 
 <body
@@ -38,7 +38,7 @@
         >
             <!-- SIDEBAR HEADER -->
             <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-                <a href="#">
+                <a href="{{ object.room.hostel.get_absolute_url }}">
                     <img src="{% static 'images/stamawhite.png' %}" alt="Logo" width="176" height="32"/>
                 </a>
 
@@ -64,7 +64,7 @@
                 <nav class="mt-5 py-4 px-4 lg:mt-9 lg:px-6" x-data="{selected: $persist('Dashboard')}">
                     <!-- Menu Group -->
                     <div>
-                        <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">{{ hostel.name }}</h3>
+                        <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">{{ object.room.hostel.name }}</h3>
 
                         <ul class="mb-6 flex flex-col gap-1.5">
                             <!-- Menu Item Dashboard -->
@@ -130,7 +130,7 @@
                                     <li>
                                         <a
                                             class="group relative flex items-center gap-2.5 rounded-md px-4 font-small text-bodydark2 duration-300 ease-in-out hover:text-white"
-                                            href="{% url 'hostel_dashboard' pk=hostel.pk %}"
+                                            href="{{ object.room.hostel.get_absolute_url }}"
                                             :class="page === 'crm' && '!text-white'"
                                         >   Home
                                         
@@ -139,420 +139,6 @@
                                 </ul>
                                 </div>
                                 <!-- Dropdown Menu End -->
-                            </li>
-                            <!-- Menu Item Dashboard -->
-
-                            <!-- Menu Item Calendar -->
-                            <li>
-                                <a
-                                class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                                href="#"
-                                @click="selected = (selected === 'Calendar' ? '':'Calendar')"
-                                :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Calendar') && (page === 'calendar') }"
-                                >
-                                <svg
-                                    class="fill-current"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 18 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    d="M15.7499 2.9812H14.2874V2.36245C14.2874 2.02495 14.0062 1.71558 13.6405 1.71558C13.2749 1.71558 12.9937 1.99683 12.9937 2.36245V2.9812H4.97803V2.36245C4.97803 2.02495 4.69678 1.71558 4.33115 1.71558C3.96553 1.71558 3.68428 1.99683 3.68428 2.36245V2.9812H2.2499C1.29365 2.9812 0.478027 3.7687 0.478027 4.75308V14.5406C0.478027 15.4968 1.26553 16.3125 2.2499 16.3125H15.7499C16.7062 16.3125 17.5218 15.525 17.5218 14.5406V4.72495C17.5218 3.7687 16.7062 2.9812 15.7499 2.9812ZM1.77178 8.21245H4.1624V10.9968H1.77178V8.21245ZM5.42803 8.21245H8.38115V10.9968H5.42803V8.21245ZM8.38115 12.2625V15.0187H5.42803V12.2625H8.38115ZM9.64678 12.2625H12.5999V15.0187H9.64678V12.2625ZM9.64678 10.9968V8.21245H12.5999V10.9968H9.64678ZM13.8374 8.21245H16.228V10.9968H13.8374V8.21245ZM2.2499 4.24683H3.7124V4.83745C3.7124 5.17495 3.99365 5.48433 4.35928 5.48433C4.7249 5.48433 5.00615 5.20308 5.00615 4.83745V4.24683H13.0499V4.83745C13.0499 5.17495 13.3312 5.48433 13.6968 5.48433C14.0624 5.48433 14.3437 5.20308 14.3437 4.83745V4.24683H15.7499C16.0312 4.24683 16.2562 4.47183 16.2562 4.75308V6.94683H1.77178V4.75308C1.77178 4.47183 1.96865 4.24683 2.2499 4.24683ZM1.77178 14.5125V12.2343H4.1624V14.9906H2.2499C1.96865 15.0187 1.77178 14.7937 1.77178 14.5125ZM15.7499 15.0187H13.8374V12.2625H16.228V14.5406C16.2562 14.7937 16.0312 15.0187 15.7499 15.0187Z"
-                                    fill=""
-                                    />
-                                </svg>
-
-                                Calendar
-                                </a>
-                            </li>
-                            <!-- Menu Item Calendar -->
-
-                            <!-- Menu Item Profile -->
-                            <li>
-                                <a
-                                class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                                href="#"
-                                @click="selected = (selected === 'Profile' ? '':'Profile')"
-                                :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Profile') && (page === 'profile') }"
-                                :class="page === 'profile' && 'bg-graydark'"
-                                >
-                                <svg
-                                    class="fill-current"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 18 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    d="M9.0002 7.79065C11.0814 7.79065 12.7689 6.1594 12.7689 4.1344C12.7689 2.1094 11.0814 0.478149 9.0002 0.478149C6.91895 0.478149 5.23145 2.1094 5.23145 4.1344C5.23145 6.1594 6.91895 7.79065 9.0002 7.79065ZM9.0002 1.7719C10.3783 1.7719 11.5033 2.84065 11.5033 4.16252C11.5033 5.4844 10.3783 6.55315 9.0002 6.55315C7.62207 6.55315 6.49707 5.4844 6.49707 4.16252C6.49707 2.84065 7.62207 1.7719 9.0002 1.7719Z"
-                                    fill=""
-                                    />
-                                    <path
-                                    d="M10.8283 9.05627H7.17207C4.16269 9.05627 1.71582 11.5313 1.71582 14.5406V16.875C1.71582 17.2125 1.99707 17.5219 2.3627 17.5219C2.72832 17.5219 3.00957 17.2407 3.00957 16.875V14.5406C3.00957 12.2344 4.89394 10.3219 7.22832 10.3219H10.8564C13.1627 10.3219 15.0752 12.2063 15.0752 14.5406V16.875C15.0752 17.2125 15.3564 17.5219 15.7221 17.5219C16.0877 17.5219 16.3689 17.2407 16.3689 16.875V14.5406C16.2846 11.5313 13.8377 9.05627 10.8283 9.05627Z"
-                                    fill=""
-                                    />
-                                </svg>
-
-                                Profile
-                                </a>
-                            </li>
-                            <!-- Menu Item Profile -->
-
-                            <!-- Menu Item Task -->
-                            <li>
-                                <a
-                                class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                                href="#"
-                                @click.prevent="selected = (selected === 'Task' ? '':'Task')"
-                                :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Task') || (page === 'list' || page === 'kanban') }"
-                                >
-                                <svg
-                                    class="fill-current"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 18 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <g clip-path="url(#clip0_130_9728)">
-                                    <path
-                                        d="M3.45928 0.984375H1.6874C1.04053 0.984375 0.478027 1.51875 0.478027 2.19375V3.96563C0.478027 4.6125 1.0124 5.175 1.6874 5.175H3.45928C4.10615 5.175 4.66865 4.64063 4.66865 3.96563V2.16562C4.64053 1.51875 4.10615 0.984375 3.45928 0.984375ZM3.3749 3.88125H1.77178V2.25H3.3749V3.88125Z"
-                                        fill=""
-                                    />
-                                    <path
-                                        d="M7.22793 3.71245H16.8748C17.2123 3.71245 17.5217 3.4312 17.5217 3.06558C17.5217 2.69995 17.2404 2.4187 16.8748 2.4187H7.22793C6.89043 2.4187 6.58105 2.69995 6.58105 3.06558C6.58105 3.4312 6.89043 3.71245 7.22793 3.71245Z"
-                                        fill=""
-                                    />
-                                    <path
-                                        d="M3.45928 6.75H1.6874C1.04053 6.75 0.478027 7.28437 0.478027 7.95937V9.73125C0.478027 10.3781 1.0124 10.9406 1.6874 10.9406H3.45928C4.10615 10.9406 4.66865 10.4062 4.66865 9.73125V7.95937C4.64053 7.28437 4.10615 6.75 3.45928 6.75ZM3.3749 9.64687H1.77178V8.01562H3.3749V9.64687Z"
-                                        fill=""
-                                    />
-                                    <path
-                                        d="M16.8748 8.21252H7.22793C6.89043 8.21252 6.58105 8.49377 6.58105 8.8594C6.58105 9.22502 6.86231 9.47815 7.22793 9.47815H16.8748C17.2123 9.47815 17.5217 9.1969 17.5217 8.8594C17.5217 8.5219 17.2123 8.21252 16.8748 8.21252Z"
-                                        fill=""
-                                    />
-                                    <path
-                                        d="M3.45928 12.8531H1.6874C1.04053 12.8531 0.478027 13.3875 0.478027 14.0625V15.8344C0.478027 16.4813 1.0124 17.0438 1.6874 17.0438H3.45928C4.10615 17.0438 4.66865 16.5094 4.66865 15.8344V14.0625C4.64053 13.3875 4.10615 12.8531 3.45928 12.8531ZM3.3749 15.75H1.77178V14.1188H3.3749V15.75Z"
-                                        fill=""
-                                    />
-                                    <path
-                                        d="M16.8748 14.2875H7.22793C6.89043 14.2875 6.58105 14.5687 6.58105 14.9344C6.58105 15.3 6.86231 15.5812 7.22793 15.5812H16.8748C17.2123 15.5812 17.5217 15.3 17.5217 14.9344C17.5217 14.5687 17.2123 14.2875 16.8748 14.2875Z"
-                                        fill=""
-                                    />
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_130_9728">
-                                        <rect width="18" height="18" fill="white" />
-                                    </clipPath>
-                                    </defs>
-                                </svg>
-
-                                Maintenance
-
-                                <svg
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
-                                    :class="{ 'rotate-180': (selected === 'Task') }"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 20 20"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
-                                    fill=""
-                                    />
-                                </svg>
-                                </a>
-
-                                <!-- Dropdown Menu Start -->
-                                <div class="translate transform overflow-hidden" :class="(selected === 'Task') ? 'block' :'hidden'">
-                                <ul class="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
-                                    <li>
-                                        <a
-                                            class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                                            href="#"
-                                            :class="page === 'list' && '!text-white'"
-                                        >   Allocations
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                                            href="{% url 'repairs_registry' pk=hostel.pk %}"
-                                            :class="page === 'kanban' && '!text-white'"
-                                        > Repair List
-                                        <span class="absolute right-4 block rounded bg-danger py-1 px-2 text-xs font-medium text-white">{{ pending_count }}</span>
-                                        </a>
-                                        
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                                            href="{% url 'operative_list' pk=hostel.pk %}"
-                                            :class="page === 'kanban' && '!text-white'"
-                                        > Operatives
-                                        </a>
-                                        
-                                    </li>
-                                </ul>
-                                </div>
-                                <!-- Dropdown Menu End -->
-                            </li>
-                            <!-- Menu Item Task -->
-
-                            <!-- Menu Item Pages -->
-                            <li>
-                                <a
-                                class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                                href="#"
-                                @click.prevent="selected = (selected === 'Pages' ? '':'Pages')"
-                                :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Pages') || (page === 'settings' || page === 'fileManager' || page === 'dataTables' || page === 'pricingTables' || page === 'errorPage' || page === 'mailSuccess') }"
-                                >
-                                <svg
-                                    class="fill-current"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 18 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    d="M14.2875 0.506226H3.7125C2.75625 0.506226 1.96875 1.29373 1.96875 2.24998V15.75C1.96875 16.7062 2.75625 17.5219 3.74063 17.5219H14.3156C15.2719 17.5219 16.0875 16.7344 16.0875 15.75V2.24998C16.0313 1.29373 15.2438 0.506226 14.2875 0.506226ZM14.7656 15.75C14.7656 16.0312 14.5406 16.2562 14.2594 16.2562H3.7125C3.43125 16.2562 3.20625 16.0312 3.20625 15.75V2.24998C3.20625 1.96873 3.43125 1.74373 3.7125 1.74373H14.2875C14.5688 1.74373 14.7938 1.96873 14.7938 2.24998V15.75H14.7656Z"
-                                    fill=""
-                                    />
-                                    <path
-                                    d="M12.7965 2.6156H9.73086C9.22461 2.6156 8.80273 3.03748 8.80273 3.54373V7.25623C8.80273 7.76248 9.22461 8.18435 9.73086 8.18435H12.7965C13.3027 8.18435 13.7246 7.76248 13.7246 7.25623V3.5156C13.6965 3.03748 13.3027 2.6156 12.7965 2.6156ZM12.4309 6.8906H10.0684V3.88123H12.4309V6.8906Z"
-                                    fill=""
-                                    />
-                                    <path
-                                    d="M4.97773 4.35938H7.03086C7.36836 4.35938 7.67773 4.07812 7.67773 3.7125C7.67773 3.34687 7.39648 3.09375 7.03086 3.09375H4.94961C4.61211 3.09375 4.30273 3.375 4.30273 3.74063C4.30273 4.10625 4.61211 4.35938 4.97773 4.35938Z"
-                                    fill=""
-                                    />
-                                    <path
-                                    d="M4.97773 7.9312H7.03086C7.36836 7.9312 7.67773 7.64995 7.67773 7.28433C7.67773 6.9187 7.39648 6.63745 7.03086 6.63745H4.94961C4.61211 6.63745 4.30273 6.9187 4.30273 7.28433C4.30273 7.64995 4.61211 7.9312 4.97773 7.9312Z"
-                                    fill=""
-                                    />
-                                    <path
-                                    d="M13.0789 10.2374H4.97891C4.64141 10.2374 4.33203 10.5187 4.33203 10.8843C4.33203 11.2499 4.61328 11.5312 4.97891 11.5312H13.0789C13.4164 11.5312 13.7258 11.2499 13.7258 10.8843C13.7258 10.5187 13.4164 10.2374 13.0789 10.2374Z"
-                                    fill=""
-                                    />
-                                    <path
-                                    d="M13.0789 13.8093H4.97891C4.64141 13.8093 4.33203 14.0906 4.33203 14.4562C4.33203 14.8218 4.61328 15.1031 4.97891 15.1031H13.0789C13.4164 15.1031 13.7258 14.8218 13.7258 14.4562C13.7258 14.0906 13.4164 13.8093 13.0789 13.8093Z"
-                                    fill=""
-                                    />
-                                </svg>
-
-                                Registry
-
-                                <svg
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
-                                    :class="{ 'rotate-180': (selected === 'Task') }"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 20 20"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
-                                    fill=""
-                                    />
-                                </svg>
-                                </a>
-
-                                <!-- Dropdown Menu Start -->
-                                <div
-                                class="translate transform overflow-hidden"
-                                :class="(selected === 'Pages') ? 'block' :'hidden'"
-                                >
-                                <ul class="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
-                                    <li>
-                                    <a
-                                        class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                                        href="{% url 'resident_list' pk=hostel.pk %}"
-                                        :class="page === 'settings' && '!text-white'"
-                                    >
-                                        Residents
-                                        <span
-                                        class="absolute right-4 block rounded bg-primary py-1 px-2 text-xs font-medium text-white"
-                                        >{{ occupied_rooms }}</span
-                                        >
-                                    </a>
-                                    </li>
-                                    <li>
-                                    <a
-                                        class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                                        href="{% url 'room_list' pk=hostel.pk %}"
-                                        :class="page === 'fileManager' && '!text-white'"
-                                        >Rooms
-                                        <span
-                                        class="absolute right-4 block rounded bg-primary py-1 px-2 text-xs font-medium text-white"
-                                        >{{ total_rooms }}</span
-                                        ></a
-                                    >
-                                    </li>
-                                </ul>
-                                </div>
-                                <!-- Dropdown Menu End -->
-                            </li>
-                        
-                        </ul>
-                    </div>
-
-                    <!-- Support Group -->
-                    <div class="py-10 mb-6">
-                        <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">SUPPORT</h3>
-
-                        <ul class="mb-6 flex flex-col gap-1.5">
-                        <!-- Menu Item Messages -->
-                        <li>
-                            <a
-                            class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                            href="{% url 'create_message' pk=hostel.pk %}"
-                            @click="selected = (selected === 'Messages' ? '':'Messages')"
-                            :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Messages') && (page === 'Messages') }"
-                            >
-                            <svg
-                                class="fill-current"
-                                width="18"
-                                height="19"
-                                viewBox="0 0 18 19"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                d="M15.7499 2.75208H2.2499C1.29365 2.75208 0.478027 3.53957 0.478027 4.52395V13.6364C0.478027 14.5927 1.26553 15.4083 2.2499 15.4083H15.7499C16.7062 15.4083 17.5218 14.6208 17.5218 13.6364V4.49583C17.5218 3.53958 16.7062 2.75208 15.7499 2.75208ZM15.7499 4.0177C15.778 4.0177 15.8062 4.0177 15.8343 4.0177L8.9999 8.4052L2.16553 4.0177C2.19365 4.0177 2.22178 4.0177 2.2499 4.0177H15.7499ZM15.7499 14.0865H2.2499C1.96865 14.0865 1.74365 13.8615 1.74365 13.5802V5.2552L8.3249 9.47395C8.52178 9.61457 8.74678 9.67083 8.97178 9.67083C9.19678 9.67083 9.42178 9.61457 9.61865 9.47395L16.1999 5.2552V13.6083C16.2562 13.8896 16.0312 14.0865 15.7499 14.0865Z"
-                                fill=""
-                                />
-                            </svg>
-
-                            Messages
-
-                            <span
-                                class="absolute right-14 top-1/2 -translate-y-1/2 rounded bg-primary py-1 px-2.5 text-xs font-medium text-white"
-                                >5</span
-                            >
-                            <span
-                                class="absolute right-4 block rounded bg-primary py-1 px-2 text-xs font-medium text-white"
-                                >new</span
-                            >
-                            </a>
-                        </li>
-                        <!-- Menu Item Messages -->
-
-                        <!-- Menu Item Inbox -->
-                        <li>
-                            <a
-                            class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                            href="{% url 'general_message' pk=hostel.pk %}"
-                            @click="selected = (selected === 'Inbox' ? '':'Inbox')"
-                            :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Inbox') && (page === 'inbox') }"
-                            >
-                            <svg
-                                class="fill-current"
-                                width="18"
-                                height="19"
-                                viewBox="0 0 18 19"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                d="M16.8749 7.44902C16.5374 7.44902 16.228 7.73027 16.228 8.0959V13.3834C16.228 14.4803 15.4124 15.3521 14.3999 15.3521H3.5999C2.55928 15.3521 1.77178 14.4803 1.77178 13.3834V8.06777C1.77178 7.73027 1.49053 7.4209 1.1249 7.4209C0.759277 7.4209 0.478027 7.70215 0.478027 8.06777V13.3553C0.478027 15.1271 1.85615 16.5896 3.57178 16.5896H14.3999C16.1155 16.5896 17.4937 15.1553 17.4937 13.3553V8.06777C17.5218 7.73027 17.2124 7.44902 16.8749 7.44902Z"
-                                fill=""
-                                />
-                                <path
-                                d="M8.5498 11.6396C8.6623 11.7521 8.83105 11.8365 8.9998 11.8365C9.16855 11.8365 9.30918 11.7803 9.4498 11.6396L12.8811 8.23652C13.1342 7.9834 13.1342 7.58965 12.8811 7.33652C12.6279 7.0834 12.2342 7.0834 11.9811 7.33652L9.64668 9.64277V2.16152C9.64668 1.82402 9.36543 1.51465 8.9998 1.51465C8.6623 1.51465 8.35293 1.7959 8.35293 2.16152V9.69902L6.01855 7.36465C5.76543 7.11152 5.37168 7.11152 5.11855 7.36465C4.86543 7.61777 4.86543 8.01152 5.11855 8.26465L8.5498 11.6396Z"
-                                fill=""
-                                />
-                            </svg>
-
-                            Inbox
-                            <span
-                                class="absolute right-4 block rounded bg-primary py-1 px-2 text-xs font-medium text-white"
-                                >new</span
-                            >
-                            </a>
-                        </li>
-                        <!-- Menu Item Inbox -->
-
-                        <!-- Menu Item Invoice -->
-                        <li>
-                            <a
-                            class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                            href="#"
-                            @click="selected = (selected === 'Invoice' ? '':'Invoice')"
-                            :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Invoice') && (page === 'Invoice') }"
-                            :class="page === 'Invoice' && 'bg-graydark'"
-                            >
-                            <svg
-                                class="fill-current"
-                                width="18"
-                                height="19"
-                                viewBox="0 0 18 19"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <g clip-path="url(#clip0_130_9787)">
-                                <path
-                                    d="M15.8343 2.49902C15.8343 1.43027 14.9624 0.530273 13.8655 0.530273H4.13428C3.06553 0.530273 2.16553 1.40215 2.16553 2.49902V16.6178C2.16553 16.8428 2.30615 17.0678 2.50303 17.1803C2.6999 17.2928 2.95303 17.2646 3.1499 17.1521L4.55615 16.224L6.44053 17.4615C6.66553 17.6021 6.91865 17.6021 7.14365 17.4615L8.9999 16.224L10.8562 17.4615C10.9687 17.5459 11.0812 17.574 11.1937 17.574C11.3062 17.574 11.4468 17.5459 11.5312 17.4615L13.3874 16.224L14.7937 17.1803C14.9905 17.3209 15.2437 17.3209 15.4405 17.2084C15.6374 17.0959 15.778 16.8709 15.778 16.6459L15.8343 2.49902ZM14.0343 15.099C13.6687 14.8459 13.1905 14.8459 12.8249 15.099L11.2218 16.1678L9.61865 15.099C9.42178 14.9865 9.2249 14.9021 8.9999 14.9021C8.80303 14.9021 8.57803 14.9584 8.40928 15.099L6.80615 16.1678L5.20303 15.099C4.8374 14.8459 4.35928 14.8459 3.99365 15.099L3.45928 15.4365V2.49902C3.45928 2.10527 3.76865 1.7959 4.1624 1.7959H13.9218C14.3155 1.7959 14.6249 2.10527 14.6249 2.49902V15.4365L14.0343 15.099Z"
-                                    fill=""
-                                />
-                                <path
-                                    d="M7.93106 3.79272H5.5123C5.1748 3.79272 4.89355 4.07397 4.89355 4.41147C4.89355 4.74897 5.1748 5.03022 5.5123 5.03022H7.93106C8.26856 5.03022 8.54981 4.74897 8.54981 4.41147C8.54981 4.07397 8.26856 3.79272 7.93106 3.79272Z"
-                                    fill=""
-                                />
-                                <path
-                                    d="M12.347 3.79272H11.672C11.3345 3.79272 11.0532 4.07397 11.0532 4.41147C11.0532 4.74897 11.3345 5.03022 11.672 5.03022H12.347C12.6845 5.03022 12.9657 4.74897 12.9657 4.41147C12.9657 4.07397 12.6845 3.79272 12.347 3.79272Z"
-                                    fill=""
-                                />
-                                <path
-                                    d="M5.5123 8.74275H7.05918C7.39668 8.74275 7.67793 8.4615 7.67793 8.124C7.67793 7.7865 7.39668 7.50525 7.05918 7.50525H5.5123C5.1748 7.50525 4.89355 7.7865 4.89355 8.124C4.89355 8.4615 5.14668 8.74275 5.5123 8.74275Z"
-                                    fill=""
-                                />
-                                <path
-                                    d="M12.347 7.47717H11.672C11.3345 7.47717 11.0532 7.75842 11.0532 8.09592C11.0532 8.43342 11.3345 8.71467 11.672 8.71467H12.347C12.6845 8.71467 12.9657 8.43342 12.9657 8.09592C12.9657 7.75842 12.6845 7.47717 12.347 7.47717Z"
-                                    fill=""
-                                />
-                                <path
-                                    d="M7.93106 11.1334H5.5123C5.1748 11.1334 4.89355 11.4147 4.89355 11.7522C4.89355 12.0897 5.1748 12.3709 5.5123 12.3709H7.93106C8.26856 12.3709 8.54981 12.0897 8.54981 11.7522C8.54981 11.4147 8.26856 11.1334 7.93106 11.1334Z"
-                                    fill=""
-                                />
-                                <path
-                                    d="M12.347 11.1334H11.672C11.3345 11.1334 11.0532 11.4147 11.0532 11.7522C11.0532 12.0897 11.3345 12.3709 11.672 12.3709H12.347C12.6845 12.3709 12.9657 12.0897 12.9657 11.7522C12.9657 11.4147 12.6845 11.1334 12.347 11.1334Z"
-                                    fill=""
-                                />
-                                </g>
-                                <defs>
-                                <clipPath id="clip0_130_9787">
-                                    <rect
-                                    width="18"
-                                    height="18"
-                                    fill="white"
-                                    transform="translate(0 0.052124)"
-                                    />
-                                </clipPath>
-                                </defs>
-                            </svg>
-
-                            Invoice
-                            <span
-                                class="absolute right-4 block rounded bg-primary py-1 px-2 text-xs font-medium text-white"
-                                >new</span
-                            >
-                            </a>
-                        </li>
-                        <!-- Menu Item Invoice -->
-                        </ul>
-                    </div>
-
                     <!-- Others Group -->
                     <div class="mx-auto mb-10 w-full max-w-60 rounded-sm border border-strokedark bg-boxdark py-6 px-4 text-center shadow-default mt-8">
                         <h3 class="mb-1 font-semibold text-white">Stama Pro</h3>
@@ -610,7 +196,7 @@
                         </span>
                     </button>
                     <!-- Hamburger Toggle BTN -->
-                    <a class="block flex-shrink-0 lg:hidden" href="{% url 'hostel_dashboard' pk=hostel.pk %}">
+                    <a class="block flex-shrink-0 lg:hidden" href="#">
                         <img src="{% static 'images/stamablue.png' %}" alt="Logo" width="50" height="15"/>
                     </a>
                 </div>
@@ -741,101 +327,13 @@
                     </a>
 
                     <!-- Dropdown Start -->
-                    <div
-                        x-show="dropdownOpen"
-                        class="absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80"
-                    >
-                        <div class="px-4.5 py-3">
-                        <h5 class="text-sm font-medium text-bodydark2">Notification</h5>
-                        </div>
-
-                        <ul class="flex h-auto flex-col overflow-y-auto">
-                        {% for repair in notify_repairs %}
-                        <li>
-                            <a
-                            class="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                            href="{{ repair.get_absolute_url }}"
-                            >
-                            <p class="text-sm">
-                                <span class="text-black dark:text-white"
-                                >{{ repair.room.room_number }} new request</span
-                                >
-                                {{ repair.type.name }} - {{ repair.description }}
-                                
-                            </p>
-
-                            <p class="text-xs">{{ repair.time_created|date:"F j, Y" }}</p>
-                            </a>
-                        </li>
-                        {% endfor %}
-                        </ul>
-                    </div>
+                   
                     <!-- Dropdown End -->
                     </li>
                     <!-- Notification Menu Area -->
 
                     <!-- Chat Notification Area -->
-                    <li
-                    class="relative"
-                    x-data="{ dropdownOpen: false, notifying: true }"
-                    @click.outside="dropdownOpen = false"
-                    >
-                    <a
-                        class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
-                        href="#"
-                        @click.prevent="dropdownOpen = ! dropdownOpen; notifying = false"
-                    >
-                        <span
-                        :class="!notifying && 'hidden'"
-                        class="absolute -top-0.5 -right-0.5 z-1 h-2 w-2 rounded-full bg-meta-1"
-                        >
-                        <span
-                            class="absolute -z-1 inline-flex h-full w-full animate-ping rounded-full bg-meta-1 opacity-75"
-                        ></span>
-                        </span>
-
-                        <svg
-                        class="fill-current duration-300 ease-in-out"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        >
-                        <path
-                            d="M10.9688 1.57495H7.03135C3.43135 1.57495 0.506348 4.41558 0.506348 7.90308C0.506348 11.3906 2.75635 13.8375 8.26885 16.3125C8.40947 16.3687 8.52197 16.3968 8.6626 16.3968C8.85947 16.3968 9.02822 16.3406 9.19697 16.2281C9.47822 16.0593 9.64697 15.75 9.64697 15.4125V14.2031H10.9688C14.5688 14.2031 17.522 11.3625 17.522 7.87495C17.522 4.38745 14.5688 1.57495 10.9688 1.57495ZM10.9688 12.9937H9.3376C8.80322 12.9937 8.35322 13.4437 8.35322 13.9781V15.0187C3.6001 12.825 1.74385 10.8 1.74385 7.9312C1.74385 5.14683 4.10635 2.8687 7.03135 2.8687H10.9688C13.8657 2.8687 16.2563 5.14683 16.2563 7.9312C16.2563 10.7156 13.8657 12.9937 10.9688 12.9937Z"
-                            fill=""
-                        />
-                        <path
-                            d="M5.42812 7.28442C5.0625 7.28442 4.78125 7.56567 4.78125 7.9313C4.78125 8.29692 5.0625 8.57817 5.42812 8.57817C5.79375 8.57817 6.075 8.29692 6.075 7.9313C6.075 7.56567 5.79375 7.28442 5.42812 7.28442Z"
-                            fill=""
-                        />
-                        <path
-                            d="M9.00015 7.28442C8.63452 7.28442 8.35327 7.56567 8.35327 7.9313C8.35327 8.29692 8.63452 8.57817 9.00015 8.57817C9.33765 8.57817 9.64702 8.29692 9.64702 7.9313C9.64702 7.56567 9.33765 7.28442 9.00015 7.28442Z"
-                            fill=""
-                        />
-                        <path
-                            d="M12.5719 7.28442C12.2063 7.28442 11.925 7.56567 11.925 7.9313C11.925 8.29692 12.2063 8.57817 12.5719 8.57817C12.9375 8.57817 13.2188 8.29692 13.2188 7.9313C13.2188 7.56567 12.9094 7.28442 12.5719 7.28442Z"
-                            fill=""
-                        />
-                        </svg>
-                    </a>
-
-                    <!-- Dropdown Start -->
-                    <div
-                        x-show="dropdownOpen"
-                        class="absolute -right-16 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80"
-                    >
-                        <div class="px-4.5 py-3">
-                        <h5 class="text-sm font-medium text-bodydark2">Messages</h5>
-                        </div>
-
-                        <ul class="flex h-auto flex-col overflow-y-auto">
-                        <li></li>
-                        </ul>
-                    </div>
-                    <!-- Dropdown End -->
-                    </li>
+                    
                     <!-- Chat Notification Area -->
                 </ul>
 
@@ -852,26 +350,27 @@
                     >
                     <span class="hidden text-right lg:block">
                         <span class="block text-sm font-medium text-black dark:text-white"
-                        >{{ hostel.manager }}</span
+                        >{{ object.room.hostel.manager }}</span
                         >
                         <span class="block text-xs font-medium">Administrator</span>
                     </span>
 
-                        <span class="h-12 w-12 relative">
-                            {% if user.user_image %}
-                            <img
-                            class="absolute rounded-full object-cover object-center h-full w-full"
-                            src="{{ user.user_image.url }}"
-                            alt="User"
-                            />
-                            {% else %}
-                            <img
-                            class="absolute rounded-full object-cover object-center h-full w-full"
-                            src="{% static 'img/settingsphot.png' %}"
-                            alt="User"
-                            />
-                            {% endif %}
-                        </span>
+                    <span class="h-12 w-12 rounded-full overflow-hidden">
+                        {% if user.user_image %}
+                        <img
+                          
+                          src="{{ user.user_image.url }}"
+                          alt="User"
+                        />
+                        {% else %}
+                        <img
+                
+                          src="{% static 'img/settingsphot.png' %}"
+                          alt="User"
+                        />
+                        {% endif %}
+                    </span>
+
                     <svg
                         :class="dropdownOpen && 'rotate-180'"
                         class="hidden fill-current sm:block"
@@ -1005,15 +504,208 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-            {% block content %} 
+            <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                <div class="flex flex-col gap-9">
+                  <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                    <div x-data="
+                          {
+                          openTab: 1,
+                          activeClasses: 'text-primary border-primary',
+                          inactiveClasses: 'border-transparent',
+                          }
+                          "
+                      class="mb-14 w-full p-7.5"
+                    >
+                      <div
+                        class="mb-6 flex flex-wrap gap-5 border-b border-stroke dark:border-strokedark sm:gap-10"
+                      >
+                            <a
+                            href="#"
+                            @click.prevent="openTab = 1"
+                            :class="openTab === 1 ? activeClasses : inactiveClasses"
+                            class="border-b-2 py-4 text-sm font-medium hover:text-primary md:text-base"
+                            >
+                            General Message Board
+                            </a>
+                            <a
+                            href="#"
+                            @click.prevent="openTab = 2"
+                            :class="openTab === 2 ? activeClasses : inactiveClasses"
+                            class="border-b-2 py-4 text-sm font-medium hover:text-primary md:text-base"
+                            >
+                            Create
+                            </a>
+                      </div>
+                      <div>
+                            <div x-show="openTab === 1" class="font-medium leading-relaxed">
 
+                                {% for message in genaralmessage_list %}
+                                <div
+                                draggable="true"
+                                class="task relative flex cursor-move justify-between rounded-sm border border-stroke bg-white p-7 shadow-default dark:border-strokedark dark:bg-boxdark mb-2"
+                                >
+                                    <div>
+                                    <h5
+                                        class="mb-4 text-lg font-medium text-black dark:text-white"
+                                    >{{ message.title }} </h5>
+                                        <p class="m-2 text-black dark:text-white">{{ message.content }} </p>
+                                        <p class="text-xs text-bodydark">By: {{ message.author.username }} on {{ message.date_posted|date:"F j, Y" }}</p>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="absolute right-4 top-4">
+                                            <div x-data="{openDropDown: false}" class="relative">
+                                            <button @click="openDropDown = !openDropDown">
+                                                <svg
+                                                width="18"
+                                                height="18"
+                                                viewBox="0 0 18 18"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                <path
+                                                    d="M2.25 11.25C3.49264 11.25 4.5 10.2426 4.5 9C4.5 7.75736 3.49264 6.75 2.25 6.75C1.00736 6.75 0 7.75736 0 9C0 10.2426 1.00736 11.25 2.25 11.25Z"
+                                                    fill="#98A6AD"
+                                                />
+                                                <path
+                                                    d="M9 11.25C10.2426 11.25 11.25 10.2426 11.25 9C11.25 7.75736 10.2426 6.75 9 6.75C7.75736 6.75 6.75 7.75736 6.75 9C6.75 10.2426 7.75736 11.25 9 11.25Z"
+                                                    fill="#98A6AD"
+                                                />
+                                                <path
+                                                    d="M15.75 11.25C16.9926 11.25 18 10.2426 18 9C18 7.75736 16.9926 6.75 15.75 6.75C14.5074 6.75 13.5 7.75736 13.5 9C13.5 10.2426 14.5074 11.25 15.75 11.25Z"
+                                                    fill="#98A6AD"
+                                                />
+                                                </svg>
+                                            </button>
+                                            <div
+                                                x-show="openDropDown"
+                                                @click.outside="openDropDown = false"
+                                                class="absolute right-0 top-full z-40 w-40 space-y-1 rounded-sm border border-stroke bg-white p-1.5 shadow-default dark:border-strokedark dark:bg-boxdark"
+                                            >
+                                                <button
+                                                class="flex w-full items-center gap-2 rounded-sm py-1.5 px-4 text-left text-sm hover:bg-gray dark:hover:bg-meta-4"
+                                                >
+                                                <svg
+                                                    class="fill-current"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <g clip-path="url(#clip0_62_9787)">
+                                                    <path
+                                                        d="M15.55 2.97499C15.55 2.77499 15.475 2.57499 15.325 2.42499C15.025 2.12499 14.725 1.82499 14.45 1.52499C14.175 1.24999 13.925 0.974987 13.65 0.724987C13.525 0.574987 13.375 0.474986 13.175 0.449986C12.95 0.424986 12.75 0.474986 12.575 0.624987L10.875 2.32499H2.02495C1.17495 2.32499 0.449951 3.02499 0.449951 3.89999V14C0.449951 14.85 1.14995 15.575 2.02495 15.575H12.15C13 15.575 13.725 14.875 13.725 14V5.12499L15.35 3.49999C15.475 3.34999 15.55 3.17499 15.55 2.97499ZM8.19995 8.99999C8.17495 9.02499 8.17495 9.02499 8.14995 9.02499L6.34995 9.62499L6.94995 7.82499C6.94995 7.79999 6.97495 7.79999 6.97495 7.77499L11.475 3.27499L12.725 4.49999L8.19995 8.99999ZM12.575 14C12.575 14.25 12.375 14.45 12.125 14.45H2.02495C1.77495 14.45 1.57495 14.25 1.57495 14V3.87499C1.57495 3.62499 1.77495 3.42499 2.02495 3.42499H9.72495L6.17495 6.99999C6.04995 7.12499 5.92495 7.29999 5.87495 7.49999L4.94995 10.3C4.87495 10.5 4.92495 10.675 5.02495 10.85C5.09995 10.95 5.24995 11.1 5.52495 11.1H5.62495L8.49995 10.15C8.67495 10.1 8.84995 9.97499 8.97495 9.84999L12.575 6.24999V14ZM13.5 3.72499L12.25 2.49999L13.025 1.72499C13.225 1.92499 14.05 2.74999 14.25 2.97499L13.5 3.72499Z"
+                                                        fill=""
+                                                    />
+                                                    </g>
+                                                    <defs>
+                                                    <clipPath id="clip0_62_9787">
+                                                        <rect width="16" height="16" fill="white" />
+                                                    </clipPath>
+                                                    </defs>
+                                                </svg>
+                                                Edit
+                                                </button>
+                                                <button
+                                                class="flex w-full items-center gap-2 rounded-sm py-1.5 px-4 text-left text-sm hover:bg-gray dark:hover:bg-meta-4"
+                                                >
+                                                <svg
+                                                    class="fill-current"
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 16 16"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                    d="M12.225 2.20005H10.3V1.77505C10.3 1.02505 9.70005 0.425049 8.95005 0.425049H7.02505C6.27505 0.425049 5.67505 1.02505 5.67505 1.77505V2.20005H3.75005C3.02505 2.20005 2.42505 2.80005 2.42505 3.52505V4.27505C2.42505 4.82505 2.75005 5.27505 3.22505 5.47505L3.62505 13.75C3.67505 14.775 4.52505 15.575 5.55005 15.575H10.4C11.425 15.575 12.275 14.775 12.325 13.75L12.75 5.45005C13.225 5.25005 13.55 4.77505 13.55 4.25005V3.50005C13.55 2.80005 12.95 2.20005 12.225 2.20005ZM6.82505 1.77505C6.82505 1.65005 6.92505 1.55005 7.05005 1.55005H8.97505C9.10005 1.55005 9.20005 1.65005 9.20005 1.77505V2.20005H6.85005V1.77505H6.82505ZM3.57505 3.52505C3.57505 3.42505 3.65005 3.32505 3.77505 3.32505H12.225C12.325 3.32505 12.425 3.40005 12.425 3.52505V4.27505C12.425 4.37505 12.35 4.47505 12.225 4.47505H3.77505C3.67505 4.47505 3.57505 4.40005 3.57505 4.27505V3.52505V3.52505ZM10.425 14.45H5.57505C5.15005 14.45 4.80005 14.125 4.77505 13.675L4.40005 5.57505H11.625L11.25 13.675C11.2 14.1 10.85 14.45 10.425 14.45Z"
+                                                    fill=""
+                                                    />
+                                                    <path
+                                                    d="M8.00005 8.1001C7.70005 8.1001 7.42505 8.3501 7.42505 8.6751V11.8501C7.42505 12.1501 7.67505 12.4251 8.00005 12.4251C8.30005 12.4251 8.57505 12.1751 8.57505 11.8501V8.6751C8.57505 8.3501 8.30005 8.1001 8.00005 8.1001Z"
+                                                    fill=""
+                                                    />
+                                                    <path
+                                                    d="M9.99994 8.60004C9.67494 8.57504 9.42494 8.80004 9.39994 9.12504L9.24994 11.325C9.22494 11.625 9.44994 11.9 9.77494 11.925C9.79994 11.925 9.79994 11.925 9.82494 11.925C10.1249 11.925 10.3749 11.7 10.3749 11.4L10.5249 9.20004C10.5249 8.87504 10.2999 8.62504 9.99994 8.60004Z"
+                                                    fill=""
+                                                    />
+                                                    <path
+                                                    d="M5.97497 8.60004C5.67497 8.62504 5.42497 8.90004 5.44997 9.20004L5.62497 11.4C5.64997 11.7 5.89997 11.925 6.17497 11.925C6.19997 11.925 6.19997 11.925 6.22497 11.925C6.52497 11.9 6.77497 11.625 6.74997 11.325L6.57497 9.12504C6.57497 8.80004 6.29997 8.57504 5.97497 8.60004Z"
+                                                    fill=""
+                                                    />
+                                                </svg>
+                                                Delete
+                                                </button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <div x-show="openTab === 2" class="font-medium leading-relaxed" style="display: none">
+                                
 
-            {% endblock content %}
+                                <div class="flex flex-col gap-9">
+                                    <!-- Contact Form -->
+                                    <div
+                                      class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+                                    >
+                                      <div
+                                        class="border-b border-stroke py-4 px-6.5 dark:border-strokedark"
+                                      >
+                                        <h3 class="font-semibold text-black dark:text-white">
+                                          Contact Form
+                                        </h3>
+                                      </div>
+                                      <form action="#">
+                                        <div class="p-6.5">
+                                          <div class="mb-4.5">
+                                            <label class="mb-2.5 block text-black dark:text-white">
+                                              Subject
+                                            </label>
+                                            <input
+                                              type="text"
+                                              placeholder="Select subject"
+                                              class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            />
+                                          </div>
+                    
+                                         
+                    
+                                          <div class="mb-6">
+                                            <label class="mb-2.5 block text-black dark:text-white">
+                                              Message
+                                            </label>
+                                            <textarea
+                                              rows="6"
+                                              placeholder="Type your message"
+                                              class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                            ></textarea>
+                                          </div>
+                    
+                                          <button
+                                            class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray"
+                                          >
+                                            Send Message
+                                          </button>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
+
         <!-- ===== Main Content End ===== -->
       </div>
       <!-- ===== Content Area End ===== -->
     </div>
-    <!-- ===== Page Wrapper End ===== -->
-  <script defer src="{% static 'js/management/bundle.js' %}"></script></body>
+  <script defer src="{% static 'js/management/bundle.js' %}"></script>
+</body>
 </html>

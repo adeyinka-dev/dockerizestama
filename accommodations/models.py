@@ -134,8 +134,11 @@ def create_room_id(sender, instance, created, **kwargs):
         instance.save(update_fields=["room_id"])
 
 
-class Announcement(models.Model):
+class GeneralMessage(models.Model):
     title = models.CharField(max_length=200)
+    hostel = models.ForeignKey(
+        Hostel, on_delete=models.CASCADE, related_name="general_message"
+    )
     content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -144,4 +147,4 @@ class Announcement(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("annoucements", kwargs={"pk": self.pk})
+        return reverse("message_detail", kwargs={"pk": self.pk})
