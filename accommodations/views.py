@@ -163,7 +163,7 @@ class HostelDetailView(ManagerPermissionMixin, DetailView):
         context["repairs"] = repairs
         context["notify_repairs"] = nofity_repairs
         context["repairs_count"] = repairs.count()
-        context["messages"] = messages
+        context["messages"] = messages.order_by("-date_posted")[:3]
         return context
 
 
@@ -347,6 +347,11 @@ class GeneralMessageCreateView(ManagerPermissionMixin, CreateView):
         form.instance.hostel = hostel
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hostel"] = Hostel.objects.get(pk=self.kwargs.get("pk"))
+        return context
 
 
 class GeneralMessageDeleteView(LoginRequiredMixin, DeleteView):
