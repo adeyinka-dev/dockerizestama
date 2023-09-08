@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
+from django.shortcuts import get_object_or_404
 from .forms import GeneralMessageForm
 import math
 from django.core.exceptions import PermissionDenied
@@ -346,3 +347,18 @@ class GeneralMessageCreateView(ManagerPermissionMixin, CreateView):
         form.instance.hostel = hostel
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class GeneralMessageDeleteView(LoginRequiredMixin, DeleteView):
+    model = GeneralMessage
+    template_name = "message_delete.html"
+
+    def get_object(self, queryset=None):
+        """Override to capture and handle the 404 error."""
+        hostel_pk = self.kwargs.get("pk")
+        message_pk = self.kwargs.get("message_pk")
+        return get_object_or_404(GeneralMessage, pk=message_pk, hostel_id=hostel_pk)
+
+    def get_success_url(self):
+        # Redirect to the related hostel's dashboard after deleting the message
+        return reverse_lazy("hostel_dashboard", args=[self.object.hostel.pk])

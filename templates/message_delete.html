@@ -63,10 +63,10 @@
                       Delete
                     </button>
                     <a
-                    href="{% url 'general_message' %}"
-                    class="inline-flex rounded border border-secondary py-1 px-2 text-sm font-medium text-secondary hover:opacity-80 dark:text-white dark:border-white"
+                    href="{% url 'message_detail' pk=object.pk %}"
+                    class="inline-flex rounded border border-success py-1 px-2 text-sm font-medium text-success hover:opacity-80 dark:text-white dark:border-white"
                     >
-                      Primary
+                      Cancel
                     </a>
                     
                 </form>

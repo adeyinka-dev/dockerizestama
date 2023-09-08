@@ -516,7 +516,7 @@
   
                   <nav>
                     <ol class="flex items-center gap-2">
-                      <li> <a href="#" class="text-danger text-xs">Delete</a> </li>
+                      <li> <a href="{% url 'message_delete' pk=object.hostel.pk message_pk=object.pk %}" class="text-danger text-xs">Delete</a> </li>
                     </ol>
                   </nav>
                 </div>
@@ -529,7 +529,7 @@
                   <div class="px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
                     <div class="mt-4">
                       <h3
-                        class="mb-1.5 text-2xl font-medium text-black dark:text-white"
+                        class="mb-1.5 text-xl font-medium text-black dark:text-white"
                       >
                         {{object.title}}
                       </h3>
@@ -541,7 +541,7 @@
                       <div class="mx-auto max-w-180">
                         <h4 class="font-medium text-black dark:text-white">
                         </h4>
-                        <p class="mt-4.5 text-sm font-medium">
+                        <p class="mt-4.5 text-sm font-medium text-black dark:text-white">
                         {{object.content}}
                         </p>
                     

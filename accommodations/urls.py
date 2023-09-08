@@ -14,6 +14,7 @@ from .views import (
     GeneralMessageCreateView,
     GeneralMessageListView,
     GeneralMessageDetailView,
+    GeneralMessageDeleteView,
 )
 
 urlpatterns = [
@@ -40,6 +41,11 @@ urlpatterns = [
         "hostel/<int:pk>/general_message/message_detail",
         GeneralMessageDetailView.as_view(),
         name="message_detail",
+    ),
+    path(
+        "hostel/<int:pk>/general_message/<int:message_pk>/delete/",
+        GeneralMessageDeleteView.as_view(),
+        name="message_delete",
     ),
     path("operatives/<int:pk>", OperativeListView.as_view(), name="operative_list"),
     path(
