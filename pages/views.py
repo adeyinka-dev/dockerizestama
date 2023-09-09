@@ -9,7 +9,7 @@ from django.views.generic import (
     ListView,
 )
 from maintenance.models import Maintenance, Room
-from accommodations.models import Room
+from accommodations.models import Room, GeneralMessage
 from accounts.models import Tenant
 from accounts.forms import (
     TenantCreationForm,
@@ -97,6 +97,23 @@ class EditInfo(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.get_object() == self.request.user
+
+
+class MessageBoard(LoginRequiredMixin, TemplateView):
+    template_name = "message_board.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+
+        if hasattr(user, "room") and user.room and user.room.hostel:
+            hostel = user.room.hostel
+            messages = GeneralMessage.objects.filter(hostel=hostel).order_by(
+                "-date_posted"
+            )
+            context["messages"] = messages
+
+        return context
 
 
 class TestPage(TemplateView):

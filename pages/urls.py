@@ -12,6 +12,7 @@ from .views import (
     EditInfo,
     RepairHistoryView,
     TestPage,
+    MessageBoard,
 )
 
 urlpatterns = [
@@ -27,6 +28,7 @@ urlpatterns = [
     path("user/dashboard", DashboardView.as_view(), name="dashboard"),
     path("user/repair-history/", RepairHistoryView.as_view(), name="repair_history"),
     path("edit-profile/<int:pk>/", EditInfo.as_view(), name="edit_profile"),
+    path("hostel_messages/", MessageBoard.as_view(), name="hostel_messages"),
     path(
         "update-success/",
         TemplateView.as_view(template_name="edit_success.html"),
