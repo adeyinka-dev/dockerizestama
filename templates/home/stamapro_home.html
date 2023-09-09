@@ -109,7 +109,7 @@
                                 </span>
                             </h1>
                             <p class="mt-12 text-center text-lg text-gray-600 dark:text-gray-300 sm:text-xl lg:text-left">This is the future of streamlined accommodations management. We simplify every aspect, from tenant interactions to room allocations, ensuring both landlords and residents enjoy a seamless experience.</p>
-                            <form action="" class="mt-12">
+                            <form action="{% url 'getstarted' %}" class="mt-12">
                                 <div class="relative flex items-center rounded-full border border-primary/20 bg-white p-1 px-2 shadow-md dark:border-white/10 dark:bg-dark md:p-2 lg:pr-3">
                                     <div class="py-3 pl-4 lg:pl-5">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="m-auto h-6 w-6 fill-gray-500 dark:fill-gray-400" viewBox="0 0 20 20" fill="currentColor">
@@ -117,9 +117,9 @@
                                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                         </svg>
                                     </div>
-                                    <input autocomplete="email" placeholder="Your mail address" class="w-full rounded-full bg-transparent p-4 placeholder-gray-600 dark:placeholder-white" type="email" />
+                                    <input autocomplete="email" placeholder="Your mail address" class="w-full rounded-full bg-transparent p-4 placeholder-gray-600 dark:placeholder-white text-black dark:text-white" type="email" />
                                     <div class="md:pr-1.5 lg:pr-0">
-                                        <button type="button" title="Start buying" class="relative ml-auto h-12 w-16 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:bg-primary sm:w-auto sm:px-6">
+                                        <button type="submit" title="Start buying" class="relative ml-auto h-12 w-16 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:bg-primary sm:w-auto sm:px-6">
                                             <span class="relative hidden w-max font-semibold text-white dark:text-gray-900 md:block"> Get Started </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="relative mx-auto h-6 w-6 text-white dark:text-gray-900 md:hidden">
                                                 <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
