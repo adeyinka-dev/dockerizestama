@@ -12,4 +12,5 @@ class ClientCreationForm(forms.ModelForm):
             "contact_name",
             "email",
             "phone",
+            "number_of_rooms",
         ]

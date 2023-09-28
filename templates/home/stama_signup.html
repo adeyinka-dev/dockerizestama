@@ -128,6 +128,15 @@
                                         {% endif %}
                                     </div>
                                     <div>
+                                        <label for="{{ form.number_of_rooms.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Number Of Rooms<span class="text-xl text-red-500 dark:text-red-400">*</span></label>
+                                        {{ form.number_of_rooms|add_class:"peer block w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 dark:border-gray-700"}}
+                                        {% if form.number_of_rooms.errors %}
+                                        <div class="text-sm text-red">
+                                        {{ form.number_of_rooms.errors }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div>
                                         <label for="{{ form.messgae.id_for_label }}" class="mb-2 block text-gray-600 dark:text-gray-300">Message</label>
                                         {{ form.message|add_class:"peer block h-28 w-full rounded-lg border border-gray-200 bg-transparent px-4 py-2 text-gray-600 transition-shadow duration-300 dark:border-gray-700"}}
                                         {% if form.message.errors %}

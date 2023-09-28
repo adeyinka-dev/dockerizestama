@@ -29,7 +29,7 @@ def validate_file_size(value):
 class Hostel(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
-    phone = models.IntegerField(blank=True, null=True)
+    phone = models.CharField(blank=True, null=True, max_length=15)
     amenities = models.TextField(max_length=9999, null=True, blank=True)
     manager = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="management"
